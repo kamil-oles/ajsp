@@ -7,7 +7,7 @@ const root = path.join(__dirname, '/src'),
   dist = path.join(__dirname, '/dist');
 
 const paths = {
-  app: path.join(root, '/app/root.module.js'),
+  app: path.join(root, '/app/app.module.js'),
   index: path.join(root, '/index.html')
 };
 
