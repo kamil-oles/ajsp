@@ -11,7 +11,8 @@ export const appCommon = angular
     $stateProvider
       .state('appCommon', {
         url: '/',
-        component: 'appCommon'
+        component: 'appCommon',
+        redirectTo: 'appConverter'
       });
   })
   .name;
