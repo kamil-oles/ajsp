@@ -20,7 +20,10 @@
       "unix"
     ],
     "max-len": [
-      "error"
+      "error",
+      {
+        "code": 100
+      }
     ],
     "quotes": [
       "error",
