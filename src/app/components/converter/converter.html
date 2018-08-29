@@ -1,5 +1,5 @@
-<app-converter-currency currency="$ctrl.currencyFirst" value="$ctrl.valueFirst"></app-converter-currency>
+<app-converter-currency currency="$ctrl.currencyFirst" value="$ctrl.valueFirst" on-update="$ctrl.update($event)"></app-converter-currency>
 <button>
   Change
 </button>
-<app-converter-currency currency="$ctrl.currencySecond" value="$ctrl.valueSecond"></app-converter-currency>
+<app-converter-currency currency="$ctrl.currencySecond" value="$ctrl.valueSecond" on-update="$ctrl.update($event)"></app-converter-currency>

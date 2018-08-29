@@ -9,5 +9,9 @@ export const converterComponent = {
       this.valueFirst = '1000';
       this.valueSecond = null;
     }
+
+    update(data) {
+      console.log(data);
+    }
   }
 };
