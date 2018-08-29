@@ -5,18 +5,20 @@ export const converterComponent = {
   templateUrl,
   controller: class ConverterComponentController {
     $onInit() {
-      this.currencyFirst = new Currency('PLN', '1000');
-      this.currencySecond = new Currency('EUR');
+      this.currencies = [];
+      this.currencies.push(new Currency('PLN', '1000'), new Currency('EUR'));
     }
 
     exchange() {
-      const stash = Object.assign({}, this.currencyFirst);
-      this.currencyFirst = Object.assign({}, this.currencySecond);
-      this.currencySecond = Object.assign({}, stash);
+      const stash = Object.assign({}, this.currencies[0]);
+      this.currencies[0] = Object.assign({}, this.currencies[1]);
+      this.currencies[1] = Object.assign({}, stash);
     }
 
     update(data) {
-      console.log(data);
+      this.currencies.forEach(el => {
+        if (el.code === data.currency.code) el.value = data.currency.value;
+      });
     }
   }
 };
