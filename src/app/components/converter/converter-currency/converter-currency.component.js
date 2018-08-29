@@ -1,9 +1,9 @@
 import templateUrl from './converter-currency.html';
+import { Currency } from '../shared/converter.model';
 
 export const converterCurrencyComponent = {
   bindings: {
     currency: '<',
-    value: '<',
     onUpdate: '&'
   },
   templateUrl,
@@ -15,8 +15,7 @@ export const converterCurrencyComponent = {
     update() {
       this.onUpdate(
         this.EventEmitter({
-          currency: this.currency,
-          value: this.value
+          currency: new Currency(this.currency.code, this.currency.value)
         })
       );
     }
