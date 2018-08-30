@@ -16,9 +16,14 @@ export const converterComponent = {
     }
 
     update(data) {
-      this.currencies.forEach(el => {
-        if (el.code === data.currency.code) el.value = data.currency.value;
-      });
+      let currency = data.currency;
+      for (let i = 0; i < 2; i++) {
+        let el = this.currencies[i];
+        if (el.code === currency.code) {
+          el.value = currency.value;
+          break;
+        }
+      }
     }
   }
 };
