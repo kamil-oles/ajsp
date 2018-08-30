@@ -8,7 +8,8 @@ export const converterCurrencyComponent = {
   },
   templateUrl,
   controller: class ConverterCurrencyComponent {
-    constructor(EventEmitter) {
+    constructor(ComponentsService, EventEmitter) {
+      this.currencies = ComponentsService.currencies;
       this.EventEmitter = EventEmitter;
     }
 
