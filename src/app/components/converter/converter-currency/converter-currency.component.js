@@ -1,3 +1,4 @@
+import angular from 'angular';
 import templateUrl from './converter-currency.html';
 import { Currency } from '../shared/converter.model';
 
@@ -11,6 +12,12 @@ export const converterCurrencyComponent = {
     constructor(ComponentsService, EventEmitter) {
       this.currencies = ComponentsService.currencies;
       this.EventEmitter = EventEmitter;
+    }
+
+    $onChanges(changes) {
+      if (changes.currency) {
+        this.currency = angular.copy(changes.currency.currentValue);
+      }
     }
 
     update() {

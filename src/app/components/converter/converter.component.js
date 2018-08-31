@@ -1,3 +1,4 @@
+import angular from 'angular';
 import templateUrl from './converter.html';
 import { Currency } from './shared/converter.model';
 
@@ -10,9 +11,9 @@ export const converterComponent = {
     }
 
     exchange() {
-      const stash = Object.assign({}, this.currencyFirst);
-      this.currencyFirst = Object.assign({}, this.currencySecond);
-      this.currencySecond = Object.assign({}, stash);
+      const stash = angular.copy(this.currencyFirst);
+      this.currencyFirst = angular.copy(this.currencySecond);
+      this.currencySecond = angular.copy(stash);
     }
 
     update(data) {
