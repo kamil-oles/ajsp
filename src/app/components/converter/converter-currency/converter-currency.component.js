@@ -5,7 +5,8 @@ import { Currency } from '../shared/converter.model';
 export const converterCurrencyComponent = {
   bindings: {
     currency: '<',
-    onUpdate: '&'
+    onUpdate: '&',
+    order: '@'
   },
   templateUrl,
   controller: class ConverterCurrencyComponent {
