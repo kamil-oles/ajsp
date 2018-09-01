@@ -5,13 +5,20 @@ import { Currency } from './shared/converter-currency.model';
 export const converterComponent = {
   templateUrl,
   controller: class ConverterComponentController {
+    constructor(ComponentsHttpService) {
+      this.http = ComponentsHttpService;
+    }
+
     $onInit() {
       this.currencyFirst = new Currency('PLN', '1000');
       this.currencySecond = new Currency('EUR');
     }
 
     calculate() {
-
+      const first = this.currencyFirst,
+        second = this.currencySecond,
+        code = first.code !== 'PLN' ? first.code : second.code;
+      this.http.rate(code).then(response => console.log(response.data));
     }
 
     exchange() {
