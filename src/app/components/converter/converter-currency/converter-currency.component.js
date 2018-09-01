@@ -1,6 +1,6 @@
 import angular from 'angular';
 import templateUrl from './converter-currency.html';
-import { Currency } from '../shared/converter.model';
+import { Currency } from '../shared/converter-currency.model';
 
 export const converterCurrencyComponent = {
   bindings: {
@@ -10,8 +10,8 @@ export const converterCurrencyComponent = {
   },
   templateUrl,
   controller: class ConverterCurrencyComponent {
-    constructor(ComponentsService, EventEmitter) {
-      this.currencies = ComponentsService.currencies;
+    constructor(ComponentsCurrenciesService, EventEmitter) {
+      this.currencies = ComponentsCurrenciesService.currencies;
       this.EventEmitter = EventEmitter;
     }
 

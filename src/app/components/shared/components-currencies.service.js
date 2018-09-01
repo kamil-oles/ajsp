@@ -1,7 +1,6 @@
-export class ComponentsService {
+export class ComponentsCurrenciesService {
   constructor() {
     this.currencies = [
-      { currency: 'złoty polski', code: 'PLN', type: 'Główne' },
       { currency: 'dolar amerykański', code: 'USD', type: 'Główne' },
       { currency: 'euro', code: 'EUR', type: 'Główne' },
       { currency: 'frank szwajcarski', code: 'CHF', type: 'Główne' },

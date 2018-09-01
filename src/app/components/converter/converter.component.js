@@ -1,6 +1,6 @@
 import angular from 'angular';
 import templateUrl from './converter.html';
-import { Currency } from './shared/converter.model';
+import { Currency } from './shared/converter-currency.model';
 
 export const converterComponent = {
   templateUrl,
@@ -8,6 +8,10 @@ export const converterComponent = {
     $onInit() {
       this.currencyFirst = new Currency('PLN', '1000');
       this.currencySecond = new Currency('EUR');
+    }
+
+    calculate() {
+
     }
 
     exchange() {
