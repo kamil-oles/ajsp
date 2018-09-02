@@ -15,10 +15,17 @@ export const converterComponent = {
     }
 
     calculate() {
-      const first = this.currencyFirst,
-        second = this.currencySecond,
-        code = first.code !== 'PLN' ? first.code : second.code;
-      this.http.rate(code).then(response => console.log(response.data));
+      if (this.currencyFirst.code === 'PLN') {
+        this.http.rate(this.currencySecond.code).then(response => {
+          const value = (this.currencyFirst.value / response.data.rates[0].ask).toFixed(2);
+          this.currencySecond = new Currency(this.currencySecond.code, value);
+        });
+      } else {
+        this.http.rate(this.currencyFirst.code).then(response => {
+          const value = (this.currencyFirst.value * response.data.rates[0].bid).toFixed(2);
+          this.currencySecond = new Currency('PLN', value);
+        });
+      }
     }
 
     exchange() {
@@ -30,9 +37,9 @@ export const converterComponent = {
     update(data) {
       const currency = data.currency;
       if (this.currencyFirst.code === currency.code) {
-        this.currencyFirst.value = currency.value;
+        this.currencyFirst = angular.copy(currency);
       } else {
-        this.currencySecond.value = currency.value;
+        this.currencySecond = angular.copy(currency);
       }
     }
   }
