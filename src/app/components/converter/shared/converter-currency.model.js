@@ -1,6 +1,7 @@
 export class Currency {
-  constructor(code, value) {
-    this.code = code || null;
-    this.value = value || null;
+  constructor(active = null, code = null, value = null) {
+    this.active = active;
+    this.code = code;
+    this.value = value;
   }
 }

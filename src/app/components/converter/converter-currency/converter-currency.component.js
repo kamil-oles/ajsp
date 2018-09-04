@@ -1,12 +1,10 @@
-import angular from 'angular';
 import templateUrl from './converter-currency.html';
 import { Currency } from '../shared/converter-currency.model';
 
 export const converterCurrencyComponent = {
   bindings: {
     currency: '<',
-    onUpdate: '&',
-    order: '@'
+    onUpdate: '&'
   },
   templateUrl,
   controller: class ConverterCurrencyComponent {
@@ -17,14 +15,14 @@ export const converterCurrencyComponent = {
 
     $onChanges(changes) {
       if (changes.currency) {
-        this.currency = angular.copy(changes.currency.currentValue);
+        this.currency = Object.assign({}, changes.currency.currentValue);
       }
     }
 
     update() {
       this.onUpdate(
         this.EventEmitter({
-          currency: new Currency(this.currency.code, this.currency.value)
+          currency: new Currency(this.currency.active, this.currency.code, this.currency.value)
         })
       );
     }

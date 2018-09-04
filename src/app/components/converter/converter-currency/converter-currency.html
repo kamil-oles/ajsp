@@ -1,12 +1,12 @@
 <span ng-show="$ctrl.currency.code === 'PLN'">
-  {{ $ctrl.currency.code }}
+  PLN
 </span>
 <select ng-show="$ctrl.currency.code !== 'PLN'" ng-model="$ctrl.currency.code" ng-change="$ctrl.update()">
   <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
     {{ option.code }}
   </option>
 </select>
-<input ng-model="$ctrl.currency.value" ng-change="$ctrl.update()" ng-if="$ctrl.order === 'first'">
-<span ng-if="$ctrl.order === 'second'">
+<input ng-model="$ctrl.currency.value" ng-change="$ctrl.update()" ng-if="$ctrl.currency.active">
+<span ng-if="!$ctrl.currency.active">
   {{ $ctrl.currency.value }}
 </span>

@@ -1,9 +1,9 @@
 <form>
-  <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)" order="first"></app-converter-currency>
+  <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)"></app-converter-currency>
   <button ng-click="$ctrl.exchange()">
     Change
   </button>
-  <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)" order="second"></app-converter-currency>
+  <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"></app-converter-currency>
   <button ng-click="$ctrl.calculate()">
     Calculate
   </button>
