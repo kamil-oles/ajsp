@@ -4,8 +4,8 @@ import { Currency } from './shared/converter-currency.model';
 export const converterComponent = {
   templateUrl,
   controller: class ConverterComponentController {
-    constructor(ComponentsHttpService) {
-      this.http = ComponentsHttpService;
+    constructor(ConverterCalculateService) {
+      this.calc = ConverterCalculateService;
     }
 
     $onInit() {
@@ -15,15 +15,11 @@ export const converterComponent = {
 
     calculate() {
       if (this.currencyFirst.code === 'PLN') {
-        this.http.rate(this.currencySecond.code).then(response => {
-          const value = (this.currencyFirst.value / response.data.rates[0].ask).toFixed(2);
-          this.currencySecond = new Currency(false, this.currencySecond.code, value);
-        });
+        this.calc.buy(this.currencySecond.code, this.currencyFirst.value)
+          .then(newData => this.currencySecond = newData);
       } else {
-        this.http.rate(this.currencyFirst.code).then(response => {
-          const value = (this.currencyFirst.value * response.data.rates[0].bid).toFixed(2);
-          this.currencySecond = new Currency(false, 'PLN', value);
-        });
+        this.calc.sell(this.currencyFirst.code, this.currencyFirst.value)
+          .then(newData => this.currencySecond = newData);
       }
     }
 
