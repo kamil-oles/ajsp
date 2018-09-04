@@ -1,4 +1,4 @@
-import { Currency } from './converter-currency.model';
+import { Currency, Results } from './converter.model';
 
 export class ConverterCalculateService {
   constructor(ComponentsHttpService) {
@@ -8,26 +8,18 @@ export class ConverterCalculateService {
   buy(code, value) {
     return this.http.rate(code).then(response => {
       const rate = +response.data.rates[0].ask,
-        newValue = (value / rate).toFixed(2),
+        currency = new Currency(false, code, (value / rate).toFixed(2)),
         denomination = this.setDenomination(code);
-      return {
-        currency: new Currency(false, code, newValue),
-        denomination: denomination,
-        rate: rate * denomination
-      };
+      return new Results(currency, denomination, rate * denomination);
     });
   }
 
   sell(code, value) {
     return this.http.rate(code).then(response => {
       const rate = +response.data.rates[0].bid,
-        newValue = (value * rate).toFixed(2),
+        currency = new Currency(false, 'PLN', (value * rate).toFixed(2)),
         denomination = this.setDenomination(code);
-      return {
-        currency: new Currency(false, 'PLN', newValue),
-        denomination: denomination,
-        rate: rate * denomination
-      };
+      return new Results(currency, denomination, rate * denomination);
     });
   }
 
