@@ -17,10 +17,10 @@ export const converterComponent = {
     calculate() {
       if (this.currencyFirst.code === 'PLN') {
         this.calc.buy(this.currencySecond.code, this.currencyFirst.value)
-          .then(newData => this.setData(newData, this.currencySecond.code));
+          .then(results => this.setData(results, this.currencySecond.code));
       } else {
         this.calc.sell(this.currencyFirst.code, this.currencyFirst.value)
-          .then(newData => this.setData(newData, this.currencyFirst.code));
+          .then(results => this.setData(results, this.currencyFirst.code));
       }
     }
 
