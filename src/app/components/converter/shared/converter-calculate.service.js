@@ -6,16 +6,36 @@ export class ConverterCalculateService {
 
     this.buy = (code, value) => {
       return this.http.rate(code).then(response => {
-        const newValue = (value / response.data.rates[0].ask).toFixed(2);
-        return new Currency(false, code, newValue);
+        const rate = +response.data.rates[0].ask,
+          newValue = (value / rate).toFixed(2),
+          denomination = this.setDenomination(code);
+        return {
+          currency: new Currency(false, code, newValue),
+          denomination: denomination,
+          rate: rate * denomination
+        };
       });
     };
 
     this.sell = (code, value) => {
       return this.http.rate(code).then(response => {
-        const newValue = (value * response.data.rates[0].bid).toFixed(2);
-        return new Currency(false, 'PLN', newValue);
+        const rate = +response.data.rates[0].bid,
+          newValue = (value * rate).toFixed(2),
+          denomination = this.setDenomination(code);
+        return {
+          currency: new Currency(false, 'PLN', newValue),
+          denomination: denomination,
+          rate: rate * denomination
+        };
       });
     };
+  }
+
+  setDenomination(code) {
+    if (code === 'HUF' || code === 'JPY') {
+      return 100;
+    } else {
+      return 1;
+    }
   }
 }

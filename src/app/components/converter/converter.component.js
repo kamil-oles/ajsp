@@ -6,6 +6,7 @@ export const converterComponent = {
   controller: class ConverterComponentController {
     constructor(ConverterCalculateService) {
       this.calc = ConverterCalculateService;
+      this.rate = null;
     }
 
     $onInit() {
@@ -16,10 +17,10 @@ export const converterComponent = {
     calculate() {
       if (this.currencyFirst.code === 'PLN') {
         this.calc.buy(this.currencySecond.code, this.currencyFirst.value)
-          .then(newData => this.currencySecond = newData);
+          .then(newData => this.setData(newData, this.currencySecond.code));
       } else {
         this.calc.sell(this.currencyFirst.code, this.currencyFirst.value)
-          .then(newData => this.currencySecond = newData);
+          .then(newData => this.setData(newData, this.currencyFirst.code));
       }
     }
 
@@ -27,6 +28,13 @@ export const converterComponent = {
       const stash = Object.assign({}, this.currencyFirst);
       this.currencyFirst = new Currency(true, this.currencySecond.code, this.currencySecond.value);
       this.currencySecond = new Currency(false, stash.code, stash.value);
+    }
+
+    setData(data, code) {
+      this.currencySecond = data.currency;
+      this.code = code;
+      this.denomination = data.denomination;
+      this.rate = data.rate;
     }
 
     update(data) {
