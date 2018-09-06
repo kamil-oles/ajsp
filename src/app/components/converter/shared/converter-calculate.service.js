@@ -10,7 +10,7 @@ export class ConverterCalculateService {
       const rate = +response.data.rates[0].ask,
         currency = new Currency(false, code, (value / rate).toFixed(2)),
         denomination = this.setDenomination(code);
-      return new Results(currency, denomination, rate * denomination);
+      return new Results(currency, denomination, (rate * denomination).toFixed(4));
     });
   }
 
@@ -19,7 +19,7 @@ export class ConverterCalculateService {
       const rate = +response.data.rates[0].bid,
         currency = new Currency(false, 'PLN', (value * rate).toFixed(2)),
         denomination = this.setDenomination(code);
-      return new Results(currency, denomination, rate * denomination);
+      return new Results(currency, denomination, (rate * denomination).toFixed(4));
     });
   }
 
