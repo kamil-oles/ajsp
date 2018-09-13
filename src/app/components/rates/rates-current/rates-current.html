@@ -1,1 +1,38 @@
-current rates
+<p>
+  Rates at {{$ctrl.date}}
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Kod
+      </th>
+      <th>
+        Waluta
+      </th>
+      <th>
+        Cena zakupu
+      </th>
+      <th>
+        Cena sprzedaży
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="currency in $ctrl.rates">
+      <td>
+        {{currency.code}}
+      </td>
+      <td>
+        {{currency.currency}}
+      </td>
+      <td>
+        {{currency.bid}}
+      </td>
+      <td>
+        {{currency.ask}}
+      </td>
+    </tr>
+    </tr>
+  </tbody>
+</table>

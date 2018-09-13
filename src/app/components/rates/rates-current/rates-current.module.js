@@ -9,7 +9,12 @@ export const appRatesCurrent = angular
     $stateProvider
       .state('appRates.current', {
         url: '/current',
-        component: 'appRatesCurrent'
+        component: 'appRatesCurrent',
+        resolve: {
+          currentRates: function (ComponentsHttpService) {
+            return ComponentsHttpService.currentRates().then(response => response.data[0]);
+          }
+        }
       });
   })
   .name;
