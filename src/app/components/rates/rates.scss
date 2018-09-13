@@ -1,0 +1,15 @@
+#rates {
+  .tabset {
+    display: flex;
+    width: 100%;
+  }
+  .tab {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px 5px 0 0;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 50%;
+  }
+}
