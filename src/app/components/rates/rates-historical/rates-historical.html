@@ -1,1 +1,56 @@
-Historical rates
+<form class="form-inline">
+  <div class="form-group">
+    <label for="currency">
+      Waluta
+    </label>
+    <select id="currency" class="form-control" ng-model="$ctrl.currency">
+      <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
+        {{ option.code }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="from">
+      Od
+    </label>
+    <input type="date" id="from" ng-model="$ctrl.from">
+  </div>
+  <div class="form-group">
+    <label for="to">
+      Do
+    </label>
+    <input type="date" id="to" ng-model="$ctrl.to">
+  </div>
+  <button type="submit" ng-click="$ctrl.getRates()">
+    Pobierz kursy
+  </button>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Data
+      </th>
+      <th>
+        Cena zakupu
+      </th>
+      <th>
+        Cena sprzedaży
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="rate in $ctrl.rates">
+      <td>
+        {{rate.effectiveDate}}
+      </td>
+      <td>
+        {{rate.bid}}
+      </td>
+      <td>
+        {{rate.ask}}
+      </td>
+    </tr>
+    </tr>
+  </tbody>
+</table>
