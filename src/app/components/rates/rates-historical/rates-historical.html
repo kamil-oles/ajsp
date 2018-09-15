@@ -13,13 +13,17 @@
     <label for="from">
       Od
     </label>
-    <input type="date" id="from" ng-model="$ctrl.from">
+    <input type="text" id="from" class="form-control" ng-focus="$ctrl.open('from')" ng-model="$ctrl.from"
+      datepicker-options="$ctrl.options" is-open="$ctrl.openFrom" on-open-focus="false"
+      popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
   </div>
   <div class="form-group">
     <label for="to">
       Do
     </label>
-    <input type="date" id="to" ng-model="$ctrl.to">
+    <input type="text" id="to" class="form-control" ng-focus="$ctrl.open('to')" ng-model="$ctrl.to"
+      datepicker-options="$ctrl.options" is-open="$ctrl.openTo" on-open-focus="false"
+      popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
   </div>
   <button type="submit" ng-click="$ctrl.getRates()">
     Pobierz kursy

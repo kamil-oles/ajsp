@@ -11,7 +11,22 @@ export const appRatesHistorical = angular
     $stateProvider
       .state('appRates.historical', {
         url: '/historical',
-        component: 'appRatesHistorical'
+        component: 'appRatesHistorical',
+        params: {
+          code: null
+        },
+        resolve: {
+          ratesFromLastWeek: function ($stateParams, RatesHistoricalHttpService) {
+            if ($stateParams.code !== null) {
+              const from = RatesHistoricalHttpService.setStartDate(),
+                to = new Date();
+              return RatesHistoricalHttpService.rates($stateParams.code, from, to)
+                .then(response => response.data.rates);
+            } else {
+              return null;
+            }
+          }
+        }
       });
   })
   .name;

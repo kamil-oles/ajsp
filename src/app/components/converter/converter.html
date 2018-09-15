@@ -10,4 +10,7 @@
 </form>
 <div ng-show="$ctrl.rate">
   {{$ctrl.denomination}} {{$ctrl.code}} = {{$ctrl.rate}} PLN
+  <a ui-sref="appRates.historical({code: $ctrl.code})">
+    Sprawdź notowania z ostatniego tygodnia
+  </a>
 </div>

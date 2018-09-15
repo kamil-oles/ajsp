@@ -15,4 +15,16 @@ export class RatesHistoricalHttpService {
         end + '/'
     });
   }
+
+  ratesFromLastWeek(code) {
+    return this.http({
+      method: 'GET',
+      url: 'http://api.nbp.pl/api/exchangerates/rates/c/' + code + '/last/5/'
+    });
+  }
+
+  setStartDate() {
+    const start = new Date();
+    return start.setDate(start.getDate() - 7);
+  }
 }
