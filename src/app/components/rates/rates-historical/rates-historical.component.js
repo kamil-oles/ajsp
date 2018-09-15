@@ -14,11 +14,11 @@ export const ratesHistoricalComponent = {
 
     $onInit() {
       const min = new Date(2002, 0, 2);
-      this.currency = 'EUR';
+      this.currency = this.ratesFromLastWeek ? this.ratesFromLastWeek.code : 'EUR';
       this.from = this.rhhs.setStartDate();
       this.to = new Date();
       this.options = new DatepickerOptions(this.to, min);
-      this.rates = this.ratesFromLastWeek;
+      this.rates = this.ratesFromLastWeek ? this.ratesFromLastWeek.rates : null;
     }
 
     getRates() {

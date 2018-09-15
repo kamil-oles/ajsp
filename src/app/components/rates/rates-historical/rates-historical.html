@@ -1,60 +1,64 @@
-<form class="form-inline">
-  <div class="form-group">
-    <label for="currency">
-      Waluta
-    </label>
-    <select id="currency" class="form-control" ng-model="$ctrl.currency">
-      <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
-        {{ option.code }}
-      </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="from">
-      Od
-    </label>
-    <input type="text" id="from" class="form-control" ng-focus="$ctrl.open('from')" ng-model="$ctrl.from"
-      datepicker-options="$ctrl.options" is-open="$ctrl.openFrom" on-open-focus="false"
-      popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
-  </div>
-  <div class="form-group">
-    <label for="to">
-      Do
-    </label>
-    <input type="text" id="to" class="form-control" ng-focus="$ctrl.open('to')" ng-model="$ctrl.to"
-      datepicker-options="$ctrl.options" is-open="$ctrl.openTo" on-open-focus="false"
-      popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
-  </div>
-  <button type="submit" ng-click="$ctrl.getRates()">
-    Pobierz kursy
-  </button>
-</form>
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        Data
-      </th>
-      <th>
-        Cena zakupu
-      </th>
-      <th>
-        Cena sprzedaży
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="rate in $ctrl.rates">
-      <td>
-        {{rate.effectiveDate}}
-      </td>
-      <td>
-        {{rate.bid}}
-      </td>
-      <td>
-        {{rate.ask}}
-      </td>
-    </tr>
-    </tr>
-  </tbody>
-</table>
+<div id="rates-historical">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="currency" class="col-xs-3 col-sm-1 control-label">
+        Waluta
+      </label>
+      <div class="col-xs-9 col-sm-3">
+        <select id="currency" class="form-control" ng-model="$ctrl.currency">
+          <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
+            {{option.code}}
+          </option>
+        </select>
+      </div>
+      <label for="from" class="control-label col-xs-3 col-sm-1">
+        Od
+      </label>
+      <div class="col-xs-9 col-sm-3">
+        <input type="text" id="from" class="form-control" ng-focus="$ctrl.open('from')" ng-model="$ctrl.from"
+          datepicker-options="$ctrl.options" is-open="$ctrl.openFrom" on-open-focus="false"
+          popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
+      </div>
+      <label for="to" class="control-label col-xs-3 col-sm-1">
+        Do
+      </label>
+      <div class="col-xs-9 col-sm-3">
+        <input type="text" id="to" class="form-control" ng-focus="$ctrl.open('to')" ng-model="$ctrl.to"
+          datepicker-options="$ctrl.options" is-open="$ctrl.openTo" on-open-focus="false"
+          popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
+      </div>
+    </div>
+    <button type="submit" ng-click="$ctrl.getRates()">
+      Pobierz kursy
+    </button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Data
+        </th>
+        <th>
+          Cena zakupu
+        </th>
+        <th>
+          Cena sprzedaży
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="rate in $ctrl.rates">
+        <td>
+          {{rate.effectiveDate}}
+        </td>
+        <td>
+          {{rate.bid}}
+        </td>
+        <td>
+          {{rate.ask}}
+        </td>
+      </tr>
+      </tr>
+    </tbody>
+  </table>
+</div>
