@@ -7,9 +7,10 @@ export const ratesHistoricalComponent = {
   },
   templateUrl,
   controller: class RatesHistoricalComponentController {
-    constructor(ComponentsCurrenciesService, RatesHistoricalHttpService) {
+    constructor(ComponentsCurrenciesService, RatesHistoricalHttpService, RatesSortService) {
       this.currencies = ComponentsCurrenciesService.currencies;
       this.rhhs = RatesHistoricalHttpService;
+      this.rss = RatesSortService;
     }
 
     $onInit() {
@@ -24,6 +25,7 @@ export const ratesHistoricalComponent = {
     getRates() {
       this.rhhs.rates(this.currency, this.from, this.to).then(response => {
         this.rates = response.data.rates;
+        this.sortDirection = 'ASC';
       });
     }
 
@@ -33,6 +35,11 @@ export const ratesHistoricalComponent = {
         to: () => this.openTo = true
       };
       types[type]();
+    }
+
+    sort() {
+      this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
+      this.rss.sort(this.rates, 'effectiveDate', this.sortDirection);
     }
   }
 };
