@@ -9,5 +9,8 @@ import './app.scss';
 export const app = angular
   .module('app', [uiBootstrap, uiRouter, appCommon, appComponents])
   .component('app', appComponent)
-  .config($locationProvider => $locationProvider.html5Mode(true))
+  .config(($locationProvider, $urlRouterProvider) => {
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/converter');
+  })
   .name;
