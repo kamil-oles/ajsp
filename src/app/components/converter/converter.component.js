@@ -10,8 +10,8 @@ export const converterComponent = {
     }
 
     $onInit() {
-      this.currencyFirst = new Currency(true, 'PLN', '1000');
-      this.currencySecond = new Currency(false, 'EUR');
+      this.currencyFirst = this.getLocalData('first');
+      this.currencySecond = this.getLocalData('second');
     }
 
     calculate() {
@@ -22,12 +22,32 @@ export const converterComponent = {
         this.calc.sell(this.currencyFirst.code, this.currencyFirst.value)
           .then(results => this.setData(results, this.currencyFirst.code));
       }
+      localStorage.setItem('first', JSON.stringify(this.currencyFirst));
+      localStorage.setItem('second', JSON.stringify(this.currencySecond));
     }
 
     exchange() {
       const stash = Object.assign({}, this.currencyFirst);
       this.currencyFirst = new Currency(true, this.currencySecond.code, this.currencySecond.value);
       this.currencySecond = new Currency(false, stash.code, stash.value);
+    }
+
+    getLocalData(key) {
+      const value = localStorage.getItem(key);
+      if (value) {
+        const local = JSON.parse(value),
+          currencyModels = {
+            first: () => new Currency(local.active, local.code, local.value),
+            second: () => new Currency(local.active, local.code)
+          };
+        return currencyModels[key]();
+      } else {
+        const currencyModels = {
+          first: () => new Currency(true, 'PLN', 1000),
+          second: () => new Currency(false, 'EUR')
+        };
+        return currencyModels[key]();
+      }
     }
 
     setData(data, code) {
