@@ -16,6 +16,7 @@ export const converterComponent = {
 
     calculate() {
       if (this.currencyFirst.code === 'PLN') {
+        console.log(this.validation(this.currencyFirst.value));
         this.calc.buy(this.currencySecond.code, this.currencyFirst.value)
           .then(results => this.setData(results, this.currencySecond.code));
       } else {
@@ -64,6 +65,28 @@ export const converterComponent = {
       } else {
         this.currencySecond = Object.assign({}, currency);
       }
+    }
+
+    validation(value) {
+      let vString = value;
+      if (/[^0-9,.\s]/.test(vString)) {
+        return false;
+      }
+      vString = vString.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
+      const index = vString.search(/\./);
+      let vArray = [];
+      if (index !== -1) {
+        vArray = vString.split('.');
+        vString = vArray.join('');
+        vArray = vString.split('');
+        vArray.splice(index, 0, '.');
+      }
+      if (index === 0) {
+        vArray.reverse();
+        vArray.push(0);
+        vArray.reverse();
+      }
+      return index !== -1 ? Number(vArray.join('')) : Number(vString);
     }
   }
 };
