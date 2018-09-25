@@ -18,8 +18,7 @@ const eslint = {
   use: [{
     loader: 'eslint-loader',
     options: {
-      failOnError: true,
-      failOnWarning: true
+      failOnError: true
     }
   }]
 };
