@@ -1,5 +1,5 @@
 import templateUrl from './converter-currency.html';
-import { Currency } from '../shared/converter.model';
+import { Currency } from '../../shared/classes/components-classes';
 
 export const converterCurrencyComponent = {
   bindings: {

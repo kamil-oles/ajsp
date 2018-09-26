@@ -6,8 +6,8 @@ export const ratesCurrentComponent = {
   },
   templateUrl,
   controller: class RatesCurrentComponentController {
-    constructor(RatesSortService) {
-      this.rss = RatesSortService;
+    constructor(ComponentsSortService) {
+      this.css = ComponentsSortService;
       this.sortBy = 'currency';
       this.sortDirection = 'ASC';
     }
@@ -23,7 +23,7 @@ export const ratesCurrentComponent = {
       } else {
         this.sortDirection = 'ASC';
       }
-      this.rss.sort(this.rates, type, this.sortDirection);
+      this.css.sort(this.rates, type, this.sortDirection);
       this.sortBy = type;
     }
   }

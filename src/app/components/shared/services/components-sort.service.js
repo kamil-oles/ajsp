@@ -1,4 +1,4 @@
-export class RatesSortService {
+export class ComponentsSortService {
   sort(data, type, direction) {
     if (data.length > 1) {
       return data.sort((a, b) => {

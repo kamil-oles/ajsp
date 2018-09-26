@@ -1,4 +1,4 @@
-import { Currency, Results } from './converter.model';
+import { Currency, Results } from '../../shared/classes/components-classes';
 
 export class ConverterCalculateService {
   constructor(ComponentsHttpService) {

@@ -1,11 +1,11 @@
+import { Currency } from '../shared/classes/components-classes';
 import templateUrl from './converter.html';
-import { Currency } from './shared/converter.model';
 
 export const converterComponent = {
   templateUrl,
   controller: class ConverterComponentController {
     constructor(ConverterCalculateService) {
-      this.calc = ConverterCalculateService;
+      this.ccs = ConverterCalculateService;
       this.rate = null;
     }
 
@@ -16,11 +16,11 @@ export const converterComponent = {
 
     calculate() {
       if (this.currencyFirst.code === 'PLN') {
-        console.log(this.validation(this.currencyFirst.value));
-        this.calc.buy(this.currencySecond.code, this.currencyFirst.value)
+        console.log(this.formatting(this.currencyFirst.value));
+        this.ccs.buy(this.currencySecond.code, this.currencyFirst.value)
           .then(results => this.setData(results, this.currencySecond.code));
       } else {
-        this.calc.sell(this.currencyFirst.code, this.currencyFirst.value)
+        this.ccs.sell(this.currencyFirst.code, this.currencyFirst.value)
           .then(results => this.setData(results, this.currencyFirst.code));
       }
       localStorage.setItem('first', JSON.stringify(this.currencyFirst));
@@ -67,6 +67,34 @@ export const converterComponent = {
       }
     }
 
+    formatting(v) {
+      const value = this.validation(v);
+      const index = value.indexOf('.');
+      let fraction = null,
+        integer;
+      if (index !== -1) {
+        const fractionIndex = index + 1;
+        fraction = value.slice(fractionIndex);
+        integer = value.slice(0, index);
+      } else {
+        integer = value;
+      }
+      const len = integer.length - 1,
+        spaces = Math.floor(len / 3);
+      if (spaces) {
+        let array = integer.split('').reverse();
+        for (let i = 3; i < array.length; i = i + 4) {
+          array.splice(i, 0, ' ');
+        }
+        integer = array.reverse().join('');
+      }
+      if (fraction) {
+        return integer + ',' + fraction;
+      } else {
+        return integer;
+      }
+    }
+
     validation(value) {
       let vString = value;
       if (/[^0-9,.\s]/.test(vString)) {
@@ -86,7 +114,7 @@ export const converterComponent = {
         vArray.push(0);
         vArray.reverse();
       }
-      return index !== -1 ? Number(vArray.join('')) : Number(vString);
+      return index !== -1 ? vArray.join('') : vString;
     }
   }
 };

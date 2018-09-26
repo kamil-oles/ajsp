@@ -1,6 +1,6 @@
 import angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
-import { ConverterCalculateService } from './shared/converter-calculate.service';
+import { ConverterCalculateService } from './services/converter-calculate.service';
 import { converterComponent } from './converter.component';
 import { appConverterCurrency } from './converter-currency/converter-currency.module';
 
