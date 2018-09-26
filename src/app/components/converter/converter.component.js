@@ -4,8 +4,9 @@ import templateUrl from './converter.html';
 export const converterComponent = {
   templateUrl,
   controller: class ConverterComponentController {
-    constructor(ConverterCalculateService) {
+    constructor(ConverterCalculateService, ConverterValidationService) {
       this.ccs = ConverterCalculateService;
+      this.cvs = ConverterValidationService;
       this.rate = null;
     }
 
@@ -16,7 +17,7 @@ export const converterComponent = {
 
     calculate() {
       if (this.currencyFirst.code === 'PLN') {
-        console.log(this.formatting(this.currencyFirst.value));
+        console.log(this.cvs.formatting(this.currencyFirst.value));
         this.ccs.buy(this.currencySecond.code, this.currencyFirst.value)
           .then(results => this.setData(results, this.currencySecond.code));
       } else {
@@ -67,54 +68,54 @@ export const converterComponent = {
       }
     }
 
-    formatting(v) {
-      const value = this.validation(v);
-      const index = value.indexOf('.');
-      let fraction = null,
-        integer;
-      if (index !== -1) {
-        const fractionIndex = index + 1;
-        fraction = value.slice(fractionIndex);
-        integer = value.slice(0, index);
-      } else {
-        integer = value;
-      }
-      const len = integer.length - 1,
-        spaces = Math.floor(len / 3);
-      if (spaces) {
-        let array = integer.split('').reverse();
-        for (let i = 3; i < array.length; i = i + 4) {
-          array.splice(i, 0, ' ');
-        }
-        integer = array.reverse().join('');
-      }
-      if (fraction) {
-        return integer + ',' + fraction;
-      } else {
-        return integer;
-      }
-    }
+    // formatting(v) {
+    //   const value = this.validation(v);
+    //   const index = value.indexOf('.');
+    //   let fraction = null,
+    //     integer;
+    //   if (index !== -1) {
+    //     const fractionIndex = index + 1;
+    //     fraction = value.slice(fractionIndex);
+    //     integer = value.slice(0, index);
+    //   } else {
+    //     integer = value;
+    //   }
+    //   const len = integer.length - 1,
+    //     spaces = Math.floor(len / 3);
+    //   if (spaces) {
+    //     let array = integer.split('').reverse();
+    //     for (let i = 3; i < array.length; i = i + 4) {
+    //       array.splice(i, 0, ' ');
+    //     }
+    //     integer = array.reverse().join('');
+    //   }
+    //   if (fraction) {
+    //     return integer + ',' + fraction;
+    //   } else {
+    //     return integer;
+    //   }
+    // }
 
-    validation(value) {
-      let vString = value;
-      if (/[^0-9,.\s]/.test(vString)) {
-        return false;
-      }
-      vString = vString.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
-      const index = vString.search(/\./);
-      let vArray = [];
-      if (index !== -1) {
-        vArray = vString.split('.');
-        vString = vArray.join('');
-        vArray = vString.split('');
-        vArray.splice(index, 0, '.');
-      }
-      if (index === 0) {
-        vArray.reverse();
-        vArray.push(0);
-        vArray.reverse();
-      }
-      return index !== -1 ? vArray.join('') : vString;
-    }
+    // validation(value) {
+    //   let vString = value;
+    //   if (/[^0-9,.\s]/.test(vString)) {
+    //     return false;
+    //   }
+    //   vString = vString.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
+    //   const index = vString.search(/\./);
+    //   let vArray = [];
+    //   if (index !== -1) {
+    //     vArray = vString.split('.');
+    //     vString = vArray.join('');
+    //     vArray = vString.split('');
+    //     vArray.splice(index, 0, '.');
+    //   }
+    //   if (index === 0) {
+    //     vArray.reverse();
+    //     vArray.push(0);
+    //     vArray.reverse();
+    //   }
+    //   return index !== -1 ? vArray.join('') : vString;
+    // }
   }
 };
