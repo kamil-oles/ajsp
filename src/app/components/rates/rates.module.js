@@ -12,7 +12,8 @@ export const appRates = angular
     $stateProvider
       .state('appRates', {
         url: '/rates',
-        component: 'appRates'
+        component: 'appRates',
+        redirectTo: 'appRates.current'
       });
   })
   .name;
