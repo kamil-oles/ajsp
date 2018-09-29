@@ -16,12 +16,20 @@ export const converterComponent = {
     }
 
     calculate() {
+      const vObject = this.cvs.formatting(this.currencyFirst.value);
+      let vNumber;
+      if (vObject) {
+        vNumber = vObject.model;
+        this.currencyFirst = new Currency(true, this.currencyFirst.code, vObject.view);
+      } else {
+        console.log('złe dane');
+        return;
+      }
       if (this.currencyFirst.code === 'PLN') {
-        console.log(this.cvs.formatting(this.currencyFirst.value));
-        this.ccs.buy(this.currencySecond.code, this.currencyFirst.value)
+        this.ccs.buy(this.currencySecond.code, vNumber)
           .then(results => this.setData(results, this.currencySecond.code));
       } else {
-        this.ccs.sell(this.currencyFirst.code, this.currencyFirst.value)
+        this.ccs.sell(this.currencyFirst.code, vNumber)
           .then(results => this.setData(results, this.currencyFirst.code));
       }
       localStorage.setItem('first', JSON.stringify(this.currencyFirst));
@@ -67,55 +75,5 @@ export const converterComponent = {
         this.currencySecond = Object.assign({}, currency);
       }
     }
-
-    // formatting(v) {
-    //   const value = this.validation(v);
-    //   const index = value.indexOf('.');
-    //   let fraction = null,
-    //     integer;
-    //   if (index !== -1) {
-    //     const fractionIndex = index + 1;
-    //     fraction = value.slice(fractionIndex);
-    //     integer = value.slice(0, index);
-    //   } else {
-    //     integer = value;
-    //   }
-    //   const len = integer.length - 1,
-    //     spaces = Math.floor(len / 3);
-    //   if (spaces) {
-    //     let array = integer.split('').reverse();
-    //     for (let i = 3; i < array.length; i = i + 4) {
-    //       array.splice(i, 0, ' ');
-    //     }
-    //     integer = array.reverse().join('');
-    //   }
-    //   if (fraction) {
-    //     return integer + ',' + fraction;
-    //   } else {
-    //     return integer;
-    //   }
-    // }
-
-    // validation(value) {
-    //   let vString = value;
-    //   if (/[^0-9,.\s]/.test(vString)) {
-    //     return false;
-    //   }
-    //   vString = vString.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
-    //   const index = vString.search(/\./);
-    //   let vArray = [];
-    //   if (index !== -1) {
-    //     vArray = vString.split('.');
-    //     vString = vArray.join('');
-    //     vArray = vString.split('');
-    //     vArray.splice(index, 0, '.');
-    //   }
-    //   if (index === 0) {
-    //     vArray.reverse();
-    //     vArray.push(0);
-    //     vArray.reverse();
-    //   }
-    //   return index !== -1 ? vArray.join('') : vString;
-    // }
   }
 };
