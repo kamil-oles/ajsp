@@ -15,17 +15,19 @@
         Od
       </label>
       <div class="col-xs-9 col-sm-3">
-        <input type="text" id="from" class="form-control" ng-focus="$ctrl.open('from')" ng-model="$ctrl.from"
-          datepicker-options="$ctrl.options" is-open="$ctrl.openFrom" on-open-focus="false"
-          popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
+        <input type="text" id="from" class="form-control" placeholder="yyyy-mm-dd" ng-focus="$ctrl.open('from')"
+          ng-model="$ctrl.from" datepicker-options="$ctrl.options" is-open="$ctrl.openFrom"
+          on-open-focus="false" popup-placement="bottom" show-button-bar="false"
+          uib-datepicker-popup />
       </div>
       <label for="to" class="control-label col-xs-3 col-sm-1">
         Do
       </label>
       <div class="col-xs-9 col-sm-3">
-        <input type="text" id="to" class="form-control" ng-focus="$ctrl.open('to')" ng-model="$ctrl.to"
-          datepicker-options="$ctrl.options" is-open="$ctrl.openTo" on-open-focus="false"
-          popup-placement="bottom" show-button-bar="false" uib-datepicker-popup />
+        <input type="text" id="to" class="form-control" placeholder="yyyy-mm-dd" ng-focus="$ctrl.open('to')"
+          ng-model="$ctrl.to" datepicker-options="$ctrl.options" is-open="$ctrl.openTo"
+          on-open-focus="false" popup-placement="bottom" show-button-bar="false"
+          uib-datepicker-popup />
       </div>
     </div>
     <button type="submit" ng-click="$ctrl.getRates()">

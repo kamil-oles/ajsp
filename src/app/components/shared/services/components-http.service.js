@@ -1,9 +1,9 @@
 import { RatesHistorical } from '../classes/components-classes';
 
 export class ComponentsHttpService {
-  constructor($filter, $http) {
-    this.filter = $filter;
+  constructor($http) {
     this.http = $http;
+    this.regex = /^\d{4}-\d{2}-\d{2}$/;
     this.url = 'http://api.nbp.pl/api/exchangerates/';
   }
 
@@ -44,16 +44,18 @@ export class ComponentsHttpService {
     });
   }
 
-  ratesHistorical(code, from, to) {
-    const start = this.filter('date')(from, 'yyyy-MM-dd'),
-      end = this.filter('date')(to, 'yyyy-MM-dd');
-    return this.http({
-      method: 'GET',
-      url: this.url + '/rates/c/' +
-        code + '/' +
-        start + '/' +
-        end + '/'
-    });
+  ratesHistorical(code, start, end) {
+    if (this.regex.test(start) && this.regex.test(end)) {
+      return this.http({
+        method: 'GET',
+        url: this.url + '/rates/c/' +
+          code + '/' +
+          start + '/' +
+          end + '/'
+      });
+    } else {
+      return false;
+    }
   }
 
   removeXdr(response) {
