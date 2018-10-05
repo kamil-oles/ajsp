@@ -6,13 +6,6 @@ export class Currency {
   }
 }
 
-export class DatepickerOptions {
-  constructor(max, min) {
-    this.maxDate = max;
-    this.minDate = min;
-  }
-}
-
 export class RatesHistorical {
   constructor(from, data = null) {
     this.data = data;

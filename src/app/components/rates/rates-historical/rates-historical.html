@@ -1,43 +1,39 @@
 <div id="rates-historical">
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label for="currency" class="col-xs-3 col-sm-1 control-label">
+  <form>
+    <div>
+      <label for="currency">
         Waluta
       </label>
       <div class="col-xs-9 col-sm-3">
-        <select id="currency" class="form-control" ng-model="$ctrl.currency">
+        <select id="currency" ng-model="$ctrl.currency">
           <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
             {{option.code}}
           </option>
         </select>
       </div>
-      <label for="from" class="control-label col-xs-3 col-sm-1">
+      <label>
         Od
       </label>
-      <div class="col-xs-9 col-sm-3">
-        <input type="text" id="from" class="form-control" placeholder="yyyy-mm-dd" ng-focus="$ctrl.open('from')"
-          ng-model="$ctrl.from" datepicker-options="$ctrl.options" is-open="$ctrl.openFrom"
-          on-open-focus="false" popup-placement="bottom" show-button-bar="false"
-          uib-datepicker-popup />
+      <div>
+        <md-datepicker ng-model="$ctrl.from" md-hide-icons="calendar" md-max-date="$ctrl.max"
+          md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
       </div>
-      <label for="to" class="control-label col-xs-3 col-sm-1">
+      <label>
         Do
       </label>
-      <div class="col-xs-9 col-sm-3">
-        <input type="text" id="to" class="form-control" placeholder="yyyy-mm-dd" ng-focus="$ctrl.open('to')"
-          ng-model="$ctrl.to" datepicker-options="$ctrl.options" is-open="$ctrl.openTo"
-          on-open-focus="false" popup-placement="bottom" show-button-bar="false"
-          uib-datepicker-popup />
+      <div>
+        <md-datepicker ng-model="$ctrl.to" md-hide-icons="calendar" md-max-date="$ctrl.max"
+          md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
       </div>
     </div>
     <button type="submit" ng-click="$ctrl.getRates()">
       Pobierz kursy
     </button>
   </form>
-  <table class="table">
+  <table>
     <thead>
       <tr>
-        <th class="table-header" ng-click="$ctrl.sort()">
+        <th ng-click="$ctrl.sort()">
           Data
         </th>
         <th>
@@ -51,7 +47,7 @@
     <tbody>
       <tr ng-repeat="rate in $ctrl.rates">
         <td>
-          {{rate.effectiveDate}}
+          {{rate.effectiveDate | date: 'dd.MM.yyyy'}}
         </td>
         <td>
           {{rate.bid}}

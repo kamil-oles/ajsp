@@ -71,6 +71,6 @@ export class ComponentsHttpService {
 
   setDateFrom() {
     const start = new Date();
-    return start.setDate(start.getDate() - 7);
+    return new Date(start.setDate(start.getDate() - 7));
   }
 }

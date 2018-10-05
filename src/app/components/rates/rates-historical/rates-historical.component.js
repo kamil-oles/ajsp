@@ -1,4 +1,3 @@
-import { DatepickerOptions } from '../../shared/classes/components-classes';
 import templateUrl from './rates-historical.html';
 
 export const ratesHistoricalComponent = {
@@ -21,12 +20,12 @@ export const ratesHistoricalComponent = {
     }
 
     $onInit() {
-      const min = new Date(2002, 0, 2);
       this.currency = this.lastWeekRates.data ? this.lastWeekRates.data.code : 'EUR';
       this.from = this.lastWeekRates.from;
-      this.to = new Date();
-      this.options = new DatepickerOptions(this.to, min);
+      this.max = new Date();
+      this.min = new Date(2002, 0, 2);
       this.rates = this.lastWeekRates.data ? this.lastWeekRates.data.rates : null;
+      this.to = this.max;
     }
 
     getRates() {
@@ -40,14 +39,6 @@ export const ratesHistoricalComponent = {
       } else {
         console.log('zły format');
       }
-    }
-
-    open(type) {
-      const types = {
-        from: () => this.openFrom = true,
-        to: () => this.openTo = true
-      };
-      types[type]();
     }
 
     sort() {
