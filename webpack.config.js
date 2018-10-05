@@ -1,7 +1,9 @@
-const CleanPlugin = require('clean-webpack-plugin'),
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+  CleanPlugin = require('clean-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   MiniCssExtraPlugin = require('mini-css-extract-plugin'),
-  path = require('path');
+  path = require('path'),
+  Webpack = require('webpack');
 
 const root = path.join(__dirname, '/src'),
   dist = path.join(__dirname, '/dist');
@@ -55,7 +57,7 @@ const templates = {
   }]
 };
 
-const prep = {
+const prepare = {
   clean: new CleanPlugin([
     dist
   ]),
@@ -67,6 +69,13 @@ const prep = {
     template: paths.index,
     filename: 'index.html'
   })
+};
+
+const optimization = {
+  analyzer: new BundleAnalyzerPlugin({
+    openAnalyzer: false
+  }),
+  replace: new Webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
 };
 
 const config = {
@@ -84,9 +93,11 @@ const config = {
     ]
   },
   plugins: [
-    prep.clean,
-    prep.style,
-    prep.template
+    optimization.analyzer,
+    optimization.replace,
+    prepare.clean,
+    prepare.style,
+    prepare.template
   ],
   devtool: 'source-map'
 };
