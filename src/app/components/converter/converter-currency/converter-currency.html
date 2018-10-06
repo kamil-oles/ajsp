@@ -1,12 +1,16 @@
-<span ng-show="$ctrl.currency.code === 'PLN'">
-  PLN
-</span>
-<select ng-show="$ctrl.currency.code !== 'PLN'" ng-model="$ctrl.currency.code" ng-change="$ctrl.update()">
-  <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
-    {{ option.code }}
-  </option>
-</select>
-<input ng-model="$ctrl.currency.value" ng-change="$ctrl.update()" ng-if="$ctrl.currency.active">
+<!-- <div class="label-container"> -->
+  <span class="label" ng-show="$ctrl.currency.code === 'PLN'">
+    PLN
+  </span>
+  <select ng-show="$ctrl.currency.code !== 'PLN'" ng-model="$ctrl.currency.code" ng-change="$ctrl.update()">
+    <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
+      {{ option.code }}
+    </option>
+  </select>
+<!-- </div> -->
+<md-input-container>
+  <input class="currency-input" ng-model="$ctrl.currency.value" ng-change="$ctrl.update()" ng-if="$ctrl.currency.active">
+</md-input-container>
 <span ng-if="!$ctrl.currency.active">
   {{ $ctrl.currency.value }}
 </span>

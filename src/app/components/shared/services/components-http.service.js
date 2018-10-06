@@ -45,6 +45,8 @@ export class ComponentsHttpService {
   }
 
   ratesHistorical(code, start, end) {
+    console.log(start);
+    console.log(end);
     if (this.regex.test(start) && this.regex.test(end)) {
       return this.http({
         method: 'GET',
@@ -54,6 +56,7 @@ export class ComponentsHttpService {
           end + '/'
       });
     } else {
+      console.log('dupa');
       return false;
     }
   }
