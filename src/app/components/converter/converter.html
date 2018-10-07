@@ -11,7 +11,8 @@
     <form>
       <div layout layout-wrap>
         <div flex-offset-gt-xs="5" flex-offset-gt-md="20" flex-xs="100" flex-gt-xs="30" flex-gt-md="20">
-          <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)" layout></app-converter-currency>
+          <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)"
+            layout layout-align="space-between"></app-converter-currency>
         </div>
         <div flex-xs="100" flex-gt-xs="30" flex-gt-md="20" layout layout-align="space-around">
           <md-button class="md-fab" ng-click="$ctrl.exchange()">
@@ -19,7 +20,8 @@
           </md-button>
         </div>
         <div flex-xs="100" flex-gt-xs="30" flex-gt-md="20">
-          <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"></app-converter-currency>
+          <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"
+            layout layout-align="space-between"></app-converter-currency>
         </div>
       </div>
       <button ng-click="$ctrl.calculate()">

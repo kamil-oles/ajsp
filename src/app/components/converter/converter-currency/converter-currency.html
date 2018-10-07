@@ -1,16 +1,20 @@
-<div class="label-container" flex="30">
-  <div class="label" ng-show="$ctrl.currency.code === 'PLN'">
+<div class="label-container" ng-show="$ctrl.currency.code === 'PLN'" flex="30">
+  <div class="label">
     PLN
   </div>
-  <select ng-show="$ctrl.currency.code !== 'PLN'" ng-model="$ctrl.currency.code" ng-change="$ctrl.update()">
-    <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
-      {{option.code}}
-    </option>
-  </select>
 </div>
-<md-input-container flex>
-  <input class="currency-input" ng-model="$ctrl.currency.value" ng-change="$ctrl.update()" ng-if="$ctrl.currency.active">
-  <span ng-if="!$ctrl.currency.active">
-    {{$ctrl.currency.value}}
-  </span>
+<md-input-container ng-show="$ctrl.currency.code !== 'PLN'" flex="30">
+  <md-select ng-model="$ctrl.currency.code" ng-change="$ctrl.update()">
+    <md-option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
+      {{option.code}}
+    </md-option>
+  </md-select>
 </md-input-container>
+<md-input-container ng-if="$ctrl.currency.active" flex="60">
+  <input class="currency-input" ng-model="$ctrl.currency.value" ng-change="$ctrl.update()">
+</md-input-container>
+<div class="label-container" ng-if="!$ctrl.currency.active" flex="60">
+  <div class="label currency-input">
+    {{$ctrl.currency.value}}
+  </div>
+</div>
