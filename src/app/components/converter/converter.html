@@ -9,18 +9,18 @@
       Sprawdź wartość swoich pieniędzy w jednej z dwunastu obcych walut lub w złotówkach.
     </p>
     <div layout layout-wrap>
-      <div flex-offset-gt-xs="5" flex-offset-gt-md="20" flex-xs="100" flex-gt-xs="30" flex-gt-md="20">
+      <div flex-offset-md="5" flex-offset-gt-md="20" flex="100" flex-md="35" flex-gt-md="25">
         <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)"
-          layout layout-align="space-between"></app-converter-currency>
+          layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
       </div>
-      <div flex-xs="100" flex-gt-xs="30" flex-gt-md="20" layout layout-align="space-around">
+      <div flex="100" flex-md="20" flex-gt-md="10" layout layout-align="space-around">
         <md-button class="md-fab" ng-click="$ctrl.exchange()">
           Change
         </md-button>
       </div>
-      <div flex-xs="100" flex-gt-xs="30" flex-gt-md="20">
+      <div flex="100" flex-md="35" flex-gt-md="25">
         <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"
-          layout layout-align="space-between"></app-converter-currency>
+          layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
       </div>
     </div>
   </md-card-content>
