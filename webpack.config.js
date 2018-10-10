@@ -13,6 +13,17 @@ const paths = {
   index: path.join(root, '/index.html')
 };
 
+const assets = {
+  test: /\.(eot|woff2|woff|ttf)$/,
+  use: [{
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]',
+      outputPath: 'assets/fonts'
+    }
+  }]
+};
+
 const eslint = {
   enforce: 'pre',
   test: /\.js$/,
@@ -88,6 +99,7 @@ const config = {
     rules: [
       scripts,
       style,
+      assets,
       templates,
       eslint
     ]
