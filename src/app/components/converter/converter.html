@@ -1,42 +1,44 @@
-<md-card>
-  <md-card-title>
-    <md-card-title-text class="md-headline">
-      Kalkulator walutowy
-    </md-card-title-text>
-  </md-card-title>
-  <md-card-content>
-    <p>
-      Sprawdź wartość swoich pieniędzy w jednej z dwunastu obcych walut lub w złotówkach.
-    </p>
-    <div layout layout-wrap>
-      <div flex-offset-md="5" flex-offset-gt-md="20" flex="100" flex-md="35" flex-gt-md="25">
-        <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)"
-          layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
+<md-content class="flex-box" layout-padding>
+  <md-card class="fixed-width">
+    <md-card-title>
+      <md-card-title-text class="md-headline">
+        Kalkulator walutowy
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p>
+        Sprawdź wartość swoich pieniędzy w jednej z dwunastu obcych walut lub w złotówkach.
+      </p>
+      <div layout layout-wrap>
+        <div flex-offset-md="5" flex-offset-gt-md="15" flex="100" flex-md="35" flex-gt-md="30">
+          <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)"
+            layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
+        </div>
+        <div flex="100" flex-md="20" flex-gt-md="10" layout layout-align="space-around">
+          <md-button class="md-fab change-button" ng-click="$ctrl.exchange()">
+            <md-icon>
+              import_export
+            </md-icon>
+          </md-button>
+        </div>
+        <div flex="100" flex-md="35" flex-gt-md="30">
+          <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"
+            layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
+        </div>
       </div>
-      <div flex="100" flex-md="20" flex-gt-md="10" layout layout-align="space-around">
-        <md-button class="md-fab change-button" ng-click="$ctrl.exchange()">
-          <md-icon>
-            import_export
-          </md-icon>
-        </md-button>
-      </div>
-      <div flex="100" flex-md="35" flex-gt-md="25">
-        <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"
-          layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
-      </div>
-    </div>
-  </md-card-content>
-  <md-card-actions layout layout-align="space-around">
-    <md-button class="md-primary md-raised" ng-click="$ctrl.calculate()">
-      Przelicz
-    </md-button>
-  </md-card-actions>
-</md-card>
-<md-card ng-show="$ctrl.rate">
-  <md-card-content>
-    {{$ctrl.denomination}} {{$ctrl.code}} = {{$ctrl.rate}} PLN
-    <a ui-sref="appRates.historical({code: $ctrl.code})">
-      Sprawdź notowania z ostatniego tygodnia
-    </a>
-  </md-card-content>
-</md-card>
+    </md-card-content>
+    <md-card-actions layout layout-align="space-around">
+      <md-button class="md-primary md-raised" ng-click="$ctrl.calculate()">
+        Przelicz
+      </md-button>
+    </md-card-actions>
+  </md-card>
+  <md-card ng-show="$ctrl.rate">
+    <md-card-content>
+      {{$ctrl.denomination}} {{$ctrl.code}} = {{$ctrl.rate}} PLN
+      <a ui-sref="appRates.historical({code: $ctrl.code})">
+        Sprawdź notowania z ostatniego tygodnia
+      </a>
+    </md-card-content>
+  </md-card>
+</md-content>
