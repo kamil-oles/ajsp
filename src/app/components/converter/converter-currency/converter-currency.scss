@@ -1,12 +1,13 @@
 .currency-input {
   text-align: right;
 }
-.label-container {
+.uneditable-content-container {
   margin: 18px 0;
   padding: 2px;
-  .label {
+  .uneditable-content {
     border-bottom: 1px solid #F5D8D8;
     box-sizing: border-box;
+    color: rgba(0,0,0, .5);
     height: 30px;
     line-height: 26px;
     margin-bottom: 24px;
