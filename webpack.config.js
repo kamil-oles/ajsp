@@ -19,7 +19,8 @@ const assets = {
     loader: 'file-loader',
     options: {
       name: '[name].[ext]',
-      outputPath: 'assets/fonts'
+      outputPath: 'assets/fonts',
+      publicPath: '../assets/fonts'
     }
   }]
 };
