@@ -1,17 +1,22 @@
-.change-button {
-  @media(min-width: 960px) {
-    transform: rotate(90deg);
+#converter {
+  .change-button {
+    @media(min-width: 960px) {
+      transform: rotate(90deg);
+    }
   }
-}
-.fixed-width {
-  @media(min-width: 1280px) {
-    width: 1200px;
+  .fixed-width {
+    @media(min-width: 1280px) {
+      width: 1200px;
+    }
   }
-}
-.flex-box {
-  @media(min-width: 1280px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .flex-box {
+    @media(min-width: 1280px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .reset-padding {
+    padding: 0;
   }
 }

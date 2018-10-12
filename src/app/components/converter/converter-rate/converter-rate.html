@@ -1,0 +1,8 @@
+<md-card ng-show="$ctrl.show">
+  <md-card-content>
+    {{$ctrl.rateInfo.denomination}} {{$ctrl.rateInfo.code}} = {{$ctrl.rateInfo.rate}} PLN
+    <a ui-sref="appRates.historical({code: $ctrl.rateInfo.code})">
+      Sprawdź notowania z ostatniego tygodnia
+    </a>
+  </md-card-content>
+</md-card>

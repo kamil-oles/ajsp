@@ -4,10 +4,11 @@ import { ConverterCalculateService } from './services/converter-calculate.servic
 import { ConverterValidationService } from './services/converter-validation.service';
 import { converterComponent } from './converter.component';
 import { appConverterCurrency } from './converter-currency/converter-currency.module';
+import { appConverterRate } from './converter-rate/converter-rate.module';
 import './converter.scss';
 
 export const appConverter = angular
-  .module('appConverter', [uiRouter, appConverterCurrency])
+  .module('appConverter', [uiRouter, appConverterCurrency, appConverterRate])
   .service('ConverterCalculateService', ConverterCalculateService)
   .service('ConverterValidationService', ConverterValidationService)
   .component('appConverter', converterComponent)

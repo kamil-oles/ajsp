@@ -6,6 +6,14 @@ export class Currency {
   }
 }
 
+export class Rate {
+  constructor(code = null, denomination = null, rate = null) {
+    this.code = code;
+    this.denomination = denomination;
+    this.rate = rate;
+  }
+}
+
 export class RatesHistorical {
   constructor(from, data = null) {
     this.data = data;

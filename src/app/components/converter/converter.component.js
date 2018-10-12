@@ -1,4 +1,4 @@
-import { Currency } from '../shared/classes/components-classes';
+import { Currency, Rate } from '../shared/classes/components-classes';
 import templateUrl from './converter.html';
 
 export const converterComponent = {
@@ -7,7 +7,7 @@ export const converterComponent = {
     constructor(ConverterCalculateService, ConverterValidationService) {
       this.ccs = ConverterCalculateService;
       this.cvs = ConverterValidationService;
-      this.rate = null;
+      this.rateInfo = new Rate();
     }
 
     $onInit() {
@@ -62,9 +62,7 @@ export const converterComponent = {
 
     setData(data, code) {
       this.currencySecond = data.currency;
-      this.code = code;
-      this.denomination = data.denomination;
-      this.rate = data.rate;
+      this.rateInfo = new Rate(code, data.denomination, data.rate);
     }
 
     update(data) {

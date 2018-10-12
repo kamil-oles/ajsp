@@ -1,10 +1,10 @@
-<div class="uneditable-content-container" ng-show="$ctrl.currency.code === 'PLN'" flex-offset-sm="20" flex="30"
+<div class="uneditable-content-container" ng-show="$ctrl.currency.code === 'PLN'" flex-offset-sm="20" flex="35"
   flex-sm="15">
   <div class="uneditable-content">
     PLN
   </div>
 </div>
-<md-input-container ng-show="$ctrl.currency.code !== 'PLN'" flex-offset-sm="20" flex="30" flex-sm="15">
+<md-input-container ng-show="$ctrl.currency.code !== 'PLN'" flex-offset-sm="20" flex="35" flex-sm="15">
   <md-select ng-model="$ctrl.currency.code" ng-change="$ctrl.update()" md-selected-text="$ctrl.currency.code">
     <md-option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
       {{option.code}} {{option.currency}}
