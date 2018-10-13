@@ -16,7 +16,7 @@ export const converterComponent = {
     }
 
     calculate() {
-      const vObject = this.cvs.formatting(this.currencyFirst.value);
+      const vObject = this.cvs.formatting(this.currencyFirst.value, true);
       let vNumber;
       if (vObject) {
         vNumber = vObject.model;
@@ -26,10 +26,10 @@ export const converterComponent = {
         return;
       }
       if (this.currencyFirst.code === 'PLN') {
-        this.ccs.buy(this.currencySecond.code, vNumber)
+        this.ccs.check(this.currencySecond.code, vNumber, true)
           .then(results => this.setData(results, this.currencySecond.code));
       } else {
-        this.ccs.sell(this.currencyFirst.code, vNumber)
+        this.ccs.check(this.currencyFirst.code, vNumber)
           .then(results => this.setData(results, this.currencyFirst.code));
       }
       localStorage.setItem('first', JSON.stringify(this.currencyFirst));

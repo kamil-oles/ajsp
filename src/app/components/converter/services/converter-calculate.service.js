@@ -1,26 +1,30 @@
 import { Currency, Results } from '../../shared/classes/components-classes';
 
 export class ConverterCalculateService {
-  constructor(ComponentsHttpService) {
+  constructor(ComponentsHttpService, ConverterValidationService) {
+    this.ccv = ConverterValidationService;
     this.http = ComponentsHttpService;
   }
 
-  buy(code, value) {
+  check(code, value, buy = false) {
     return this.http.rate(code).then(response => {
-      const rate = +response.data.rates[0].ask,
-        currency = new Currency(false, code, (value / rate).toFixed(2)),
+      const priceType = buy ? 'ask' : 'bid',
+        rate = +response.data.rates[0][priceType],
+        newValue = this.calculate(priceType, value, rate),
+        secondCurrencyCode = buy ? code : 'PLN',
+        newValueFormatted = this.ccv.formatting(newValue),
+        currency = new Currency(false, secondCurrencyCode, newValueFormatted.view),
         denomination = this.setDenomination(code);
       return new Results(currency, denomination, (rate * denomination).toFixed(4));
     });
   }
 
-  sell(code, value) {
-    return this.http.rate(code).then(response => {
-      const rate = +response.data.rates[0].bid,
-        currency = new Currency(false, 'PLN', (value * rate).toFixed(2)),
-        denomination = this.setDenomination(code);
-      return new Results(currency, denomination, (rate * denomination).toFixed(4));
-    });
+  calculate(priceType, value, rate) {
+    const methods = {
+      ask: () => (value / rate).toFixed(2),
+      bid: () => (value * rate).toFixed(2)
+    };
+    return methods[priceType]();
   }
 
   setDenomination(code) {
