@@ -1,3 +1,15 @@
 footer {
-  height: 30px;
+  background-color: orange;
+  height: 13vh;
+}
+.menu-item {
+  max-height: 3vh;
+  font-size: 12px;
+  a {
+    line-height: 3vh;
+    text-decoration: none;
+  }
+}
+.no-margin {
+  margin: 0;
 }

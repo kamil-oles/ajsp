@@ -3,6 +3,7 @@ import uiRouter from '@uirouter/angularjs';
 import { commonComponent } from './common.component';
 import { appFooter } from './footer/footer.module';
 import { appHeader } from './header/header.module';
+import './common.scss';
 
 export const appCommon = angular
   .module('appCommon', [uiRouter, appFooter, appHeader])
