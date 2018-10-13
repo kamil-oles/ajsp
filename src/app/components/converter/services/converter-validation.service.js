@@ -1,8 +1,8 @@
 import { Value, ViewValue } from '../../shared/classes/components-classes';
 
 export class ConverterValidationService {
-  formatting(value, flag = false) {
-    const vNumber = flag ? this.validation(value) : value;
+  formatting(value, input = false) {
+    const vNumber = input ? this.validation(value) : value;
     if (!vNumber) {
       return false;
     }
