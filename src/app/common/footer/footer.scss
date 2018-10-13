@@ -2,6 +2,12 @@ footer {
   background-color: orange;
   height: 13vh;
 }
+md-icon.custom-icon {
+  font-size: 36px;
+  height: 36px;
+  margin: 0;
+  width: 36px;
+}
 .menu-item {
   max-height: 3vh;
   font-size: 12px;
@@ -9,7 +15,4 @@ footer {
     line-height: 3vh;
     text-decoration: none;
   }
-}
-.no-margin {
-  margin: 0;
 }
