@@ -1,0 +1,5 @@
+.fixed-width {
+  @media(min-width: 1280px) {
+    width: 1200px;
+  }
+}

@@ -1,16 +1,20 @@
 footer {
   background-color: orange;
   height: 13vh;
-  ul {
-    margin: 0;
-    padding: 0;
-  }
+  padding: 2vh 8px;
 }
 md-icon.custom-icon {
   font-size: 36px;
   height: 36px;
-  margin: 0;
   width: 36px;
+}
+.container {
+  margin: 0 8px;
+  padding: 0 8px;
+  width: 100%;
+}
+.content {
+  padding: 0 16px;
 }
 .menu-item {
   font-size: 12px;
