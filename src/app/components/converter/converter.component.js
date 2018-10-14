@@ -4,15 +4,20 @@ import templateUrl from './converter.html';
 export const converterComponent = {
   templateUrl,
   controller: class ConverterComponentController {
-    constructor(ConverterCalculateService, ConverterValidationService) {
+    constructor(
+      ConverterCalculateService,
+      ConverterLocalStorageService,
+      ConverterValidationService
+    ) {
       this.ccs = ConverterCalculateService;
+      this.clss = ConverterLocalStorageService;
       this.cvs = ConverterValidationService;
       this.rateInfo = new Rate();
     }
 
     $onInit() {
-      this.currencyFirst = this.getLocalData('first');
-      this.currencySecond = this.getLocalData('second');
+      this.currencyFirst = this.clss.getData('first');
+      this.currencySecond = this.clss.getData('second');
     }
 
     calculate() {
@@ -40,24 +45,6 @@ export const converterComponent = {
       const stash = Object.assign({}, this.currencyFirst);
       this.currencyFirst = new Currency(true, this.currencySecond.code, this.currencySecond.value);
       this.currencySecond = new Currency(false, stash.code, stash.value);
-    }
-
-    getLocalData(key) {
-      const value = localStorage.getItem(key);
-      if (value) {
-        const local = JSON.parse(value),
-          currencyModels = {
-            first: () => new Currency(local.active, local.code, local.value),
-            second: () => new Currency(local.active, local.code)
-          };
-        return currencyModels[key]();
-      } else {
-        const currencyModels = {
-          first: () => new Currency(true, 'PLN', 1000),
-          second: () => new Currency(false, 'EUR')
-        };
-        return currencyModels[key]();
-      }
     }
 
     setData(data, code) {
