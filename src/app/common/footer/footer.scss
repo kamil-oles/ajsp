@@ -1,6 +1,10 @@
 footer {
   background-color: orange;
   height: 13vh;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 }
 md-icon.custom-icon {
   font-size: 36px;
@@ -9,10 +13,17 @@ md-icon.custom-icon {
   width: 36px;
 }
 .menu-item {
-  max-height: 3vh;
   font-size: 12px;
+  list-style: none;
+  @media(min-width: 600px) {
+    display: inline;
+    margin-right: 15px;
+  }
   a {
     line-height: 3vh;
     text-decoration: none;
+    @media(min-width: 600px) {
+      line-height: 9vh;
+    }
   }
 }

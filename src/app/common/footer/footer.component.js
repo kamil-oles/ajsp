@@ -10,7 +10,7 @@ export const footerComponent = {
           url: 'appConverter'
         },
         {
-          title: 'Kursy',
+          title: 'Kursy walut',
           url: 'appRates.current'
         },
         {

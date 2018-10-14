@@ -1,17 +1,23 @@
 <footer>
-  <div class="container" layout>
-    <div flex="75" layout layout-wrap>
-      <div class="menu-item" ng-repeat="item in $ctrl.menu" flex="100">
-        <a ui-sref="{{item.url}}">
-          {{item.title}}
+  <div class="container">
+    <div layout>
+      <div flex="75" layout layout-wrap>
+        <ul>
+          <li class="menu-item" ng-repeat="item in $ctrl.menu">
+            <a ui-sref="{{item.url}}">
+              {{item.title}}
+            </a>
+          </li>
+        </ul>
+        <!-- Photo by Vladislav Reshetnyak from Pexels (Franklin) -->
+      </div>
+      <div flex="25" layout layout-align="end center">
+        <a href="https://github.com/kamil-oles/ajsp" target="blank">
+          <md-icon class="custom-icon">
+            code
+          </md-icon>
         </a>
       </div>
-      <!-- Photo by Vladislav Reshetnyak from Pexels (Franklin) -->
-    </div>
-    <div flex="25" layout layout-align="end center">
-      <md-icon class="custom-icon">
-        code
-      </md-icon>
     </div>
   </div>
 </footer>
