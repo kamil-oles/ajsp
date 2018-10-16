@@ -1,8 +1,8 @@
-import { Currency, Results } from '../../shared/classes/components-classes';
+import { Currency, Results } from '../../../shared/classes/components-classes';
 
-export class ConverterCalculateService {
-  constructor(ComponentsHttpService, ConverterValidationService) {
-    this.ccv = ConverterValidationService;
+export class ConverterFormCalculateService {
+  constructor(ComponentsHttpService, ConverterFormValidationService) {
+    this.ccv = ConverterFormValidationService;
     this.http = ComponentsHttpService;
   }
 
@@ -13,7 +13,7 @@ export class ConverterCalculateService {
         newValue = this.calculate(priceType, value, rate),
         secondCurrencyCode = buy ? code : 'PLN',
         newValueFormatted = this.ccv.formatting(newValue),
-        currency = new Currency(false, secondCurrencyCode, newValueFormatted.view),
+        currency = new Currency(secondCurrencyCode, newValueFormatted.view),
         denomination = this.setDenomination(code);
       return new Results(currency, denomination, (rate * denomination).toFixed(4));
     });

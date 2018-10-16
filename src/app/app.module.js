@@ -10,7 +10,7 @@ import { appComponents } from './components/components.module';
 import './app.scss';
 
 export const app = angular
-  .module('app', ['ngMaterial', uiRouter, appCommon, appComponents])
+  .module('app', ['ngAnimate', 'ngMaterial', 'ngMessages', uiRouter, appCommon, appComponents])
   .component('app', appComponent)
   .config(($locationProvider, $urlRouterProvider) => {
     $locationProvider.html5Mode(true);

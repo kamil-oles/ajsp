@@ -5,33 +5,13 @@
         Kalkulator walutowy
       </md-card-title-text>
     </md-card-title>
-    <md-card-content>
-      <p>
+    <md-card-title>
+      <md-card-title-text class="md-subhead">
         Sprawdź wartość swoich pieniędzy w jednej z dwunastu obcych walut lub w złotówkach.
-      </p>
-      <div layout layout-wrap>
-        <div flex-offset-md="5" flex-offset-gt-md="15" flex="100" flex-md="35" flex-gt-md="30">
-          <app-converter-currency currency="$ctrl.currencyFirst" on-update="$ctrl.update($event)"
-            layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
-        </div>
-        <div flex="100" flex-md="20" flex-gt-md="10" layout layout-align="space-around center">
-          <md-button class="md-fab md-mini change-button" ng-click="$ctrl.exchange()">
-            <md-icon>
-              import_export
-            </md-icon>
-          </md-button>
-        </div>
-        <div flex="100" flex-md="35" flex-gt-md="30">
-          <app-converter-currency currency="$ctrl.currencySecond" on-update="$ctrl.update($event)"
-            layout layout-align-xs="space-between" layout-align-gt-sm="space-between"></app-converter-currency>
-        </div>
-      </div>
-    </md-card-content>
-    <md-card-actions layout layout-align="space-around">
-      <md-button class="md-primary md-raised" ng-click="$ctrl.calculate()">
-        Przelicz
-      </md-button>
-    </md-card-actions>
+      </md-card-title-text>
+    </md-card-title>
+    <app-converter-form currency-first-parent="$ctrl.currencyFirst" currency-second-parent="$ctrl.currencySecond"
+      update-rate="$ctrl.updateRate($event)"></app-converter-form>
   </md-card>
   <app-converter-rate class="reset-padding" rate-info="$ctrl.rateInfo"></app-converter-rate>
 </md-content>

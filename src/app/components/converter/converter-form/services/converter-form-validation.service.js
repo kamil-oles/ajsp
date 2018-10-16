@@ -1,6 +1,6 @@
-import { Value, ViewValue } from '../../shared/classes/components-classes';
+import { Value, ViewValue } from '../../../shared/classes/components-classes';
 
-export class ConverterValidationService {
+export class ConverterFormValidationService {
   formatting(value, input = false) {
     const vNumber = input ? this.validation(value) : value;
     if (!vNumber) {

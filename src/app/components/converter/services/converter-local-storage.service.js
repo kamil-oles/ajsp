@@ -6,14 +6,14 @@ export class ConverterLocalStorageService {
     if (value) {
       const local = JSON.parse(value),
         currencyModels = {
-          first: () => new Currency(local.active, local.code, local.value),
-          second: () => new Currency(local.active, local.code)
+          first: () => new Currency(local.code, local.value),
+          second: () => new Currency(local.code)
         };
       return currencyModels[key]();
     } else {
       const currencyModels = {
-        first: () => new Currency(true, 'PLN', 1000),
-        second: () => new Currency(false, 'USD')
+        first: () => new Currency('PLN', 1000),
+        second: () => new Currency('USD')
       };
       return currencyModels[key]();
     }

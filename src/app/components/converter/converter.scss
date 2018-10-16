@@ -1,11 +1,6 @@
 app-converter-rate.reset-padding {
   padding: 0;
 }
-.change-button {
-  @media(min-width: 960px) {
-    transform: rotate(90deg);
-  }
-}
 .flex-box {
   @media(min-width: 1280px) {
     display: flex;
