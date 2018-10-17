@@ -1,0 +1,21 @@
+.fixed-width {
+  @media(min-width: 1280px) {
+    width: 1000px;
+  }
+}
+.uneditable-content-container-left {
+  @extend %uneditable-content-container;
+  padding-right: 2px;
+  .uneditable-content-left {
+    @extend %uneditable-content;
+    padding-right: 2px;
+  }
+}
+.uneditable-content-container-right {
+  @extend %uneditable-content-container;
+  padding-left: 2px;
+  .uneditable-content-right {
+    @extend %uneditable-content;
+    padding-left: 2px;
+  }
+}
