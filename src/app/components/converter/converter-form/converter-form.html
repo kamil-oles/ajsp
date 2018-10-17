@@ -5,16 +5,14 @@
         <div layout layout-align-xs="space-between" layout-align-gt-sm="space-between">
           <app-converter-form-code currency="$ctrl.currencyFirst" on-update-code="$ctrl.updateCode($event)"
             flex-offset-sm="20" flex="35" flex-sm="15"></app-converter-form-code>
-          <div flex-offset-sm="15" flex="50" flex-sm="30">
-            <md-input-container>
-              <input name="value" class="currency-input" ng-model="$ctrl.currencyFirst.value">
-              <div ng-messages="calculateForm.value.$error">
-                <div ng-message="validationError">
-                  Pole wymagane
-                </div>
+          <md-input-container flex-offset-sm="15" flex="50" flex-sm="30">
+            <input name="value" class="currency-input" ng-model="$ctrl.currencyFirst.value">
+            <div ng-messages="calculateForm.value.$error">
+              <div ng-message="validationError">
+                Pole wymagane
               </div>
-            </md-input-container>
-          </div>
+            </div>
+          </md-input-container>
         </div>
       </div>
       <div flex="100" flex-md="20" flex-gt-md="10" layout layout-align="space-around center">
