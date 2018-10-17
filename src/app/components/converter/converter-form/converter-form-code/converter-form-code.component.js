@@ -1,12 +1,12 @@
-import templateUrl from './converter-code.html';
+import templateUrl from './converter-form-code.html';
 
-export const converterCodeComponent = {
+export const converterFormCodeComponent = {
   bindings: {
     currency: '<',
     onUpdateCode: '&'
   },
   templateUrl,
-  controller: class ConverterCodeComponent {
+  controller: class ConverterFormCodeComponent {
     constructor(ComponentsCurrenciesService, EventEmitter) {
       this.currencies = ComponentsCurrenciesService.currencies;
       this.EventEmitter = EventEmitter;
