@@ -1,4 +1,4 @@
-<form name="calculate">
+<form name="calculateForm" ng-submit="$ctrl.calculate(calculateForm)">
   <md-card-content>
     <div layout layout-wrap>
       <div flex-offset-md="5" flex-offset-gt-md="15" flex="100" flex-md="35" flex-gt-md="30">
@@ -6,17 +6,15 @@
           <app-converter-code currency="$ctrl.currencyFirst" on-update-code="$ctrl.updateCode($event)"
             flex-offset-sm="20" flex="35" flex-sm="15"></app-converter-code>
           <div flex-offset-sm="15" flex="50" flex-sm="30">
-            <form name="calculateForm">
-              <md-input-container>
-                <input name="value" class="currency-input" ng-model="$ctrl.currencyFirst.value"
-                  ng-change="$ctrl.update()" ng-blur="$ctrl.validation(calculateForm)">
-                <div ng-messages="calculateForm.value.$error">
-                  <div ng-message="validationError">
-                    "Błąd"
-                  </div>
+            <md-input-container>
+              <input name="value" class="currency-input" ng-model="$ctrl.currencyFirst.value"
+                ng-change="$ctrl.update()">
+              <div ng-messages="calculateForm.value.$error">
+                <div ng-message="validationError">
+                  Pole wymagane
                 </div>
-              </md-input-container>
-            </form>
+              </div>
+            </md-input-container>
           </div>
         </div>
       </div>
@@ -41,7 +39,7 @@
     </div>
   </md-card-content>
   <md-card-actions layout layout-align="space-around">
-    <md-button class="md-primary md-raised" ng-click="$ctrl.calculate()">
+    <md-button type="submit" class="md-primary md-raised">
       Przelicz
     </md-button>
   </md-card-actions>

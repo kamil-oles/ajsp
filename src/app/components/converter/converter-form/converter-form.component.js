@@ -10,10 +10,10 @@ export const converterFormComponent = {
   },
   controller: class ConverterFormComponentController {
     constructor(ConverterFormCalculateService, ConverterFormValidationService, EventEmitter) {
-      this.ccs = ConverterFormCalculateService;
+      this.cfcs = ConverterFormCalculateService;
+      this.cfvs = ConverterFormValidationService;
       this.currencyFirst;
       this.currencySecond;
-      this.cvs = ConverterFormValidationService;
       this.EventEmitter = EventEmitter;
     }
 
@@ -22,21 +22,19 @@ export const converterFormComponent = {
       this.currencySecond = Object.assign({}, this.currencySecondParent);
     }
 
-    calculate() {
-      const vObject = this.cvs.formatting(this.currencyFirst.value, true);
-      let vNumber;
-      if (vObject) {
-        vNumber = vObject.model;
-        this.currencyFirst = new Currency(this.currencyFirst.code, vObject.view);
-      } else {
-        console.log('złe dane');
+    calculate(form) {
+      const value = this.cfvs.validation(this.currencyFirst.value, form);
+      if (!value) {
+        this.currencyFirst.value = value;
         return;
       }
+      const number = this.cfvs.toNumber(value);
+      this.currencyFirst = new Currency(this.currencyFirst.code, this.cfvs.formatting(number));
       if (this.currencyFirst.code === 'PLN') {
-        this.ccs.check(this.currencySecond.code, vNumber, true)
+        this.cfcs.check(this.currencySecond.code, number, true)
           .then(results => this.setData(results, this.currencySecond.code));
       } else {
-        this.ccs.check(this.currencyFirst.code, vNumber)
+        this.cfcs.check(this.currencyFirst.code, number)
           .then(results => this.setData(results, this.currencyFirst.code));
       }
       localStorage.setItem('first', JSON.stringify(this.currencyFirst));
@@ -56,15 +54,8 @@ export const converterFormComponent = {
     setData(data, code) {
       this.currencySecond = data.currency;
       this.updateRate(
-        this.EventEmitter({
-          rateInfo: new Rate(code, data.denomination, data.rate)
-        })
+        this.EventEmitter({ rateInfo: new Rate(code, data.denomination, data.rate) })
       );
     }
-
-    // validation(form) {
-    //   console.log(form);
-    //   form.value.$setValidity('validationError', false);
-    // }
   }
 };

@@ -1,66 +1,52 @@
-import { Value, ViewValue } from '../../../shared/classes/components-classes';
-
 export class ConverterFormValidationService {
-  formatting(value, input = false) {
-    const vNumber = input ? this.validation(value) : value;
-    if (!vNumber) {
-      return false;
-    }
-    const vString = vNumber.toString(),
-      vObject = this.setObject(vString),
-      len = vObject.integer.length - 1,
-      spaces = Math.floor(len / 3);
+  formatting(value) {
+    const string = value.toString(),
+      index = string.indexOf('.');
+    let integer = index > 0 ? string.slice(0, index) : string;
+    const spaces = Math.floor((integer.length - 1) / 3);
     if (spaces) {
-      let array = vObject.integer.split('').reverse();
-      for (let i = 3; i < array.length; i = i + 4) {
-        array.splice(i, 0, ' ');
-      }
-      vObject.integer = array.reverse().join('');
+      integer = this.insertSpaces(integer);
     }
-    const view = this.setViewValue(vObject);
-    return new Value(view, vNumber);
-  }
-
-  setObject(string) {
-    const index = string.indexOf('.');
-    if (index !== -1) {
-      const fractionIndex = index + 1,
-        fraction = string.slice(fractionIndex),
-        integer = string.slice(0, index);
-      return new ViewValue(integer, fraction);
+    if (index > 0) {
+      const fraction = string.slice(index + 1);
+      return `${integer},${fraction}`;
     } else {
-      return new ViewValue(string);
+      return integer;
     }
   }
 
-  setViewValue(object) {
-    if (object.fraction) {
-      return object.integer + ',' + object.fraction;
+  insertSpaces(string) {
+    let array = string.split('').reverse();
+    for (let i = 3; i < array.length; i = i + 4) {
+      array.splice(i, 0, ' ');
+    }
+    return array.reverse().join('');
+  }
+
+  toNumber(value) {
+    let fixed = false,
+      number = value.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
+    const index = number.indexOf('.');
+    number = number.replace(/\./g, '');
+    if (index > 0) {
+      const integer = number.slice(0, index),
+        fraction = number.slice(index);
+      number = `${integer}.${fraction}`;
+      fixed = true;
+    } else if (index === 0) {
+      number = `0.${number}`;
+      fixed = true;
+    }
+    if (fixed) {
+      return Number(number).toFixed(2);
     } else {
-      return object.integer;
+      return Number(number);
     }
   }
 
-  validation(value) {
-    let vString = value;
-    if (/[^0-9,.\s]/.test(vString)) {
-      return false;
-    }
-    vString = vString.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
-    const index = vString.search(/\./);
-    let vArray = [];
-    if (index !== -1) {
-      vArray = vString.split('.');
-      vString = vArray.join('');
-      vArray = vString.split('');
-      vArray.splice(index, 0, '.');
-    }
-    if (index === 0) {
-      vArray.reverse();
-      vArray.push(0);
-      vArray.reverse();
-    }
-    const v = index !== -1 ? vArray.join('') : vString;
-    return Number(v).toFixed(2);
+  validation(value, form) {
+    const error = !/[0-9]/.test(value);
+    form.value.$setValidity('validationError', !error);
+    return error ? '' : value.replace(/[^0-9,.\s]/g, '');
   }
 }

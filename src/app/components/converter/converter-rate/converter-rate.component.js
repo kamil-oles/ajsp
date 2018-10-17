@@ -7,7 +7,6 @@ export const converterRate = {
   templateUrl,
   controller: class ConverterRateController {
     $onChanges(changes) {
-      console.log(changes);
       this.show = changes.rateInfo.currentValue.code !== null ? true : false;
     }
   }

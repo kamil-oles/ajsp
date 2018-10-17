@@ -27,17 +27,3 @@ export class Results {
     this.rate = rate;
   }
 }
-
-export class Value {
-  constructor(view, model) {
-    this.view = view;
-    this.model = model;
-  }
-}
-
-export class ViewValue {
-  constructor(integer, fraction = null) {
-    this.integer = integer;
-    this.fraction = fraction;
-  }
-}
