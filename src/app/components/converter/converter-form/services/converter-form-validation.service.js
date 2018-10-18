@@ -1,7 +1,7 @@
 export class ConverterFormValidationService {
   formatting(value) {
     const string = value.toString(),
-      index = string.indexOf('.');
+      index = string.search(/\./);
     let integer = index > 0 ? string.slice(0, index) : string;
     const spaces = Math.floor((integer.length - 1) / 3);
     if (spaces) {
@@ -26,7 +26,7 @@ export class ConverterFormValidationService {
   toNumber(value) {
     let fixed = false,
       number = value.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
-    const index = number.indexOf('.');
+    const index = number.search(/\./);
     number = number.replace(/\./g, '');
     if (index > 0) {
       const integer = number.slice(0, index),
