@@ -5,15 +5,27 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
   path = require('path'),
   Webpack = require('webpack');
 
-const root = path.join(__dirname, '/src'),
-  dist = path.join(__dirname, '/dist');
+const dist = path.join(__dirname, '/dist'),
+  root = path.join(__dirname, '/src');
 
 const paths = {
   app: path.join(root, '/app/app.module.js'),
   index: path.join(root, '/index.html')
 };
 
-const assets = {
+const eslint = {
+  enforce: 'pre',
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: [{
+    loader: 'eslint-loader',
+    options: {
+      failOnError: true
+    }
+  }]
+};
+
+const fonts = {
   test: /\.(eot|woff2|woff|ttf)$/,
   use: [{
     loader: 'file-loader',
@@ -25,14 +37,14 @@ const assets = {
   }]
 };
 
-const eslint = {
-  enforce: 'pre',
-  test: /\.js$/,
-  exclude: /node_modules/,
+const images = {
+  test: /\.jpg$/,
   use: [{
-    loader: 'eslint-loader',
+    loader: 'file-loader',
     options: {
-      failOnError: true
+      name: '[name].[ext]',
+      outputPath: 'assets/images',
+      publicPath: '../assets/images'
     }
   }]
 };
@@ -65,15 +77,23 @@ const templates = {
     loader: 'ngtemplate-loader?relativeTo=' + (path.join(root, '/app'))
   },
   {
-    loader: 'html-loader'
+    loader: 'html-loader',
+    options: {
+      attrs: [':ng-src']
+    }
   }]
 };
 
+const optimization = {
+  analyzer: new BundleAnalyzerPlugin({
+    openAnalyzer: true
+  }),
+  replace: new Webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
+};
+
 const prepare = {
-  clean: new CleanPlugin([
-    dist
-  ]),
-  style: new MiniCssExtraPlugin({
+  clean: new CleanPlugin([dist]),
+  extractCssFile: new MiniCssExtraPlugin({
     filename: 'style/style.css'
   }),
   template: new HtmlWebpackPlugin({
@@ -81,13 +101,6 @@ const prepare = {
     template: paths.index,
     filename: 'index.html'
   })
-};
-
-const optimization = {
-  analyzer: new BundleAnalyzerPlugin({
-    openAnalyzer: false
-  }),
-  replace: new Webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
 };
 
 const config = {
@@ -100,7 +113,8 @@ const config = {
     rules: [
       scripts,
       style,
-      assets,
+      images,
+      fonts,
       templates,
       eslint
     ]
@@ -108,9 +122,9 @@ const config = {
   plugins: [
     optimization.analyzer,
     optimization.replace,
-    prepare.clean,
-    prepare.style,
-    prepare.template
+    prepare.extractCssFile,
+    prepare.template,
+    prepare.clean
   ],
   devtool: 'source-map'
 };
