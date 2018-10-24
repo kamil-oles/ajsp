@@ -2,20 +2,24 @@
   <md-card-content>
     <div layout layout-wrap>
       <div flex-offset-md="5" flex-offset-gt-md="15" flex="100" flex-md="35" flex-gt-md="30">
-        <h6>
-          Mam
-        </h6>
+        <div layout>
+          <h6 flex-offset-sm="20">
+            Mam
+          </h6>
+        </div>
         <div layout layout-align-xs="space-between" layout-align-gt-sm="space-between">
           <app-converter-form-code currency="$ctrl.currencyFirst" on-update-code="$ctrl.updateCode($event)"
             flex-offset-sm="20" flex="35" flex-sm="15"></app-converter-form-code>
-          <md-input-container class="padding-right-reset" flex-offset-sm="15" flex="50" flex-sm="30">
-            <input name="value" class="currency-input padding-right-reset" ng-model="$ctrl.currencyFirst.value">
-            <div ng-messages="calculateForm.value.$error">
-              <div ng-message="validationError">
-                Pole wymagane
+          <div layout layout-align="end" flex-offset-sm="15" flex="50" flex-sm="30">
+            <md-input-container class="currency-input-container">
+              <input name="value" class="currency-input" ng-model="$ctrl.currencyFirst.value">
+              <div ng-messages="calculateForm.value.$error">
+                <div ng-message="validationError">
+                  Pole wymagane
+                </div>
               </div>
-            </div>
-          </md-input-container>
+            </md-input-container>
+          </div>
         </div>
       </div>
       <div flex="100" flex-md="20" flex-gt-md="10" layout layout-align="space-around center">
@@ -26,15 +30,19 @@
         </md-button>
       </div>
       <div flex="100" flex-md="35" flex-gt-md="30">
-        <h6>
-          Chcę
-        </h6>
+        <div layout>
+          <h6 flex-offset-sm="20">
+            Chcę
+          </h6>
+        </div>
         <div layout layout-align-xs="space-between" layout-align-gt-sm="space-between">
           <app-converter-form-code currency="$ctrl.currencySecond" on-update-code="$ctrl.updateCode($event)"
             flex-offset-sm="20" flex="35" flex-sm="15"></app-converter-form-code>
-          <div class="uneditable-content-container-right" flex-offset-sm="15" flex="50" flex-sm="30">
-            <div class="uneditable-content-right currency-input">
-              {{$ctrl.currencySecond.value}}
+          <div layout layout-align="end" flex-offset-sm="15" flex="50" flex-sm="30">
+            <div class="uneditable-content-container-right currency-input-container">
+              <div class="uneditable-content-right currency-input">
+                {{$ctrl.currencySecond.value}}
+              </div>
             </div>
           </div>
         </div>
