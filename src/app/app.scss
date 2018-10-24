@@ -1,6 +1,8 @@
+@import '../style/helpers/mixins';
+@import '../style/helpers/placeholders';
 @import '../style/base/reset';
 @import '../style/base/base';
-@import '../style/helpers/placeholders';
+@import '../style/base/typography';
 @import '~angular-material/angular-material';
 @import '../style/vendors/material-icons';
 @import '../style/vendors/roboto-font';

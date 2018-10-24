@@ -1,0 +1,15 @@
+button.button-typography {
+  @include typography(14px, 500, .75px);
+}
+h6 {
+  @include typography(20px, 500, .15px);
+}
+md-card-title-text.subtitle {
+  @include typography(16px, normal, .15px);
+}
+.body {
+  @include typography(16px, normal, .5px);
+}
+.caption {
+  @include typography(12px, normal, .4px);
+}

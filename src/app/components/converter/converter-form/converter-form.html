@@ -12,9 +12,9 @@
             flex-offset-sm="20" flex="35" flex-sm="15"></app-converter-form-code>
           <div layout layout-align="end" flex-offset-sm="15" flex="50" flex-sm="30">
             <md-input-container class="currency-input-container">
-              <input name="value" class="currency-input" ng-model="$ctrl.currencyFirst.value">
+              <input name="value" class="currency-input body" ng-model="$ctrl.currencyFirst.value">
               <div ng-messages="calculateForm.value.$error">
-                <div ng-message="validationError">
+                <div class="caption" ng-message="validationError">
                   Pole wymagane
                 </div>
               </div>
@@ -40,7 +40,7 @@
             flex-offset-sm="20" flex="35" flex-sm="15"></app-converter-form-code>
           <div layout layout-align="end" flex-offset-sm="15" flex="50" flex-sm="30">
             <div class="uneditable-content-container-right currency-input-container">
-              <div class="uneditable-content-right currency-input">
+              <div class="uneditable-content-right currency-input body">
                 {{$ctrl.currencySecond.value}}
               </div>
             </div>
@@ -50,7 +50,7 @@
     </div>
   </md-card-content>
   <md-card-actions layout layout-align="space-around">
-    <md-button type="submit" class="md-primary md-raised">
+    <md-button type="submit" class="md-primary md-raised button-typography">
       Przelicz
     </md-button>
   </md-card-actions>
