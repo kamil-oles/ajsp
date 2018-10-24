@@ -3,6 +3,9 @@
     width: 928px;
   }
 }
+.link {
+  text-decoration: none;
+}
 .uneditable-content-container-left {
   @extend %uneditable-content-container;
   padding-right: 2px;

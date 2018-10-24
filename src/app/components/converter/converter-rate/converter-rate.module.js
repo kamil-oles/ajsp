@@ -1,5 +1,6 @@
 import angular from 'angular';
 import { converterRate } from './converter-rate.component';
+import './converter-rate.scss';
 
 export const appConverterRate = angular
   .module('appConverterRate', [])
