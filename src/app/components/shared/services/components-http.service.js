@@ -1,7 +1,8 @@
 import { RatesHistorical } from '../classes/components-classes';
 
 export class ComponentsHttpService {
-  constructor($http) {
+  constructor($filter, $http) {
+    this.filter = $filter;
     this.http = $http;
     this.regex = /^\d{4}-\d{2}-\d{2}$/;
     this.url = 'http://api.nbp.pl/api/exchangerates/';
@@ -12,8 +13,8 @@ export class ComponentsHttpService {
   }
 
   fetchHistoricalRates(code) {
-    const from = this.setDateFrom(),
-      to = new Date();
+    const from = this.filter('date')(this.setDateFrom(), 'yyyy-MM-dd'),
+      to = this.filter('date')(new Date(), 'yyyy-MM-dd');
     if (code) {
       return this.ratesHistorical(code, from, to).then(response => {
         return new RatesHistorical(from, response.data);
@@ -26,37 +27,31 @@ export class ComponentsHttpService {
   rate(code) {
     return this.http({
       method: 'GET',
-      url: this.url + 'rates/c/' + code,
+      url: `${this.url}rates/c/${code}`,
     });
   }
 
   ratesCurrent() {
     return this.http({
       method: 'GET',
-      url: this.url + '/tables/c/'
+      url: `${this.url}tables/c/`
     });
   }
 
   ratesFromLastWeek(code) {
     return this.http({
       method: 'GET',
-      url: this.url + '/rates/c/' + code + '/last/5/'
+      url: `${this.url}rates/c/${code}/last/5/`
     });
   }
 
   ratesHistorical(code, start, end) {
-    console.log(start);
-    console.log(end);
     if (this.regex.test(start) && this.regex.test(end)) {
       return this.http({
         method: 'GET',
-        url: this.url + '/rates/c/' +
-          code + '/' +
-          start + '/' +
-          end + '/'
+        url: `${this.url}rates/c/${code}/${start}/${end}/`
       });
     } else {
-      console.log('dupa');
       return false;
     }
   }
