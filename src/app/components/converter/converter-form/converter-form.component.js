@@ -53,6 +53,7 @@ export const converterFormComponent = {
 
     setData(data, code) {
       this.currencySecond = data.currency;
+      data.rate = data.rate.replace('.', ',');
       this.updateRate(
         this.EventEmitter({ rateInfo: new Rate(code, data.denomination, data.rate) })
       );
