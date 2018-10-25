@@ -7,6 +7,7 @@ export const converterComponent = {
     constructor(ConverterLocalStorageService) {
       this.clss = ConverterLocalStorageService;
       this.rateInfo = new Rate();
+      this.show = false;
     }
 
     $onInit() {
@@ -16,6 +17,7 @@ export const converterComponent = {
 
     updateRate(data) {
       this.rateInfo = data.rateInfo;
+      this.show = true;
     }
   }
 };

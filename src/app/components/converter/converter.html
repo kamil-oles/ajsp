@@ -1,4 +1,4 @@
-<md-content class="md-padding flex-box">
+<md-content class="md-padding flex-box pseudo">
   <div class="relative">
     <md-card class="fixed-width top">
       <img ng-src="../../../assets/images/banknote.jpg" class="md-card-image">
@@ -15,6 +15,7 @@
       <app-converter-form currency-first-parent="$ctrl.currencyFirst" currency-second-parent="$ctrl.currencySecond"
         update-rate="$ctrl.updateRate($event)"></app-converter-form>
     </md-card>
-    <app-converter-rate class="reset-padding absolute" rate-info="$ctrl.rateInfo"></app-converter-rate>
+    <app-converter-rate class="reset-padding absolute" ng-class="{rateCardAnimation: $ctrl.show}"
+      rate-info="$ctrl.rateInfo" show="$ctrl.show"></app-converter-rate>
   </div>
 </md-content>
