@@ -3,6 +3,12 @@
 }
 .rate {
   text-align: center;
+  div.link-container {
+    height: 38px;
+    @media(min-width: 380px) {
+      line-height: 38px;
+    }
+  }
 }
 .show-link.ng-hide {
   opacity: 0;
