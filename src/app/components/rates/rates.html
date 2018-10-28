@@ -1,18 +1,28 @@
-<div>
-  <h2>
-    Rates
-  </h2>
-  <div class="tabset">
-    <div class="tab">
-      <a ui-sref="appRates.current">
-        Current
-      </a>
-    </div>
-    <div class="tab">
-      <a ui-sref="appRates.historical">
-        Historical
-      </a>
-    </div>
-  </div>
-  <ui-view></ui-view>
-</div>
+<md-content class="md-padding flex-box">
+  <md-card class="fixed-width">
+    <img ng-src="../../../assets/images/rates.jpg" class="md-card-image">
+    <md-card-title>
+      <md-card-title-text class="md-headline">
+        Kursy walut
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-title class="reset-padding-top">
+      <md-card-title-text class="md-subhead subtitle">
+        Aktualne i historyczne kursy dwunastu obcych walut.
+      </md-card-title-text>
+    </md-card-title>
+    <md-tabs md-stretch-tabs="always">
+      <md-tab ui-sref="appRates.current">
+        <md-tab-label>
+          Aktualne
+        </md-tab-label>
+      </md-tab>
+      <md-tab ui-sref="appRates.historical">
+        <md-tab-label>
+          Historyczne
+        </md-tab-label>
+      </md-tab>
+    </md-tabs>
+    <ui-view></ui-view>
+  </md-card>
+</md-content>
