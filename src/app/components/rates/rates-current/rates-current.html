@@ -1,38 +1,41 @@
-<p>
-  Rates at {{$ctrl.date}}
+<p class="subtitle2">
+  Kursy na dzień {{$ctrl.date}}
 </p>
-<table>
-  <thead>
-    <tr>
-      <th ng-click="$ctrl.sort('code')">
-        Kod
-      </th>
-      <th ng-click="$ctrl.sort('currency')">
-        Waluta
-      </th>
-      <th ng-click="$ctrl.sort('bid')">
-        Cena zakupu
-      </th>
-      <th ng-click="$ctrl.sort('ask')">
-        Cena sprzedaży
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="currency in $ctrl.rates">
-      <td>
-        {{currency.code}}
-      </td>
-      <td>
-        {{currency.currency}}
-      </td>
-      <td>
-        {{currency.bid}}
-      </td>
-      <td>
-        {{currency.ask}}
-      </td>
-    </tr>
-    </tr>
-  </tbody>
-</table>
+<app-rates-table headers="$ctrl.headers" rates="$ctrl.rates"></app-rates-table>
+<!-- <div style="overflow: auto">
+  <table style="min-width: 500px">
+    <thead>
+      <tr>
+        <th ng-click="$ctrl.sort('code')">
+          Kod
+        </th>
+        <th ng-click="$ctrl.sort('currency')">
+          Waluta
+        </th>
+        <th ng-click="$ctrl.sort('bid')">
+          Cena zakupu
+        </th>
+        <th ng-click="$ctrl.sort('ask')">
+          Cena sprzedaży
+        </th>
+      </tr>
+    </thead>
+    <tbody class="body2">
+      <tr ng-repeat="currency in $ctrl.rates">
+        <td>
+          {{currency.code}}
+        </td>
+        <td>
+          {{currency.currency}}
+        </td>
+        <td class="value">
+          {{currency.bid}}
+        </td>
+        <td class="value">
+          {{currency.ask}}
+        </td>
+      </tr>
+      </tr>
+    </tbody>
+  </table>
+</div> -->

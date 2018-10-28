@@ -1,0 +1,18 @@
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th ng-repeat="header in $ctrl.headers" ng-click="$ctrl.sort('header.code')">
+          {{header.label}}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="body-2">
+      <tr ng-repeat="row in $ctrl.rates">
+        <td ng-repeat="(key, value) in row">
+          {{value}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

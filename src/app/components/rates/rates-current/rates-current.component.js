@@ -6,14 +6,17 @@ export const ratesCurrentComponent = {
   },
   templateUrl,
   controller: class RatesCurrentComponentController {
-    constructor(ComponentsSortService) {
+    constructor(ComponentsSortService, RatesCurrentHeadersService) {
       this.css = ComponentsSortService;
+      this.rchs = RatesCurrentHeadersService;
       this.sortBy = 'currency';
       this.sortDirection = 'ASC';
     }
 
     $onInit() {
       this.date = this.currentRates.effectiveDate;
+      this.headers = this.rchs.headers();
+      console.log(this.headers);
       this.rates = this.currentRates.rates;
     }
 
