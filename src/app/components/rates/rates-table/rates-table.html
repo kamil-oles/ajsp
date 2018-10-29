@@ -2,14 +2,18 @@
   <table>
     <thead>
       <tr>
-        <th ng-repeat="header in $ctrl.headers" ng-click="$ctrl.sort('header.code')">
+        <th class="body-2-bold" ng-class="{left: header.align === 'left', right: header.align === 'right'}"
+          ng-repeat="header in $ctrl.headers" ng-click="$ctrl.sort(header.code)">
           {{header.label}}
+          <md-icon>
+            keyboard_arrow_down
+          </md-icon>
         </th>
       </tr>
     </thead>
     <tbody class="body-2">
-      <tr ng-repeat="row in $ctrl.rates">
-        <td ng-repeat="(key, value) in row">
+      <tr ng-repeat="row in $ctrl.data">
+        <td ng-repeat="(key, value) in row" ng-class="{rateTable: key === 'ask' || key === 'bid'}">
           {{value}}
         </td>
       </tr>

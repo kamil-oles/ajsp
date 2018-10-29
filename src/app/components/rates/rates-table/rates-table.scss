@@ -1,3 +1,47 @@
+table {
+  border-collapse: collapse;
+  min-width: 511px;
+  width: 100%;
+}
+td {
+  border-top: 1px solid #f5f5f5;
+}
+td, th {
+  color: rgba(0, 0, 0, 0.871);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+th {
+  color: #00000099;
+  &:first-child {
+    background-color: white;
+    box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
+    left: 0;
+    position: sticky;
+  }
+}
+tr {
+  height: 48px;
+  position: relative;
+  td:first-child {
+    background-color: white;
+    box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
+    left: 0;
+    position: sticky;
+  }
+}
+tbody tr {
+  height: 48px;
+}
+.left {
+  text-align: left
+}
+.rateTable {
+  text-align: right;
+}
+.right {
+  text-align: right;
+}
 .table-container {
   overflow: auto;
 }

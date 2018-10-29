@@ -11,8 +11,10 @@ md-card-title-text.subtitle {
   @include typography(16px, normal, .5px);
 }
 .body-2 {
-  @include typography(14
-  px, normal, .25px);
+  @include typography(14px, normal, .25px);
+}
+.body-2-bold {
+  @include typography(12px, normal, .25px);
 }
 .caption {
   @include typography(12px, normal, .4px);

@@ -16,7 +16,6 @@ export const ratesCurrentComponent = {
     $onInit() {
       this.date = this.currentRates.effectiveDate;
       this.headers = this.rchs.headers();
-      console.log(this.headers);
       this.rates = this.currentRates.rates;
     }
 
