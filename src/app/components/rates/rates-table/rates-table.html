@@ -3,11 +3,20 @@
     <thead>
       <tr>
         <th class="body-2-bold" ng-class="{left: header.align === 'left', right: header.align === 'right'}"
-          ng-repeat="header in $ctrl.headers" ng-click="$ctrl.sort(header.code)">
-          {{header.label}}
-          <md-icon>
-            keyboard_arrow_down
-          </md-icon>
+          ng-repeat="header in $ctrl.headers track by $index" ng-click="$ctrl.sort(header.code)">
+          <div class="icon-container" ng-if="header.align === 'right'">
+            <md-icon ng-class="{rotate: $ctrl.rotate}" ng-show="$ctrl.sortBy === header.code">
+              {{$ctrl.icon}}
+            </md-icon>
+          </div>
+          <div class="label">
+            {{header.label}}
+          </div>
+          <div class="icon-container" ng-if="header.align === 'left'">
+            <md-icon ng-class="{rotate: $ctrl.rotate}" ng-show="$ctrl.sortBy === header.code">
+              {{$ctrl.icon}}
+            </md-icon>
+          </div>
         </th>
       </tr>
     </thead>

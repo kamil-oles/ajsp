@@ -1,9 +1,9 @@
-<div class="uneditable-content-container-left" ng-show="$ctrl.currency.code === 'PLN'">
+<div class="uneditable-content-container-left" ng-if="$ctrl.currency.code === 'PLN'">
   <div class="uneditable-content-left code body">
     PLN
   </div>
 </div>
-<md-input-container class="padding-left-reset" ng-show="$ctrl.currency.code !== 'PLN'">
+<md-input-container class="padding-left-reset" ng-if="$ctrl.currency.code !== 'PLN'">
   <md-select class="code body" ng-model="$ctrl.currency.code" ng-change="$ctrl.updateCode()"
     md-selected-text="$ctrl.currency.code">
     <md-option class="body" ng-repeat="option in $ctrl.currencies" ng-value="option.code">

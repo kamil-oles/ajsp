@@ -7,8 +7,11 @@ export const ratesTableComponent = {
   },
   templateUrl,
   controller: class RatesTableComponentController {
-    constructor(ComponentsSortService, RatesTableDataService) {
+    constructor($animate, $document, ComponentsSortService, RatesTableDataService) {
+      this.animate = $animate;
       this.css = ComponentsSortService;
+      this.document = $document;
+      this.icon = 'keyboard_arrow_up';
       this.rtds = RatesTableDataService;
       this.sortBy = 'currency';
       this.sortDirection = 'ASC';
@@ -21,14 +24,21 @@ export const ratesTableComponent = {
       // }
     }
 
-    sort(type) {
-      if (type === this.sortBy) {
-        this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
+    $postLink() {
+      this.elements = this.document.find('th');
+      console.log(this.elements);
+    }
+
+    sort(code) {
+      this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
+      if (code === this.sortBy) {
+        this.rotate = true;
       } else {
-        this.sortDirection = 'ASC';
+        this.rotate = false;
+        this.icon = this.sortDirection === 'ASC' ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
       }
-      this.css.sort(this.data, type, this.sortDirection);
-      this.sortBy = type;
+      this.css.sort(this.data, code, this.sortDirection);
+      this.sortBy = code;
     }
   }
 };
