@@ -1,11 +1,9 @@
-import templateUrl from './converter-form-code.html';
-
 export const converterFormCodeComponent = {
   bindings: {
     currency: '<',
     onUpdateCode: '&'
   },
-  templateUrl,
+  template: require('./converter-form-code.html'),
   controller: class ConverterFormCodeComponent {
     constructor(ComponentsCurrenciesService, EventEmitter) {
       this.currencies = ComponentsCurrenciesService.currencies;

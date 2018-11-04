@@ -1,20 +1,20 @@
-import templateUrl from './rates-table.html';
-
 export const ratesTableComponent = {
   bindings: {
     headers: '<',
     rates: '<'
   },
-  templateUrl,
+  template: require('./rates-table.html'),
   controller: class RatesTableComponentController {
-    constructor($animate, $document, ComponentsSortService, RatesTableDataService) {
-      this.animate = $animate;
+    constructor(ComponentsSortService, RatesTableDataService) {
       this.css = ComponentsSortService;
-      this.document = $document;
       this.icon = 'keyboard_arrow_up';
       this.rtds = RatesTableDataService;
       this.sortBy = 'currency';
       this.sortDirection = 'ASC';
+      this.icons = {
+        ASC: 'keyboard_arrow_up',
+        DESC: 'keyboard_arrow_down'
+      };
     }
 
     $onChanges(changes) {
@@ -24,20 +24,12 @@ export const ratesTableComponent = {
       // }
     }
 
-    $postLink() {
-      this.elements = this.document.find('th');
-      console.log(this.elements);
-    }
-
     sort(code) {
-      this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
       if (code === this.sortBy) {
-        this.rotate = true;
-      } else {
-        this.rotate = false;
-        this.icon = this.sortDirection === 'ASC' ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+        this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
       }
       this.css.sort(this.data, code, this.sortDirection);
+      this.icon = this.icons[this.sortDirection];
       this.sortBy = code;
     }
   }

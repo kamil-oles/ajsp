@@ -1,10 +1,8 @@
-import templateUrl from './rates-historical.html';
-
 export const ratesHistoricalComponent = {
   bindings: {
     lastWeekRates: '<'
   },
-  templateUrl,
+  template: require('./rates-historical.html'),
   controller: class RatesHistoricalComponentController {
     constructor(
       $filter,

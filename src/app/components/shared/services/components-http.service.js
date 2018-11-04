@@ -9,7 +9,9 @@ export class ComponentsHttpService {
   }
 
   fetchCurrentRates() {
-    return this.ratesCurrent().then(response => this.removeXdr(response.data[0]));
+    return this.ratesCurrent().then(response => this.removeXdr(response.data[0]), (err) => {
+      console.log(err);
+    });
   }
 
   fetchHistoricalRates(code) {

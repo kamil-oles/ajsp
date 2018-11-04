@@ -1,10 +1,8 @@
-import templateUrl from './rates-current.html';
-
 export const ratesCurrentComponent = {
   bindings: {
     currentRates: '<'
   },
-  templateUrl,
+  template: require('./rates-current.html'),
   controller: class RatesCurrentComponentController {
     constructor(ComponentsSortService, RatesCurrentHeadersService) {
       this.css = ComponentsSortService;

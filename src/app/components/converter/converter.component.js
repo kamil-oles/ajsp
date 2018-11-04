@@ -1,8 +1,7 @@
 import { Rate } from '../shared/classes/components-classes';
-import templateUrl from './converter.html';
 
 export const converterComponent = {
-  templateUrl,
+  template: require('./converter.html'),
   controller: class ConverterComponentController {
     constructor(ConverterLocalStorageService) {
       this.clss = ConverterLocalStorageService;

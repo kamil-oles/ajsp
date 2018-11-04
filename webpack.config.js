@@ -74,9 +74,6 @@ const templates = {
   test: /\.html$/,
   exclude: /index\.html/,
   use: [{
-    loader: 'ngtemplate-loader?relativeTo=' + (path.join(root, '/app'))
-  },
-  {
     loader: 'html-loader',
     options: {
       attrs: [':ng-src']

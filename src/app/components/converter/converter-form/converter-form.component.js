@@ -1,8 +1,7 @@
 import { Currency, Rate } from '../../shared/classes/components-classes';
-import templateUrl from './converter-form.html';
 
 export const converterFormComponent = {
-  templateUrl,
+  template: require('./converter-form.html'),
   bindings: {
     currencyFirstParent: '<',
     currencySecondParent: '<',
