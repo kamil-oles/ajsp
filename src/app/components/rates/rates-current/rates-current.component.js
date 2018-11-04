@@ -7,9 +7,10 @@ export const ratesCurrentComponent = {
     constructor(ComponentsSortService, RatesCurrentHeadersService) {
       this.css = ComponentsSortService;
       this.rchs = RatesCurrentHeadersService;
-      this.sortBy = 'currency';
-      this.sortDirection = 'ASC';
     }
+
+    sortBy = 'currency';
+    sortDirection = 'ASC';
 
     $onInit() {
       this.date = this.currentRates.effectiveDate;
