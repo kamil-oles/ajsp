@@ -28,21 +28,19 @@ export class Results {
   }
 }
 
-export class TableRow {
-  constructor(bid, ask, date, code, currency) {
+export class TableRowCurrent {
+  constructor(bid, ask, code, currency) {
     this.code = code;
     this.currency = currency;
+    this.bid = bid;
+    this.ask = ask;
+  }
+}
+
+export class TableRowHistorical {
+  constructor(bid, ask, date) {
     this.date = date;
     this.bid = bid;
     this.ask = ask;
-    this.checkData('code');
-    this.checkData('currency');
-    this.checkData('date');
-  }
-
-  checkData(property) {
-    if (!this[property]) {
-      delete this[property];
-    }
   }
 }

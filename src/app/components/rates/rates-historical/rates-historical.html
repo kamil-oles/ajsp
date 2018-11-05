@@ -30,33 +30,5 @@
       Pobierz kursy
     </button>
   </form>
-  <table>
-    <thead>
-      <tr>
-        <th ng-click="$ctrl.sort()">
-          Data
-        </th>
-        <th>
-          Cena zakupu
-        </th>
-        <th>
-          Cena sprzedaży
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="rate in $ctrl.rates">
-        <td>
-          {{rate.effectiveDate | date: 'dd.MM.yyyy'}}
-        </td>
-        <td>
-          {{rate.bid}}
-        </td>
-        <td>
-          {{rate.ask}}
-        </td>
-      </tr>
-      </tr>
-    </tbody>
-  </table>
+  <app-rates-table view="'historical'" rates="$ctrl.rates"></app-rates-table>
 </div>

@@ -7,12 +7,10 @@ export const ratesHistoricalComponent = {
     constructor(
       $filter,
       ComponentsCurrenciesService,
-      ComponentsHttpService,
-      ComponentsSortService
+      ComponentsHttpService
     ) {
       this.currencies = ComponentsCurrenciesService.currencies;
       this.chs = ComponentsHttpService;
-      this.css = ComponentsSortService;
       this.filter = $filter;
       this.regex = /^\d{4}-\d{2}-\d{2}$/;
     }
@@ -32,16 +30,10 @@ export const ratesHistoricalComponent = {
       if (this.regex.test(start) && this.regex.test(end)) {
         this.chs.ratesHistorical(this.currency, start, end).then(response => {
           this.rates = response.data.rates;
-          this.sortDirection = 'ASC';
         });
       } else {
         console.log('zły format');
       }
-    }
-
-    sort() {
-      this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
-      this.css.sort(this.rates, 'effectiveDate', this.sortDirection);
     }
   }
 };

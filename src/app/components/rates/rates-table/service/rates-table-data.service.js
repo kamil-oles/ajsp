@@ -1,13 +1,25 @@
-import { TableRow } from '../../../shared/classes/components-classes';
+import { TableRowCurrent, TableRowHistorical } from '../../../shared/classes/components-classes';
 
 export class RatesTableDataService {
   format(number) {
     return String(number.toFixed(4)).replace('.', ',');
   }
 
-  prepare(array) {
+  prepare(array, view) {
     return array.map(el => {
-      return new TableRow(this.format(el.bid), this.format(el.ask), null, el.code, el.currency);
+      return this.rows(el, view);
     });
+  }
+
+  rows(el, view) {
+    const rows = {
+      current: () => {
+        return new TableRowCurrent(this.format(el.bid), this.format(el.ask), el.code, el.currency);
+      },
+      historical: () => {
+        return new TableRowHistorical(this.format(el.bid), this.format(el.ask), el.effectiveDate);
+      }
+    };
+    return rows[view]();
   }
 }
