@@ -1,34 +1,44 @@
-<md-card-content>
-  <form>
-    <div>
-      <label for="currency">
-        Waluta
-      </label>
-      <div class="col-xs-9 col-sm-3">
-        <select id="currency" ng-model="$ctrl.currency">
-          <option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
-            {{option.code}}
-          </option>
-        </select>
+<form>
+  <md-card-content>
+    <div layout layout-wrap>
+      <div flex="100">
+        <md-input-container>
+          <label>
+            Waluta
+          </label>
+          <md-select class="code" ng-model="$ctrl.currency" md-selected-text="$ctrl.currency">
+            <md-option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
+              {{option.code}} {{option.currency}}
+            </md-option>
+          </md-select>
+        </md-input-container>
       </div>
-      <label>
-        Od
-      </label>
-      <div>
-        <md-datepicker ng-model="$ctrl.from" md-hide-icons="calendar" md-max-date="$ctrl.max"
-          md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
-      </div>
-      <label>
-        Do
-      </label>
-      <div>
-        <md-datepicker ng-model="$ctrl.to" md-hide-icons="calendar" md-max-date="$ctrl.max"
-          md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+      <div flex="100" layout>
+        <div flex="50">
+          <md-input-container>
+            <label>
+              Od
+            </label>
+            <md-datepicker ng-model="$ctrl.from" md-hide-icons="calendar" md-max-date="$ctrl.max"
+              md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+          </md-input-container>
+        </div>
+        <div flex="50">
+          <md-input-container>
+            <label>
+              Do
+            </label>
+            <md-datepicker ng-model="$ctrl.to" md-hide-icons="calendar" md-max-date="$ctrl.max"
+              md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+          </md-input-container>
+        </div>
       </div>
     </div>
-    <button type="submit" ng-click="$ctrl.getRates()">
+  </md-card-content>
+  <md-card-actions layout layout-align="space-around">
+    <md-button type="submit" class="md-primary md-raised button-typography">
       Pobierz kursy
-    </button>
-  </form>
-</md-card-content>
+    </md-button>
+  </md-card-actions>
+</form>
 <app-rates-table view="'historical'" rates="$ctrl.rates"></app-rates-table>

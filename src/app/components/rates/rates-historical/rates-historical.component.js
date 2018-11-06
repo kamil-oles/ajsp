@@ -16,7 +16,7 @@ export const ratesHistoricalComponent = {
     }
 
     $onInit() {
-      this.currency = this.lastWeekRates.data ? this.lastWeekRates.data.code : 'EUR';
+      this.currency = this.lastWeekRates.data ? this.lastWeekRates.data.code : 'USD';
       this.from = this.lastWeekRates.from;
       this.max = new Date();
       this.min = new Date(2002, 0, 2);
