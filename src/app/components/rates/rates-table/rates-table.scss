@@ -1,41 +1,44 @@
-table {
-  border-collapse: collapse;
-  min-width: 511px;
-  width: 100%;
-}
-td {
-  border-top: 1px solid #f5f5f5;
-}
-td, th {
-  color: rgba(0, 0, 0, 0.871);
-  padding-left: 16px;
-  padding-right: 16px;
-}
-th {
-  color: #00000099;
-  cursor: pointer;
-  &:first-child {
-    background-color: white;
-    box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
-    left: 0;
-    position: sticky;
+.table-container {
+  overflow: auto;
+  table {
+    border-collapse: collapse;
+    min-width: 511px;
+    width: 100%;
   }
-  &:focus {
-    outline: none;
+  td {
+    border-top: 1px solid #f5f5f5;
   }
-}
-tr {
-  height: 48px;
-  position: relative;
-  td:first-child {
-    background-color: white;
-    box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
-    left: 0;
-    position: sticky;
+  td, th {
+    color: rgba(0, 0, 0, 0.871);
+    padding-left: 16px;
+    padding-right: 16px;
   }
-}
-tbody tr {
-  height: 48px;
+  th {
+    color: #00000099;
+    cursor: pointer;
+    &:first-child {
+      background-color: white;
+      box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
+      left: 0;
+      position: sticky;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  tr {
+    height: 48px;
+    position: relative;
+    td:first-child {
+      background-color: white;
+      box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
+      left: 0;
+      position: sticky;
+    }
+  }
+  tbody tr {
+    height: 48px;
+  }
 }
 .icon-container {
   display: inline-block;
@@ -53,7 +56,4 @@ tbody tr {
 }
 .right {
   text-align: right;
-}
-.table-container {
-  overflow: auto;
 }

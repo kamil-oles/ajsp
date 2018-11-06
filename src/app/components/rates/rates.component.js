@@ -1,12 +1,18 @@
 export const ratesComponent = {
   template: require('./rates.html'),
   controller: class RatesComponentController {
-    constructor($state) {
+    constructor($state, $transitions) {
       this.state = $state;
+      this.transitions = $transitions;
     }
 
     $onInit() {
       this.setState();
+      this.transitions.onSuccess({}, (transition) => console.log(transition));
+    }
+
+    $onDestroy() {
+      console.log('dupa');
     }
 
     navigate(state) {
