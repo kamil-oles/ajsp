@@ -1,10 +1,10 @@
-export const converterFormCodeComponent = {
+export const selectComponent = {
   bindings: {
     currency: '<',
     onUpdateCode: '&'
   },
-  template: require('./converter-form-code.html'),
-  controller: class ConverterFormCodeComponent {
+  template: require('./select.html'),
+  controller: class SelectComponent {
     constructor(ComponentsCurrenciesService, EventEmitter) {
       this.currencies = ComponentsCurrenciesService.currencies;
       this.EventEmitter = EventEmitter;
