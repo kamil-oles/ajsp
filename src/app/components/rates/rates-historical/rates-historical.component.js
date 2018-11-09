@@ -16,7 +16,9 @@ export const ratesHistoricalComponent = {
     }
 
     $onInit() {
-      this.currency = this.lastWeekRates.data ? this.lastWeekRates.data.code : 'USD';
+      this.currency = {
+        code: this.lastWeekRates.data ? this.lastWeekRates.data.code : 'USD'
+      };
       this.from = this.lastWeekRates.from;
       this.max = new Date();
       this.min = new Date(2002, 0, 2);
@@ -28,12 +30,16 @@ export const ratesHistoricalComponent = {
       const start = this.filter('date')(this.from, 'yyyy-MM-dd'),
         end = this.filter('date')(this.to, 'yyyy-MM-dd');
       if (this.regex.test(start) && this.regex.test(end)) {
-        this.chs.ratesHistorical(this.currency, start, end).then(response => {
+        this.chs.ratesHistorical(this.currency.code, start, end).then(response => {
           this.rates = response.data.rates;
         });
       } else {
         console.log('zły format');
       }
+    }
+
+    updateCode(data) {
+      this.currency.code = data.code;
     }
   }
 };

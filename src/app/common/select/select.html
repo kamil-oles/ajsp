@@ -3,7 +3,10 @@
     PLN
   </div>
 </div>
-<md-input-container class="padding-left-reset" ng-if="$ctrl.currency.code !== 'PLN'">
+<md-input-container ng-if="$ctrl.currency.code !== 'PLN'">
+  <label>
+    Waluta
+  </label>
   <md-select class="code body" ng-model="$ctrl.currency.code" ng-change="$ctrl.updateCode()"
     md-selected-text="$ctrl.currency.code">
     <md-option class="body" ng-repeat="option in $ctrl.currencies" ng-value="option.code">

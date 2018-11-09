@@ -1,44 +1,35 @@
 <form name="historicalForm" ng-submit="$ctrl.getRates()">
   <md-card-content>
-    <div layout layout-wrap>
-      <div flex="100" flex-sm="25" flex-gt-sm="20">
+    <div class="extra-padding" layout layout-wrap>
+      <div flex="50" flex-sm="25" flex-gt-sm="20">
+        <app-select currency="$ctrl.currency" on-update-code="$ctrl.updateCode($event)"></app-select>
+      </div>
+      <div flex="50" flex-sm="25" flex-gt-sm="20">
         <md-input-container>
           <label>
-            Waluta
+            Od
           </label>
-          <md-select class="code" ng-model="$ctrl.currency" md-selected-text="$ctrl.currency">
-            <md-option ng-repeat="option in $ctrl.currencies" ng-value="option.code">
-              {{option.code}} {{option.currency}}
-            </md-option>
-          </md-select>
+          <md-datepicker ng-model="$ctrl.from" md-hide-icons="calendar" md-max-date="$ctrl.max"
+            md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
         </md-input-container>
       </div>
-      <div flex="100" flex-sm="50" flex-gt-sm="40" layout>
-        <div flex="50">
-          <md-input-container>
-            <label>
-              Od
-            </label>
-            <md-datepicker ng-model="$ctrl.from" md-hide-icons="calendar" md-max-date="$ctrl.max"
-              md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
-          </md-input-container>
-        </div>
-        <div flex="50">
-          <md-input-container>
-            <label>
-              Do
-            </label>
-            <md-datepicker ng-model="$ctrl.to" md-hide-icons="calendar" md-max-date="$ctrl.max"
-              md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
-          </md-input-container>
+      <div flex="50" flex-sm="25" flex-gt-sm="20">
+        <md-input-container>
+          <label>
+            Do
+          </label>
+          <md-datepicker ng-model="$ctrl.to" md-hide-icons="calendar" md-max-date="$ctrl.max"
+            md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+        </md-input-container>
+      </div>
+      <div flex="50" flex-sm="25" flex-gt-sm="20">
+        <div class="button-container" layout layout-align="end" layout-align-gt-xs="start">
+          <md-button type="submit" class="md-primary md-raised button-typography">
+            Filtruj
+          </md-button>
         </div>
       </div>
     </div>
   </md-card-content>
-  <md-card-actions layout layout-align="space-around">
-    <md-button type="submit" class="md-primary md-raised button-typography">
-      Pobierz kursy
-    </md-button>
-  </md-card-actions>
 </form>
 <app-rates-table view="'historical'" rates="$ctrl.rates"></app-rates-table>
