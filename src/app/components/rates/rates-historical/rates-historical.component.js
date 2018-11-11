@@ -11,8 +11,6 @@ export const ratesHistoricalComponent = {
       this.scope = $scope;
     }
 
-    regex = /^\d{4}-\d{2}-\d{2}$/;
-
     $onInit() {
       this.scope.$emit('stateChange', 'historical');
       this.currency = {
@@ -28,13 +26,9 @@ export const ratesHistoricalComponent = {
     getRates() {
       const start = this.filter('date')(this.from, 'yyyy-MM-dd'),
         end = this.filter('date')(this.to, 'yyyy-MM-dd');
-      if (this.regex.test(start) && this.regex.test(end)) {
-        this.chs.ratesHistorical(this.currency.code, start, end).then(response => {
-          this.rates = response.data.rates;
-        });
-      } else {
-        console.log('zły format');
-      }
+      this.chs.ratesHistorical(this.currency.code, start, end).then(response => {
+        this.rates = response.data.rates;
+      });
     }
 
     updateCode(data) {

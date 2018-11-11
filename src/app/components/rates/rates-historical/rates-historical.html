@@ -5,26 +5,28 @@
         <app-select currency="$ctrl.currency" on-update-code="$ctrl.updateCode($event)"></app-select>
       </div>
       <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <md-input-container>
+        <md-input-container class="datepicker-container">
           <label>
             Od
           </label>
-          <md-datepicker ng-model="$ctrl.from" md-hide-icons="calendar" md-max-date="$ctrl.max"
-            md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+          <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
+            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+          <app-rates-historical-messages errors="historicalForm.from.$error"></app-rates-historical-messages>
         </md-input-container>
       </div>
       <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <md-input-container>
+        <md-input-container class="datepicker-container">
           <label>
             Do
           </label>
-          <md-datepicker ng-model="$ctrl.to" md-hide-icons="calendar" md-max-date="$ctrl.max"
-            md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+          <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar"
+            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-open-on-focus></md-datepicker>
+          <app-rates-historical-messages errors="historicalForm.to.$error"></app-rates-historical-messages>
         </md-input-container>
       </div>
       <div flex="50" flex-sm="25" flex-gt-sm="20">
         <div class="button-container" layout layout-align="end" layout-align-gt-xs="start">
-          <md-button type="submit" class="md-primary md-raised button-typography">
+          <md-button type="submit" class="md-primary md-raised button-typography" ng-disabled="historicalForm.$invalid">
             Filtruj
           </md-button>
         </div>
