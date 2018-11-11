@@ -4,18 +4,17 @@ export const ratesHistoricalComponent = {
   },
   template: require('./rates-historical.html'),
   controller: class RatesHistoricalComponentController {
-    constructor(
-      $filter,
-      ComponentsCurrenciesService,
-      ComponentsHttpService
-    ) {
+    constructor($filter, $scope, ComponentsCurrenciesService, ComponentsHttpService) {
       this.currencies = ComponentsCurrenciesService.currencies;
       this.chs = ComponentsHttpService;
       this.filter = $filter;
-      this.regex = /^\d{4}-\d{2}-\d{2}$/;
+      this.scope = $scope;
     }
 
+    regex = /^\d{4}-\d{2}-\d{2}$/;
+
     $onInit() {
+      this.scope.$emit('stateChange', 'historical');
       this.currency = {
         code: this.lastWeekRates.data ? this.lastWeekRates.data.code : 'USD'
       };

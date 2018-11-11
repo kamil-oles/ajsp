@@ -1,23 +1,15 @@
 export const ratesComponent = {
   template: require('./rates.html'),
   controller: class RatesComponentController {
-    constructor($state) {
-      this.state = $state;
+    constructor($scope) {
+      this.scope = $scope;
     }
 
     $onInit() {
-      this.setState();
-    }
-
-    navigate(state) {
-      this.state.go(state).then(() => {
-        this.setState();
+      this.scope.$on('stateChange', (event, state) => {
+        this.state = state;
+        event.preventDefault();
       });
-    }
-
-    setState() {
-      this.current = this.state.current.name === 'appRates.current' ? true : false;
-      this.historical = !this.current;
     }
   }
 };

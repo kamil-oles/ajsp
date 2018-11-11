@@ -8,16 +8,16 @@
     </md-card-title>
     <md-card-title class="reset-padding-top">
       <md-card-title-text class="md-subhead subtitle">
-        Aktualne i historyczne kursy dwunastu obcych walut.
+        Aktualne i historyczne kursy dwunastu walut obcych.
       </md-card-title-text>
     </md-card-title>
     <md-tabs md-stretch-tabs="always">
-      <md-tab ng-click="$ctrl.navigate('appRates.current')" md-active="$ctrl.current">
+      <md-tab ui-sref="appRates.current" md-active="$ctrl.state === 'current'">
         <md-tab-label>
           Aktualne
         </md-tab-label>
       </md-tab>
-      <md-tab ng-click="$ctrl.navigate('appRates.historical')" md-active="$ctrl.historical">
+      <md-tab ui-sref="appRates.historical" md-active="$ctrl.state === 'historical'">
         <md-tab-label>
           Historyczne
         </md-tab-label>
