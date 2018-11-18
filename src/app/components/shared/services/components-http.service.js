@@ -4,9 +4,9 @@ export class ComponentsHttpService {
   constructor($filter, $http) {
     this.filter = $filter;
     this.http = $http;
-    this.regex = /^\d{4}-\d{2}-\d{2}$/;
-    this.url = 'http://api.nbp.pl/api/exchangerates/';
   }
+
+  url = 'http://api.nbp.pl/api/exchangerates/';
 
   fetchCurrentRates() {
     return this.ratesCurrent().then(response => this.removeXdr(response.data[0]), (err) => {
@@ -48,14 +48,10 @@ export class ComponentsHttpService {
   }
 
   ratesHistorical(code, start, end) {
-    if (this.regex.test(start) && this.regex.test(end)) {
-      return this.http({
-        method: 'GET',
-        url: `${this.url}rates/c/${code}/${start}/${end}/`
-      });
-    } else {
-      return false;
-    }
+    return this.http({
+      method: 'GET',
+      url: `${this.url}rates/c/${code}/${start}/${end}/`
+    });
   }
 
   removeXdr(response) {
