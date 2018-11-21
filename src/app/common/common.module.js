@@ -4,11 +4,13 @@ import { commonComponent } from './common.component';
 import { appFooter } from './footer/footer.module';
 import { appHeader } from './header/header.module';
 import { appSelect } from './select/select.module';
+import { ToastDirective } from './directives/toast.directive';
 import './common.scss';
 
 export const appCommon = angular
   .module('appCommon', [uiRouter, appFooter, appHeader, appSelect])
   .component('appCommon', commonComponent)
+  .directive('toast', ToastDirective)
   .config($stateProvider => {
     $stateProvider
       .state('appCommon', {

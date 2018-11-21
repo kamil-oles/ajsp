@@ -4,11 +4,10 @@ export const ratesHistoricalComponent = {
   },
   template: require('./rates-historical.html'),
   controller: class RatesHistoricalComponentController {
-    constructor($filter, $mdToast, $scope, ComponentsCurrenciesService, ComponentsHttpService) {
+    constructor($filter, $scope, ComponentsCurrenciesService, ComponentsHttpService) {
       this.currencies = ComponentsCurrenciesService.currencies;
       this.chs = ComponentsHttpService;
       this.filter = $filter;
-      this.mdToast = $mdToast;
       this.scope = $scope;
     }
 
@@ -30,13 +29,7 @@ export const ratesHistoricalComponent = {
       this.chs.ratesHistorical(this.currency.code, start, end).then(response => {
         this.rates = response.data.rates;
       }, err => {
-        this.mdToast.show(
-          this.mdToast.simple()
-            .textContent(err.data)
-            .parent(document.getElementById('toast-container'))
-            .hideDelay(5000000)
-            .position('top, right')
-        );
+        this.scope.$emit('toast', err.data);
       });
     }
 
