@@ -1,4 +1,7 @@
 header {
   background-color: yellow;
   height: 10vh;
+  @media(min-width: 960px) {
+    height: 64px;
+  }
 }

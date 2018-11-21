@@ -5,6 +5,10 @@ footer {
   @media(min-width: 600px) {
     height: 10vh;
   }
+  @media(min-width: 960px) {
+    height: 80px;
+    padding: 20px 8px;
+  }
 }
 md-icon.custom-icon {
   font-size: 36px;
@@ -28,6 +32,9 @@ md-icon.custom-icon {
     line-height: 3vh;
     @media(min-width: 600px) {
       line-height: 6vh;
+    }
+    @media(min-width: 960px) {
+      line-height: 40px;
     }
   }
 }

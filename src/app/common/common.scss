@@ -1,5 +1,11 @@
 main {
   min-height: 77vh;
+  @media(min-width: 600px) {
+    min-height: 80vh;
+  }
+  @media(min-width: 960px) {
+    min-height: calc(100vh - 144px);
+  }
 }
 #toast-container {
   position: fixed;
