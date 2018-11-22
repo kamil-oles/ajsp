@@ -13,7 +13,7 @@ export class ToastDirective {
           .action('Zamknij')
           .hideDelay(false)
           .parent(element)
-          .position('top, right')
+          .position('top right')
           .textContent(messageProcessed)
       );
       event.stopPropagation();
