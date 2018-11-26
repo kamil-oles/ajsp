@@ -15,9 +15,7 @@ export class ToastDirective {
         parent: element,
         position: 'top right',
         resolve: {
-          Message: function () {
-            return messageProcessed;
-          }
+          Message: () => messageProcessed
         },
         template: `<md-toast>
           <span class="md-toast-text" flex>
