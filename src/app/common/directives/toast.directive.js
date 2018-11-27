@@ -8,15 +8,19 @@ export class ToastDirective {
   link(scope, element, attrs, controller) {
     scope.$parent.$on('toast', (event, message) => {
       const messageProcessed = controller.processMessage(message);
+      scope.$parent.show = true;
+      // setTimeout(function () {
       controller.toast.show({
         controller: 'toastController',
         controllerAs: 'toast',
         hideDelay: false,
         parent: element,
         position: 'top right',
+        preserveScope: true,
         resolve: {
           Message: () => messageProcessed
         },
+        scope: scope.$new(true, scope.$parent),
         template: `<md-toast>
           <span class="md-toast-text" flex>
             {{toast.message}}
@@ -26,6 +30,7 @@ export class ToastDirective {
           </md-button>
         </md-toast>`
       });
+      // }, 100);
       event.stopPropagation();
     });
   }
@@ -49,14 +54,15 @@ class ToastDirectiveController {
 }
 
 export class ToastController {
-  constructor($mdToast, Message) {
-    this.toast = $mdToast;
+  constructor($mdToast, $scope, Message) {
     this.message = Message;
+    this.scope = $scope;
+    this.toast = $mdToast;
   }
 
   close() {
     this.toast.hide().then(() => {
-      console.log('close');
+      this.scope.$parent.show = false;
     });
   }
 }
