@@ -16,6 +16,7 @@ export class ToastDirective {
           .action('ZAMKNIJ')
           .hideDelay(false)
           .parent(element)
+          .position('top right')
           .textContent(messageProcessed)
       ).then(() => {
         element.toggleClass('show hide');
