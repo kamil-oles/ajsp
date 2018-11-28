@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
 import { ratesCurrentComponent } from './rates-current.component';
-import './rates-current.scss';
 
 export const appRatesCurrent = angular
   .module('appRatesCurrent', [uiRouter])
