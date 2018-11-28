@@ -8,29 +8,20 @@ export class ToastDirective {
   link(scope, element, attrs, controller) {
     scope.$parent.$on('toast', (event, message) => {
       const messageProcessed = controller.processMessage(message);
-      scope.$parent.show = true;
-      // setTimeout(function () {
-      controller.toast.show({
-        controller: 'toastController',
-        controllerAs: 'toast',
-        hideDelay: false,
-        parent: element,
-        position: 'top right',
-        preserveScope: true,
-        resolve: {
-          Message: () => messageProcessed
-        },
-        scope: scope.$new(true, scope.$parent),
-        template: `<md-toast>
-          <span class="md-toast-text" flex>
-            {{toast.message}}
-          </span>
-          <md-button ng-click="toast.close()">
-            ZAMKNIJ
-          </md-button>
-        </md-toast>`
+      if (element.hasClass('hide')) {
+        element.toggleClass('show hide');
+      }
+      controller.toast.show(
+        controller.toast.simple()
+          .action('ZAMKNIJ')
+          .hideDelay(false)
+          .parent(element)
+          .textContent(messageProcessed)
+      ).then(() => {
+        element.toggleClass('show hide');
+      }, () => {
+        return;
       });
-      // }, 100);
       event.stopPropagation();
     });
   }
@@ -50,19 +41,5 @@ class ToastDirectiveController {
     } else {
       return '';
     }
-  }
-}
-
-export class ToastController {
-  constructor($mdToast, $scope, Message) {
-    this.message = Message;
-    this.scope = $scope;
-    this.toast = $mdToast;
-  }
-
-  close() {
-    this.toast.hide().then(() => {
-      this.scope.$parent.show = false;
-    });
   }
 }
