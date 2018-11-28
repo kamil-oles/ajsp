@@ -1,5 +1,23 @@
+.icon-container {
+  display: inline-block;
+  width: 24px;
+}
+.label {
+  display: inline-block;
+  line-height: 48px;
+}
+.left {
+  text-align: left
+}
+.rateTable {
+  text-align: right;
+}
+.right {
+  text-align: right;
+}
 .table-container {
   overflow: auto;
+  position: relative;
   table {
     border-collapse: collapse;
     min-width: 511px;
@@ -39,21 +57,4 @@
   tbody tr {
     height: 48px;
   }
-}
-.icon-container {
-  display: inline-block;
-  width: 24px;
-}
-.label {
-  display: inline-block;
-  line-height: 48px;
-}
-.left {
-  text-align: left
-}
-.rateTable {
-  text-align: right;
-}
-.right {
-  text-align: right;
 }
