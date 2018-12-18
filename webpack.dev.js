@@ -30,8 +30,10 @@ const FONTS = {
   }]
 };
 
+const HMR = new WEBPACK.HotModuleReplacementPlugin();
+
 const INDEX_HTML = new HTML_WEBPACK_PLUGIN({
-  inject: 'head',
+  hash: true,
   meta: {
     viewport: 'width=device-width, initial-scale=1.0'
   },
@@ -89,11 +91,13 @@ const DEV_CONFIG = {
   plugins: [
     BUNDLE_ANALYSIS.analyzer,
     BUNDLE_ANALYSIS.replace,
+    HMR,
     INDEX_HTML
   ],
   devtool: 'eval-source-map',
   devServer: {
     historyApiFallback: true,
+    hot: true,
     open: true
   }
 };
