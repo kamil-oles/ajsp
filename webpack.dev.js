@@ -71,7 +71,7 @@ const TEMPLATES = {
   }]
 };
 
-const CONFIG = {
+const DEV_CONFIG = {
   mode: 'development',
   entry: PATHS.app,
   output: {
@@ -98,4 +98,4 @@ const CONFIG = {
   }
 };
 
-module.exports = CONFIG;
+module.exports = DEV_CONFIG;
