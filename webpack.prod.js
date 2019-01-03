@@ -1,6 +1,5 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
   CleanPlugin = require('clean-webpack-plugin'),
-  devMode = process.env.NODE_ENV !== 'production',
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   MiniCssExtraPlugin = require('mini-css-extract-plugin'),
   path = require('path'),
@@ -61,23 +60,19 @@ const scripts = {
 const style = {
   test: /\.(sa|sc|c)ss$/,
   use: [
-    devMode ? 'style-loader' : MiniCssExtraPlugin.loader,
-    'css-loader',
-    'sass-loader',
-    // {
-    //   loader: devMode ? 'style-loader' : MiniCssExtraPlugin.loader
-    //   // loader: MiniCssExtraPlugin.loader
-    // },
-    // {
-    //   loader: 'css-loader',
-    //   // options: {
-    //   //   modules: true,
-    //   //   localIdentName: '[name]__[local]--[hash:base64:5]'
-    //   // }
-    // },
-    // {
-    //   loader: 'sass-loader'
-    // }
+    {
+      loader: MiniCssExtraPlugin.loader
+    },
+    {
+      loader: 'css-loader',
+      // options: {
+      //   modules: true,
+      //   localIdentName: '[name]__[local]--[hash:base64:5]'
+      // }
+    },
+    {
+      loader: 'sass-loader'
+    }
   ]
 };
 
@@ -112,6 +107,7 @@ const prepare = {
 };
 
 const config = {
+  mode: 'production',
   entry: paths.app,
   output: {
     path: dist,

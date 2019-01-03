@@ -1,5 +1,5 @@
-<md-content class="md-padding flex-box">
-  <md-card class="fixed-width">
+<md-content class="md-padding flex-box" ng-cloak>
+  <md-card class="fixed-width" ng-cloak>
     <!-- <img ng-src="../../../assets/images/rates.jpg" class="md-card-image"> -->
     <md-card-title>
       <md-card-title-text class="md-headline">
@@ -11,14 +11,14 @@
         Aktualne i historyczne kursy dwunastu walut obcych.
       </md-card-title-text>
     </md-card-title>
-    <md-tabs md-stretch-tabs="always">
-      <md-tab ui-sref="appRates.current" md-active="$ctrl.state === 'current'">
-        <md-tab-label>
+    <md-tabs md-stretch-tabs="always" ng-cloak>
+      <md-tab ui-sref="appRates.current" md-active="$ctrl.state === 'current'" ng-cloak>
+        <md-tab-label ng-cloak>
           Aktualne
         </md-tab-label>
       </md-tab>
-      <md-tab ui-sref="appRates.historical" md-active="$ctrl.state === 'historical'">
-        <md-tab-label>
+      <md-tab ui-sref="appRates.historical" md-active="$ctrl.state === 'historical'" ng-cloak>
+        <md-tab-label ng-cloak>
           Historyczne
         </md-tab-label>
       </md-tab>

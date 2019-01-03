@@ -13,7 +13,11 @@ export const appConverter = angular
   .config($stateProvider => {
     $stateProvider.state('appConverter', {
       url: '/converter',
-      component: 'appConverter'
+      component: 'appConverter',
+      // lazyLoad: ($transitions$) => {
+      //   const $ocLazyLoad = $transitions$.injector().get('$ocLazyLoad');
+      //   return require
+      // }
     });
   })
   .name;
