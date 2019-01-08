@@ -14,8 +14,7 @@ const PATHS = {
 const BUNDLE_ANALYSIS = {
   analyzer: new BUNDLE_ANALYZER_PLUGIN({
     openAnalyzer: true
-  }),
-  replace: new WEBPACK.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
+  })
 };
 
 const FONTS = {
@@ -33,7 +32,6 @@ const FONTS = {
 const HMR = new WEBPACK.HotModuleReplacementPlugin();
 
 const INDEX_HTML = new HTML_WEBPACK_PLUGIN({
-  hash: true,
   meta: {
     viewport: 'width=device-width, initial-scale=1.0'
   },
@@ -78,7 +76,7 @@ const DEV_CONFIG = {
   entry: PATHS.app,
   output: {
     path: DIST,
-    filename: 'app/app.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -90,7 +88,6 @@ const DEV_CONFIG = {
   },
   plugins: [
     BUNDLE_ANALYSIS.analyzer,
-    BUNDLE_ANALYSIS.replace,
     HMR,
     INDEX_HTML
   ],
