@@ -21,6 +21,12 @@ main {
     top: 64px;
   }
 }
+.body {
+  padding-top: 3.5rem;
+  @media(min-width: 600px) {
+    padding-top: 4rem;
+  }
+}
 .hide {
   visibility: hidden;
 }
