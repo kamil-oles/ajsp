@@ -16,8 +16,15 @@
   color: $color-text-dark;
   line-height: 1.5rem;
   text-decoration: none;
+  transition: color 200ms ease-out;
   @media(min-width: 600px) {
     height: $footer-menu-height;
     line-height: $footer-menu-height;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    color: $color-primary-dark;
   }
 }
