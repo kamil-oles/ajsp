@@ -4,13 +4,12 @@
   background-color: $color-primary;
   box-shadow: 0 .125rem .375rem rgba(0, 0, 0, .2);
   color: $color-text-light;
-  height: 3.5rem;
+  height: .875 * $header-height;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 2;
   @media(min-width: 600px) {
-    height: 4rem;
-    padding: 0 1.125rem;
+    height: $header-height;
   }
 }

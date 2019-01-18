@@ -1,21 +1,3 @@
-export const footerComponent = {
-  template: require('./footer.html'),
-  controller: class FooterComponentController {
-    constructor() {
-      this.menu = [
-        {
-          title: 'Kalkulator',
-          url: 'appConverter'
-        },
-        {
-          title: 'Kursy walut',
-          url: 'appRates.current'
-        },
-        {
-          title: 'O projekcie',
-          url: ''
-        }
-      ];
-    }
-  }
+export const FOOTER_COMPONENT = {
+  template: require('./footer.html')
 };

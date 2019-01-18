@@ -1,23 +1,19 @@
-<footer class="padding" layout layout-align="space-around">
-  <div class="container fixed-width">
-    <div class="content" layout>
-      <div flex="75">
-        <ul>
-          <li class="menu-item" ng-repeat="item in $ctrl.menu">
-            <a class="caption link" ui-sref="{{item.url}}">
-              {{item.title}}
-            </a>
-          </li>
-        </ul>
-        <!-- Photo by Vladislav Reshetnyak from Pexels (Franklin) -->
-      </div>
-      <div flex="25" layout layout-align="end center">
-        <a href="https://github.com/kamil-oles/Currency_converter-AngularJS" target="blank">
-          <md-icon class="custom-icon">
-            code
-          </md-icon>
-        </a>
-      </div>
-    </div>
-  </div>
+<footer class="footer" ng-cloak>
+  <ul>
+    <li class="footer-menu-item">
+      <a class="typography-caption footer-menu-link" ui-sref="appConverter">
+        Kalkulator
+      </a>
+    </li>
+    <li class="footer-menu-item">
+      <a class="typography-caption footer-menu-link" ui-sref="appRates.current">
+        Kursy walut
+      </a>
+    </li>
+    <li class="footer-menu-item">
+      <a class="typography-caption footer-menu-link" ui-sref="">
+        O projekcie
+      </a>
+    </li>
+  </ul>
 </footer>

@@ -1,8 +1,8 @@
 import angular from 'angular';
-import { footerComponent } from './footer.component';
+import { FOOTER_COMPONENT } from './footer.component';
 import './footer.scss';
 
-export const appFooter = angular
+export const APP_FOOTER = angular
   .module('appFooter', [])
-  .component('appFooter', footerComponent)
+  .component('appFooter', FOOTER_COMPONENT)
   .name;

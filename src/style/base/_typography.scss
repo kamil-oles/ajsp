@@ -1,3 +1,12 @@
+.typography-body {
+  @include typography(16px, normal, .5px);
+}
+.typography-caption {
+  @include typography(12px, normal, .4px);
+}
+.typography-subtitle {
+  @include typography(16px, normal, .15px);
+}
 button.button-typography {
   @include typography(14px, 500, .75px);
 }
@@ -7,17 +16,11 @@ h6 {
 md-card-title-text.subtitle {
   @include typography(16px, normal, .15px);
 }
-.body {
-  @include typography(16px, normal, .5px);
-}
 .body-2 {
   @include typography(14px, normal, .25px);
 }
 .body-2-bold {
   @include typography(12px, normal, .25px);
-}
-.caption {
-  @include typography(12px, normal, .4px);
 }
 .subtitle2 {
   @include typography(14px, 500, .1px);

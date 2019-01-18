@@ -1,3 +1,3 @@
-export const headerComponent = {
+export const HEADER_COMPONENT = {
   template: require('./header.html')
 };

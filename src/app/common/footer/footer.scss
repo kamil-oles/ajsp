@@ -1,40 +1,23 @@
-footer {
-  background-color: orange;
-  height: 13vh;
-  padding: 2vh 8px;
-  @media(min-width: 600px) {
-    height: 10vh;
-  }
-  @media(min-width: 960px) {
-    height: 80px;
-    padding: 20px 8px;
-  }
+@import '../../../style/helpers/variables';
+
+.footer {
+  background-color: $color-primary-light;
+  min-height: $footer-height;
+  padding: $footer-padding;
 }
-md-icon.custom-icon {
-  font-size: 36px;
-  height: 36px;
-  width: 36px;
-}
-.container {
-  margin: 0 8px;
-  width: 100%;
-}
-.content {
-  padding: 0 16px;
-}
-.menu-item {
+.footer-menu-item {
   list-style: none;
   @media(min-width: 600px) {
     display: inline;
-    margin-right: 15px;
+    margin-right: $footer-padding;
   }
-  a {
-    line-height: 3vh;
-    @media(min-width: 600px) {
-      line-height: 6vh;
-    }
-    @media(min-width: 960px) {
-      line-height: 40px;
-    }
+}
+.footer-menu-link {
+  color: $color-text-dark;
+  line-height: 1.5rem;
+  text-decoration: none;
+  @media(min-width: 600px) {
+    height: $footer-menu-height;
+    line-height: $footer-menu-height;
   }
 }
