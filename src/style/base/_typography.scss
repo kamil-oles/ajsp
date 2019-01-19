@@ -10,7 +10,7 @@
 button.button-typography {
   @include typography(14px, 500, .75px);
 }
-h6 {
+.typography-h6 {
   @include typography(20px, 500, .15px);
 }
 md-card-title-text.subtitle {

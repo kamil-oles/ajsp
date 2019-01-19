@@ -1,0 +1,29 @@
+@import '../../../style/helpers/variables';
+
+.side-menu {
+    background-color: $color-primary-light;
+    box-shadow: .125rem 0 .375rem rgba(0, 0, 0, .2);
+    height: calc(100vh - #{$common-height});
+    left: 0;
+    position: fixed;
+    top: $common-height-sm;
+    width: 16rem;
+    z-index: 2;
+    @media(min-width: 600px) {
+        top: $common-height;
+    }
+}
+.side-menu-item {
+    background-color: $color-primary-light;
+    color: $color-text-dark;
+    height: 3rem;
+    line-height: 3rem;
+    padding-left: .875rem;
+    &:hover {
+        background-color: $color-primary;
+        color: $color-text-light;
+    }
+}
+.side-menu-link {
+    line-height: 3rem;
+}

@@ -1,3 +1,5 @@
+@import '../../style/helpers/variables';
+
 main {
   min-height: 77vh;
   @media(min-width: 600px) {
@@ -23,8 +25,18 @@ main {
 }
 .body {
   padding-top: 3.5rem;
+  position: relative;
   @media(min-width: 600px) {
     padding-top: 4rem;
+  }
+}
+.common-main {
+  position: absolute;
+  right: 0;
+  top: $common-height-sm;
+  width: calc(100% - 16rem);
+  @media(min-width: 600px) {
+      top: $common-height;
   }
 }
 .hide {

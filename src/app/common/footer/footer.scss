@@ -1,8 +1,8 @@
 @import '../../../style/helpers/variables';
 
 .footer {
-  background-color: $color-primary-light;
-  min-height: $footer-height;
+  background-color: $color-primary-dark;
+  min-height: $common-height;
   padding: $footer-padding;
 }
 .footer-menu-item {
@@ -13,7 +13,7 @@
   }
 }
 .footer-menu-link {
-  color: $color-text-dark;
+  color: $color-text-light;
   line-height: 1.5rem;
   text-decoration: none;
   transition: color 200ms ease-out;
@@ -25,6 +25,6 @@
     outline: none;
   }
   &:hover {
-    color: $color-primary-dark;
+    color: $color-primary-light;
   }
 }

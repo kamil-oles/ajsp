@@ -5,11 +5,11 @@ $color-primary-light: rgb(184,161,255);
 $color-text-dark: rgba(0, 0, 0, .87);
 $color-text-light: rgba(255, 255, 255, .87);
 
+// Common
+$common-height: 4rem;
+$common-height-sm: .875 * $common-height;
+
 // Footer
-$footer-height: 4rem;
 $footer-padding: .875rem;
 
-$footer-menu-height: $footer-height - 2 * $footer-padding;
-
-// Header
-$header-height: $footer-height;
+$footer-menu-height: $common-height - 2 * $footer-padding;
