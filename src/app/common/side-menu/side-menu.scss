@@ -13,11 +13,18 @@
         top: $common-height;
     }
 }
+.side-menu-icon {
+    // transform: rotate(0deg);
+    transition: 2000ms;
+    &.side-menu-icon-rotated {
+        transform: rotate(90deg);
+    }
+}
 .side-menu-item {
     background-color: $color-primary-light;
     color: $color-text-dark;
-    height: 3rem;
     line-height: 3rem;
+    min-height: 3rem;
     padding-left: .875rem;
     &:hover {
         background-color: $color-primary;
@@ -26,4 +33,31 @@
 }
 .side-menu-link {
     line-height: 3rem;
+}
+.side-menu-nested {
+    height: 0;
+    transition: height 300ms ease-out;
+    &.side-menu-nested-show {
+        height: 5rem;
+    }
+}
+.side-menu-submenu-item {
+    background-color: $color-primary-light;
+    color: $color-text-dark;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    opacity: 1;
+    padding: 0 .875rem 0 1.75rem;
+    &.ng-hide {
+        opacity: 0;
+    }
+    &.ng-hide-add {
+        transition: opacity 300ms ease-out 200ms;
+    }
+    &.ng-hide-remove {
+        transition: opacity 300ms ease-out 200ms;
+    }
+}
+.side-menu-tree {
+    overflow: hidden;
 }

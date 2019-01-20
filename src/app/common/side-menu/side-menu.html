@@ -1,38 +1,46 @@
 <nav class="side-menu">
     <ul>
-        <li class="side-menu-item">
-            <a class="side-menu-link typography-subtitle">
-                Kalkulator walutowy
-            </a>
+        <li>
+            <div class="side-menu-item">
+                <a class="side-menu-link typography-subtitle">
+                    Kalkulator walutowy
+                </a>
+            </div>
+            <md-divider></md-divider>
         </li>
-        <li class="side-menu-item">
-            <div layout layout-align="space-between center">
+        <li class="side-menu-tree">
+            <div class="side-menu-item" layout layout-align="space-between center">
                 <span class="typography-subtitle">
                     Kursy walutowe
                 </span>
-                <md-button class="md-icon-button md-primary md-hue-2">
+                <md-button class="md-icon-button md-primary md-hue-2 side-menu-icon" ng-class="{'side-menu-icon-rotated': $ctrl.subMenu}"
+                    ng-click="$ctrl.showSubMenu()">
                     <md-icon>
                         keyboard_arrow_right
                     </md-icon>
                 </md-button>
             </div>
-            <ul ng-show="false">
-                <li>
+            <ul class="side-menu-nested" ng-class="{'side-menu-nested-show': $ctrl.subMenu}">
+                <li class="side-menu-submenu-item typography-subtitle-2" ng-show="$ctrl.subMenu">
                     <a>
                         Kursy aktualne
                     </a>
                 </li>
-                <li>
+                <li class="side-menu-submenu-item typography-subtitle-2" ng-show="$ctrl.subMenu">
                     <a>
                         Kursy historyczne
                     </a>
                 </li>
             </ul>
+            <md-divider></md-divider>
         </li>
-        <li class="side-menu-item">
-            <a class="side-menu-link typography-subtitle">
-                O projekcie
-            </a>
+        <li>
+            <div class="side-menu-item">
+                <a class="side-menu-link typography-subtitle">
+                    O projekcie
+                </a>
+            </div>
+            <md-divider></md-divider>
         </li>
     </ul>
 </nav>
