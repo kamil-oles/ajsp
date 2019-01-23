@@ -8,7 +8,7 @@
             </div>
             <md-divider></md-divider>
         </li>
-        <li class="side-menu-tree">
+        <li>
             <div class="side-menu-item" layout layout-align="space-between center">
                 <span class="typography-subtitle">
                     Kursy walutowe
@@ -20,13 +20,13 @@
                     </md-icon>
                 </md-button>
             </div>
-            <ul class="side-menu-nested" ng-class="{'side-menu-nested-show': $ctrl.subMenu}">
-                <li class="side-menu-submenu-item typography-subtitle-2" ng-show="$ctrl.subMenu">
+            <ul ng-class="{'side-menu-submenu-collapsed': !$ctrl.subMenu, 'side-menu-submenu-expanded': $ctrl.subMenu}">
+                <li class="side-menu-submenu-item typography-subtitle-2">
                     <a>
                         Kursy aktualne
                     </a>
                 </li>
-                <li class="side-menu-submenu-item typography-subtitle-2" ng-show="$ctrl.subMenu">
+                <li class="side-menu-submenu-item typography-subtitle-2">
                     <a>
                         Kursy historyczne
                     </a>
