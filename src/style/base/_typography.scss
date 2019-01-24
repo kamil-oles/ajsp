@@ -1,6 +1,9 @@
 .typography-body {
   @include typography(16px, normal, .5px);
 }
+.typography-body-2 {
+  @include typography(14px, normal, .25px);
+}
 .typography-caption {
   @include typography(12px, normal, .4px);
 }
@@ -18,9 +21,6 @@ button.button-typography {
 }
 md-card-title-text.subtitle {
   @include typography(16px, normal, .15px);
-}
-.body-2 {
-  @include typography(14px, normal, .25px);
 }
 .body-2-bold {
   @include typography(12px, normal, .25px);
