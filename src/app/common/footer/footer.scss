@@ -4,12 +4,12 @@
 .footer {
   background-color: $color-primary-dark;
   min-height: $common-height;
-  padding: $footer-padding-lg $footer-padding-sm;
+  padding: $footer-padding $footer-padding-sm;
 }
 .footer-info {
   color: $color-text-light;
   text-align: center;
-  margin-top: $footer-padding-lg;
+  margin-top: $footer-padding;
 }
 .footer-info-link {
   @extend %footer-link;
