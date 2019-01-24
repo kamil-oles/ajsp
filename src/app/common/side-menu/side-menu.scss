@@ -26,13 +26,18 @@
 }
 .side-menu-item {
     background-color: $color-primary-light;
+    border: none;
     color: $color-text-dark;
     line-height: 3rem;
     min-height: 3rem;
     padding: 0 .875rem;
+    width: 100%;
     &:hover {
         background-color: $color-primary;
         color: $color-text-light;
+    }
+    &:focus {
+        outline: none;
     }
 }
 .side-menu-link {
@@ -57,4 +62,8 @@
     height: 2.5rem;
     line-height: 2.5rem;
     padding: 0 .875rem 0 1.75rem;
+    &:hover {
+        background-color: $color-primary;
+        color: $color-text-light;
+    }
 }

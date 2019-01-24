@@ -9,16 +9,14 @@
             <md-divider></md-divider>
         </li>
         <li>
-            <div class="side-menu-item" layout layout-align="space-between center" ng-click="$ctrl.showSubMenu()">
+            <button type="button" class="side-menu-item" layout layout-align="space-between center" ng-click="$ctrl.showSubMenu()">
                 <span class="typography-subtitle">
                     Kursy walutowe
                 </span>
-                <!-- <md-button class="md-icon-button md-primary md-hue-2"> -->
                 <md-icon class="side-menu-icon" ng-class="{'side-menu-icon-collapsed': !$ctrl.subMenu, 'side-menu-icon-expanded': $ctrl.subMenu}">
                     keyboard_arrow_right
                 </md-icon>
-                <!-- </md-button> -->
-            </div>
+            </button>
             <ul ng-class="{'side-menu-submenu-collapsed': !$ctrl.subMenu, 'side-menu-submenu-expanded': $ctrl.subMenu}">
                 <li class="side-menu-submenu-item typography-subtitle-2">
                     <a>
