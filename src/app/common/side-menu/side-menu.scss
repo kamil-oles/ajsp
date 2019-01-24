@@ -14,18 +14,22 @@
     }
 }
 .side-menu-icon {
-    // transform: rotate(0deg);
-    transition: 2000ms;
-    &.side-menu-icon-rotated {
-        transform: rotate(90deg);
-    }
+    margin: 0;
+}
+.side-menu-icon-collapsed {
+    transform: rotate(0);
+    transition: 250ms;
+}
+.side-menu-icon-expanded {
+    transform: rotate(90deg);
+    transition: 300ms;
 }
 .side-menu-item {
     background-color: $color-primary-light;
     color: $color-text-dark;
     line-height: 3rem;
     min-height: 3rem;
-    padding-left: .875rem;
+    padding: 0 .875rem;
     &:hover {
         background-color: $color-primary;
         color: $color-text-light;
