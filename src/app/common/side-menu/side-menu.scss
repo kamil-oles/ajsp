@@ -47,7 +47,7 @@
 }
 .side-menu-submenu-item {
     @extend %side-menu-item;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 .875rem 0 1.75rem;
+    height: $side-menu-submenu-height;
+    line-height: $side-menu-submenu-height;
+    padding: 0 $common-padding 0 $common-padding * 2;
 }

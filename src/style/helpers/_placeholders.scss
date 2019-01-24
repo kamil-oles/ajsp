@@ -17,9 +17,9 @@
 }
 %side-menu-item-level-1 {
   @extend %side-menu-item;
-  line-height: 3rem;
-  min-height: 3rem;
-  padding: 0 .875rem;
+  line-height: $side-menu-item-height;
+  min-height: $side-menu-item-height;
+  padding: 0 $common-padding;
 }
 %uneditable-content-container {
   margin: 18px 0;

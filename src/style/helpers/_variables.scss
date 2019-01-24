@@ -8,9 +8,12 @@ $color-text-light: rgba(255, 255, 255, .87);
 // Common
 $common-height: 4rem;
 $common-height-sm: .875 * $common-height;
+$common-padding: .875rem;
 
 // Footer
+$footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
-$footer-padding-sm: .875rem;
 
-$footer-menu-height: $common-height - 2 * $footer-padding-sm;
+// Side menu
+$side-menu-item-height: 3rem;
+$side-menu-submenu-height: 2.5rem;

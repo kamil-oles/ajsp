@@ -4,7 +4,7 @@
 .footer {
   background-color: $color-primary-dark;
   min-height: $common-height;
-  padding: $footer-padding $footer-padding-sm;
+  padding: $footer-padding $common-padding;
 }
 .footer-info {
   color: $color-text-light;
@@ -18,7 +18,7 @@
   list-style: none;
   @media(min-width: 600px) {
     display: inline;
-    margin-right: $footer-padding-sm;
+    margin-right: $common-padding;
   }
 }
 .footer-menu-link {
