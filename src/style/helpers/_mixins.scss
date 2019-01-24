@@ -1,3 +1,12 @@
+@mixin rotate-icon($degrees, $time) {
+  transform: rotate($degrees);
+  transition: $time;
+}
+@mixin submenu($height, $opacity, $visibility) {
+  height: $height;
+  opacity: $opacity;
+  visibility: $visibility;
+}
 @mixin typography($size, $weight, $spacing) {
   font-size: $size;
   font-weight: $weight;

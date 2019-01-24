@@ -1,4 +1,6 @@
 @import '../../../style/helpers/variables';
+@import '../../../style/helpers/mixins';
+@import '../../../style/helpers/placeholders';
 
 .side-menu {
     background-color: $color-primary-light;
@@ -13,57 +15,39 @@
         top: $common-height;
     }
 }
-.side-menu-icon {
-    margin: 0;
-}
-.side-menu-icon-collapsed {
-    transform: rotate(0);
-    transition: 250ms;
-}
-.side-menu-icon-expanded {
-    transform: rotate(90deg);
-    transition: 300ms;
-}
-.side-menu-item {
-    background-color: $color-primary-light;
+.side-menu-button {
+    @extend %side-menu-item-level-1;
     border: none;
-    color: $color-text-dark;
-    line-height: 3rem;
-    min-height: 3rem;
-    padding: 0 .875rem;
     width: 100%;
-    &:hover {
-        background-color: $color-primary;
-        color: $color-text-light;
-    }
     &:focus {
         outline: none;
     }
 }
+.side-menu-icon-collapsed {
+    @include rotate-icon(0, 400ms);
+}
+.side-menu-icon-expanded {
+    @include rotate-icon(90deg, 300ms);
+}
+.side-menu-item {
+    @extend %side-menu-item-level-1;
+}
 .side-menu-link {
-    line-height: 3rem;
+    display: block;
+    text-align: left;
 }
 .side-menu-submenu-collapsed {
-    height: 1px;
-    opacity: 0;
+    @include submenu(1px, 0, hidden);
     overflow: hidden;
     transition: visibility 150ms ease-out, opacity 150ms ease-out, height 250ms ease-out 150ms;
-    visibility: hidden;
 }
 .side-menu-submenu-expanded {
-    height: 5rem;
-    opacity: 1;
-    visibility: visible;
-    transition: visibility 300ms ease-out 300ms, opacity 300ms ease-out 300ms, height 300ms ease-out;
+    @include submenu(5rem, 1, visible);
+    transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
 }
 .side-menu-submenu-item {
-    background-color: $color-primary-light;
-    color: $color-text-dark;
+    @extend %side-menu-item;
     height: 2.5rem;
     line-height: 2.5rem;
     padding: 0 .875rem 0 1.75rem;
-    &:hover {
-        background-color: $color-primary;
-        color: $color-text-light;
-    }
 }

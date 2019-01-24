@@ -1,3 +1,18 @@
+%side-menu-item {
+  background-color: $color-primary-light;
+  color: $color-text-dark;
+  text-decoration: none;
+  &:hover {
+    background-color: $color-primary;
+    color: $color-text-light;
+  }
+}
+%side-menu-item-level-1 {
+  @extend %side-menu-item;
+  line-height: 3rem;
+  min-height: 3rem;
+  padding: 0 .875rem;
+}
 %uneditable-content-container {
   margin: 18px 0;
   padding-bottom: 2px;
