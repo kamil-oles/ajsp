@@ -15,6 +15,7 @@ $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
 
 // Side menu
-$side-menu-item-height: 2.5rem;
-$side-menu-submenu-height: 3rem;
-$side-menu-submenu-item-height: 2rem;
+$side-menu-item-container-height: 3.5rem;
+$side-menu-item-height: $side-menu-item-container-height - 1rem;
+$side-menu-submenu-item-container-height: 3rem;
+$side-menu-submenu-item-height: $side-menu-submenu-item-container-height - 1rem;

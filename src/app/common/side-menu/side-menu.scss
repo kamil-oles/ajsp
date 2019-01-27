@@ -22,9 +22,6 @@
     padding-right: $common-padding;
     width: 100%;
 }
-.side-menu-icon {
-    border-radius: 50%;
-}
 .side-menu-icon-collapsed {
     @include rotate-icon(0, 400ms);
 }
@@ -33,17 +30,20 @@
 }
 .side-menu-item {
     @extend %side-menu-item-level-1;
-    @extend %side-menu-link;
 }
 .side-menu-item-container {
     background-color: $color-primary-light;
     color: $color-text-dark;
-    min-height: 3.5rem;
+    min-height: $side-menu-item-container-height;
     padding: 0 $common-padding;
     &:hover {
         background-color: $color-primary;
         color: $color-text-light;
     }
+}
+.side-menu-link {
+    display: block;
+    text-align: left;
 }
 .side-menu-submenu-collapsed {
     @include submenu(1px, 0, hidden);
@@ -56,14 +56,13 @@
 }
 .side-menu-submenu-item {
     @extend %side-menu-item;
-    @extend %side-menu-link;
     height: $side-menu-submenu-item-height;
     line-height: $side-menu-submenu-item-height;
 }
 .side-menu-submenu-item-container {
     background-color: $color-primary-light;
     color: $color-text-dark;
-    min-height: $side-menu-submenu-height;
+    min-height: $side-menu-submenu-item-container-height;
     padding: 0 $common-padding 0 $common-padding * 2;
     &:hover {
         background-color: $color-primary;

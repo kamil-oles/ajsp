@@ -2,7 +2,7 @@
     <ul>
         <li class="typography-subtitle">
             <article class="side-menu-item-container" layout="column" layout-align="space-around">
-                <a class="side-menu-item" ui-sref="appConverter">
+                <a class="side-menu-item side-menu-link" ui-sref="appConverter">
                     Kalkulator walutowy
                 </a>
             </article>
@@ -14,19 +14,19 @@
                     <span class="typography-subtitle">
                         Kursy walutowe
                     </span>
-                    <md-icon class="app-margin-0 side-menu-icon" ng-class="{'side-menu-icon-collapsed': !$ctrl.subMenu, 'side-menu-icon-expanded': $ctrl.subMenu}">
+                    <md-icon class="app-margin-0" ng-class="{'side-menu-icon-collapsed': !$ctrl.subMenu, 'side-menu-icon-expanded': $ctrl.subMenu}">
                         keyboard_arrow_right
                     </md-icon>
                 </button>
             </article>
             <ul ng-class="{'side-menu-submenu-collapsed': !$ctrl.subMenu, 'side-menu-submenu-expanded': $ctrl.subMenu}">
                 <li class="side-menu-submenu-item-container" layout="column" layout-align="space-around">
-                    <a class="side-menu-submenu-item typography-subtitle-2" ui-sref="appRates.current">
+                    <a class="side-menu-submenu-item side-menu-link typography-subtitle-2" ui-sref="appRates.current">
                         Kursy aktualne
                     </a>
                 </li>
                 <li class="side-menu-submenu-item-container" layout="column" layout-align="space-around">
-                    <a class="side-menu-submenu-item typography-subtitle-2" ui-sref="appRates.historical">
+                    <a class="side-menu-submenu-item side-menu-link typography-subtitle-2" ui-sref="appRates.historical">
                         Kursy historyczne
                     </a>
                 </li>
@@ -35,7 +35,7 @@
         </li>
         <li class="typography-subtitle">
             <article class="side-menu-item-container" layout="column" layout-align="space-around">
-                <a class="side-menu-item" ui-sref="">
+                <a class="side-menu-item side-menu-link" ui-sref="">
                     O projekcie
                 </a>
             </article>
