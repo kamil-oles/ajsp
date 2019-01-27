@@ -1,28 +1,32 @@
 <nav class="side-menu">
     <ul>
         <li class="typography-subtitle">
-            <a class="side-menu-item side-menu-link" ui-sref="appConverter">
-                Kalkulator walutowy
-            </a>
+            <article class="side-menu-item-container" layout="column" layout-align="space-around">
+                <a class="side-menu-item" ui-sref="appConverter">
+                    Kalkulator walutowy
+                </a>
+            </article>
             <md-divider></md-divider>
         </li>
         <li>
-            <button type="button" class="side-menu-button" layout layout-align="space-between center" ng-click="$ctrl.showSubMenu()">
-                <span class="typography-subtitle">
-                    Kursy walutowe
-                </span>
-                <md-icon class="app-margin-0" ng-class="{'side-menu-icon-collapsed': !$ctrl.subMenu, 'side-menu-icon-expanded': $ctrl.subMenu}">
-                    keyboard_arrow_right
-                </md-icon>
-            </button>
+            <article class="side-menu-item-container" layout="column" layout-align="space-around">
+                <button type="button" class="side-menu-button" layout layout-align="space-between center" ng-click="$ctrl.showSubMenu()">
+                    <span class="typography-subtitle">
+                        Kursy walutowe
+                    </span>
+                    <md-icon class="app-margin-0 side-menu-icon" ng-class="{'side-menu-icon-collapsed': !$ctrl.subMenu, 'side-menu-icon-expanded': $ctrl.subMenu}">
+                        keyboard_arrow_right
+                    </md-icon>
+                </button>
+            </article>
             <ul ng-class="{'side-menu-submenu-collapsed': !$ctrl.subMenu, 'side-menu-submenu-expanded': $ctrl.subMenu}">
-                <li class="typography-subtitle-2">
-                    <a class="side-menu-submenu-item side-menu-link" ui-sref="appRates.current">
+                <li class="side-menu-submenu-item-container" layout="column" layout-align="space-around">
+                    <a class="side-menu-submenu-item typography-subtitle-2" ui-sref="appRates.current">
                         Kursy aktualne
                     </a>
                 </li>
-                <li class="typography-subtitle-2">
-                    <a class="side-menu-submenu-item side-menu-link" ui-sref="appRates.historical">
+                <li class="side-menu-submenu-item-container" layout="column" layout-align="space-around">
+                    <a class="side-menu-submenu-item typography-subtitle-2" ui-sref="appRates.historical">
                         Kursy historyczne
                     </a>
                 </li>
@@ -30,9 +34,11 @@
             <md-divider></md-divider>
         </li>
         <li class="typography-subtitle">
-            <a class="side-menu-item side-menu-link" ui-sref="">
-                O projekcie
-            </a>
+            <article class="side-menu-item-container" layout="column" layout-align="space-around">
+                <a class="side-menu-item" ui-sref="">
+                    O projekcie
+                </a>
+            </article>
             <md-divider></md-divider>
         </li>
     </ul>

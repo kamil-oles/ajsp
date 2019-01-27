@@ -17,11 +17,13 @@
 }
 .side-menu-button {
     @extend %side-menu-item-level-1;
+    background-color: inherit;
     border: none;
+    padding-right: $common-padding;
     width: 100%;
-    &:focus {
-        outline: none;
-    }
+}
+.side-menu-icon {
+    border-radius: 50%;
 }
 .side-menu-icon-collapsed {
     @include rotate-icon(0, 400ms);
@@ -31,10 +33,17 @@
 }
 .side-menu-item {
     @extend %side-menu-item-level-1;
+    @extend %side-menu-link;
 }
-.side-menu-link {
-    display: block;
-    text-align: left;
+.side-menu-item-container {
+    background-color: $color-primary-light;
+    color: $color-text-dark;
+    min-height: 3.5rem;
+    padding: 0 $common-padding;
+    &:hover {
+        background-color: $color-primary;
+        color: $color-text-light;
+    }
 }
 .side-menu-submenu-collapsed {
     @include submenu(1px, 0, hidden);
@@ -42,12 +51,22 @@
     transition: visibility 150ms ease-out, opacity 150ms ease-out, height 250ms ease-out 150ms;
 }
 .side-menu-submenu-expanded {
-    @include submenu(5rem, 1, visible);
+    @include submenu(6rem, 1, visible);
     transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
 }
 .side-menu-submenu-item {
     @extend %side-menu-item;
-    height: $side-menu-submenu-height;
-    line-height: $side-menu-submenu-height;
+    @extend %side-menu-link;
+    height: $side-menu-submenu-item-height;
+    line-height: $side-menu-submenu-item-height;
+}
+.side-menu-submenu-item-container {
+    background-color: $color-primary-light;
+    color: $color-text-dark;
+    min-height: $side-menu-submenu-height;
     padding: 0 $common-padding 0 $common-padding * 2;
+    &:hover {
+        background-color: $color-primary;
+        color: $color-text-light;
+    }
 }
