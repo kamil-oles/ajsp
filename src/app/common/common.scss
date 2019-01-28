@@ -30,13 +30,32 @@ main {
     padding-top: 4rem;
   }
 }
-.common-main {
-  position: absolute;
+.common-dimness {
+  background-color: rgb(0,0,0);
+  height: 100%;
+  opacity: .5;
+  position: fixed;
   right: 0;
-  top: $common-height-sm;
-  width: calc(100% - 16rem);
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+.common-dimness.ng-hide {
+  opacity: 0;
+}
+.common-dimness.ng-hide-add {
+  transition: opacity 200ms ease-in;
+}
+.common-dimness.ng-hide-remove {
+  transition: opacity 300ms ease-out;
+}
+.common-main {
+  // position: absolute;
+  // right: 0;
+  // top: $common-height-sm;
+  // width: calc(100% - 16rem);
   @media(min-width: 600px) {
-      top: $common-height;
+      // top: $common-height;
   }
 }
 .common-view-container {
