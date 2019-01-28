@@ -39,6 +39,9 @@ main {
       top: $common-height;
   }
 }
+.common-view-container {
+  position: relative;
+}
 .hide {
   visibility: hidden;
 }

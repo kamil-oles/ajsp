@@ -2,6 +2,10 @@
   transform: rotate($degrees);
   transition: $time;
 }
+@mixin side-menu-state($translate, $visibility) {
+    transform: $translate;
+    visibility: $visibility;
+}
 @mixin submenu($height, $opacity, $visibility) {
   height: $height;
   opacity: $opacity;

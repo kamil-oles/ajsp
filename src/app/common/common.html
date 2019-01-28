@@ -1,7 +1,9 @@
 <app-header on-menu-state-change="$ctrl.onMenuStateChange()"></app-header>
-<app-side-menu menu-expanded="$ctrl.menuExpanded"></app-side-menu>
-<main class="common-main">
-  <ui-view></ui-view>
-  <app-footer></app-footer>
-</main>
+<div class="common-view-container">
+  <app-side-menu menu-expanded="$ctrl.menuExpanded"></app-side-menu>
+  <main class="common-main">
+    <ui-view></ui-view>
+    <app-footer></app-footer>
+  </main>
+</div>
 <div id="toast-container" class="hide" toast></div>

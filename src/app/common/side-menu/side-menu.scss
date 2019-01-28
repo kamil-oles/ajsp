@@ -6,14 +6,17 @@
     background-color: $color-primary-light;
     box-shadow: .125rem 0 .375rem rgba(0, 0, 0, .2);
     height: calc(100vh - #{$common-height});
-    left: 0;
     position: fixed;
-    top: $common-height-sm;
     width: 16rem;
     z-index: 2;
-    @media(min-width: 600px) {
-        top: $common-height;
-    }
+}
+.side-menu-close {
+    @include side-menu-state(translateX(-16rem), hidden);
+    transition: transform 200ms ease-in, visibility 0s 200ms;
+}
+.side-menu-open {
+    @include side-menu-state(translateX(0), visible);
+    transition: transform 300ms ease-out 100ms, visibility 0s;
 }
 .side-menu-button {
     @extend %side-menu-item-level-1;
@@ -48,7 +51,7 @@
 .side-menu-submenu-collapsed {
     @include submenu(1px, 0, hidden);
     overflow: hidden;
-    transition: visibility 150ms ease-out, opacity 150ms ease-out, height 250ms ease-out 150ms;
+    transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
 }
 .side-menu-submenu-expanded {
     @include submenu(6rem, 1, visible);
