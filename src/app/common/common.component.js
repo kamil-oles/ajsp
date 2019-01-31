@@ -1,7 +1,7 @@
 export const commonComponent = {
   template: require('./common.html'),
   controller: class CommonComponentController {
-    menuExpanded = false;
+    menuExpanded = true;
 
     onMenuStateChange() {
       this.menuExpanded = !this.menuExpanded;

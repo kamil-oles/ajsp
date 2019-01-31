@@ -39,6 +39,9 @@ main {
   top: 0;
   width: 100%;
   z-index: 2;
+  @media (min-width: 960px) {
+    display: none;
+  }
 }
 .common-dimness.ng-hide {
   opacity: 0;
@@ -50,12 +53,10 @@ main {
   transition: opacity 300ms ease-out;
 }
 .common-main {
-  // position: absolute;
-  // right: 0;
-  // top: $common-height-sm;
-  // width: calc(100% - 16rem);
-  @media(min-width: 600px) {
-      // top: $common-height;
+  @media(min-width: 960px) {
+      position: absolute;
+      right: 0;
+      width: calc(100% - 16rem);
   }
 }
 .common-view-container {
