@@ -56,7 +56,18 @@ main {
   @media(min-width: 960px) {
       position: absolute;
       right: 0;
-      width: calc(100% - 16rem);
+  }
+}
+.common-main-side-menu-collapsed {
+  @media(min-width: 960px) {
+    transition: width 200ms ease-in;
+    width: 100%;
+  }
+}
+.common-main-side-menu-open {
+  @media(min-width: 960px) {
+    transition: width 300ms ease-out 100ms;
+    width: calc(100% - 16rem);
   }
 }
 .common-view-container {
