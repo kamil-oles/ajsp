@@ -46,7 +46,7 @@
 }
 .side-menu-open {
     @include side-menu-state(translateX(0), visible);
-    transition: transform 300ms ease-out 100ms, visibility 0s;
+    transition: transform 300ms ease-out;
 }
 .side-menu-submenu-collapsed {
     @include submenu(1px, 0, hidden);

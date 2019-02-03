@@ -1,4 +1,5 @@
 @import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
 
 main {
   min-height: 77vh;
@@ -39,6 +40,9 @@ main {
   top: 0;
   width: 100%;
   z-index: 2;
+  @media(min-width: 960px) {
+    display: none;
+  }
 }
 .common-dimness.ng-hide {
   opacity: 0;
@@ -49,13 +53,14 @@ main {
 .common-dimness.ng-hide-remove {
   transition: opacity 300ms ease-out;
 }
-.common-main {
-  // position: absolute;
-  // right: 0;
-  // top: $common-height-sm;
-  // width: calc(100% - 16rem);
-  @media(min-width: 600px) {
-      // top: $common-height;
+.common-menu-collapsed {
+  @media(min-width: 960px) {
+    @include side-menu-state-impact(0, 200ms, ease-in);
+  }
+}
+.common-menu-expanded {
+  @media(min-width: 960px) {
+    @include side-menu-state-impact(16rem, 300ms, ease-out);
   }
 }
 .common-view-container {

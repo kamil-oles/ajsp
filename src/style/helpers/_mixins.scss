@@ -6,6 +6,10 @@
     transform: $translate;
     visibility: $visibility;
 }
+@mixin side-menu-state-impact($margin, $time, $timing) {
+  margin-left: $margin;
+  transition: margin-left $time $timing;
+}
 @mixin submenu($height, $opacity, $visibility) {
   height: $height;
   opacity: $opacity;

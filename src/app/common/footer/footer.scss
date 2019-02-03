@@ -1,4 +1,5 @@
 @import '../../../style/helpers/variables';
+@import '../../../style/helpers/mixins';
 @import '../../../style/helpers/placeholders';
 
 .footer {
@@ -28,4 +29,10 @@
     height: $footer-menu-height;
     line-height: $footer-menu-height;
   }
+}
+.footer-side-menu-collapsed {
+  @include side-menu-state-impact(0, 200ms, ease-in);
+}
+.footer-side-menu-expanded {
+  @include side-menu-state-impact(16rem, 300ms, ease-out);
 }

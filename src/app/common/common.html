@@ -1,10 +1,10 @@
 <app-header on-menu-state-change="$ctrl.onMenuStateChange()"></app-header>
 <div class="common-view-container">
   <app-side-menu menu-expanded="$ctrl.menuExpanded"></app-side-menu>
-  <main class="common-main">
+  <main ng-class="{'common-menu-expanded': $ctrl.menuExpanded, 'common-menu-collapsed': !$ctrl.menuExpanded}">
     <ui-view></ui-view>
-    <app-footer></app-footer>
   </main>
+  <app-footer menu-expanded="$ctrl.menuExpanded"></app-footer>
   <div class="common-dimness" ng-click="$ctrl.onMenuStateChange()" ng-show="$ctrl.menuExpanded"></div>
 </div>
 <div id="toast-container" class="hide" toast></div>
