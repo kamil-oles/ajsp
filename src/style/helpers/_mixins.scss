@@ -1,7 +1,7 @@
 @mixin menu-state($box-shadow, $position, $width, $z-index) {
   background-color: $color-primary-light;
   box-shadow: $box-shadow;
-  height: $side-menu-height;
+  height: calc(100vh - #{$common-height});
   position: $position;
   width: $width;
   z-index: $z-index;

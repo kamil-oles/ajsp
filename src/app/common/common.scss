@@ -59,6 +59,9 @@ main {
 }
 .common-view-container {
   position: relative;
+  @media(min-width: 960px) {
+    position: static;
+  }
 }
 .hide {
   visibility: hidden;
