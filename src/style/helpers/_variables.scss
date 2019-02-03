@@ -1,7 +1,8 @@
 // Colors
 $color-primary: rgb(96, 77, 141);
-$color-primary-dark: rgb(68,52,112);
-$color-primary-light: rgb(184,161,255);
+$color-primary-dark: rgb(68, 52, 112);
+$color-primary-light: rgb(184, 161, 255);
+$color-shadow: rgba(0, 0, 0, .2);
 $color-text-dark: rgba(0, 0, 0, .87);
 $color-text-light: rgba(255, 255, 255, .87);
 
@@ -15,7 +16,10 @@ $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
 
 // Side menu
+$side-menu-box-shadow: .125rem 0 .375rem $color-shadow;
+$side-menu-height: calc(100vh - #{$common-height});
 $side-menu-item-container-height: 3.5rem;
 $side-menu-item-height: $side-menu-item-container-height - 1rem;
 $side-menu-submenu-item-container-height: 3rem;
 $side-menu-submenu-item-height: $side-menu-submenu-item-container-height - 1rem;
+$side-menu-width: 16rem;

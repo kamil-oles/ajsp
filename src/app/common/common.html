@@ -1,7 +1,7 @@
 <app-header on-menu-state-change="$ctrl.onMenuStateChange()"></app-header>
-<div class="common-view-container">
+<div class="common-view-container" layout-gt-sm>
   <app-side-menu menu-expanded="$ctrl.menuExpanded"></app-side-menu>
-  <main class="common-main" ng-class="{'common-main-side-menu-collapsed': !$ctrl.menuExpanded, 'common-main-side-menu-open': $ctrl.menuExpanded}">
+  <main class="common-main">
     <ui-view></ui-view>
     <app-footer></app-footer>
   </main>
