@@ -3,9 +3,9 @@
 @import '../../../style/helpers/placeholders';
 
 .side-menu {
-  @include menu-state($color-primary-light, $side-menu-box-shadow, $side-menu-height, fixed, $side-menu-width, 3);
+  @include menu-state($side-menu-box-shadow, fixed, $side-menu-width, 3);
   @media(min-width: 960px) {
-    @include menu-state(none, none, auto, static, auto, 0);
+    @include menu-state(none, static, auto, 0);
   }
 }
 .side-menu-button {
@@ -69,18 +69,22 @@
 }
 .side-menu-list {
   @media (min-width: 960px) {
-    @include menu-state($color-primary-light, $side-menu-box-shadow, $side-menu-height, fixed, $side-menu-width, 3);
+    @include menu-state($side-menu-box-shadow, fixed, $side-menu-width, 3);
   }
 }
 .side-menu-list-hidden {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 150ms ease-in, visibility 0s 150ms;
+  @media (min-width: 960px) {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 150ms ease-in, visibility 0s 150ms;
+  }
 }
 .side-menu-list-visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 250ms ease-out 300ms, visibility 0s 300ms;
+  @media (min-width: 960px) {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 250ms ease-out 300ms, visibility 0s 300ms;
+  }
 }
 .side-menu-submenu-collapsed {
   @include submenu(1px, 0, hidden);

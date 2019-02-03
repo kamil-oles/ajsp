@@ -15,9 +15,12 @@ export const SIDE_MENU_COMPONENT = {
     }
 
     $onChanges(changes) {
-      this.menu = changes.menuExpanded.currentValue;
       if (typeof changes.menuExpanded.previousValue === 'boolean') {
         this.element.toggleClass('side-menu-host-expanded side-menu-host-collapsed');
+      }
+      this.menu = changes.menuExpanded.currentValue;
+      if (!this.menu) {
+        this.subMenu = false;
       }
     }
 
