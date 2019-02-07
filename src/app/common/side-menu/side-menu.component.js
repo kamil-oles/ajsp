@@ -1,13 +1,14 @@
 export const SIDE_MENU_COMPONENT = {
   bindings: {
-    menuExpanded: '<'
+    menuExpanded: '<',
+    uiState: '<'
   },
   template: require('./side-menu.html'),
   controller: class SideMenuComponentController {
     subMenu = false;
 
     $onChanges(changes) {
-      this.menu = changes.menuExpanded.currentValue;
+      // this.menu = changes.menuExpanded.currentValue;
     }
 
     showSubMenu() {

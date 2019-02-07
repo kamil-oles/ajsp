@@ -54,14 +54,10 @@ main {
   transition: opacity 300ms ease-out;
 }
 .common-menu-collapsed {
-  @media(min-width: 960px) {
     @include side-menu-state-impact(0, 200ms, ease-in);
-  }
 }
 .common-menu-expanded {
-  @media(min-width: 960px) {
     @include side-menu-state-impact(16rem, 300ms, ease-out);
-  }
 }
 .common-view-container {
   position: relative;
