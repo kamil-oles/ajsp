@@ -1,6 +1,6 @@
 export const HEADER_COMPONENT = {
   bindings: {
-    onMenuStateChange: '&'
+    onUiStateChange: '&'
   },
   template: require('./header.html'),
   controller: class HeaderComponentController {
@@ -8,8 +8,8 @@ export const HEADER_COMPONENT = {
       this.EventEmitter = EventEmitter;
     }
 
-    emitMenuState() {
-      this.onMenuStateChange(this.EventEmitter());
+    emitChange() {
+      this.onUiStateChange(this.EventEmitter());
     }
   }
 };

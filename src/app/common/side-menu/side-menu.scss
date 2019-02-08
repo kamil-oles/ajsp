@@ -82,16 +82,16 @@
     visibility: visible;
   }
 }
-.side-menu-desktop-collapsed {
+.side-menu-collapsed-d {
   transform: translateX(-16rem);
   visibility: hidden;
 }
-.side-menu-mobile-expanded {
+.side-menu-expanded-m {
   transform: translateX(0);
   transition: transform 300ms ease-out;
   visibility: visible;
 }
-.side-menu-mobile-collapsed {
+.side-menu-collapsed-m {
   transform: translateX(-16rem);
   transition: transform 200ms ease-in;
 }

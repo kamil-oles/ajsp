@@ -1,5 +1,5 @@
 <footer class="footer" ng-cloak>
-  <div ng-class="{'footer-side-menu-collapsed': !$ctrl.menu, 'footer-side-menu-expanded': $ctrl.menu}">
+  <div ng-class="{'app-side-menu-expanded': $ctrl.uiState === 'default'}">
     <ul>
       <li class="footer-menu-item">
         <a class="footer-menu-link typography-body-2" ui-sref="appConverter">

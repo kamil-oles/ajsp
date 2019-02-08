@@ -29,3 +29,8 @@
 .app-margin-0 {
   margin: 0;
 }
+.app-side-menu-expanded {
+  @media(min-width: #{$breakpoint-gt-sm}) {
+    margin-left: $common-side-menu-width;
+  }
+}

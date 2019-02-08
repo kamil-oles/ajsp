@@ -10,42 +10,36 @@ export const COMMON_COMPONENT = {
     resizeTimeout = false;
 
     uiStates = {
-      dCollapsed: 'desktop-collapsed',
-      default: 'default',
-      mExpanded: 'mobile-expanded',
-      mCollapsed: 'mobile-collapsed'
+      dCollapsed: 'default',
+      dDefault: 'collapsed-d',
+      mDefault: 'expanded-m',
+      mExpanded: 'collapsed-m'
     };
 
     $onInit() {
-      this.uiState = this.uiStates.default;
+      this.uiState = this.uiStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
     }
 
     actualResizeHandler() {
-      if (this.uiState === this.uiStates.mExpanded) {
-        if (this.window.innerWidth >= this.breakpoint) {
-          this.uiState = this.uiStates.default;
-        }
-      } else if (this.uiState === this.uiStates.dCollapsed) {
-        if (this.window.innerWidth < this.breakpoint) {
-          this.uiState = this.uiStates.default;
-        }
+      const WIDTH = this.window.innerWidth;
+      if (this.uiState === this.uiStates.mDefault && WIDTH >= this.breakpoint) {
+        this.uiState = this.uiStates.dCollapsed;
+      } else if (this.uiState === this.uiStates.dDefault && WIDTH < this.breakpoint) {
+        this.uiState = this.uiStates.dCollapsed;
       }
     }
 
-    onMenuStateChange() {
-      const MOBILE = (this.window.innerWidth < this.breakpoint);
-      if (MOBILE && this.uiState === this.uiStates.default) {
-        this.uiState = this.uiStates.mExpanded;
-      } else if (MOBILE && this.uiState === this.uiStates.mExpanded) {
-        this.uiState = this.uiStates.mCollapsed;
+    onUiStateChange() {
+      const DASH = /-/.exec(this.uiState),
+        CURRENT_STATE = DASH ? this.uiState.slice(0, DASH.index) : this.uiState,
+        MOBILE = (this.window.innerWidth < this.breakpoint ? 'm' : 'd'),
+        KEY = `${MOBILE}${CURRENT_STATE.charAt(0).toUpperCase()}${CURRENT_STATE.slice(1)}`;
+      this.uiState = this.uiStates[KEY];
+      if (this.uiState === this.uiStates.mExpanded) {
         this.timeout(() => {
-          this.uiState = this.uiStates.default;
+          this.uiState = this.uiStates.dCollapsed;
         }, 200);
-      } else if (!MOBILE && this.uiState === this.uiStates.default) {
-        this.uiState = this.uiStates.dCollapsed;
-      } else if (!MOBILE && this.uiState === this.uiStates.dCollapsed) {
-        this.uiState = this.uiStates.default;
       }
     }
 
