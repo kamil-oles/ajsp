@@ -1,14 +1,17 @@
 export const SIDE_MENU_COMPONENT = {
   bindings: {
-    menuExpanded: '<',
     uiState: '<'
   },
   template: require('./side-menu.html'),
   controller: class SideMenuComponentController {
+    constructor(CommonMenuService) {
+      this.cms = CommonMenuService;
+    }
+
     subMenu = false;
 
-    $onChanges(changes) {
-      // this.menu = changes.menuExpanded.currentValue;
+    $onInit() {
+      this.menu = this.cms.menu();
     }
 
     showSubMenu() {

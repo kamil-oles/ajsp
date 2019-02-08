@@ -1,0 +1,43 @@
+@import '../../../../style/helpers/variables';
+@import '../../../../style//helpers/mixins';
+@import '../../../../style/helpers/placeholders';
+
+.side-menu-item-button {
+  @extend %side-menu-item-level-1;
+  background-color: inherit;
+  border: none;
+  padding-right: $common-padding;
+  width: 100%;
+}
+.side-menu-item-container {
+  background-color: $color-primary-light;
+  color: $color-text-dark;
+  min-height: $side-menu-item-container-height;
+  padding: 0 $common-padding;
+  &:hover {
+    background-color: $color-primary;
+    color: $color-text-light;
+  }
+}
+.side-menu-item-contents {
+  @extend %side-menu-item-level-1;
+}
+.side-menu-item-subitem-wrapper {
+  background-color: $color-primary-light;
+  color: $color-text-dark;
+  min-height: $side-menu-submenu-item-container-height;
+  padding: 0 $common-padding 0 $common-padding * 2;
+  &:hover {
+      background-color: $color-primary;
+      color: $color-text-light;
+  }
+}
+.side-menu-item-submenu-collapsed {
+  @include submenu(1px, 0, hidden);
+  overflow: hidden;
+  transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
+}
+.side-menu-item-submenu-expanded {
+  @include submenu(6rem, 1, visible);
+  transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
+}

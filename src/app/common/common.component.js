@@ -22,10 +22,10 @@ export const COMMON_COMPONENT = {
     }
 
     actualResizeHandler() {
-      const WIDTH = this.window.innerWidth;
-      if (this.uiState === this.uiStates.mDefault && WIDTH >= this.breakpoint) {
+      const MOBILE = (this.window.innerWidth < this.breakpoint);
+      if (this.uiState === this.uiStates.mDefault && !MOBILE) {
         this.uiState = this.uiStates.dCollapsed;
-      } else if (this.uiState === this.uiStates.dDefault && WIDTH < this.breakpoint) {
+      } else if (this.uiState === this.uiStates.dDefault && MOBILE) {
         this.uiState = this.uiStates.dCollapsed;
       }
     }
@@ -33,8 +33,8 @@ export const COMMON_COMPONENT = {
     onUiStateChange() {
       const DASH = /-/.exec(this.uiState),
         CURRENT_STATE = DASH ? this.uiState.slice(0, DASH.index) : this.uiState,
-        MOBILE = (this.window.innerWidth < this.breakpoint ? 'm' : 'd'),
-        KEY = `${MOBILE}${CURRENT_STATE.charAt(0).toUpperCase()}${CURRENT_STATE.slice(1)}`;
+        DEVICE = (this.window.innerWidth < this.breakpoint ? 'm' : 'd'),
+        KEY = `${DEVICE}${CURRENT_STATE.charAt(0).toUpperCase()}${CURRENT_STATE.slice(1)}`;
       this.uiState = this.uiStates[KEY];
       if (this.uiState === this.uiStates.mExpanded) {
         this.timeout(() => {

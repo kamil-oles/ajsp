@@ -1,0 +1,8 @@
+@import '../../../../../style/helpers/variables';
+@import '../../../../../style/helpers/placeholders';
+
+.submenu-item-contents {
+  @extend %side-menu-item;
+  height: $submenu-item-height;
+  line-height: $submenu-item-height;
+}

@@ -22,4 +22,6 @@ $footer-padding: 1.5rem;
 $side-menu-item-container-height: 3.5rem;
 $side-menu-item-height: $side-menu-item-container-height - 1rem;
 $side-menu-submenu-item-container-height: 3rem;
-$side-menu-submenu-item-height: $side-menu-submenu-item-container-height - 1rem;
+
+// Submenu
+$submenu-item-height: $side-menu-submenu-item-container-height - 1rem;
