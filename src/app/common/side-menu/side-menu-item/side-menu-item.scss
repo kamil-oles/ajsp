@@ -22,6 +22,12 @@
 .side-menu-item-contents {
   @extend %side-menu-item-level-1;
 }
+.side-menu-item-icon-collapsed {
+  @include rotate-icon(0, 400ms);
+}
+.side-menu-item-icon-expanded {
+  @include rotate-icon(90deg, 300ms);
+}
 .side-menu-item-subitem-wrapper {
   background-color: $color-primary-light;
   color: $color-text-dark;

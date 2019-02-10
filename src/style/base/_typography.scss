@@ -1,3 +1,6 @@
+.app-typography-subtitle {
+  @include typography(16px, normal, .15px);
+}
 .app-typography-subtitle-2 {
   @include typography(14px, 500, .1px);
 }
@@ -9,9 +12,6 @@
 }
 .typography-caption {
   @include typography(12px, normal, .4px);
-}
-.typography-subtitle {
-  @include typography(16px, normal, .15px);
 }
 button.button-typography {
   @include typography(14px, 500, .75px);

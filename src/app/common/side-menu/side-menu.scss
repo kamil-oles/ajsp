@@ -40,15 +40,15 @@
     display: block;
     text-align: left;
 }
-.side-menu-submenu-collapsed {
-    @include submenu(1px, 0, hidden);
-    overflow: hidden;
-    transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
-}
-.side-menu-submenu-expanded {
-    @include submenu(6rem, 1, visible);
-    transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
-}
+// .side-menu-submenu-collapsed {
+//     @include submenu(1px, 0, hidden);
+//     overflow: hidden;
+//     transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
+// }
+// .side-menu-submenu-expanded {
+//     @include submenu(6rem, 1, visible);
+//     transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
+// }
 // .side-menu-submenu-item {
 //     @extend %side-menu-item;
 //     height: $side-menu-submenu-item-height;
