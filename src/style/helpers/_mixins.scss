@@ -1,21 +1,15 @@
-@mixin rotate-icon($degrees, $time) {
+@mixin icon-animations($degrees, $time) {
   transform: rotate($degrees);
   transition: $time;
 }
-@mixin side-menu-state($translate, $visibility) {
-    transform: $translate;
-    visibility: $visibility;
+@mixin side-menu-state($rems, $visibility) {
+  transform: translateX($rems);
+  visibility: $visibility;
 }
-@mixin side-menu-state-impact($margin, $time, $timing) {
-  @media(min-width: 960px) {
-    margin-left: $margin;
-    transition: margin-left $time $timing;
-  }
-}
-@mixin submenu($height, $opacity, $visibility) {
+@mixin submenu-animations($height, $opacity, $height-options, $opacity-options) {
   height: $height;
   opacity: $opacity;
-  visibility: $visibility;
+  transition: height $height-options, opacity $opacity-options;
 }
 @mixin typography($size, $weight, $spacing) {
   font-size: $size;

@@ -1,4 +1,4 @@
-export class CompmonMenuService {
+export class CommonMenuService {
   menu() {
     return [
       {

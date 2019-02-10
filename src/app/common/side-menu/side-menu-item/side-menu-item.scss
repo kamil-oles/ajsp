@@ -23,15 +23,15 @@
   @extend %side-menu-item-level-1;
 }
 .side-menu-item-icon-collapsed {
-  @include rotate-icon(0, 400ms);
+  @include icon-animations(0, 400ms);
 }
 .side-menu-item-icon-expanded {
-  @include rotate-icon(90deg, 300ms);
+  @include icon-animations(90deg, 300ms);
 }
 .side-menu-item-subitem-wrapper {
   background-color: $color-primary-light;
   color: $color-text-dark;
-  min-height: $side-menu-submenu-item-container-height;
+  min-height: $side-menu-item-subitem-height;
   padding: 0 $common-padding 0 $common-padding * 2;
   &:hover {
       background-color: $color-primary;
@@ -39,11 +39,8 @@
   }
 }
 .side-menu-item-submenu-collapsed {
-  @include submenu(1px, 0, hidden);
-  overflow: hidden;
-  transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
+  @include submenu-animations(1px, 0, $hide-animation 150ms, 150ms ease-in);
 }
 .side-menu-item-submenu-expanded {
-  @include submenu(6rem, 1, visible);
-  transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
+  @include submenu-animations(6rem, 1, $show-animation, 250ms ease-out $show-animation-duration);
 }

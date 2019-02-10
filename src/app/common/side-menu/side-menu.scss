@@ -1,89 +1,28 @@
 @import '../../../style/helpers/variables';
 @import '../../../style/helpers/mixins';
-@import '../../../style/helpers/placeholders';
 
 .side-menu {
     background-color: $color-primary-light;
     box-shadow: .125rem 0 .375rem rgba(0, 0, 0, .2);
     height: calc(100vh - #{$common-height});
     position: fixed;
-    width: 16rem;
+    width: $common-side-menu-width;
     z-index: 3;
 }
-// .side-menu-button {
-//     @extend %side-menu-item-level-1;
-//     background-color: inherit;
-//     border: none;
-//     padding-right: $common-padding;
-//     width: 100%;
-// }
-.side-menu-icon-collapsed {
-    @include rotate-icon(0, 400ms);
-}
-.side-menu-icon-expanded {
-    @include rotate-icon(90deg, 300ms);
-}
-// .side-menu-item {
-//     @extend %side-menu-item-level-1;
-// }
-// .side-menu-item-container {
-//     background-color: $color-primary-light;
-//     color: $color-text-dark;
-//     min-height: $side-menu-item-container-height;
-//     padding: 0 $common-padding;
-//     &:hover {
-//         background-color: $color-primary;
-//         color: $color-text-light;
-//     }
-// }
-.side-menu-link {
-    display: block;
-    text-align: left;
-}
-// .side-menu-submenu-collapsed {
-//     @include submenu(1px, 0, hidden);
-//     overflow: hidden;
-//     transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
-// }
-// .side-menu-submenu-expanded {
-//     @include submenu(6rem, 1, visible);
-//     transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
-// }
-// .side-menu-submenu-item {
-//     @extend %side-menu-item;
-//     height: $side-menu-submenu-item-height;
-//     line-height: $side-menu-submenu-item-height;
-// }
-// .side-menu-submenu-item-container {
-//     background-color: $color-primary-light;
-//     color: $color-text-dark;
-//     min-height: $side-menu-submenu-item-container-height;
-//     padding: 0 $common-padding 0 $common-padding * 2;
-//     &:hover {
-//         background-color: $color-primary;
-//         color: $color-text-light;
-//     }
-// }
-
-
 .side-menu-default {
-  transform: translateX(-16rem);
-  visibility: hidden;
+  @include side-menu-state(-$common-side-menu-width, hidden);
   @media(min-width: #{$breakpoint-gt-sm}) {
-    transform: translateX(0);
-    visibility: visible;
+    @include side-menu-state(0, visible);
   }
 }
 .side-menu-collapsed-d {
-  transform: translateX(-16rem);
-  visibility: hidden;
-}
-.side-menu-expanded-m {
-  transform: translateX(0);
-  transition: transform 300ms ease-out;
-  visibility: visible;
+  @include side-menu-state(-$common-side-menu-width, hidden);
 }
 .side-menu-collapsed-m {
-  transform: translateX(-16rem);
-  transition: transform 200ms ease-in;
+  transform: translateX(-$common-side-menu-width);
+  transition: transform $hide-animation;
+}
+.side-menu-expanded-m {
+  @include side-menu-state(0, visible);
+  transition: transform $show-animation;
 }

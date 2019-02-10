@@ -1,3 +1,9 @@
+// Animations
+$hide-animation: 200ms ease-in;
+$show-animation-duration: 300ms;
+
+$show-animation: $show-animation-duration ease-out;
+
 // Breakpoints
 $breakpoint-gt-sm: 960px;
 
@@ -18,10 +24,10 @@ $common-side-menu-width: 16rem;
 $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
 
-// Side menu
+// Side menu item
 $side-menu-item-container-height: 3.5rem;
 $side-menu-item-height: $side-menu-item-container-height - 1rem;
-$side-menu-submenu-item-container-height: 3rem;
+$side-menu-item-subitem-height: 3rem;
 
-// Submenu
-$submenu-item-height: $side-menu-submenu-item-container-height - 1rem;
+// Submenu item
+$submenu-item-height: $side-menu-item-subitem-height - 1rem;
