@@ -1,7 +1,8 @@
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($timeout, $window) {
+    constructor($timeout, $window, CommonMenuService) {
+      this.cms = CommonMenuService;
       this.timeout = $timeout;
       this.window = $window;
     }
@@ -17,6 +18,7 @@ export const COMMON_COMPONENT = {
     };
 
     $onInit() {
+      this.menu = this.cms.menu();
       this.uiState = this.uiStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
     }

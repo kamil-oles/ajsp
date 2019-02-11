@@ -23,10 +23,10 @@
   @extend %side-menu-item-level-1;
 }
 .side-menu-item-icon-collapsed {
-  @include icon-animations(0, 400ms);
+  @include icon-animations(0, 350ms);
 }
 .side-menu-item-icon-expanded {
-  @include icon-animations(90deg, 300ms);
+  @include icon-animations(90deg, $show-animation-duration);
 }
 .side-menu-item-subitem-wrapper {
   background-color: $color-primary-light;

@@ -1,27 +1,17 @@
-<footer class="footer" ng-cloak>
+<footer class="footer-container" ng-cloak>
   <div ng-class="{'app-side-menu-expanded': $ctrl.uiState === 'default'}">
-    <ul>
-      <li class="footer-menu-item">
-        <a class="footer-menu-link typography-body-2" ui-sref="appConverter">
-          Kalkulator
-        </a>
-      </li>
-      <li class="footer-menu-item">
-        <a class="footer-menu-link typography-body-2" ui-sref="appRates.current">
-          Kursy walut
-        </a>
-      </li>
-      <li class="footer-menu-item">
-        <a class="footer-menu-link typography-body-2" ui-sref="">
-          O projekcie
+    <ul class="app-typography-body-2">
+      <li class="footer-menu-item" ng-repeat="item in $ctrl.menu">
+        <a class="footer-link" ui-sref="{{item.state}}">
+          {{item.title}}
         </a>
       </li>
     </ul>
-    <article class="footer-info typography-caption">
+    <p class="app-typography-caption footer-caption">
       Kursy walut udostępnione przez
-      <a class="footer-info-link" href="https://www.nbp.pl/" target="blank">
-        Narodowy Bank Polski
+      <a class="footer-link" href="{{$ctrl.nbp}}" target="blank">
+        Narodowy&nbsp;Bank&nbsp;Polski
       </a>
-    </article>
+    </p>
   </div>
 </footer>

@@ -22,9 +22,11 @@ $common-padding: .875rem;
 $common-side-menu-width: 14rem;
 
 // Footer
-$footer-height: 8rem;
+$footer-caption-height: 1.25rem;
 $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
+
+$footer-height: $footer-caption-height + $footer-menu-height + $footer-padding * 3;
 
 // Side menu item
 $side-menu-item-container-height: 3.5rem;

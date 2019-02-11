@@ -1,10 +1,10 @@
 <app-header on-ui-state-change="$ctrl.onUiStateChange()"></app-header>
 <div class="app-relative common-container" ng-cloak>
-  <app-side-menu ui-state="$ctrl.uiState"></app-side-menu>
+  <app-side-menu menu="$ctrl.menu" ui-state="$ctrl.uiState"></app-side-menu>
   <main class="common-main" ng-class="{'app-side-menu-expanded': $ctrl.uiState === 'default'}">
     <ui-view></ui-view>
   </main>
-  <app-footer ui-state="$ctrl.uiState"></app-footer>
+  <app-footer menu="$ctrl.menu" ui-state="$ctrl.uiState"></app-footer>
   <div class="common-backdrop" ng-click="$ctrl.onUiStateChange()" ng-show="$ctrl.uiState === 'expanded-m'"></div>
 </div>
 <div class="common-toast-container common-toast-hide" toast></div>
