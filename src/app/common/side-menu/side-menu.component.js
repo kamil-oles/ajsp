@@ -1,7 +1,7 @@
 export const SIDE_MENU_COMPONENT = {
   bindings: {
     menu: '<',
-    uiState: '<'
+    viewState: '<'
   },
   template: require('./side-menu.html')
 };

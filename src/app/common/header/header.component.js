@@ -1,6 +1,6 @@
 export const HEADER_COMPONENT = {
   bindings: {
-    onUiStateChange: '&'
+    onViewStateChange: '&'
   },
   template: require('./header.html'),
   controller: class HeaderComponentCtrl {
@@ -11,7 +11,7 @@ export const HEADER_COMPONENT = {
     repo = 'https://github.com/kamil-oles/Currency_converter-AngularJS';
 
     emitChange() {
-      this.onUiStateChange(this.EventEmitter());
+      this.onViewStateChange(this.EventEmitter());
     }
   }
 };

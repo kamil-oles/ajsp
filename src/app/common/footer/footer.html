@@ -1,5 +1,5 @@
 <footer class="footer-container" ng-cloak>
-  <div ng-class="{'app-side-menu-expanded': $ctrl.uiState === 'default'}">
+  <div ng-class="{'app-side-menu-expanded': $ctrl.viewState === 'default'}">
     <ul class="app-typography-body-2">
       <li class="footer-menu-item" ng-repeat="item in $ctrl.menu">
         <a class="footer-link" ui-sref="{{item.state}}">

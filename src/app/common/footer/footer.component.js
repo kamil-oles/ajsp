@@ -1,7 +1,7 @@
 export const FOOTER_COMPONENT = {
   bindings: {
     menu: '<',
-    uiState: '<'
+    viewState: '<'
   },
   template: require('./footer.html'),
   controller: class FooterComponentCtrl {
