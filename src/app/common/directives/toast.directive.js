@@ -8,7 +8,7 @@ export class ToastDirective {
   link(scope, element, attrs, controller) {
     scope.$parent.$on('toast', (event, message) => {
       const messageProcessed = controller.processMessage(message);
-      if (element.hasClass('hide')) {
+      if (element.hasClass('common-toast-hide')) {
         element.toggleClass('common-toast-show common-toast-hide');
       }
       controller.toast.show(
