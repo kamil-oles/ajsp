@@ -1,37 +1,8 @@
 @import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
 
-main {
-  min-height: 77vh;
-  @media(min-width: 600px) {
-    min-height: 80vh;
-  }
-  @media(min-width: 960px) {
-    min-height: calc(100vh - 144px);
-  }
-}
-#toast-container {
-  position: fixed;
-  bottom: 0;
-  height: 48px;
-  left: 0;
-  width: 100vw;
-  @media (min-width: 960px) {
-    bottom: auto;
-    height: 64px;
-    left: auto;
-    right: 0;
-    top: 64px;
-  }
-}
-.body {
-  padding-top: 3.5rem;
-  position: relative;
-  @media(min-width: 600px) {
-    padding-top: 4rem;
-  }
-}
-.common-dimness {
-  background-color: rgb(0,0,0);
+.common-backdrop {
+  background-color: black;
   height: 100%;
   opacity: .5;
   position: fixed;
@@ -39,33 +10,44 @@ main {
   top: 0;
   width: 100%;
   z-index: 2;
-  @media (min-width: 960px) {
+  @media(min-width: #{$breakpoint-gt-sm}) {
     display: none;
   }
 }
-.common-dimness.ng-hide {
+.common-backdrop.ng-hide {
   opacity: 0;
 }
-.common-dimness.ng-hide-add {
-  transition: opacity 200ms ease-in;
+.common-backdrop.ng-hide-add {
+  transition: opacity $hide-animation;
 }
-.common-dimness.ng-hide-remove {
-  transition: opacity 300ms ease-out;
+.common-backdrop.ng-hide-remove {
+  transition: opacity $show-animation;
+}
+.common-container {
+  padding-top: $common-height-sm;
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    padding-top: $common-height;
+  }
 }
 .common-main {
-  @media(min-width: 960px) {
-    flex-grow: 1;
+  min-height: calc(100vh - #{$common-height-sm} - #{$footer-height});
+  @media (min-width: #{$breakpoint-gt-xs}) {
+    min-height: calc(100vh - #{$common-height} - #{$footer-height});
   }
 }
-.common-view-container {
-  position: relative;
-  @media(min-width: 960px) {
-    position: static;
+.common-toast-container {
+  @include toast-container(0, 3rem, 0);
+  position: fixed;
+  width: 100vw;
+  @media (min-width: #{$breakpoint-gt-sm}) {
+    @include toast-container(auto, 4rem, auto);
+    right: 0;
+    top: 4rem;
   }
 }
-.hide {
+.common-toast-hide {
   visibility: hidden;
 }
-.show {
+.common-toast-show {
   visibility: visible;
 }

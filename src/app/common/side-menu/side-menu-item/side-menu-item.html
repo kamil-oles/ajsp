@@ -1,0 +1,24 @@
+<article class="side-menu-item-container" layout="column" layout-align="space-around">
+  <a class="app-side-menu-link side-menu-item-contents" ui-sref="{{$ctrl.menuItem.state}}"
+    ng-if="!$ctrl.menuItem.subitems">
+    {{$ctrl.menuItem.title}}
+  </a>
+  <button type="button" class="side-menu-item-button" layout layout-align="space-between center"
+    ng-click="$ctrl.expandSubmenu()" ng-if="$ctrl.menuItem.subitems">
+    <span>
+      {{$ctrl.menuItem.title}}
+    </span>
+    <md-icon class="app-margin-0"
+      ng-class="{'side-menu-item-icon-collapsed': !$ctrl.submenu, 'side-menu-item-icon-expanded': $ctrl.submenu}">
+      keyboard_arrow_right
+    </md-icon>
+  </button>
+</article>
+<article ng-if="$ctrl.menuItem.subitems">
+  <ul ng-class="{'side-menu-item-submenu-expanded': $ctrl.submenu, 'side-menu-item-submenu-collapsed': !$ctrl.submenu}">
+    <li class="app-typography-subtitle-2 side-menu-item-subitem-wrapper" layout="column" layout-align="space-around"
+      ng-repeat="subitem in $ctrl.menuItem.subitems">
+      <app-submenu-item submenu-item="subitem"></app-submenu-item>
+    </li>
+  </ul>
+</article>

@@ -1,44 +1,7 @@
-<nav class="side-menu" ng-class="{'side-menu-expanded': $ctrl.menu, 'side-menu-collapsed': !$ctrl.menu}">
-  <ul class="side-menu-list" ng-class="{'side-menu-list-visible': $ctrl.menu, 'side-menu-list-hidden': !$ctrl.menu}">
-    <li class="typography-subtitle">
-      <article class="side-menu-item-container" layout="column" layout-align="space-around">
-        <a class="side-menu-item side-menu-link" ui-sref="appConverter">
-          Kalkulator walutowy
-        </a>
-      </article>
-      <md-divider></md-divider>
-    </li>
-    <li>
-      <article class="side-menu-item-container" layout="column" layout-align="space-around">
-        <button type="button" class="side-menu-button" layout layout-align="space-between center" ng-click="$ctrl.showSubMenu()">
-          <span class="typography-subtitle">
-            Kursy walutowe
-          </span>
-          <md-icon class="app-margin-0" ng-class="{'side-menu-icon-collapsed': !$ctrl.subMenu, 'side-menu-icon-expanded': $ctrl.subMenu}">
-            keyboard_arrow_right
-          </md-icon>
-        </button>
-      </article>
-      <ul ng-class="{'side-menu-submenu-collapsed': !$ctrl.subMenu, 'side-menu-submenu-expanded': $ctrl.subMenu}">
-        <li class="side-menu-submenu-item-container" layout="column" layout-align="space-around">
-          <a class="side-menu-submenu-item side-menu-link typography-subtitle-2" ui-sref="appRates.current">
-            Kursy aktualne
-          </a>
-        </li>
-        <li class="side-menu-submenu-item-container" layout="column" layout-align="space-around">
-          <a class="side-menu-submenu-item side-menu-link typography-subtitle-2" ui-sref="appRates.historical">
-            Kursy historyczne
-          </a>
-        </li>
-      </ul>
-      <md-divider></md-divider>
-    </li>
-    <li class="typography-subtitle">
-      <article class="side-menu-item-container" layout="column" layout-align="space-around">
-        <a class="side-menu-item side-menu-link" ui-sref="">
-          O projekcie
-        </a>
-      </article>
+<nav class="side-menu side-menu-{{$ctrl.viewState}}">
+  <ul>
+    <li class="app-typography-subtitle" ng-repeat="item in $ctrl.menu">
+      <app-side-menu-item menu-item="item"></app-side-menu-item>
       <md-divider></md-divider>
     </li>
   </ul>

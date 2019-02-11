@@ -8,8 +8,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 4;
-  @media(min-width: 600px) {
+  z-index: 3;
+  @media(min-width: #{$breakpoint-gt-xs}) {
     height: $common-height;
   }
 }

@@ -1,112 +1,31 @@
 @import '../../../style/helpers/variables';
 @import '../../../style/helpers/mixins';
-@import '../../../style/helpers/placeholders';
 
 .side-menu {
-  @include menu-state($side-menu-box-shadow, fixed, $side-menu-width, 3);
-  @media(min-width: 960px) {
-    @include menu-state(none, static, auto, 0);
-  }
-}
-.side-menu-button {
-  @extend %side-menu-item-level-1;
-  background-color: inherit;
-  border: none;
-  padding-right: $common-padding;
-  width: 100%;
-}
-.side-menu-collapsed {
-  @media (max-width: 959px) {
-    @include side-menu-state(translateX(-16rem), hidden);
-    transition: transform 200ms ease-in, visibility 0s 200ms;
-  }
-}
-.side-menu-expanded {
-  @media (max-width: 959px) {
-    @include side-menu-state(translateX(0), visible);
-    transition: transform 300ms ease-out 100ms, visibility 0s;
-  }
-}
-.side-menu-host {
-  @media(min-width: 960px) {
     background-color: $color-primary-light;
+    box-shadow: .125rem 0 .375rem rgba(0, 0, 0, .2);
+    height: calc(100vh - #{$common-height-sm});
+    position: fixed;
+    width: $common-side-menu-width;
+    z-index: 3;
+    @media (min-width: #{$breakpoint-gt-xs}) {
+      height: calc(100vh - #{$common-height});
+    }
+}
+.side-menu-default {
+  @include side-menu-state(-$common-side-menu-width, hidden);
+  @media(min-width: #{$breakpoint-gt-sm}) {
+    @include side-menu-state(0, visible);
   }
 }
-.side-menu-host-collapsed {
-  @media (min-width: 960px) {
-    flex-basis: 0;
-    transition: flex-basis 200ms ease-in 150ms;
-  }
+.side-menu-collapsed-d {
+  @include side-menu-state(-$common-side-menu-width, hidden);
 }
-.side-menu-host-expanded {
-  @media (min-width: 960px) {
-    flex-basis: 16rem;
-    transition: flex-basis 300ms ease-out;
-  }
+.side-menu-collapsed-m {
+  transform: translateX(-$common-side-menu-width);
+  transition: transform $hide-animation;
 }
-.side-menu-icon-collapsed {
-  @include rotate-icon(0, 400ms);
-}
-.side-menu-icon-expanded {
-  @include rotate-icon(90deg, 300ms);
-}
-.side-menu-item {
-  @extend %side-menu-item-level-1;
-}
-.side-menu-item-container {
-  background-color: $color-primary-light;
-  color: $color-text-dark;
-  min-height: $side-menu-item-container-height;
-  padding: 0 $common-padding;
-  &:hover {
-    background-color: $color-primary;
-    color: $color-text-light;
-  }
-}
-.side-menu-link {
-  display: block;
-  text-align: left;
-}
-.side-menu-list {
-  @media (min-width: 960px) {
-    @include menu-state($side-menu-box-shadow, fixed, $side-menu-width, 3);
-  }
-}
-.side-menu-list-hidden {
-  @media (min-width: 960px) {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 150ms ease-in, visibility 0s 150ms;
-  }
-}
-.side-menu-list-visible {
-  @media (min-width: 960px) {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 250ms ease-out 300ms, visibility 0s 300ms;
-  }
-}
-.side-menu-submenu-collapsed {
-  @include submenu(1px, 0, hidden);
-  overflow: hidden;
-  transition: visibility 150ms ease-in, opacity 150ms ease-in, height 200ms ease-in 150ms;
-}
-.side-menu-submenu-expanded {
-  @include submenu(6rem, 1, visible);
-  transition: visibility 250ms ease-out 300ms, opacity 250ms ease-out 300ms, height 300ms ease-out;
-}
-.side-menu-submenu-item {
-  @extend %side-menu-item;
-  height: $side-menu-submenu-item-height;
-  line-height: $side-menu-submenu-item-height;
-}
-.side-menu-submenu-item-container {
-  background-color: $color-primary-light;
-  color: $color-text-dark;
-  min-height: $side-menu-submenu-item-container-height;
-  padding: 0 $common-padding 0 $common-padding * 2;
-  &:hover {
-    background-color: $color-primary;
-    color: $color-text-light;
-  }
+.side-menu-expanded-m {
+  @include side-menu-state(0, visible);
+  transition: transform $show-animation;
 }

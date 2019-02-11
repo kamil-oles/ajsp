@@ -24,3 +24,15 @@
 .app-margin-0 {
   margin: 0;
 }
+.app-relative {
+  position: relative;
+}
+.app-side-menu-expanded {
+  @media(min-width: #{$breakpoint-gt-sm}) {
+    margin-left: $common-side-menu-width;
+  }
+}
+.app-side-menu-link {
+  display: block;
+  text-align: left;
+}

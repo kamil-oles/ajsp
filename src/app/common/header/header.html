@@ -1,16 +1,12 @@
 <header class="header-container" layout layout-align="space-between center" ng-cloak>
   <div layout layout-align="start center">
-    <md-button class="md-icon-button md-primary md-hue-2" ng-click="$ctrl.emitMenuState()">
+    <md-button class="md-icon-button md-primary md-hue-2" ng-click="$ctrl.emitChange()">
       <md-icon>
         menu
       </md-icon>
     </md-button>
-    <span class="typography-h6">
-      Kalkulator walutowy
-    </span>
   </div>
-  <md-button class="md-fab md-mini md-primary md-hue-2" href="https://github.com/kamil-oles/Currency_converter-AngularJS"
-    target="blank">
+  <md-button class="md-fab md-mini md-primary md-hue-2" href="{{$ctrl.repo}}" target="blank">
     <md-icon>
       code
     </md-icon>

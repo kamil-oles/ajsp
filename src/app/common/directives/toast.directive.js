@@ -8,8 +8,8 @@ export class ToastDirective {
   link(scope, element, attrs, controller) {
     scope.$parent.$on('toast', (event, message) => {
       const messageProcessed = controller.processMessage(message);
-      if (element.hasClass('hide')) {
-        element.toggleClass('show hide');
+      if (element.hasClass('common-toast-hide')) {
+        element.toggleClass('common-toast-show common-toast-hide');
       }
       controller.toast.show(
         controller.toast.simple()
@@ -19,7 +19,7 @@ export class ToastDirective {
           .position('top right')
           .textContent(messageProcessed)
       ).then(() => {
-        element.toggleClass('show hide');
+        element.toggleClass('common-toast-show common-toast-hide');
       }, () => {
         return;
       });

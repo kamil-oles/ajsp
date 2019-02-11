@@ -1,31 +1,35 @@
 @import '../../../style/helpers/variables';
 @import '../../../style/helpers/placeholders';
 
-.footer {
+.footer-caption {
+  color: $color-text-light;
+  margin-top: $footer-padding;
+  text-align: center;
+  @media (min-width: #{$breakpoint-gt-xs}) {
+    height: $footer-caption-height;
+    line-height: $footer-caption-height;
+  }
+}
+.footer-container {
   background-color: $color-primary-dark;
   min-height: $common-height;
   padding: $footer-padding $common-padding;
 }
-.footer-info {
+.footer-link {
   color: $color-text-light;
-  text-align: center;
-  margin-top: $footer-padding;
-}
-.footer-info-link {
-  @extend %footer-link;
-}
-.footer-menu-item {
-  list-style: none;
-  @media(min-width: 600px) {
-    display: inline;
-    margin-right: $common-padding;
+  text-decoration: none;
+  transition: color 200ms ease-out;
+  &:hover {
+    color: $color-primary-light;
   }
 }
-.footer-menu-link {
-  @extend %footer-link;
+.footer-menu-item {
   line-height: 1.5rem;
-  @media(min-width: 600px) {
+  list-style: none;
+  @media(min-width: #{$breakpoint-gt-xs}) {
     height: $footer-menu-height;
+    display: inline;
     line-height: $footer-menu-height;
+    margin-right: 1rem;
   }
 }

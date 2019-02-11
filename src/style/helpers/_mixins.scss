@@ -1,23 +1,20 @@
-@mixin menu-state($box-shadow, $position, $width, $z-index) {
-  background-color: $color-primary-light;
-  box-shadow: $box-shadow;
-  height: calc(100vh - #{$common-height});
-  position: $position;
-  width: $width;
-  z-index: $z-index;
-}
-@mixin rotate-icon($degrees, $time) {
+@mixin icon-animations($degrees, $time) {
   transform: rotate($degrees);
   transition: $time;
 }
-@mixin side-menu-state($translate, $visibility) {
-    transform: $translate;
-    visibility: $visibility;
+@mixin side-menu-state($rems, $visibility) {
+  transform: translateX($rems);
+  visibility: $visibility;
 }
-@mixin submenu($height, $opacity, $visibility) {
+@mixin submenu-animations($height, $opacity, $height-options, $opacity-options) {
   height: $height;
   opacity: $opacity;
-  visibility: $visibility;
+  transition: height $height-options, opacity $opacity-options;
+}
+@mixin toast-container($bottom, $height, $left) {
+  bottom: $bottom;
+  height: $height;
+  left: $left;
 }
 @mixin typography($size, $weight, $spacing) {
   font-size: $size;

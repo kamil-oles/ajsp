@@ -1,15 +1,17 @@
 export const HEADER_COMPONENT = {
   bindings: {
-    onMenuStateChange: '&'
+    onViewStateChange: '&'
   },
   template: require('./header.html'),
-  controller: class HeaderComponentController {
+  controller: class HeaderComponentCtrl {
     constructor(EventEmitter) {
       this.EventEmitter = EventEmitter;
     }
 
-    emitMenuState() {
-      this.onMenuStateChange(this.EventEmitter());
+    repo = 'https://github.com/kamil-oles/Currency_converter-AngularJS';
+
+    emitChange() {
+      this.onViewStateChange(this.EventEmitter());
     }
   }
 };

@@ -1,3 +1,13 @@
+// Animations
+$hide-animation: 200ms ease-in;
+$show-animation-duration: 300ms;
+
+$show-animation: $show-animation-duration ease-out;
+
+// Breakpoints
+$breakpoint-gt-xs: 600px;
+$breakpoint-gt-sm: 960px;
+
 // Colors
 $color-primary: rgb(96, 77, 141);
 $color-primary-dark: rgb(68, 52, 112);
@@ -10,15 +20,19 @@ $color-text-light: rgba(255, 255, 255, .87);
 $common-height: 4rem;
 $common-height-sm: .875 * $common-height;
 $common-padding: .875rem;
+$common-side-menu-width: 14rem;
 
 // Footer
+$footer-caption-height: 1.25rem;
 $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
 
-// Side menu
-$side-menu-box-shadow: .125rem 0 .375rem $color-shadow;
+$footer-height: $footer-caption-height + $footer-menu-height + $footer-padding * 3;
+
+// Side menu item
 $side-menu-item-container-height: 3.5rem;
 $side-menu-item-height: $side-menu-item-container-height - 1rem;
-$side-menu-submenu-item-container-height: 3rem;
-$side-menu-submenu-item-height: $side-menu-submenu-item-container-height - 1rem;
-$side-menu-width: 16rem;
+$side-menu-item-subitem-height: 3rem;
+
+// Submenu item
+$submenu-item-height: $side-menu-item-subitem-height - 1rem;
