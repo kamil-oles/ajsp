@@ -5,6 +5,7 @@ $show-animation-duration: 300ms;
 $show-animation: $show-animation-duration ease-out;
 
 // Breakpoints
+$breakpoint-gt-xs: 600px;
 $breakpoint-gt-sm: 960px;
 
 // Colors
@@ -18,9 +19,10 @@ $color-text-light: rgba(255, 255, 255, .87);
 $common-height: 4rem;
 $common-height-sm: .875 * $common-height;
 $common-padding: .875rem;
-$common-side-menu-width: 16rem;
+$common-side-menu-width: 14rem;
 
 // Footer
+$footer-height: 8rem;
 $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
 

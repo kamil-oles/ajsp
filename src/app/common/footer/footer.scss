@@ -13,6 +13,10 @@
 }
 .footer-info-link {
   @extend %footer-link;
+  @media (min-width: 600px) {
+    height: 1.25rem;
+    line-height: 1.25rem;
+  }
 }
 .footer-menu-item {
   list-style: none;

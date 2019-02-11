@@ -3,10 +3,12 @@ export const HEADER_COMPONENT = {
     onUiStateChange: '&'
   },
   template: require('./header.html'),
-  controller: class HeaderComponentController {
+  controller: class HeaderComponentCtrl {
     constructor(EventEmitter) {
       this.EventEmitter = EventEmitter;
     }
+
+    repo = 'https://github.com/kamil-oles/Currency_converter-AngularJS';
 
     emitChange() {
       this.onUiStateChange(this.EventEmitter());

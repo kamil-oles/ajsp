@@ -11,6 +11,11 @@
   opacity: $opacity;
   transition: height $height-options, opacity $opacity-options;
 }
+@mixin toast-container($bottom, $height, $left) {
+  bottom: $bottom;
+  height: $height;
+  left: $left;
+}
 @mixin typography($size, $weight, $spacing) {
   font-size: $size;
   font-weight: $weight;
