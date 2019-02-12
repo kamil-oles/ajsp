@@ -1,8 +1,9 @@
+import { DB } from '../app.module';
+
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($timeout, $transitions, $window, CommonMenuService) {
-      this.cms = CommonMenuService;
+    constructor($timeout, $transitions, $window) {
       this.timeout = $timeout;
       this.transitions = $transitions;
       this.window = $window;
@@ -19,7 +20,10 @@ export const COMMON_COMPONENT = {
     };
 
     $onInit() {
-      this.menu = this.cms.menu();
+      DB.collection('basic').doc('menu').get().then((querySnapshot) => {
+        const DATA = querySnapshot.data();
+        this.menu = DATA.menuItems;
+      });
       this.viewState = this.viewStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
       this.transitions.onSuccess({}, () => {

@@ -43,6 +43,7 @@
     "angular-aria": "^1.7.5",
     "angular-material": "^1.1.12",
     "angular-messages": "^1.7.5",
+    "firebase": "^5.8.2",
     "material-design-icons": "^3.0.1",
     "moment": "^2.23.0"
   }
