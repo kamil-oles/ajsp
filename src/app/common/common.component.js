@@ -1,9 +1,10 @@
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($timeout, $window, CommonMenuService) {
+    constructor($timeout, $transitions, $window, CommonMenuService) {
       this.cms = CommonMenuService;
       this.timeout = $timeout;
+      this.transitions = $transitions;
       this.window = $window;
     }
 
@@ -21,6 +22,12 @@ export const COMMON_COMPONENT = {
       this.menu = this.cms.menu();
       this.viewState = this.viewStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
+      this.transitions.onSuccess({}, () => {
+        if (this.viewState === this.viewStates.mDefault) {
+          this.viewState = this.viewStates.mExpanded;
+          this.viewStateDefault();
+        }
+      });
     }
 
     actualResizeHandler() {
@@ -39,9 +46,7 @@ export const COMMON_COMPONENT = {
         KEY = `${DEVICE}${CURRENT_STATE.charAt(0).toUpperCase()}${CURRENT_STATE.slice(1)}`;
       this.viewState = this.viewStates[KEY];
       if (this.viewState === this.viewStates.mExpanded) {
-        this.timeout(() => {
-          this.viewState = this.viewStates.dCollapsed;
-        }, 200);
+        this.viewStateDefault();
       }
     }
 
@@ -53,6 +58,12 @@ export const COMMON_COMPONENT = {
           this.actualResizeHandler();
         }, 100);
       }
+    }
+
+    viewStateDefault() {
+      this.timeout(() => {
+        this.viewState = this.viewStates.dCollapsed;
+      }, 200);
     }
   }
 };
