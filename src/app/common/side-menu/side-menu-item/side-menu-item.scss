@@ -39,8 +39,8 @@
   }
 }
 .side-menu-item-submenu-collapsed {
-  @include submenu-animations(1px, 0, $hide-animation 150ms, 150ms ease-in);
+  @include submenu-animations(1px, 0, hidden, $hide-animation 150ms, 150ms ease-in, 0ms $hide-animation-duration);
 }
 .side-menu-item-submenu-expanded {
-  @include submenu-animations(6rem, 1, $show-animation, 250ms ease-out $show-animation-duration);
+  @include submenu-animations(6rem, 1, visible, $show-animation, 250ms ease-out $show-animation-duration, 0ms);
 }

@@ -1,7 +1,8 @@
 // Animations
-$hide-animation: 200ms ease-in;
+$hide-animation-duration: 200ms;
 $show-animation-duration: 300ms;
 
+$hide-animation: $hide-animation-duration ease-in;
 $show-animation: $show-animation-duration ease-out;
 
 // Breakpoints
