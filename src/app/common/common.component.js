@@ -3,7 +3,8 @@ import { DB } from '../app.module';
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($timeout, $transitions, $window) {
+    constructor($scope, $timeout, $transitions, $window) {
+      this.scope = $scope;
       this.timeout = $timeout;
       this.transitions = $transitions;
       this.window = $window;
@@ -20,18 +21,10 @@ export const COMMON_COMPONENT = {
     };
 
     $onInit() {
-      DB.collection('basic').doc('menu').get().then((querySnapshot) => {
-        const DATA = querySnapshot.data();
-        this.menu = DATA.menuItems;
-      });
+      this.fetchMenuData();
       this.viewState = this.viewStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
-      this.transitions.onSuccess({}, () => {
-        if (this.viewState === this.viewStates.mDefault) {
-          this.viewState = this.viewStates.mExpanded;
-          this.viewStateDefault();
-        }
-      });
+      this.hideMenu();
     }
 
     actualResizeHandler() {
@@ -41,6 +34,27 @@ export const COMMON_COMPONENT = {
       } else if (this.viewState === this.viewStates.dDefault && MOBILE) {
         this.viewState = this.viewStates.dCollapsed;
       }
+    }
+
+    fetchMenuData() {
+      this.menu = JSON.parse(localStorage.getItem('menu'));
+      if (!this.menu) {
+        DB.collection('basic').doc('menu').get().then((querySnapshot) => {
+          const DATA = querySnapshot.data();
+          this.menu = DATA.menuItems;
+          this.scope.$apply();
+          localStorage.setItem('menu', JSON.stringify(this.menu));
+        });
+      }
+    }
+
+    hideMenu() {
+      this.transitions.onSuccess({}, () => {
+        if (this.viewState === this.viewStates.mDefault) {
+          this.viewState = this.viewStates.mExpanded;
+          this.viewStateDefault();
+        }
+      });
     }
 
     onViewStateChange() {
