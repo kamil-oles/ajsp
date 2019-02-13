@@ -5,4 +5,5 @@
   @extend %side-menu-item;
   height: $submenu-item-height;
   line-height: $submenu-item-height;
+  padding: 0 $common-padding 0 $common-padding * 2;
 }

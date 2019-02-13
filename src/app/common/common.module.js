@@ -11,7 +11,7 @@ import { ToastDirective } from './directives/toast.directive';
 
 import './common.scss';
 
-export const appCommon = angular
+export const APP_COMMON = angular
   .module('appCommon', [uiRouter, APP_FOOTER, APP_HEADER, APP_SIDE_MENU, appSelect])
   .component('appCommon', COMMON_COMPONENT)
   .directive('toast', ToastDirective)

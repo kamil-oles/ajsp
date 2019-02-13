@@ -1,12 +1,13 @@
 <header class="header-container" layout layout-align="space-between center" ng-cloak>
-  <div layout layout-align="start center">
-    <md-button class="md-icon-button md-primary md-hue-2" ng-click="$ctrl.emitChange()">
-      <md-icon>
-        menu
-      </md-icon>
-    </md-button>
-  </div>
-  <md-button class="md-fab md-mini md-primary md-hue-2" href="{{$ctrl.repo}}" target="blank">
+  <md-button class="md-icon-button md-accent md-hue-1" ng-click="$ctrl.emitChange()">
+    <md-icon>
+      menu
+    </md-icon>
+  </md-button>
+  <md-button class="md-fab md-mini md-accent md-hue-1" href="{{$ctrl.repo}}" target="blank">
+    <md-tooltip md-direction="left">
+      Repozytorium
+    </md-tooltip>
     <md-icon>
       code
     </md-icon>

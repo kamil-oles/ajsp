@@ -1,11 +1,17 @@
 %side-menu-item {
-  color: inherit;
+  color: $color-text-dark;
   text-decoration: none;
+  &:focus, &:hover {
+    background-color: $color-primary-dark;
+    color: $color-text-light;
+    outline: none;
+  }
 }
 %side-menu-item-level-1 {
   @extend %side-menu-item;
+  height: $side-menu-item-height;
   line-height: $side-menu-item-height;
-  min-height: $side-menu-item-height;
+  padding: 0 $common-padding;
 }
 %uneditable-content-container {
   margin: 18px 0;
