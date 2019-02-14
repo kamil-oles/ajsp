@@ -31,9 +31,9 @@ export const COMMON_COMPONENT = {
     actualResizeHandler() {
       const MOBILE = (this.window.innerWidth < this.breakpoint);
       if (this.viewState === this.viewStates.mDefault && !MOBILE) {
-        this.viewState = this.viewStates.dCollapsed;
+        this.viewStateDefault(false);
       } else if (this.viewState === this.viewStates.dDefault && MOBILE) {
-        this.viewState = this.viewStates.dCollapsed;
+        this.viewStateDefault(false);
       }
     }
 
@@ -53,7 +53,7 @@ export const COMMON_COMPONENT = {
       this.transitions.onSuccess({}, () => {
         if (this.viewState === this.viewStates.mDefault) {
           this.viewState = this.viewStates.mExpanded;
-          this.viewStateDefault();
+          this.viewStateDefault(true);
         }
       });
     }
@@ -68,7 +68,7 @@ export const COMMON_COMPONENT = {
         this.body.addClass('app-block-scroll');
       }
       if (this.viewState === this.viewStates.mExpanded) {
-        this.viewStateDefault();
+        this.viewStateDefault(true);
       }
     }
 
@@ -82,10 +82,14 @@ export const COMMON_COMPONENT = {
       }
     }
 
-    viewStateDefault() {
-      this.timeout(() => {
+    viewStateDefault(delay) {
+      if (delay) {
+        this.timeout(() => {
+          this.viewState = this.viewStates.dCollapsed;
+        }, 200);
+      } else {
         this.viewState = this.viewStates.dCollapsed;
-      }, 200);
+      }
       this.body.removeClass('app-block-scroll');
     }
   }
