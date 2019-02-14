@@ -19,8 +19,9 @@
   color: $color-text-light;
   text-decoration: none;
   transition: color 200ms ease-out;
-  &:hover {
+  &:hover, &:focus {
     color: $color-accent;
+    outline: none;
   }
 }
 .footer-menu-item {
