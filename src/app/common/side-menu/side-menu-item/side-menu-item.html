@@ -1,13 +1,21 @@
 <a class="side-menu-link side-menu-item-contents" ui-sref="{{$ctrl.menuItem.state}}"
   ui-sref-active="side-menu-link-active" ng-if="!$ctrl.menuItem.subitems">
-  {{$ctrl.menuItem.title}}
+  <md-icon class="side-menu-item-icon">
+    {{$ctrl.menuItem.icon}}
+  </md-icon>
+  <span>
+    {{$ctrl.menuItem.title}}
+  </span>
 </a>
 <button type="button" class="side-menu-item-button" layout layout-align="space-between center"
   ng-click="$ctrl.expandSubmenu()" ng-if="$ctrl.menuItem.subitems">
   <span>
+    <md-icon class="side-menu-item-icon">
+      {{$ctrl.menuItem.icon}}
+    </md-icon>
     {{$ctrl.menuItem.title}}
   </span>
-  <md-icon class="app-margin-0 side-menu-item-icon"
+  <md-icon class="app-margin-0 side-menu-item-icon-arrow"
     ng-class="{'side-menu-item-icon-collapsed': !$ctrl.submenu, 'side-menu-item-icon-expanded': $ctrl.submenu}">
     keyboard_arrow_right
   </md-icon>

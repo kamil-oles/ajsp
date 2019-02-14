@@ -15,12 +15,11 @@ export const APP_COMMON = angular
   .module('appCommon', [uiRouter, APP_FOOTER, APP_HEADER, APP_SIDE_MENU, appSelect])
   .component('appCommon', COMMON_COMPONENT)
   .directive('toast', ToastDirective)
-  .config($stateProvider => {
-    $stateProvider
-      .state('appCommon', {
-        url: '/',
-        component: 'appCommon',
-        redirectTo: 'appConverter'
-      });
+  .config(function ($stateProvider) {
+    $stateProvider.state('appCommon', {
+      url: '/',
+      component: 'appCommon',
+      redirectTo: 'appConverter'
+    });
   })
   .name;

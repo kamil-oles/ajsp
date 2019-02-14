@@ -11,13 +11,12 @@ export class ToastDirective {
       if (element.hasClass('common-toast-hide')) {
         element.toggleClass('common-toast-show common-toast-hide');
       }
-      ctrl.toast.show(
-        ctrl.toast.simple()
-          .action('ZAMKNIJ')
-          .hideDelay(false)
-          .parent(element)
-          .position('top right')
-          .textContent(MESSAGE_PROCESSED)
+      ctrl.toast.show(ctrl.toast.simple()
+        .action('ZAMKNIJ')
+        .hideDelay(false)
+        .parent(element)
+        .position('top right')
+        .textContent(MESSAGE_PROCESSED)
       ).then(function changeClass() {
         element.toggleClass('common-toast-show common-toast-hide');
       }, function fallback() {

@@ -12,7 +12,10 @@
   @extend %side-menu-item-level-1;
 }
 .side-menu-item-icon {
-  color: $color-text-dark;
+  @extend %side-menu-icon;
+}
+.side-menu-item-icon-arrow {
+  @extend %side-menu-icon;
 }
 .side-menu-item-icon-collapsed {
   @include icon-animations(0, 350ms);

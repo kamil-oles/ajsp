@@ -1,6 +1,6 @@
 @mixin icon-animations($degrees, $time) {
   transform: rotate($degrees);
-  transition: $time;
+  transition:  transform $time;
 }
 @mixin side-menu-state($rems, $visibility) {
   transform: translateX($rems);

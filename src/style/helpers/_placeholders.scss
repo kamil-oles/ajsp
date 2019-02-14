@@ -1,3 +1,7 @@
+%side-menu-icon {
+  color: $color-text-dark;
+  margin: 0 ($common-padding / 2) 0 0;
+}
 %side-menu-item {
   color: $color-text-dark;
   text-decoration: none;
@@ -12,6 +16,14 @@
   height: $side-menu-item-height;
   line-height: $side-menu-item-height;
   padding: 0 $common-padding;
+  &:focus, &:hover {
+    .side-menu-item-icon {
+      color: $color-accent-light;
+    }
+    .side-menu-item-icon-arrow {
+      color: $color-text-light;
+    }
+  }
 }
 %uneditable-content-container {
   margin: 18px 0;
