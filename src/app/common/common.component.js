@@ -3,7 +3,8 @@ import { DB } from '../app.module';
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($scope, $timeout, $transitions, $window) {
+    constructor($element, $scope, $timeout, $transitions, $window) {
+      this.body = $element.parent().parent();
       this.scope = $scope;
       this.timeout = $timeout;
       this.transitions = $transitions;
@@ -63,6 +64,9 @@ export const COMMON_COMPONENT = {
         DEVICE = (this.window.innerWidth < this.breakpoint ? 'm' : 'd'),
         KEY = `${DEVICE}${CURRENT_STATE.charAt(0).toUpperCase()}${CURRENT_STATE.slice(1)}`;
       this.viewState = this.viewStates[KEY];
+      if (this.viewState === this.viewStates.mDefault) {
+        this.body.addClass('app-block-scroll');
+      }
       if (this.viewState === this.viewStates.mExpanded) {
         this.viewStateDefault();
       }
@@ -82,6 +86,7 @@ export const COMMON_COMPONENT = {
       this.timeout(() => {
         this.viewState = this.viewStates.dCollapsed;
       }, 200);
+      this.body.removeClass('app-block-scroll');
     }
   }
 };
