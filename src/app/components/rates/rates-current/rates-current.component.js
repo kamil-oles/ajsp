@@ -9,7 +9,7 @@ export const ratesCurrentComponent = {
     }
 
     $onInit() {
-      this.scope.$emit('stateChange', 'current');
+      // this.scope.$emit('stateChange', 'current');
     }
   }
 };

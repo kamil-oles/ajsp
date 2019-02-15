@@ -1,28 +1,23 @@
-<md-content class="md-padding flex-box" ng-cloak>
-  <md-card ng-cloak>
-    <!-- <img ng-src="../../../assets/images/rates.jpg" class="md-card-image"> -->
+<md-content class="md-padding" ng-cloak>
+  <md-card>
     <md-card-title>
       <md-card-title-text class="md-headline">
         Kursy walut
       </md-card-title-text>
     </md-card-title>
-    <md-card-title class="reset-padding-top">
-      <md-card-title-text class="md-subhead subtitle">
+    <md-card-title>
+      <md-card-title-text class="md-subhead app-typography-subtitle">
         Aktualne i historyczne kursy dwunastu walut obcych.
       </md-card-title-text>
     </md-card-title>
-    <md-tabs md-stretch-tabs="always" ng-cloak>
-      <md-tab ui-sref="appRates.current" md-active="$ctrl.state === 'current'" ng-cloak>
-        <md-tab-label ng-cloak>
-          Aktualne
-        </md-tab-label>
-      </md-tab>
-      <md-tab ui-sref="appRates.historical" md-active="$ctrl.state === 'historical'" ng-cloak>
-        <md-tab-label ng-cloak>
-          Historyczne
-        </md-tab-label>
-      </md-tab>
-    </md-tabs>
+    <md-nav-bar md-selected-nav-item="$ctrl.state" md-no-ink-bar="true">
+      <md-nav-item name="current" md-nav-sref="appRates.current">
+        Aktualne
+      </md-nav-item>
+      <md-nav-item name="historical" md-nav-sref="appRates.historical">
+        Historyczne
+      </md-nav-item>
+    </md-nav-bar>
     <ui-view></ui-view>
   </md-card>
 </md-content>

@@ -12,7 +12,7 @@ export const ratesHistoricalComponent = {
     }
 
     $onInit() {
-      this.scope.$emit('stateChange', 'historical');
+      // this.scope.$emit('stateChange', 'historical');
       this.currency = {
         code: this.lastWeekRates.data ? this.lastWeekRates.data.code : 'USD'
       };

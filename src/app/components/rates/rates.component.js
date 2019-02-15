@@ -1,14 +1,15 @@
-export const ratesComponent = {
+export const RATES_COMPONENT = {
   template: require('./rates.html'),
-  controller: class RatesComponentController {
-    constructor($scope) {
-      this.scope = $scope;
+  controller: class RatesComponentCtrl {
+    constructor($transitions) {
+      this.transitions = $transitions;
     }
 
+    state = 'current';
+
     $onInit() {
-      this.scope.$on('stateChange', (event, state) => {
-        this.state = state;
-        event.preventDefault();
+      this.transitions.onSuccess({ to: 'appRates.**' }, (transition) => {
+        this.state = transition.to().name.slice(9);
       });
     }
   }
