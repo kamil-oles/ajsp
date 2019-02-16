@@ -3,4 +3,4 @@
     Kursy na dzień {{$ctrl.currentRates.effectiveDate | date: "dd.MM.yyyy"}}
   </p>
 </md-card-content>
-<app-rates-table view="'current'" rates="$ctrl.currentRates.rates"></app-rates-table>
+<app-rates-table rates="$ctrl.currentRates.rates" table-data="$ctrl.table"></app-rates-table>

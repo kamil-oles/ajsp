@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th class="body-2-bold" ng-class="{left: header.align === 'left', right: header.align === 'right'}"
-          ng-repeat="header in $ctrl.headers" ng-click="$ctrl.sort(header.code)">
+          ng-repeat="header in $ctrl.tableData.headers" ng-click="$ctrl.sort(header.code)">
           <div class="icon-container" ng-if="header.align === 'right'">
             <md-icon ng-show="$ctrl.sortBy === header.code">
               {{$ctrl.icon}}

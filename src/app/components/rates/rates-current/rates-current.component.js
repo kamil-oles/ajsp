@@ -1,15 +1,7 @@
-export const ratesCurrentComponent = {
+export const RATES_CURRENT_COMPONENT = {
   bindings: {
-    currentRates: '<'
+    currentRates: '<',
+    table: '<'
   },
-  template: require('./rates-current.html'),
-  controller: class RatesCurrentComponentController {
-    constructor($scope) {
-      this.scope = $scope;
-    }
-
-    $onInit() {
-      // this.scope.$emit('stateChange', 'current');
-    }
-  }
+  template: require('./rates-current.html')
 };

@@ -1,13 +1,12 @@
 export const ratesTableComponent = {
   bindings: {
     rates: '<',
-    view: '<'
+    tableData: '<'
   },
   template: require('./rates-table.html'),
   controller: class RatesTableComponentController {
-    constructor(RatesTableDataService, RatesTableHeadersService, RatesTableSortService) {
+    constructor(RatesTableDataService, RatesTableSortService) {
       this.rtds = RatesTableDataService;
-      this.rths = RatesTableHeadersService;
       this.rtss = RatesTableSortService;
     }
 
@@ -18,14 +17,11 @@ export const ratesTableComponent = {
       DESC: 'keyboard_arrow_down'
     };
 
-    $onInit() {
-      this.headers = this.rths.headers(this.view);
-    }
-
     $onChanges(changes) {
+      const STATE = this.tableData.state;
       if (changes.rates.currentValue) {
-        this.data = this.rtds.prepare(changes.rates.currentValue, this.view);
-        this.sortBy = this.view === 'current' ? 'currency' : 'date';
+        this.data = this.rtds.prepare(changes.rates.currentValue, STATE);
+        this.sortBy = STATE === 'current' ? 'currency' : 'date';
         this.sortDirection = 'ASC';
       }
     }
