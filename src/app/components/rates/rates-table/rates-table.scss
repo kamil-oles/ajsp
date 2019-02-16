@@ -25,10 +25,17 @@
   &:first-child {
     @extend %table-first-column;
   }
+  &:focus {
+    @extend %table-header;
+    outline: none;
+  }
+  &:hover {
+    @extend %table-header;
+  }
 }
-.rates-table-icon {
+.rates-table-icon-wrapper {
   display: inline-block;
-  width: 24px;
+  width: 1.5rem;
 }
 .rates-table-label {
   display: inline-block;

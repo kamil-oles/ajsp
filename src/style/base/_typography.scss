@@ -4,8 +4,8 @@ md-card-title-text.app-typography-subtitle {
 .app-typography-body-2 {
   @include typography(14px, normal, .25px);
 }
-.app-typography-body-2-bold {
-  @include typography(12px, normal, .25px);
+.app-typography-body-2-th {
+  @include typography(12px, 500, .25px);
 }
 .app-typography-caption {
   @include typography(12px, normal, .4px);
