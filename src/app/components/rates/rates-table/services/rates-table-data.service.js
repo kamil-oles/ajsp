@@ -12,7 +12,7 @@ export class RatesTableDataService {
   }
 
   rows(el, view) {
-    const rows = {
+    const ROWS = {
       current: () => {
         return new TableRowCurrent(this.format(el.bid), this.format(el.ask), el.code, el.currency);
       },
@@ -20,6 +20,6 @@ export class RatesTableDataService {
         return new TableRowHistorical(this.format(el.bid), this.format(el.ask), el.effectiveDate);
       }
     };
-    return rows[view]();
+    return ROWS[view]();
   }
 }

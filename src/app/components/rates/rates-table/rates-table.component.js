@@ -1,10 +1,10 @@
-export const ratesTableComponent = {
+export const RATES_TABLE_COMPONENT = {
   bindings: {
     rates: '<',
     tableData: '<'
   },
   template: require('./rates-table.html'),
-  controller: class RatesTableComponentController {
+  controller: class RatesTableComponentCtrl {
     constructor(RatesTableDataService, RatesTableSortService) {
       this.rtds = RatesTableDataService;
       this.rtss = RatesTableSortService;
