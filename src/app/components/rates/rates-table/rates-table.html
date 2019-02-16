@@ -1,19 +1,19 @@
-<md-divider></md-divider>
-<div class="table-container" ng-show="$ctrl.data">
-  <table>
-    <thead>
-      <tr>
-        <th class="body-2-bold" ng-class="{left: header.align === 'left', right: header.align === 'right'}"
+<div class="rates-table-container" ng-show="$ctrl.data" ng-cloak>
+  <table class="rates-table">
+    <thead class="app-typography-body-2-bold">
+      <tr class="rates-table-row">
+        <th class="rates-table-header"
+          ng-class="{'rates-table-left': header.align === 'left', 'rates-table-right': header.align === 'right'}"
           ng-repeat="header in $ctrl.tableData.headers" ng-click="$ctrl.sort(header.code)">
-          <div class="icon-container" ng-if="header.align === 'right'">
+          <div class="rates-table-icon" ng-if="header.align === 'right'">
             <md-icon ng-show="$ctrl.sortBy === header.code">
               {{$ctrl.icon}}
             </md-icon>
           </div>
-          <div class="label">
+          <span class="rates-table-label">
             {{header.label}}
-          </div>
-          <div class="icon-container" ng-if="header.align === 'left'">
+          </span>
+          <div class="rates-table-icon" ng-if="header.align === 'left'">
             <md-icon ng-show="$ctrl.sortBy === header.code">
               {{$ctrl.icon}}
             </md-icon>
@@ -21,9 +21,10 @@
         </th>
       </tr>
     </thead>
-    <tbody class="body-2">
-      <tr ng-repeat="row in $ctrl.data">
-        <td ng-repeat="(key, value) in row" ng-class="{rateTable: key === 'ask' || key === 'bid'}">
+    <tbody>
+      <tr class="rates-table-row" ng-repeat="row in $ctrl.data">
+        <td class="rates-table-data" ng-class="{'rates-table-right': key === 'ask' || key === 'bid'}"
+          ng-repeat="(key, value) in row">
           {{value}}
         </td>
       </tr>

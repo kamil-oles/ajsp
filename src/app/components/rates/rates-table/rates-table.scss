@@ -1,60 +1,46 @@
-.icon-container {
+@import '../../../../style/helpers/variables';
+@import '../../../../style/helpers/placeholders';
+
+.rates-table {
+  border-collapse: collapse;
+  min-width: 32rem;
+  width: 100%;
+}
+.rates-table-container {
+  overflow: auto;
+  position: relative;
+}
+.rates-table-data {
+  @extend %table-data;
+  border-top: 1px solid $color-table;
+  color: $color-table-data;
+  &:first-child {
+    @extend %table-first-column;
+  }
+}
+.rates-table-header {
+  @extend %table-data;
+  color: $color-table-header;
+  cursor: pointer;
+  &:first-child {
+    @extend %table-first-column;
+  }
+}
+.rates-table-icon {
   display: inline-block;
   width: 24px;
 }
-.label {
+.rates-table-label {
   display: inline-block;
-  line-height: 48px;
+  line-height: $rates-table-row-height;
 }
-.left {
+.rates-table-left {
   text-align: left
 }
-.rateTable {
+.rates-table-right {
   text-align: right;
 }
-.right {
-  text-align: right;
-}
-.table-container {
-  overflow: auto;
+.rates-table-row {
+  height: $rates-table-row-height;
   position: relative;
-  table {
-    border-collapse: collapse;
-    min-width: 511px;
-    width: 100%;
-  }
-  td {
-    border-top: 1px solid #f5f5f5;
-  }
-  td, th {
-    color: rgba(0, 0, 0, 0.871);
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  th {
-    color: #00000099;
-    cursor: pointer;
-    &:first-child {
-      background-color: white;
-      box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
-      left: 0;
-      position: sticky;
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-  tr {
-    height: 48px;
-    position: relative;
-    td:first-child {
-      background-color: white;
-      box-shadow: 6px 0 2px -1px rgba(255, 255, 255, 0.8);
-      left: 0;
-      position: sticky;
-    }
-  }
-  tbody tr {
-    height: 48px;
-  }
 }

@@ -18,6 +18,10 @@ $color-primary: rgb(158, 158, 158);
 $color-primary-dark: rgb(66, 66, 66);
 $color-primary-light: rgb(224, 224, 224);
 $color-shadow: rgba(0, 0, 0, .2);
+$color-shadow-table: rgba(255, 255, 255, .8);
+$color-table: rgb(245, 245, 245);
+$color-table-data: rgba(0, 0, 0, .871);
+$color-table-header: rgba(0, 0, 0, .6);
 $color-text-dark: rgba(0, 0, 0, .87);
 $color-text-light: rgba(255, 255, 255, .87);
 
@@ -33,6 +37,9 @@ $footer-menu-height: $common-height - 2 * $common-padding;
 $footer-padding: 1.5rem;
 
 $footer-height: $footer-caption-height + $footer-menu-height + $footer-padding * 3;
+
+// Rates table
+$rates-table-row-height: 3rem;
 
 // Side menu item
 $side-menu-item-height: 3rem;

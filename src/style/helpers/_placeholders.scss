@@ -25,6 +25,16 @@
     }
   }
 }
+%table-data {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+%table-first-column {
+  background-color: white;
+  box-shadow: 6px 0 2px -1px $color-shadow-table;
+  left: 0;
+  position: sticky;
+}
 %uneditable-content-container {
   margin: 18px 0;
   padding-bottom: 2px;
