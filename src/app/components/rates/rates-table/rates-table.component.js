@@ -21,14 +21,14 @@ export const RATES_TABLE_COMPONENT = {
       const STATE = this.tableData.state;
       if (changes.rates.currentValue) {
         this.data = this.rtds.prepare(changes.rates.currentValue, STATE);
-        this.sortBy = STATE === 'current' ? 'currency' : 'date';
+        this.sortBy = (STATE === 'current' ? 'currency' : 'date');
         this.sortDirection = 'ASC';
       }
     }
 
     sort(code) {
       if (code === this.sortBy) {
-        this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
+        this.sortDirection = (this.sortDirection === 'ASC' ? 'DESC' : 'ASC');
       }
       this.rtss.sort(this.data, code, this.sortDirection);
       this.icon = this.icons[this.sortDirection];
