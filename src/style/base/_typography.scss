@@ -1,3 +1,6 @@
+button.app-typography-button {
+  @include typography(14px, 500, 1.25px);
+}
 md-card-title-text.app-typography-subtitle {
   @include typography(16px, normal, .15px);
 }
@@ -18,9 +21,6 @@ md-card-title-text.app-typography-subtitle {
 }
 .typography-body {
   @include typography(16px, normal, .5px);
-}
-button.button-typography {
-  @include typography(14px, 500, .75px);
 }
 .typography-h6 {
   @include typography(20px, 500, .15px);

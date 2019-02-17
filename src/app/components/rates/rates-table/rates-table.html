@@ -25,7 +25,12 @@
       <tr class="app-typography-body-2 rates-table-row" ng-repeat="row in $ctrl.data">
         <td class="rates-table-data" ng-class="{'rates-table-right': key === 'ask' || key === 'bid'}"
           ng-repeat="(key, value) in row">
-          {{value}}
+          <span ng-if="key !== 'date'">
+            {{value}}
+          </span>
+          <span ng-if="key === 'date'">
+            {{value | date: "dd.MM.yyyy"}}
+          </span>
         </td>
       </tr>
     </tbody>

@@ -1,4 +1,4 @@
-import { TableRowCurrent, TableRowHistorical } from '../../../shared/classes/components-classes';
+import { TableRowCurrent, TableRowHistorical } from '../classes/rates-table.class';
 
 export class RatesTableDataService {
   format(number) {

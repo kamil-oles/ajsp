@@ -13,12 +13,12 @@ export class Rate {
   }
 }
 
-export class RatesHistorical {
-  constructor(from, data = null) {
-    this.data = data;
-    this.from = from;
-  }
-}
+// export class RatesHistorical {
+//   constructor(from, data = null) {
+//     this.data = data;
+//     this.from = from;
+//   }
+// }
 
 export class Results {
   constructor(currency, denomination, rate) {
@@ -28,19 +28,19 @@ export class Results {
   }
 }
 
-export class TableRowCurrent {
-  constructor(bid, ask, code, currency) {
-    this.code = code;
-    this.currency = currency;
-    this.bid = bid;
-    this.ask = ask;
-  }
-}
+// export class TableRowCurrent {
+//   constructor(bid, ask, code, currency) {
+//     this.code = code;
+//     this.currency = currency;
+//     this.bid = bid;
+//     this.ask = ask;
+//   }
+// }
 
-export class TableRowHistorical {
-  constructor(bid, ask, date) {
-    this.date = date;
-    this.bid = bid;
-    this.ask = ask;
-  }
-}
+// export class TableRowHistorical {
+//   constructor(bid, ask, date) {
+//     this.date = date;
+//     this.bid = bid;
+//     this.ask = ask;
+//   }
+// }
