@@ -7,10 +7,12 @@
   <label>
     Waluta
   </label>
-  <md-select class="code body" ng-model="$ctrl.currency.code" ng-change="$ctrl.updateCode()"
+  <md-select class="select-currency-code" ng-model="$ctrl.currency.code" ng-change="$ctrl.updateCode()"
     md-selected-text="$ctrl.currency.code">
-    <md-option class="body" ng-repeat="option in $ctrl.currencies" ng-value="option.code">
-      {{option.code}} {{option.currency}}
-    </md-option>
+    <md-optgroup label="{{value.name}}" ng-repeat="(key, value) in $ctrl.currencies">
+      <md-option ng-repeat="option in value.items" ng-value="option.code">
+        {{option.code}} {{option.currency}}
+      </md-option>
+    </md-optgroup>
   </md-select>
 </md-input-container>

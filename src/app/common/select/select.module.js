@@ -1,9 +1,11 @@
 import angular from 'angular';
-import { selectComponent } from './select.component';
+import { SELECT_COMPONENT } from './select.component';
 import './select.scss';
 
-export const appSelect = angular
+export const APP_SELECT = angular
   .module('appSelect', [])
-  .component('appSelect', selectComponent)
-  .value('EventEmitter', payload => ({ $event: payload }))
+  .component('appSelect', SELECT_COMPONENT)
+  .value('EventEmitter', function (payload) {
+    return ({ $event: payload });
+  })
   .name;

@@ -38,13 +38,13 @@ export const COMMON_COMPONENT = {
     }
 
     fetchMenuData() {
-      this.menu = JSON.parse(localStorage.getItem('menu'));
+      this.menu = JSON.parse(localStorage.getItem('basic_menu'));
       if (!this.menu) {
         DB.collection('basic').doc('menu').get().then((querySnapshot) => {
           const DATA = querySnapshot.data();
           this.menu = DATA.menuItems;
           this.scope.$apply();
-          localStorage.setItem('menu', JSON.stringify(this.menu));
+          localStorage.setItem('basic_menu', JSON.stringify(this.menu));
         });
       }
     }

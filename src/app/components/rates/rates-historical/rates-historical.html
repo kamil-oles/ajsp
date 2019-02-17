@@ -2,7 +2,8 @@
   <md-card-content ng-cloak>
     <div class="extra-padding" layout layout-wrap>
       <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <app-select currency="$ctrl.currency" on-update-code="$ctrl.updateCode($event)"></app-select>
+        <app-select currency="$ctrl.currency" currencies="$ctrl.currencies" on-update-code="$ctrl.updateCode($event)">
+        </app-select>
       </div>
       <div flex="50" flex-sm="25" flex-gt-sm="20">
         <md-input-container class="datepicker-container">
@@ -34,4 +35,4 @@
     </div>
   </md-card-content>
 </form>
-<app-rates-table view="'historical'" rates="$ctrl.rates"></app-rates-table>
+<app-rates-table rates="$ctrl.rates" table-data="$ctrl.table"></app-rates-table>

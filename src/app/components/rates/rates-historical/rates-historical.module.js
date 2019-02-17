@@ -1,16 +1,19 @@
 import angular from 'angular';
+
 import moment from 'moment';
 import uiRouter from '@uirouter/angularjs';
+
 import {
   appRatesHistoricalMessages
 } from './rates-historical-messages/rates-historical-messages.module';
-import { ratesHistoricalComponent } from './rates-historical.component';
+import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
+
 import './rates-historical.scss';
 
-export const appRatesHistorical = angular
+export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [uiRouter, appRatesHistoricalMessages])
-  .component('appRatesHistorical', ratesHistoricalComponent)
-  .config(($mdDateLocaleProvider, $stateProvider) => {
+  .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
+  .config(function moduleConfig($mdDateLocaleProvider, $stateProvider) {
     $stateProvider.state('appRates.historical', {
       url: '/historical',
       component: 'appRatesHistorical',
@@ -18,8 +21,14 @@ export const appRatesHistorical = angular
         code: null
       },
       resolve: {
+        currencies: function (ComponentsDbService) {
+          return ComponentsDbService.getData('basic', 'currencies');
+        },
         lastWeekRates: function ($stateParams, ComponentsHttpService) {
           return ComponentsHttpService.fetchHistoricalRates($stateParams.code);
+        },
+        table: function (ComponentsDbService) {
+          return ComponentsDbService.getData('tables', 'historical');
         }
       }
     });
@@ -27,15 +36,15 @@ export const appRatesHistorical = angular
       'Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'
     ];
     $mdDateLocaleProvider.shortDays = ['Niedz', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob'];
-    $mdDateLocaleProvider.parseDate = (dateString) => {
+    $mdDateLocaleProvider.parseDate = function (dateString) {
       moment.locale('pl');
-      const m = moment(dateString, 'L', true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
+      const M = moment(dateString, 'L', true);
+      return (M.isValid() ? M.toDate() : new Date(NaN));
     };
-    $mdDateLocaleProvider.formatDate = (date) => {
+    $mdDateLocaleProvider.formatDate = function (date) {
       moment.locale('pl');
-      const m = moment(date);
-      return m.isValid() ? m.format('L') : '';
+      const M = moment(date);
+      return (M.isValid() ? M.format('L') : '');
     };
   })
   .name;

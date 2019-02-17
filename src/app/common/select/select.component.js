@@ -1,13 +1,13 @@
-export const selectComponent = {
+export const SELECT_COMPONENT = {
   bindings: {
     currency: '<',
+    currencies: '<',
     onUpdateCode: '&'
   },
   template: require('./select.html'),
-  controller: class SelectComponent {
-    constructor(ComponentsCurrenciesService, EventEmitter) {
-      this.currencies = ComponentsCurrenciesService.currencies;
-      this.EventEmitter = EventEmitter;
+  controller: class SelectComponentCtrl {
+    constructor(EventEmitter) {
+      this.eventEmitter = EventEmitter;
     }
 
     $onChanges(changes) {
@@ -17,7 +17,7 @@ export const selectComponent = {
     }
 
     updateCode() {
-      this.onUpdateCode(this.EventEmitter({ code: this.currency.code }));
+      this.onUpdateCode(this.eventEmitter({ code: this.currency.code }));
     }
   }
 };

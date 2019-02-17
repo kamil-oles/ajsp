@@ -1,18 +1,18 @@
-export const ratesHistoricalComponent = {
+export const RATES_HISTORICAL_COMPONENT = {
   bindings: {
-    lastWeekRates: '<'
+    currencies: '<',
+    lastWeekRates: '<',
+    table: '<'
   },
   template: require('./rates-historical.html'),
-  controller: class RatesHistoricalComponentController {
-    constructor($filter, $scope, ComponentsCurrenciesService, ComponentsHttpService) {
-      this.currencies = ComponentsCurrenciesService.currencies;
+  controller: class RatesHistoricalComponentCtrl {
+    constructor($filter, $scope, ComponentsHttpService) {
       this.chs = ComponentsHttpService;
       this.filter = $filter;
       this.scope = $scope;
     }
 
     $onInit() {
-      // this.scope.$emit('stateChange', 'historical');
       this.currency = {
         code: this.lastWeekRates.data ? this.lastWeekRates.data.code : 'USD'
       };
