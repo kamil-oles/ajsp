@@ -1,20 +1,24 @@
 import angular from 'angular';
+
 import uiRouter from '@uirouter/angularjs';
+
 import { RATES_CURRENT_COMPONENT } from './rates-current.component';
+import { RatesCurrentHttpService } from './services/rates-current-http.service';
 
 export const APP_RATES_CURRENT = angular
   .module('appRatesCurrent', [uiRouter])
   .component('appRatesCurrent', RATES_CURRENT_COMPONENT)
+  .service('RatesCurrentHttp', RatesCurrentHttpService)
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appRates.current', {
       url: '/current',
       component: 'appRatesCurrent',
       resolve: {
-        currentRates: function (ComponentsHttpService) {
-          return ComponentsHttpService.fetchCurrentRates();
+        initialData: function (RatesCurrentHttp) {
+          return RatesCurrentHttp.rates();
         },
-        table: function (ComponentsDbService) {
-          return ComponentsDbService.getData('tables', 'current');
+        table: function (ComponentsDb) {
+          return ComponentsDb.getData('tables', 'current');
         }
       }
     });

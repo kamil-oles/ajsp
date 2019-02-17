@@ -1,7 +1,7 @@
 <md-card-content ng-cloak>
   <p class="app-padding-top app-typography-subtitle-2">
-    Kursy na dzień {{$ctrl.currentRates.effectiveDate | date: "dd.MM.yyyy"}}
+    Kursy na dzień {{$ctrl.initialData.effectiveDate | date: "dd.MM.yyyy"}}
   </p>
 </md-card-content>
 <md-divider></md-divider>
-<app-rates-table rates="$ctrl.currentRates.rates" table-data="$ctrl.table"></app-rates-table>
+<app-rates-table rates="$ctrl.initialData.rates" table-data="$ctrl.table"></app-rates-table>

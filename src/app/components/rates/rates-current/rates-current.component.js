@@ -1,6 +1,6 @@
 export const RATES_CURRENT_COMPONENT = {
   bindings: {
-    currentRates: '<',
+    initialData: '<',
     table: '<'
   },
   template: require('./rates-current.html')

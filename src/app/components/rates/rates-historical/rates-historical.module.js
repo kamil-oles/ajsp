@@ -23,14 +23,14 @@ export const APP_RATES_HISTORICAL = angular
         code: null
       },
       resolve: {
-        currencies: function (ComponentsDbService) {
-          return ComponentsDbService.getData('basic', 'currencies');
+        currencies: function (ComponentsDb) {
+          return ComponentsDb.getData('basic', 'currencies');
         },
         initialData: function ($stateParams, RatesHistoricalHttp) {
           return RatesHistoricalHttp.initialData($stateParams.code);
         },
-        table: function (ComponentsDbService) {
-          return ComponentsDbService.getData('tables', 'historical');
+        table: function (ComponentsDb) {
+          return ComponentsDb.getData('tables', 'historical');
         }
       }
     });

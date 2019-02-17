@@ -6,9 +6,9 @@ export const RATES_HISTORICAL_COMPONENT = {
   },
   template: require('./rates-historical.html'),
   controller: class RatesHistoricalComponentCtrl {
-    constructor($filter, $scope, ComponentsHttpService) {
-      this.chs = ComponentsHttpService;
+    constructor($filter, $scope, RatesHistoricalHttp) {
       this.filter = $filter;
+      this.http = RatesHistoricalHttp;
       this.scope = $scope;
     }
 
@@ -26,7 +26,7 @@ export const RATES_HISTORICAL_COMPONENT = {
     getRates() {
       const START = this.filter('date')(this.from, 'yyyy-MM-dd'),
         END = this.filter('date')(this.to, 'yyyy-MM-dd');
-      this.chs.ratesHistorical(this.currency.code, START, END).then(response => {
+      this.http.getRates(this.currency.code, START, END).then(response => {
         this.rates = response.data.rates;
       }, error => {
         this.scope.$emit('toast', error.data);

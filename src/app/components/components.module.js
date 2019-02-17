@@ -8,6 +8,6 @@ import { ComponentsHttpService } from './shared/services/components-http.service
 export const appComponents = angular
   .module('appComponents', [appConverter, APP_RATES])
   .service('ComponentsCurrenciesService', ComponentsCurrenciesService)
-  .service('ComponentsDbService', ComponentsDbService)
+  .service('ComponentsDb', ComponentsDbService)
   .service('ComponentsHttpService', ComponentsHttpService)
   .name;
