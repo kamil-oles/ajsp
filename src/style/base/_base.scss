@@ -23,6 +23,14 @@
 .app-margin-0 {
   margin: 0;
 }
+.app-padding {
+  padding-left: $base-padding;
+  padding-right: $base-padding;
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    padding-left: $base-padding * 2;
+    padding-right: $base-padding * 2;
+  }
+}
 .app-padding-top {
   padding-top: .5rem;
 }

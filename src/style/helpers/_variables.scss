@@ -5,6 +5,9 @@ $show-animation-duration: 300ms;
 $hide-animation: $hide-animation-duration ease-in;
 $show-animation: $show-animation-duration ease-out;
 
+// Base
+$base-padding: .5rem;
+
 // Breakpoints
 $breakpoint-gt-xs: 600px;
 $breakpoint-gt-sm: 960px;
@@ -21,7 +24,6 @@ $color-shadow: rgba(0, 0, 0, .2);
 $color-shadow-table: rgba(255, 255, 255, .8);
 $color-table: rgb(245, 245, 245);
 $color-table-data: rgba(0, 0, 0, .871);
-$color-table-header: rgba(0, 0, 0, .6);
 $color-text-dark: rgba(0, 0, 0, .87);
 $color-text-light: rgba(255, 255, 255, .87);
 

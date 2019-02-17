@@ -26,8 +26,10 @@
   }
 }
 %table-data {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 .5rem;
+  @media  (min-width: #{$breakpoint-gt-xs}) {
+    padding: 0 1rem;
+  }
 }
 %table-first-column {
   background-color: white;
@@ -36,9 +38,9 @@
   position: sticky;
 }
 %table-header {
-  color: black;
-  .rates-table-icon {
-    color: black;
+  color:$color-primary-dark;
+  .rates-table-header-icon {
+    color: $color-primary-dark;
   }
 }
 %uneditable-content-container {

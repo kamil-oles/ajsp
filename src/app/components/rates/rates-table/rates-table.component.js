@@ -10,13 +10,6 @@ export const RATES_TABLE_COMPONENT = {
       this.rtss = RatesTableSortService;
     }
 
-    icon = 'keyboard_arrow_up';
-
-    icons = {
-      ASC: 'keyboard_arrow_up',
-      DESC: 'keyboard_arrow_down'
-    };
-
     $onChanges(changes) {
       const STATE = this.tableData.state;
       if (changes.rates.currentValue) {
@@ -31,7 +24,6 @@ export const RATES_TABLE_COMPONENT = {
         this.sortDirection = (this.sortDirection === 'ASC' ? 'DESC' : 'ASC');
       }
       this.rtss.sort(this.data, code, this.sortDirection);
-      this.icon = this.icons[this.sortDirection];
       this.sortBy = code;
     }
   }
