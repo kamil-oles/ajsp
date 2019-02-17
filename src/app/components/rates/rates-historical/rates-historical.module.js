@@ -7,12 +7,14 @@ import {
   appRatesHistoricalMessages
 } from './rates-historical-messages/rates-historical-messages.module';
 import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
+import { RatesHistoricalHttpService } from './services/rates-historical.service';
 
 import './rates-historical.scss';
 
 export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [uiRouter, appRatesHistoricalMessages])
   .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
+  .service('RatesHistoricalHttp', RatesHistoricalHttpService)
   .config(function moduleConfig($mdDateLocaleProvider, $stateProvider) {
     $stateProvider.state('appRates.historical', {
       url: '/historical',
@@ -24,8 +26,8 @@ export const APP_RATES_HISTORICAL = angular
         currencies: function (ComponentsDbService) {
           return ComponentsDbService.getData('basic', 'currencies');
         },
-        lastWeekRates: function ($stateParams, ComponentsHttpService) {
-          return ComponentsHttpService.fetchHistoricalRates($stateParams.code);
+        initialData: function ($stateParams, RatesHistoricalHttp) {
+          return RatesHistoricalHttp.initialData($stateParams.code);
         },
         table: function (ComponentsDbService) {
           return ComponentsDbService.getData('tables', 'historical');

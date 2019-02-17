@@ -1,38 +1,37 @@
-<form name="historicalForm" ng-submit="$ctrl.getRates()">
-  <md-card-content ng-cloak>
-    <div class="extra-padding" layout layout-wrap>
-      <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <app-select currency="$ctrl.currency" currencies="$ctrl.currencies" on-update-code="$ctrl.updateCode($event)">
-        </app-select>
-      </div>
-      <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <md-input-container class="datepicker-container">
-          <label>
-            Od
-          </label>
-          <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
-            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
-          <app-rates-historical-messages errors="historicalForm.from.$error"></app-rates-historical-messages>
-        </md-input-container>
-      </div>
-      <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <md-input-container class="datepicker-container">
-          <label>
-            Do
-          </label>
-          <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar"
-            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
-          <app-rates-historical-messages errors="historicalForm.to.$error"></app-rates-historical-messages>
-        </md-input-container>
-      </div>
-      <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <div class="button-container" layout layout-align="end" layout-align-gt-xs="start">
-          <md-button type="submit" class="md-primary md-raised button-typography" ng-disabled="historicalForm.$invalid">
-            Filtruj
-          </md-button>
-        </div>
+<md-card-content ng-cloak>
+  <form name="historicalForm" ng-submit="$ctrl.getRates()" layout layout-wrap>
+    <div flex="50" flex-sm="25" flex-gt-sm="20">
+      <app-select currency="$ctrl.currency" currencies="$ctrl.currencies" on-update-code="$ctrl.updateCode($event)">
+      </app-select>
+    </div>
+    <div flex="50" flex-sm="25" flex-gt-sm="20">
+      <md-input-container class="datepicker-container">
+        <label>
+          Od
+        </label>
+        <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
+          md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
+        <app-rates-historical-messages errors="historicalForm.from.$error"></app-rates-historical-messages>
+      </md-input-container>
+    </div>
+    <div flex="50" flex-sm="25" flex-gt-sm="20">
+      <md-input-container class="datepicker-container">
+        <label>
+          Do
+        </label>
+        <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar" md-max-date="$ctrl.max"
+          md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
+        <app-rates-historical-messages errors="historicalForm.to.$error"></app-rates-historical-messages>
+      </md-input-container>
+    </div>
+    <div flex="50" flex-sm="25" flex-gt-sm="20">
+      <div class="button-container" layout layout-align="end" layout-align-gt-xs="start">
+        <md-button type="submit" class="md-primary md-raised button-typography" ng-disabled="historicalForm.$invalid">
+          Filtruj
+        </md-button>
       </div>
     </div>
-  </md-card-content>
-</form>
+  </form>
+</md-card-content>
+<md-divider></md-divider>
 <app-rates-table rates="$ctrl.rates" table-data="$ctrl.table"></app-rates-table>

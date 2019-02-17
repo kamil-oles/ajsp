@@ -21,6 +21,7 @@ firebase.initializeApp({
 });
 
 export const DB = firebase.firestore();
+export const URL = 'http://api.nbp.pl/api/exchangerates/';
 
 export const app = angular
   .module('app', ['ngMessages', 'ngMaterial', uiRouter, APP_COMMON, appComponents])
