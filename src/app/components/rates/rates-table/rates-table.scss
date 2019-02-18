@@ -1,6 +1,11 @@
 @import '../../../../style/helpers/variables';
 @import '../../../../style/helpers/placeholders';
 
+span.rates-table-header-label {
+  @media(max-width: $breakpoint-sm-xs) {
+    max-width: 60%;
+  }
+}
 .rates-table {
   border-collapse: collapse;
   width: 100%;

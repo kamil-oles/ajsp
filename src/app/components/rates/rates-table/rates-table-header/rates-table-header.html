@@ -1,11 +1,12 @@
-<div layout layout-align="{{$ctrl.header.align}}" ng-cloak>
+<div layout layout-align="{{$ctrl.header.align}} center" ng-cloak>
   <div class="rates-table-header-icon-wrapper" ng-if="$ctrl.header.align === 'end'">
     <md-icon class="rates-table-header-icon" ng-show="$ctrl.sortBy === $ctrl.header.code">
       {{$ctrl.icon}}
     </md-icon>
   </div>
-  <span layout layout-align="start center"
-    ng-class="{'rates-table-header-left': $ctrl.header.align === 'start', 'rates-table-header-right': $ctrl.header.align === 'end'}">
+  <span class="rates-table-header-label"
+    ng-class="{'rates-table-header-left': $ctrl.header.align === 'start', 'rates-table-header-right': $ctrl.header.align === 'end'}"
+    layout layout-align="{{$ctrl.header.align}} center">
     {{$ctrl.header.label}}
   </span>
   <div class="rates-table-header-icon-wrapper" ng-if="$ctrl.header.align === 'start'">
