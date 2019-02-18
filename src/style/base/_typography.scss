@@ -1,11 +1,11 @@
+button.app-typography-body-2, .app-typography-body-2 {
+  @include typography(14px, normal, .25px);
+}
 button.app-typography-button {
   @include typography(14px, 500, 1.25px);
 }
 md-card-title-text.app-typography-subtitle {
   @include typography(16px, normal, .15px);
-}
-.app-typography-body-2 {
-  @include typography(14px, normal, .25px);
 }
 .app-typography-body-2-th {
   @include typography(12px, 500, .25px);

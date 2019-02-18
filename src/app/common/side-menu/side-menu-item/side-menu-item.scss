@@ -16,6 +16,7 @@
 }
 .side-menu-item-icon-arrow {
   @extend %side-menu-icon;
+  margin: 0;
 }
 .side-menu-item-icon-collapsed {
   @include icon-animations(0, $animation-duration-hide + $animation-duration-opacity-off);

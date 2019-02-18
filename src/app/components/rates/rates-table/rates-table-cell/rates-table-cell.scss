@@ -1,11 +1,15 @@
 @import '../../../../../style/helpers/variables';
 @import '../../../../../style/helpers/mixins';
 
-button.rates-table-code-button {
-  background: none;
-  border: none;
+button.rates-table-code-button.md-button {
+  margin: 0;
+  min-width: 4.5rem;
+  padding: 0;
   &:focus {
-    outline: none;
+    background: none;
+  }
+  &:hover {
+    background: none;
   }
   @media(min-width: #{$breakpoint-gt-xs}) {
     display: none;

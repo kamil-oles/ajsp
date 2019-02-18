@@ -20,9 +20,6 @@
 .app-block-scroll {
   overflow: hidden;
 }
-.app-margin-0 {
-  margin: 0;
-}
 .app-padding {
   padding-left: $base-padding;
   padding-right: $base-padding;
@@ -30,9 +27,6 @@
     padding-left: $base-padding * 2;
     padding-right: $base-padding * 2;
   }
-}
-.app-relative {
-  position: relative;
 }
 .app-side-menu-expanded {
   @media(min-width: #{$breakpoint-gt-sm}) {
