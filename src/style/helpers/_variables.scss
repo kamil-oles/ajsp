@@ -1,9 +1,12 @@
 // Animations
-$hide-animation-duration: 200ms;
-$show-animation-duration: 300ms;
-
-$hide-animation: $hide-animation-duration ease-in;
-$show-animation: $show-animation-duration ease-out;
+$animation-duration-hide: 200ms;
+$animation-duration-opacity-off: 100ms;
+$animation-duration-opacity-on: 150ms;
+$animation-duration-show: 250ms;
+$animation-hide: $animation-duration-hide ease-in;
+$animation-opacity-off: $animation-duration-opacity-off ease-in;
+$animation-opacity-on: $animation-duration-opacity-on ease-out;
+$animation-show: $animation-duration-show ease-out;
 
 // Base
 $base-padding: .5rem;

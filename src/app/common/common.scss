@@ -18,10 +18,10 @@
   opacity: 0;
 }
 .common-backdrop.ng-hide-add {
-  transition: opacity $hide-animation;
+  transition: opacity $animation-hide;
 }
 .common-backdrop.ng-hide-remove {
-  transition: opacity $show-animation;
+  transition: opacity $animation-show;
 }
 .common-container {
   padding-top: $common-height-sm;

@@ -27,5 +27,5 @@ md-icon.rates-table-icon {
   text-align: right;
 }
 .rates-table-subrow-expanded {
-  @include icon-animations(90deg, 350ms);
+  @include icon-animations(90deg, $animation-duration-opacity-on - 50ms);
 }

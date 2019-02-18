@@ -6,12 +6,6 @@
   transform: translateX($rems);
   visibility: $visibility;
 }
-@mixin submenu-animations($height, $opacity, $visibility, $height-options, $opacity-options, $visibility-options) {
-  height: $height;
-  opacity: $opacity;
-  transition: height $height-options, opacity $opacity-options, visibility $visibility-options;
-  visibility: $visibility;
-}
 @mixin toast-container($bottom, $height, $left) {
   bottom: $bottom;
   height: $height;

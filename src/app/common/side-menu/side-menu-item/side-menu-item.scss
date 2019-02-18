@@ -18,14 +18,20 @@
   @extend %side-menu-icon;
 }
 .side-menu-item-icon-collapsed {
-  @include icon-animations(0, 350ms);
+  @include icon-animations(0, $animation-duration-hide + $animation-duration-opacity-off);
 }
 .side-menu-item-icon-expanded {
-  @include icon-animations(90deg, $show-animation-duration);
+  @include icon-animations(90deg, $animation-duration-show);
 }
 .side-menu-item-submenu-collapsed {
-  @include submenu-animations(1px, 0, hidden, $hide-animation 150ms, 150ms ease-in, 0ms $hide-animation-duration);
+  height: 0;
+  opacity: 0;
+  transition: height $animation-hide $animation-duration-opacity-off, opacity $animation-opacity-off, visibility 0ms $animation-duration-hide + $animation-duration-opacity-off;
+  visibility: hidden;
 }
 .side-menu-item-submenu-expanded {
-  @include submenu-animations(5rem, 1, visible, $show-animation, 250ms ease-out $show-animation-duration, 0ms);
+  height: 5rem;
+  opacity: 1;
+  transition: height $animation-show, opacity $animation-opacity-on $animation-duration-show, visibility 0ms;
+  visibility: visible;
 }

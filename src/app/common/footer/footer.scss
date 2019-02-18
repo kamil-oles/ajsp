@@ -18,7 +18,7 @@
 .footer-link {
   color: $color-text-light;
   text-decoration: none;
-  transition: color 200ms ease-out;
+  transition: color $animation-opacity-on;
   &:hover, &:focus {
     color: $color-accent;
     outline: none;

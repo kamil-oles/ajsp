@@ -26,11 +26,11 @@ a.side-menu-link-active {
 }
 .side-menu-collapsed-m {
   transform: translateX(-$common-side-menu-width);
-  transition: transform $hide-animation;
+  transition: transform $animation-hide;
 }
 .side-menu-expanded-m {
   @include side-menu-state(0, visible);
-  transition: transform $show-animation;
+  transition: transform $animation-show;
 }
 .side-menu-link {
   display: block;

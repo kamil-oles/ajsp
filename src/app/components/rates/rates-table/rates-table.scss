@@ -44,7 +44,7 @@ span.rates-table-header-label {
   transition: height 0ms;
 }
 .rates-table-nested-cell.ng-hide-remove {
-  transition: height 200ms ease-out;
+  transition: height $animation-opacity-on;
 }
 .rates-table-nested-data {
   @extend %table-data;
@@ -57,7 +57,7 @@ span.rates-table-header-label {
   transition: opacity 0ms;
 }
 .rates-table-nested-data.ng-hide-remove {
-  transition: opacity 150ms ease-out 200ms;
+  transition: opacity $animation-duration-opacity-on - 50ms ease-out $animation-duration-opacity-on;
 }
 .rates-table-row {
   height: $rates-table-row-height;
