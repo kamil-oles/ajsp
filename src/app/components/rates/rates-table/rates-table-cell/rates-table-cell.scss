@@ -1,0 +1,31 @@
+@import '../../../../../style/helpers/variables';
+@import '../../../../../style/helpers/mixins';
+
+button.rates-table-code-button {
+  background: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    display: none;
+  }
+}
+md-icon.rates-table-icon {
+  color: $color-table-data;
+  margin: 0;
+}
+.rates-table-code {
+  @media(max-width: calc(#{$breakpoint-gt-xs} - 1px)) {
+    display: none;
+  }
+}
+.rates-table-left {
+  text-align: left
+}
+.rates-table-right {
+  text-align: right;
+}
+.rates-table-subrow-expanded {
+  @include icon-animations(90deg, 350ms);
+}

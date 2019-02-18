@@ -10,7 +10,7 @@ export const RATES_TABLE_COMPONENT = {
       this.rtss = RatesTableSortService;
     }
 
-    subrow = false;
+    subrow = null;
 
     $onChanges(changes) {
       const STATE = this.tableData.state;
@@ -29,6 +29,7 @@ export const RATES_TABLE_COMPONENT = {
       if (code === this.sortBy) {
         this.sortDirection = (this.sortDirection === 'ASC' ? 'DESC' : 'ASC');
       }
+      this.subrow = null;
       this.rtss.sort(this.data, code, this.sortDirection);
       this.sortBy = code;
     }
