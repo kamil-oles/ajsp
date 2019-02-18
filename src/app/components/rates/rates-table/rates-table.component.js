@@ -10,6 +10,8 @@ export const RATES_TABLE_COMPONENT = {
       this.rtss = RatesTableSortService;
     }
 
+    subrow = false;
+
     $onChanges(changes) {
       const STATE = this.tableData.state;
       if (changes.rates.currentValue) {
@@ -17,6 +19,10 @@ export const RATES_TABLE_COMPONENT = {
         this.sortBy = (STATE === 'current' ? 'currency' : 'date');
         this.sortDirection = 'ASC';
       }
+    }
+
+    expandSubrow(index) {
+      this.subrow = (index !== this.subrow ? index : null);
     }
 
     sort(code) {

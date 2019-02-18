@@ -1,6 +1,10 @@
 @import '../../../../style/helpers/variables';
 @import '../../../../style/helpers/placeholders';
 
+md-icon.rates-table-icon {
+  color: $color-table-data;
+  margin: 0;
+}
 span.rates-table-header-label {
   @media(max-width: $breakpoint-sm-xs) {
     max-width: 60%;
@@ -18,6 +22,7 @@ span.rates-table-header-label {
   @extend %table-data;
   border-top: 1px solid $color-table;
   color: $color-table-data;
+  vertical-align: middle;
   &:first-child {
     @extend %table-first-column;
   }
@@ -52,4 +57,54 @@ span.rates-table-header-label {
 .rates-table-row {
   height: $rates-table-row-height;
   position: relative;
+}
+.rates-table-subrow {
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    display: none;
+  }
+}
+.rates-table-subrow-expanded {
+  transform: rotate(90deg);
+  transition: transform 350ms;
+}
+.rates-table-nested-cell {
+  background-color: $color-table;
+  height: $rates-table-row-height * .75;
+}
+.rates-table-nested-data {
+  @extend %table-data;
+  opacity: 1;
+}
+.rates-table-nested-cell.ng-hide {
+  height: 0;
+}
+.rates-table-nested-data.ng-hide {
+  opacity: 0;
+}
+.rates-table-nested-cell.ng-hide-add {
+  transition: height 0ms;
+}
+.rates-table-nested-data.ng-hide-add {
+  transition: opacity 0ms;
+}
+.rates-table-nested-cell.ng-hide-remove {
+  transition: height 200ms ease-out;
+}
+.rates-table-nested-data.ng-hide-remove {
+  transition: opacity 150ms ease-out 200ms;
+}
+.rates-table-code {
+  @media(max-width: calc(#{$breakpoint-gt-xs} - 1px)) {
+    display: none;
+  }
+}
+button.rates-table-code-button {
+  background: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    display: none;
+  }
 }

@@ -11,15 +11,37 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="app-typography-body-2 rates-table-row" ng-repeat="row in $ctrl.data">
-        <td class="rates-table-data"
-          ng-class="{'rates-table-right': key === 'ask' || key === 'bid', 'rates-table-hide': key === 'currency'}"
+      <tr class="app-typography-body-2 rates-table-row" ng-init="i = $index"
+        ng-repeat-start="row in $ctrl.data track by $index">
+        <td class="rates-table-data" ng-class="{'rates-table-hide': key === 'currency'}"
           ng-repeat="(key, value) in row">
-          <span ng-if="key !== 'date'">
-            {{value}}
-          </span>
-          <span ng-if="key === 'date'">
-            {{value | date: "dd.MM.yyyy"}}
+          <div ng-switch="key"
+            ng-class="{'rates-table-left': key === 'date', 'rates-table-right': key === 'ask' || key === 'bid'}">
+            <div ng-switch-when="code">
+              <span class="rates-table-code">
+                {{value}}
+              </span>
+              <button class="rates-table-code-button" ng-click="$ctrl.expandSubrow(i)" layout
+                layout-align="start center">
+                {{value}}
+                <md-icon class="rates-table-icon" ng-class="{'rates-table-subrow-expanded': $ctrl.subrow === i}">
+                  keyboard_arrow_right
+                </md-icon>
+              </button>
+            </div>
+            <span ng-switch-when="date">
+              {{value | date: "dd.MM.yyyy"}}
+            </span>
+            <span ng-switch-default>
+              {{value}}
+            </span>
+          </div>
+        </td>
+      </tr>
+      <tr class="app-typography-body-2 rates-table-subrow" ng-repeat-end>
+        <td class="rates-table-nested-cell" colspan="3" ng-show="$ctrl.subrow === i">
+          <span class="rates-table-nested-data" ng-show="$ctrl.subrow === i">
+            {{row["currency"]}}
           </span>
         </td>
       </tr>
