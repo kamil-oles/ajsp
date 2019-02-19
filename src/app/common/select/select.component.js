@@ -6,8 +6,8 @@ export const SELECT_COMPONENT = {
   },
   template: require('./select.html'),
   controller: class SelectComponentCtrl {
-    constructor(EventEmitter) {
-      this.eventEmitter = EventEmitter;
+    constructor(eventEmitter) {
+      this.eventEmitter = eventEmitter;
     }
 
     $onChanges(changes) {
