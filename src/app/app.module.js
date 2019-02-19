@@ -5,27 +5,21 @@ import 'angular-messages';
 import 'angular-material';
 
 import firebase from 'firebase/app';
-import uiRouter from '@uirouter/angularjs';
 import 'firebase/firestore';
+import uiRouter from '@uirouter/angularjs';
 
 import { APP_COMMON } from './common/common.module';
-import { appComponent } from './app.component';
+import { APP_COMPONENT } from './app.component';
 import { appComponents } from './components/components.module';
 
 import './app.scss';
 
-firebase.initializeApp({
-  apiKey: 'AIzaSyB6Rm_TCkBZOx3iAV2QiAheSNPikmF1vZc',
-  authDomain: 'currency-converter-95682.firebaseapp.com',
-  projectId: 'currency-converter-95682'
-});
-
-export const DB = firebase.firestore();
-export const URL = 'http://api.nbp.pl/api/exchangerates/';
-
-export const app = angular
+angular
   .module('app', ['ngMessages', 'ngMaterial', uiRouter, APP_COMMON, appComponents])
-  .component('app', appComponent)
+  .component('app', APP_COMPONENT)
+  .factory('firestore', function firestoreFactory() {
+    return firebase.firestore();
+  })
   .config(($locationProvider, $mdThemingProvider, $urlRouterProvider) => {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/converter');

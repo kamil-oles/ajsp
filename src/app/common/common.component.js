@@ -1,10 +1,9 @@
-import { DB } from '../app.module';
-
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($element, $scope, $timeout, $transitions, $window) {
+    constructor($element, $scope, $timeout, $transitions, $window, firestore) {
       this.body = $element.parent().parent();
+      this.firestore = firestore;
       this.scope = $scope;
       this.timeout = $timeout;
       this.transitions = $transitions;
@@ -40,7 +39,7 @@ export const COMMON_COMPONENT = {
     fetchMenuData() {
       this.menu = JSON.parse(localStorage.getItem('basic_menu'));
       if (!this.menu) {
-        DB.collection('basic').doc('menu').get().then((querySnapshot) => {
+        this.firestore.collection('basic').doc('menu').get().then((querySnapshot) => {
           const DATA = querySnapshot.data();
           this.menu = DATA.menuItems;
           this.scope.$apply();
