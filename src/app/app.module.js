@@ -17,7 +17,10 @@ import './app.scss';
 angular
   .module('app', ['ngMessages', 'ngMaterial', uiRouter, APP_COMMON, appComponents])
   .component('app', APP_COMPONENT)
-  .factory('firestore', function firestoreFactory() {
+  .value('eventEmitter', function (payload) {
+    return { $event: payload };
+  })
+  .value('firestore', function firestore() {
     return firebase.firestore();
   })
   .config(($locationProvider, $mdThemingProvider, $urlRouterProvider) => {

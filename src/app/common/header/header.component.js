@@ -4,14 +4,14 @@ export const HEADER_COMPONENT = {
   },
   template: require('./header.html'),
   controller: class HeaderComponentCtrl {
-    constructor(EventEmitter) {
-      this.EventEmitter = EventEmitter;
+    constructor(eventEmitter) {
+      this.eventEmitter = eventEmitter;
     }
 
     repo = 'https://github.com/kamil-oles/Currency_converter-AngularJS';
 
     emitChange() {
-      this.onViewStateChange(this.EventEmitter());
+      this.onViewStateChange(this.eventEmitter());
     }
   }
 };

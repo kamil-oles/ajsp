@@ -39,7 +39,7 @@ export const COMMON_COMPONENT = {
     fetchMenuData() {
       this.menu = JSON.parse(localStorage.getItem('basic_menu'));
       if (!this.menu) {
-        this.firestore.collection('basic').doc('menu').get().then((querySnapshot) => {
+        this.firestore().collection('basic').doc('menu').get().then((querySnapshot) => {
           const DATA = querySnapshot.data();
           this.menu = DATA.menuItems;
           this.scope.$apply();
