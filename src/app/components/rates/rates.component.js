@@ -1,15 +1,15 @@
 export const RATES_COMPONENT = {
   template: require('./rates.html'),
   controller: class RatesComponentCtrl {
-    constructor($transitions) {
+    constructor($state, $transitions) {
+      this.state = $state;
       this.transitions = $transitions;
     }
 
-    state = 'current';
-
     $onInit() {
+      this.currentState = this.state.current.name.slice(9);
       this.transitions.onSuccess({ to: 'appRates.**' }, (transition) => {
-        this.state = transition.to().name.slice(9);
+        this.currentState = transition.to().name.slice(9);
       });
     }
   }
