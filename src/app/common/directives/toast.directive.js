@@ -4,31 +4,12 @@ export class ToastDirective {
     this.restrict = 'A';
     this.scope = {};
   }
-
-  link(scope, element, attrs, ctrl) {
-    scope.$parent.$on('toast', function showToast(event, message) {
-      const MESSAGE_PROCESSED = ctrl.processMessage(message);
-      if (element.hasClass('common-toast-hide')) {
-        element.toggleClass('common-toast-show common-toast-hide');
-      }
-      ctrl.toast.show(ctrl.toast.simple()
-        .action('ZAMKNIJ')
-        .hideDelay(false)
-        .parent(element)
-        .position('top right')
-        .textContent(MESSAGE_PROCESSED)
-      ).then(function changeClass() {
-        element.toggleClass('common-toast-show common-toast-hide');
-      }, function fallback() {
-        return;
-      });
-      event.stopPropagation();
-    });
-  }
 }
 
 class ToastDirectiveCtrl {
-  constructor($mdToast, $transitions) {
+  constructor($element, $mdToast, $scope, $transitions) {
+    this.element = $element;
+    this.scope = $scope;
     this.toast = $mdToast;
     this.transitions = $transitions;
   }
@@ -38,6 +19,27 @@ class ToastDirectiveCtrl {
   $onInit() {
     this.transitions.onStart({}, () => {
       this.toast.hide();
+    });
+  }
+
+  $postLink() {
+    this.scope.$parent.$on('toast', (event, message) => {
+      const MESSAGE_PROCESSED = this.processMessage(message);
+      if (this.element.hasClass('common-toast-hide')) {
+        this.element.toggleClass('common-toast-show common-toast-hide');
+      }
+      this.toast.show(this.toast.simple()
+        .action('ZAMKNIJ')
+        .hideDelay(false)
+        .parent(this.element)
+        .position('top right')
+        .textContent(MESSAGE_PROCESSED)
+      ).then(() => {
+        this.element.toggleClass('common-toast-show common-toast-hide');
+      }, function fallback() {
+        return;
+      });
+      event.stopPropagation();
     });
   }
 
