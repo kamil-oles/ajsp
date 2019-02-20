@@ -1,16 +1,16 @@
 import { RatesHistorical } from '../classes/rates-historical.class';
-import { URL } from '../../../../app.module';
 
 export class RatesHistoricalHttpService {
-  constructor($filter, $http) {
+  constructor($filter, $http, endPoint) {
     this.filter = $filter;
     this.http = $http;
+    this.url = endPoint;
   }
 
   getRates(code, start, end) {
     return this.http({
       method: 'GET',
-      url: `${URL}rates/c/${code}/${start}/${end}/`
+      url: `${this.url}rates/c/${code}/${start}/${end}/`
     });
   }
 

@@ -1,14 +1,13 @@
-import { URL } from '../../../../app.module';
-
 export class RatesCurrentHttpService {
-  constructor($http) {
+  constructor($http, endPoint) {
     this.http = $http;
+    this.url = endPoint;
   }
 
   getRates() {
     return this.http({
       method: 'GET',
-      url: `${URL}tables/c/`
+      url: `${this.url}tables/c/`
     });
   }
 
