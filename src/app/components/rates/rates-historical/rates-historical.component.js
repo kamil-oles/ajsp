@@ -1,3 +1,5 @@
+import { RatesHistorical } from './classes/rates-historical.class';
+
 export const RATES_HISTORICAL_COMPONENT = {
   bindings: {
     currencies: '<',
@@ -27,7 +29,12 @@ export const RATES_HISTORICAL_COMPONENT = {
       const START = this.filter('date')(this.from, 'yyyy-MM-dd'),
         END = this.filter('date')(this.to, 'yyyy-MM-dd');
       this.http.getRates(this.currency.code, START, END).then(response => {
-        this.rates = response.data.rates;
+        const DATA = response.data;
+        sessionStorage.setItem(
+          'rates_historical',
+          JSON.stringify(new RatesHistorical(START, DATA))
+        );
+        this.rates = DATA.rates;
       }, error => {
         this.scope.$emit('toast', error.data);
       });

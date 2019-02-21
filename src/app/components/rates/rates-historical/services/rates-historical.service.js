@@ -16,11 +16,16 @@ export class RatesHistoricalHttpService {
 
   initialData(code) {
     const FROM = this.filter('date')(this.setDateFrom(), 'yyyy-MM-dd'),
+      SESSION_DATA = JSON.parse(sessionStorage.getItem('rates_historical')),
       TO = this.filter('date')(new Date(), 'yyyy-MM-dd');
     if (code) {
       return this.getRates(code, FROM, TO).then(function prepareData(response) {
-        return new RatesHistorical(FROM, response.data);
+        const DATA = new RatesHistorical(FROM, response.data);
+        sessionStorage.setItem('rates_historical', JSON.stringify(DATA));
+        return DATA;
       });
+    } else if (SESSION_DATA) {
+      return SESSION_DATA;
     } else {
       return new RatesHistorical(FROM);
     }

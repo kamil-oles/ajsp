@@ -12,7 +12,16 @@ export class RatesCurrentHttpService {
   }
 
   rates() {
-    return this.getRates().then(response => this.removeXdr(response.data[0]));
+    const SESSION_RATES = JSON.parse(sessionStorage.getItem('rates_current'));
+    if (!SESSION_RATES) {
+      return this.getRates().then(response => {
+        const DATA = this.removeXdr(response.data[0]);
+        sessionStorage.setItem('rates_current', JSON.stringify(DATA));
+        return DATA;
+      });
+    } else {
+      return SESSION_RATES;
+    }
   }
 
   removeXdr(response) {
