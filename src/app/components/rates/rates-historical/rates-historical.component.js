@@ -16,7 +16,7 @@ export const RATES_HISTORICAL_COMPONENT = {
 
     $onInit() {
       this.currency = {
-        code: this.initialData.data ? this.initialData.data.code : 'EUR'
+        code: this.initialData.currency.code
       };
       this.from = this.initialData.from;
       this.max = new Date();
@@ -32,7 +32,7 @@ export const RATES_HISTORICAL_COMPONENT = {
         const DATA = response.data;
         sessionStorage.setItem(
           'rates_historical',
-          JSON.stringify(new RatesHistorical(START, DATA))
+          JSON.stringify(new RatesHistorical(DATA.code, START, DATA))
         );
         this.rates = DATA.rates;
       }, error => {

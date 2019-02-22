@@ -1,10 +1,11 @@
 import { RatesHistorical } from '../classes/rates-historical.class';
 
 export class RatesHistoricalHttpService {
-  constructor($filter, $http, endPoint) {
+  constructor($filter, $http, base) {
+    this.baseCode = base.currency.code;
     this.filter = $filter;
     this.http = $http;
-    this.url = endPoint;
+    this.url = base.url;
   }
 
   getRates(code, start, end) {
@@ -20,14 +21,15 @@ export class RatesHistoricalHttpService {
       TO = this.filter('date')(new Date(), 'yyyy-MM-dd');
     if (code) {
       return this.getRates(code, FROM, TO).then(function prepareData(response) {
-        const DATA = new RatesHistorical(FROM, response.data);
+        const RESPONSE = response.data,
+          DATA = new RatesHistorical(RESPONSE.code, FROM, RESPONSE);
         sessionStorage.setItem('rates_historical', JSON.stringify(DATA));
         return DATA;
       });
     } else if (SESSION_DATA) {
       return SESSION_DATA;
     } else {
-      return new RatesHistorical(FROM);
+      return new RatesHistorical(this.baseCode, FROM);
     }
   }
 

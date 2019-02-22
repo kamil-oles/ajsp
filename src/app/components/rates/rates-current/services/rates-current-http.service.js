@@ -1,7 +1,7 @@
 export class RatesCurrentHttpService {
-  constructor($http, endPoint) {
+  constructor($http, base) {
     this.http = $http;
-    this.url = endPoint;
+    this.url = base.url;
   }
 
   getRates() {
