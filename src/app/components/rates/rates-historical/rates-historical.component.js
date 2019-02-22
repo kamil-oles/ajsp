@@ -16,7 +16,7 @@ export const RATES_HISTORICAL_COMPONENT = {
 
     $onInit() {
       this.currency = {
-        code: this.initialData.currency.code
+        code: this.initialData.currency
       };
       this.from = this.initialData.from;
       this.max = new Date();
@@ -40,8 +40,8 @@ export const RATES_HISTORICAL_COMPONENT = {
       });
     }
 
-    updateCode(data) {
-      this.currency.code = data.code;
+    updateCode(code) {
+      this.currency.code = code;
     }
   }
 };

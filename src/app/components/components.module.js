@@ -11,7 +11,7 @@ export const appComponents = angular
   .service('ComponentsDb', ComponentsDbService)
   .service('ComponentsHttpService', ComponentsHttpService)
   .value('base', {
-    currency: { code: 'EUR' },
+    currency: 'EUR',
     url: 'http://api.nbp.pl/api/exchangerates/'
   })
   .name;

@@ -2,7 +2,7 @@ import { RatesHistorical } from '../classes/rates-historical.class';
 
 export class RatesHistoricalHttpService {
   constructor($filter, $http, base) {
-    this.baseCode = base.currency.code;
+    this.baseCode = base.currency;
     this.filter = $filter;
     this.http = $http;
     this.url = base.url;

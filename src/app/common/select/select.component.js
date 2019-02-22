@@ -17,7 +17,7 @@ export const SELECT_COMPONENT = {
     }
 
     updateCode() {
-      this.onUpdateCode(this.eventEmitter({ code: this.currency.code }));
+      this.onUpdateCode(this.eventEmitter(this.currency.code));
     }
   }
 };
