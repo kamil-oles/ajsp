@@ -9,8 +9,6 @@ import {
 import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 import { RatesHistoricalHttpService } from './services/rates-historical.service';
 
-import './rates-historical.scss';
-
 export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [uiRouter, appRatesHistoricalMessages])
   .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)

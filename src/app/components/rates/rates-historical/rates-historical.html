@@ -26,8 +26,12 @@
     </div>
     <div flex="100" flex-sm="25" flex-gt-sm="20" layout layout-align="end start" layout-align-gt-xs="start start">
       <md-button type="submit" class="md-accent md-hue-1 md-raised app-typography-button"
-        ng-disabled="historicalForm.$invalid">
-        Filtruj
+        ng-disabled="historicalForm.$invalid || $ctrl.loading">
+        <span ng-show="!$ctrl.loading">
+          Filtruj
+        </span>
+        <md-progress-circular class="app-center me-primary md-hue-2" md-diameter="20px" ng-show="$ctrl.loading">
+        </md-progress-circular>
       </md-button>
     </div>
   </form>

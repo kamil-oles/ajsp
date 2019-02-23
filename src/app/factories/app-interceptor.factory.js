@@ -1,4 +1,4 @@
-export const APP_INTERCEPTOR_FACTORY = function ($interval, $timeout) {
+export const APP_INTERCEPTOR_FACTORY = function ($interval, $q, $rootScope, $timeout) {
   let requestArray = [];
 
   function clearArray(array, url) {
@@ -9,10 +9,12 @@ export const APP_INTERCEPTOR_FACTORY = function ($interval, $timeout) {
 
   function showLoader(url) {
     if (requestArray.indexOf(url) !== -1) {
-      console.log('---------LOADER!!!!');
+      $rootScope.$broadcast('loader', true);
+      console.log('---------LOADER!!!');
     }
     const INTERVAL = $interval(function checkRequestArray() {
       if (requestArray.length === 0) {
+        $rootScope.$broadcast('loader', false);
         console.log('---------HIDE LOADER!!!');
         $interval.cancel(INTERVAL);
       }
@@ -24,12 +26,16 @@ export const APP_INTERCEPTOR_FACTORY = function ($interval, $timeout) {
       requestArray.push(config.url);
       $timeout(function loader() {
         showLoader(config.url);
-      }, 1500);
+      }, 1000);
       return config;
     },
     'response': function (response) {
       requestArray = clearArray(requestArray, response.config.url);
       return response;
+    },
+    'responseError': function (rejection) {
+      requestArray = clearArray(requestArray, rejection.config.url);
+      return $q.reject(rejection);
     }
   };
 };
