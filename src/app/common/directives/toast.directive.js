@@ -14,7 +14,8 @@ class ToastDirectiveCtrl {
     this.transitions = $transitions;
   }
 
-  regex = /-\s(.*)\s\//;
+  regex1 = /-\s(.*)\s\//;
+  regex2 = /\w*\s\w*$/;
 
   $onInit() {
     this.transitions.onStart({}, () => {
@@ -44,11 +45,13 @@ class ToastDirectiveCtrl {
   }
 
   processMessage(message) {
-    const RESULT = this.regex.exec(message);
-    if (Array.isArray(RESULT)) {
-      return RESULT[1];
-    } else {
-      return '';
+    let result = this.regex1.exec(message);
+    if (Array.isArray(result)) {
+      return result[1];
+    }
+    result = this.regex2.exec(message);
+    if (Array.isArray(result)) {
+      return result[0];
     }
   }
 }
