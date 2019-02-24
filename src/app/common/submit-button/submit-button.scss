@@ -1,0 +1,13 @@
+@import '../../../style/helpers/variables';
+
+.submit-button-hidden {
+  display: none;
+}
+.submit-button-hide {
+  opacity: 0;
+  transition: opacity $animation-opacity-off;
+}
+.submit-button-show {
+  opacity: 1;
+  transition: opacity $animation-opacity-on;
+}
