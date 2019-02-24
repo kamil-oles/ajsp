@@ -14,8 +14,6 @@ export const RATES_HISTORICAL_COMPONENT = {
       this.scope = $scope;
     }
 
-    loading = false;
-
     $onInit() {
       this.currency = {
         code: this.initialData.currency
@@ -25,9 +23,6 @@ export const RATES_HISTORICAL_COMPONENT = {
       this.min = new Date(2002, 0, 2);
       this.rates = this.initialData.data ? this.initialData.data.rates : null;
       this.to = this.max;
-      this.scope.$on('loader', (event, loader) => {
-        this.loading = loader;
-      });
     }
 
     getRates() {

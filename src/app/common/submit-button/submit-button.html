@@ -1,0 +1,8 @@
+<md-button type="submit" class="md-accent md-hue-1 md-raised app-typography-button"
+  ng-disabled="$ctrl.active || $ctrl.loading" ng-cloak>
+  <span ng-show="!$ctrl.loading">
+    Filtruj
+  </span>
+  <md-progress-circular class="app-center me-primary md-hue-2" md-diameter="20px" ng-show="$ctrl.loading">
+  </md-progress-circular>
+</md-button>
