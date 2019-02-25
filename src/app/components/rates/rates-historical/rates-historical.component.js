@@ -8,11 +8,14 @@ export const RATES_HISTORICAL_COMPONENT = {
   },
   template: require('./rates-historical.html'),
   controller: class RatesHistoricalComponentCtrl {
-    constructor($filter, $scope, RatesHistoricalHttp) {
+    constructor($filter, $scope, $transitions, RatesHistoricalHttp) {
       this.filter = $filter;
       this.http = RatesHistoricalHttp;
       this.scope = $scope;
+      this.transitions = $transitions;
     }
+
+    blockLoader = true;
 
     $onInit() {
       this.currency = {
@@ -23,6 +26,15 @@ export const RATES_HISTORICAL_COMPONENT = {
       this.min = new Date(2002, 0, 2);
       this.rates = this.initialData.data ? this.initialData.data.rates : null;
       this.to = this.max;
+      this.transitions.onBefore({
+        from: 'appRates.historical',
+        to: 'appRates.current'
+      }, () => {
+        this.blockLoader = false;
+      });
+      this.scope.$on('loader', (event, loader) => {
+        this.loader = !this.blockLoader ? loader : false;
+      });
     }
 
     getRates() {

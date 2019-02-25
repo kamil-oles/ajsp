@@ -1,33 +1,36 @@
-<md-card-content class="app-padding" ng-cloak>
-  <form name="historicalForm" ng-submit="$ctrl.getRates()" layout layout-wrap>
-    <div flex="100" flex-sm="25" flex-gt-sm="20">
-      <app-select currency="$ctrl.currency" currencies="$ctrl.currencies" on-update-code="$ctrl.updateCode($event)">
-      </app-select>
-    </div>
-    <div flex="50" flex-sm="25" flex-gt-sm="20">
-      <md-input-container>
-        <label>
-          Od
-        </label>
-        <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
-          md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
-        <app-rates-historical-messages errors="historicalForm.from.$error"></app-rates-historical-messages>
-      </md-input-container>
-    </div>
-    <div flex="50" flex-sm="25" flex-gt-sm="20">
-      <md-input-container>
-        <label>
-          Do
-        </label>
-        <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar" md-max-date="$ctrl.max"
-          md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
-        <app-rates-historical-messages errors="historicalForm.to.$error"></app-rates-historical-messages>
-      </md-input-container>
-    </div>
-    <div flex="100" flex-sm="25" flex-gt-sm="20" layout layout-align="end start" layout-align-gt-xs="start start">
-      <app-submit-button active="historicalForm.$invalid" label="'Filtruj'"></app-submit-button>
-    </div>
-  </form>
-</md-card-content>
-<md-divider></md-divider>
-<app-rates-table rates="$ctrl.rates" table-data="$ctrl.table"></app-rates-table>
+<div class="app-position-relative" ng-cloak>
+  <md-card-content class="app-padding">
+    <form name="historicalForm" ng-submit="$ctrl.getRates()" layout layout-wrap>
+      <div flex="100" flex-sm="25" flex-gt-sm="20">
+        <app-select currency="$ctrl.currency" currencies="$ctrl.currencies" on-update-code="$ctrl.updateCode($event)">
+        </app-select>
+      </div>
+      <div flex="50" flex-sm="25" flex-gt-sm="20">
+        <md-input-container>
+          <label>
+            Od
+          </label>
+          <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
+            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
+          <app-rates-historical-messages errors="historicalForm.from.$error"></app-rates-historical-messages>
+        </md-input-container>
+      </div>
+      <div flex="50" flex-sm="25" flex-gt-sm="20">
+        <md-input-container>
+          <label>
+            Do
+          </label>
+          <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar"
+            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
+          <app-rates-historical-messages errors="historicalForm.to.$error"></app-rates-historical-messages>
+        </md-input-container>
+      </div>
+      <div flex="100" flex-sm="25" flex-gt-sm="20" layout layout-align="end start" layout-align-gt-xs="start start">
+        <app-submit-button active="historicalForm.$invalid" label="'Filtruj'"></app-submit-button>
+      </div>
+    </form>
+  </md-card-content>
+  <md-divider></md-divider>
+  <app-rates-table rates="$ctrl.rates" table-data="$ctrl.table"></app-rates-table>
+  <div class="app-backdrop-loader" ng-show="$ctrl.loader"></div>
+</div>

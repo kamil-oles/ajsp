@@ -17,6 +17,21 @@
     padding-left: 2px;
   }
 }
+.app-backdrop-loader {
+  @extend %backdrop;
+  background-color: white;
+  opacity: .75;
+  position: absolute;
+}
+.app-backdrop-loader.ng-hide {
+  opacity: 0;
+}
+.app-backdrop-loader.ng-hide-add {
+  transition: opacity $animation-opacity-off;
+}
+.app-backdrop-loader.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
+}
 .app-block-scroll {
   overflow: hidden;
 }
@@ -30,6 +45,9 @@
     padding-left: $base-padding * 2;
     padding-right: $base-padding * 2;
   }
+}
+.app-position-relative {
+  position: relative;
 }
 .app-side-menu-expanded {
   @media(min-width: #{$breakpoint-gt-sm}) {
