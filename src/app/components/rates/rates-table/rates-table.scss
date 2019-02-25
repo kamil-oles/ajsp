@@ -10,6 +10,24 @@ span.rates-table-header-label {
   border-collapse: collapse;
   width: 100%;
 }
+.rates-table-backdrop {
+  @extend %backdrop;
+  background-color: white;
+  opacity: .75;
+  position: absolute;
+}
+.rates-table-backdrop.ng-hide {
+  opacity: 0;
+}
+.rates-table-backdrop.ng-hide-add {
+  transition: opacity $animation-hide;
+}
+.rates-table-backdrop.ng-hide-remove {
+  transition: opacity $animation-show;
+}
+.rates-table-container {
+  position: relative;
+}
 .rates-table-data {
   @extend %table-data;
   border-top: 1px solid $color-table;

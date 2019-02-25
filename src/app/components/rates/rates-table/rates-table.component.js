@@ -5,12 +5,20 @@ export const RATES_TABLE_COMPONENT = {
   },
   template: require('./rates-table.html'),
   controller: class RatesTableComponentCtrl {
-    constructor(RatesTableDataService, RatesTableSortService) {
+    constructor($scope, RatesTableDataService, RatesTableSortService) {
       this.rtds = RatesTableDataService;
       this.rtss = RatesTableSortService;
+      this.scope = $scope;
     }
 
+    loader = false;
     subrow = null;
+
+    $onInit() {
+      this.scope.$on('loader', (event, loader) => {
+        this.loader = loader;
+      });
+    }
 
     $onChanges(changes) {
       const STATE = this.tableData.state;

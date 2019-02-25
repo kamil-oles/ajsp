@@ -1,15 +1,12 @@
 @import '../../style/helpers/variables';
 @import '../../style/helpers/mixins';
+@import '../../style/helpers/placeholders';
 
 .common-backdrop {
+  @extend %backdrop;
   background-color: black;
-  height: 100%;
   opacity: .5;
   position: fixed;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 2;
   @media(min-width: #{$breakpoint-gt-sm}) {
     display: none;
   }

@@ -1,3 +1,10 @@
+%backdrop {
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
 %side-menu-icon {
   color: $color-text-dark;
   margin: 0 ($common-padding / 2) 0 0;
