@@ -5,15 +5,26 @@ export const SUBMIT_BUTTON_COMPONENT = {
   },
   template: require('./submit-button.html'),
   controller: class SubmitButtonComponentCtrl {
-    constructor($animate, $element, $scope) {
+    constructor($animate, $element, $scope, $transitions) {
       this.animate = $animate;
       this.element = $element;
       this.scope = $scope;
+      this.transitions = $transitions;
     }
 
+    blockLoader = false;
+
     $onInit() {
+      this.transitions.onBefore({
+        from: 'appRates.historical',
+        to: 'appRates.current'
+      }, () => {
+        this.blockLoader = true;
+      });
       this.scope.$on('loader', (event, loader) => {
-        this.display(loader);
+        if (!this.blockLoader) {
+          this.display(loader);
+        }
       });
     }
 
