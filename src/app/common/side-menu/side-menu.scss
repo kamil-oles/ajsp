@@ -10,7 +10,7 @@ a.side-menu-link-active {
     height: calc(100vh - #{$common-height-sm});
     position: fixed;
     width: $common-side-menu-width;
-    z-index: 3;
+    z-index: 4;
     @media (min-width: #{$breakpoint-gt-xs}) {
       height: calc(100vh - #{$common-height});
     }

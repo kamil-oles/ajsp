@@ -37,6 +37,7 @@
   @include toast-container(0, 3rem, 0);
   position: fixed;
   width: 100vw;
+  z-index: 3;
   @media (min-width: #{$breakpoint-gt-sm}) {
     @include toast-container(auto, 4rem, auto);
     right: 0;
