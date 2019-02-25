@@ -6,6 +6,9 @@ md-progress-circular.submit-button-hidden {
 span.submit-button-hidden {
   display: none;
 }
+.md-button.submit-button {
+  padding: 0;
+}
 .submit-button-hide {
   opacity: 0;
   transition: opacity $animation-opacity-off;
