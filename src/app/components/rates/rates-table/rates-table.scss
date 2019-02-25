@@ -20,10 +20,10 @@ span.rates-table-header-label {
   opacity: 0;
 }
 .rates-table-backdrop.ng-hide-add {
-  transition: opacity $animation-hide;
+  transition: opacity $animation-opacity-off;
 }
 .rates-table-backdrop.ng-hide-remove {
-  transition: opacity $animation-show;
+  transition: opacity $animation-opacity-on;
 }
 .rates-table-container {
   position: relative;
