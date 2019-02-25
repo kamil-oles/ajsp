@@ -1,11 +1,19 @@
 @import '../../../style/helpers/variables';
 
-.submit-button-hidden {
+md-progress-circular.submit-button-hidden {
+  display: none;
+}
+span.submit-button-hidden {
   display: none;
 }
 .submit-button-hide {
   opacity: 0;
   transition: opacity $animation-opacity-off;
+}
+.submit-button-label {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
 }
 .submit-button-show {
   opacity: 1;
