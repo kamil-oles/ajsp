@@ -1,7 +1,3 @@
-import angular from 'angular';
-
-import uiRouter from '@uirouter/angularjs';
-
 import { APP_FOOTER } from './footer/footer.module';
 import { APP_HEADER } from './header/header.module';
 import { APP_SELECT } from './select/select.module';
@@ -13,14 +9,7 @@ import { ToastDirective } from './directives/toast.directive';
 import './common.scss';
 
 export const APP_COMMON = angular
-  .module('appCommon', [
-    uiRouter,
-    APP_FOOTER,
-    APP_HEADER,
-    APP_SELECT,
-    APP_SIDE_MENU,
-    APP_SUBMIT_BUTTON
-  ])
+  .module('appCommon', [APP_FOOTER, APP_HEADER, APP_SELECT, APP_SIDE_MENU, APP_SUBMIT_BUTTON])
   .component('appCommon', COMMON_COMPONENT)
   .directive('toast', ToastDirective)
   .config(function moduleConfig($stateProvider) {

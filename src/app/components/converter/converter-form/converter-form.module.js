@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { converterFormComponent } from './converter-form.component';
 import { ConverterFormCalculateService } from './services/converter-form-calculate.service';
 import { ConverterFormValidationService } from './services/converter-form-validation.service';

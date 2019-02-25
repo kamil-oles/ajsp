@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { FOOTER_COMPONENT } from './footer.component';
 import './footer.scss';
 

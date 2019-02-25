@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 import { SIDE_MENU_COMPONENT } from './side-menu.component';
 import { SIDE_MENU_ITEM_COMPONENT } from './side-menu-item/side-menu-item.component';
 import { SUBMENU_ITEM_COMPONENT } from './side-menu-item/submenu-item/submenu-item.component';

@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { appConverter } from './converter/converter.module';
 import { APP_RATES } from './rates/rates.module';
 import { ComponentsCurrenciesService } from './shared/services/components-currencies.service';

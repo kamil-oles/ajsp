@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { HEADER_COMPONENT } from './header.component';
 import './header.scss';
 

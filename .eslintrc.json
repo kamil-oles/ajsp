@@ -6,6 +6,9 @@
     "es6": true
   },
   "extends": "eslint:recommended",
+  "globals": {
+    "angular": "readable"
+  },
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2015,

@@ -1,7 +1,4 @@
-import angular from 'angular';
-
 import moment from 'moment';
-import uiRouter from '@uirouter/angularjs';
 
 import {
   appRatesHistoricalMessages
@@ -10,7 +7,7 @@ import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 import { RatesHistoricalHttpService } from './services/rates-historical.service';
 
 export const APP_RATES_HISTORICAL = angular
-  .module('appRatesHistorical', [uiRouter, appRatesHistoricalMessages])
+  .module('appRatesHistorical', [appRatesHistoricalMessages])
   .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
   .service('RatesHistoricalHttp', RatesHistoricalHttpService)
   .config(function moduleConfig($mdDateLocaleProvider, $stateProvider) {

@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { ratesHistoricalMessagesComponent } from './rates-historical-messages.component';
 
 export const appRatesHistoricalMessages = angular

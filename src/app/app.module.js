@@ -15,6 +15,12 @@ import { APP_INTERCEPTOR_FACTORY } from './factories/app-interceptor.factory';
 
 import './app.scss';
 
+firebase.initializeApp({
+  apiKey: 'AIzaSyB6Rm_TCkBZOx3iAV2QiAheSNPikmF1vZc',
+  authDomain: 'currency-converter-95682.firebaseapp.com',
+  projectId: 'currency-converter-95682'
+});
+
 angular
   .module('app', ['ngMessages', 'ngMaterial', uiRouter, APP_COMMON, appComponents])
   .component('app', APP_COMPONENT)

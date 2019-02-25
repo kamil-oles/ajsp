@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { SUBMIT_BUTTON_COMPONENT } from './submit-button.component';
 import './submit-button.scss';
 

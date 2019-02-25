@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 import { RATES_TABLE_COMPONENT } from './rates-table.component';
 import { RATES_TABLE_CELL_COMPONENT } from './rates-table-cell/rates-table-cell.component';
 import { RATES_TABLE_HEADER_COMPONENT } from './rates-table-header/rates-table-header.component';
@@ -17,7 +15,4 @@ export const APP_RATES_TABLE = angular
   .component('appRatesTableHeader', RATES_TABLE_HEADER_COMPONENT)
   .service('RatesTableDataService', RatesTableDataService)
   .service('RatesTableSortService', RatesTableSortService)
-  // .value('EventEmitter', function (payload) {
-  //   return ({ $event: payload });
-  // })
   .name;
