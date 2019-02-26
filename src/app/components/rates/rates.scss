@@ -13,3 +13,20 @@
 .rates-selected .md-button.md-default-theme.md-accent, .md-button.md-accent {
   color: $color-primary-dark;
 }
+.rates-view {
+  min-height: 42rem;
+}
+.rates-view.ng-enter {
+  opacity: 0;
+  transition: opacity $animation-show;
+}
+.rates-view.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.rates-view.ng-leave {
+  opacity: 1;
+  transition: opacity $animation-hide;
+}
+.rates-view.ng-leave.ng-leave-active {
+  opacity: 0;
+}

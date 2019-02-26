@@ -15,11 +15,11 @@
         md-nav-sref="appRates.current">
         Aktualne
       </md-nav-item>
-      <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'historical'}" name="historical"
-        md-nav-sref="appRates.historical">
+      <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'historical'}"
+        name="historical" md-nav-sref="appRates.historical">
         Historyczne
       </md-nav-item>
     </md-nav-bar>
-    <ui-view></ui-view>
+    <div class="rates-view" ui-view></div>
   </md-card>
 </md-content>
