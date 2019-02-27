@@ -7,6 +7,10 @@ export const APP_INTERCEPTOR_FACTORY = function ($interval, $q, $rootScope, $tim
     return array;
   }
 
+  function hideToast() {
+    $rootScope.$broadcast('hideToast');
+  }
+
   function showLoader(url) {
     if (requestArray.indexOf(url) !== -1) {
       $rootScope.$broadcast('loader', true);
@@ -30,6 +34,7 @@ export const APP_INTERCEPTOR_FACTORY = function ($interval, $q, $rootScope, $tim
       return config;
     },
     'response': function (response) {
+      hideToast();
       requestArray = clearArray(requestArray, response.config.url);
       return response;
     },

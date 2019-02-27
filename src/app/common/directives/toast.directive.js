@@ -21,6 +21,9 @@ class ToastDirectiveCtrl {
     this.transitions.onStart({}, () => {
       this.toast.hide();
     });
+    this.scope.$on('hideToast', () => {
+      this.toast.hide();
+    });
   }
 
   $postLink() {
