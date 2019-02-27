@@ -14,14 +14,11 @@
   color: $color-primary-dark;
 }
 .rates-view {
-  min-height: 15.25rem;
-  @media(min-width: #{$breakpoint-gt-xs}) {
-    min-height: 7.875rem;
-  }
+  min-height: 43rem;
 }
 .rates-view.ng-enter {
   opacity: 0;
-  transition: opacity $animation-show $animation-duration-hide;
+  transition: opacity $animation-show;
 }
 .rates-view.ng-enter.ng-enter-active {
   opacity: 1;
