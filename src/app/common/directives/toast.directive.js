@@ -27,7 +27,7 @@ class ToastDirectiveCtrl {
     this.scope.$parent.$on('toast', (event, message) => {
       const MESSAGE_PROCESSED = this.processMessage(message);
       if (this.element.hasClass('common-toast-hide')) {
-        this.element.toggleClass('common-toast-show common-toast-hide');
+        this.toggle();
       }
       this.toast.show(this.toast.simple()
         .action('ZAMKNIJ')
@@ -36,7 +36,7 @@ class ToastDirectiveCtrl {
         .position('top right')
         .textContent(MESSAGE_PROCESSED)
       ).then(() => {
-        this.element.toggleClass('common-toast-show common-toast-hide');
+        this.toggle();
       }, function fallback() {
         return;
       });
@@ -53,5 +53,9 @@ class ToastDirectiveCtrl {
     if (Array.isArray(result)) {
       return result[0];
     }
+  }
+
+  toggle() {
+    this.element.toggleClass('common-toast-show common-toast-hide');
   }
 }

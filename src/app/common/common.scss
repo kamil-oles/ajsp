@@ -2,6 +2,22 @@
 @import '../../style/helpers/mixins';
 @import '../../style/helpers/placeholders';
 
+.md-button.md-fab.common-back-to-top {
+  bottom: 1.5rem;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+}
+.md-button.md-fab.common-back-to-top-hidden {
+  opacity: 0;
+  transform: translateY(4.5rem);
+  transition: all $animation-opacity-off;
+}
+.md-button.md-fab.common-back-to-top-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all $animation-opacity-on;
+}
 .common-backdrop {
   @extend %backdrop;
   background-color: black;
