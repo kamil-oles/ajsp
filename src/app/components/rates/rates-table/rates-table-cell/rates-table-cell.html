@@ -5,13 +5,13 @@
     <span class="rates-table-code">
       {{$ctrl.value}}
     </span>
-    <md-button class="app-typography-body-2 rates-table-code-button" ng-click="$ctrl.sendIndex()" md-no-ink layout
+    <button type="button" class="app-typography-body-2 rates-table-code-button" ng-click="$ctrl.sendIndex()" layout
       layout-align="start center">
       {{$ctrl.value}}
       <md-icon class="rates-table-icon" ng-class="{'rates-table-subrow-expanded': $ctrl.subrow === $ctrl.index}">
         keyboard_arrow_right
       </md-icon>
-    </md-button>
+    </button>
   </div>
   <span ng-switch-when="date">
     {{$ctrl.value | date: "dd.MM.yyyy"}}
