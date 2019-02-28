@@ -1,22 +1,22 @@
 @import '../../../../../style/helpers/variables';
 @import '../../../../../style/helpers/mixins';
 
-md-icon.rates-table-icon {
-  color: $color-table-data;
-  margin: 0;
-}
-.rates-table-code {
-  @media(max-width: calc(#{$breakpoint-gt-xs} - 1px)) {
-    display: none;
-  }
-}
-.rates-table-code-button {
+button.rates-table-code-button {
   background: none;
   border: none;
   &:focus {
     outline: none;
   }
   @media(min-width: #{$breakpoint-gt-xs}) {
+    display: none;
+  }
+}
+md-icon.rates-table-icon {
+  color: $color-table-data;
+  margin: 0;
+}
+.rates-table-code {
+  @media(max-width: calc(#{$breakpoint-gt-xs} - 1px)) {
     display: none;
   }
 }
