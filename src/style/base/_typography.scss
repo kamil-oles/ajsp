@@ -4,8 +4,11 @@ button.app-typography-body-2, .app-typography-body-2 {
 button.app-typography-button {
   @include typography(14px, 500, 1.25px);
 }
-md-card-title-text.app-typography-subtitle {
+md-card-title-text.app-typography-subtitle, .app-typography-subtitle {
   @include typography(16px, normal, .15px);
+}
+.app-typography-body {
+  @include typography(16px, normal, .5px);
 }
 .app-typography-body-2-th {
   @include typography(12px, 500, .25px);
@@ -13,15 +16,9 @@ md-card-title-text.app-typography-subtitle {
 .app-typography-caption {
   @include typography(12px, normal, .4px);
 }
-.app-typography-subtitle {
-  @include typography(16px, normal, .15px);
+.app-typography-h6 {
+  @include typography(20px, 500, .15px);
 }
 .app-typography-subtitle-2 {
   @include typography(14px, 500, .1px);
-}
-.typography-body {
-  @include typography(16px, normal, .5px);
-}
-.typography-h6 {
-  @include typography(20px, 500, .15px);
 }
