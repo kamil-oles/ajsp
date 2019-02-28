@@ -7,8 +7,11 @@ export const APP_COMPONENT = {
     }
 
     $onInit() {
-      this.transitions.onSuccess({}, () => {
-        this.window.scroll(0, 0);
+      this.transitions.onSuccess({}, (transition) => {
+        const PARAMS = transition.params();
+        if (PARAMS.from !== 'tab') {
+          this.window.scroll(0, 0);
+        }
       });
     }
   }

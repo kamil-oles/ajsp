@@ -12,11 +12,11 @@
     </md-card-title>
     <md-nav-bar md-selected-nav-item="$ctrl.currentState" md-no-ink-bar="false">
       <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'current'}" name="current"
-        md-nav-sref="appRates.current">
+        md-nav-sref="appRates.current({from: 'tab'})">
         Aktualne
       </md-nav-item>
       <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'historical'}"
-        name="historical" md-nav-sref="appRates.historical">
+        name="historical" md-nav-sref="appRates.historical({from: 'tab'})">
         Historyczne
       </md-nav-item>
     </md-nav-bar>

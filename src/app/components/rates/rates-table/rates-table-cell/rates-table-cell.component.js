@@ -13,7 +13,6 @@ export const RATES_TABLE_CELL_COMPONENT = {
     }
 
     sendIndex() {
-      console.log('okoko');
       this.expandSubrow(this.eventEmitter(this.index));
     }
   }

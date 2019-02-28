@@ -9,6 +9,9 @@ export const APP_RATES_CURRENT = angular
     $stateProvider.state('appRates.current', {
       url: '/current',
       component: 'appRatesCurrent',
+      params: {
+        from: null
+      },
       resolve: {
         initialData: function (RatesCurrentHttp) {
           return RatesCurrentHttp.rates();

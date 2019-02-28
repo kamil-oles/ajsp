@@ -15,7 +15,8 @@ export const APP_RATES_HISTORICAL = angular
       url: '/historical',
       component: 'appRatesHistorical',
       params: {
-        code: null
+        code: null,
+        from: null
       },
       resolve: {
         currencies: function (ComponentsDb) {
