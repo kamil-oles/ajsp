@@ -12,14 +12,10 @@ export class RatesTableDataService {
   }
 
   rows(el, view) {
-    const ROWS = {
-      current: () => {
-        return new TableRowCurrent(this.format(el.bid), this.format(el.ask), el.code, el.currency);
-      },
-      historical: () => {
-        return new TableRowHistorical(this.format(el.bid), this.format(el.ask), el.effectiveDate);
-      }
-    };
-    return ROWS[view]();
+    if (view === 'current') {
+      return new TableRowCurrent(this.format(el.bid), this.format(el.ask), el.code, el.currency);
+    } else {
+      return new TableRowHistorical(this.format(el.bid), this.format(el.ask), el.effectiveDate);
+    }
   }
 }
