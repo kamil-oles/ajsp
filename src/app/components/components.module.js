@@ -1,14 +1,10 @@
-import { appConverter } from './converter/converter.module';
+import { APP_CONVERTER } from './converter/converter.module';
 import { APP_RATES } from './rates/rates.module';
-import { ComponentsCurrenciesService } from './shared/services/components-currencies.service';
 import { ComponentsDbService } from './services/components-db.service';
-import { ComponentsHttpService } from './shared/services/components-http.service';
 
 export const appComponents = angular
-  .module('appComponents', [appConverter, APP_RATES])
-  .service('ComponentsCurrenciesService', ComponentsCurrenciesService)
+  .module('appComponents', [APP_CONVERTER, APP_RATES])
   .service('ComponentsDb', ComponentsDbService)
-  .service('ComponentsHttpService', ComponentsHttpService)
   .value('base', {
     currency: 'EUR',
     url: 'http://api.nbp.pl/api/exchangerates/'
