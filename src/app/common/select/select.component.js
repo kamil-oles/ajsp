@@ -10,14 +10,16 @@ export const SELECT_COMPONENT = {
       this.eventEmitter = eventEmitter;
     }
 
+    model = null;
+
     $onChanges(changes) {
       if (changes.currency) {
-        this.currency = Object.assign({}, changes.currency.currentValue);
+        this.model = Object.assign({}, changes.currency.currentValue);
       }
     }
 
     updateCode() {
-      this.onUpdateCode(this.eventEmitter(this.currency.code));
+      this.onUpdateCode(this.eventEmitter(this.model.code));
     }
   }
 };

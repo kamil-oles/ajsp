@@ -5,6 +5,9 @@
     margin: 0 auto;
     width: calc(#{$breakpoint-gt-md} - #{$common-side-menu-width} - 3rem);
   }
+  .select-currency-code {
+    width: 7.5rem;
+  }
 }
 .rates-nav-bar .md-button._md-nav-button {
   background-color: transparent;

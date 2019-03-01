@@ -3,12 +3,12 @@
     PLN
   </div>
 </div>
-<md-input-container ng-if="$ctrl.currency.code !== 'PLN'">
+<md-input-container class="select-container" ng-if="$ctrl.currency.code !== 'PLN'">
   <label>
     Waluta
   </label>
-  <md-select class="select-currency-code" ng-model="$ctrl.currency.code" ng-change="$ctrl.updateCode()"
-    md-selected-text="$ctrl.currency.code">
+  <md-select class="select-currency-code" ng-model="$ctrl.model.code" ng-change="$ctrl.updateCode()"
+    md-selected-text="$ctrl.model.code">
     <md-optgroup label="{{value.name}}" ng-repeat="(key, value) in $ctrl.currencies">
       <md-option ng-repeat="option in value.items" ng-value="option.code">
         {{option.code}} {{option.currency}}
