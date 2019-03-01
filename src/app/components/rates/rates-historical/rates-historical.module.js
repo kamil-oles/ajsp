@@ -1,13 +1,10 @@
 import moment from 'moment';
 
-import {
-  appRatesHistoricalMessages
-} from './rates-historical-messages/rates-historical-messages.module';
 import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 import { RatesHistoricalHttpService } from './services/rates-historical.service';
 
 export const APP_RATES_HISTORICAL = angular
-  .module('appRatesHistorical', [appRatesHistoricalMessages])
+  .module('appRatesHistorical', [])
   .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
   .service('RatesHistoricalHttp', RatesHistoricalHttpService)
   .config(function moduleConfig($mdDateLocaleProvider, $stateProvider) {
