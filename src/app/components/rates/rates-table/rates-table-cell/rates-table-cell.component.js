@@ -8,8 +8,8 @@ export const RATES_TABLE_CELL_COMPONENT = {
   },
   template: require('./rates-table-cell.html'),
   controller: class RatesTableCellComponentCtrl {
-    constructor(EventEmitter) {
-      this.eventEmitter = EventEmitter;
+    constructor(eventEmitter) {
+      this.eventEmitter = eventEmitter;
     }
 
     sendIndex() {
