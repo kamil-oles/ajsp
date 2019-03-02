@@ -1,11 +1,13 @@
 import moment from 'moment';
 
 import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
-import { RatesHistoricalHttpService } from './services/rates-historical.service';
+import { RatesHistoricalDataService } from './services/rates-historical-data.service';
+import { RatesHistoricalHttpService } from './services/rates-historical-http.service';
 
 export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [])
   .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
+  .service('RatesHistoricalData', RatesHistoricalDataService)
   .service('RatesHistoricalHttp', RatesHistoricalHttpService)
   .config(function moduleConfig($mdDateLocaleProvider, $stateProvider) {
     $stateProvider.state('appRates.historical', {
@@ -19,8 +21,8 @@ export const APP_RATES_HISTORICAL = angular
         currencies: function (ComponentsDb) {
           return ComponentsDb.getData('basic', 'currencies');
         },
-        initialData: function ($stateParams, RatesHistoricalHttp) {
-          return RatesHistoricalHttp.initialData($stateParams.code);
+        initialData: function ($stateParams, RatesHistoricalData) {
+          return RatesHistoricalData.initialData($stateParams.code);
         },
         table: function (ComponentsDb) {
           return ComponentsDb.getData('tables', 'historical');
