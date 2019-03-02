@@ -19,6 +19,12 @@
 .app-center {
   margin: 0 auto;
 }
+.app-content-padding {
+  padding: 0;
+  @media (min-width: #{$breakpoint-gt-xs}) {
+    padding: .5rem;
+  }
+}
 .app-padding {
   padding-left: $base-padding;
   padding-right: $base-padding;
