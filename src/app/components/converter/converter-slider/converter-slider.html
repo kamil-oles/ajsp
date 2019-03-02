@@ -1,5 +1,11 @@
 <div class="converter-slider">
-  <div ng-show="$ctrl.view">
-    {{$ctrl.view.code}}/PLN {{$ctrl.view.rate}}
+  <div class="app-typography-body converter-slider-container" ng-show="$ctrl.view" layout
+    layout-align="space-around center">
+    <span>
+      {{$ctrl.view.code}}/PLN
+    </span>
+    <span>
+      {{$ctrl.view.rate}}
+    </span>
   </div>
 </div>

@@ -26,17 +26,18 @@
   transform: rotate(45deg);
 }
 .converter-rate-link {
-  background-color: $color-accent;
+  background-color: $color-primary-light;
   border-radius: 2px;
   color: $color-text-dark;
   height: $converter-rate-height;
   text-decoration: none;
+  transition: background-color $animation-opacity-on;
   &:focus {
-    background-color: $color-accent-dark;
+    background-color: $color-primary;
     outline: none;
   }
   &:hover {
-    background-color: $color-accent-dark;
+    background-color: $color-primary;
   }
 }
 .converter-rate-link.ng-hide {

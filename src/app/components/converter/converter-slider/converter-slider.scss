@@ -3,5 +3,20 @@
 .converter-slider {
   background-color: $color-accent;
   height: 2rem;
+  overflow: hidden;
   width: 100%;
+}
+.converter-slider-container {
+  height: 100%;
+}
+.converter-slider-default {
+  transform: translateY(2rem);
+}
+.converter-slider-hide {
+  transform: translateY(-2rem);
+  transition: transform $animation-hide;
+}
+.converter-slider-show {
+  transform: translateY(0);
+  transition: transform $animation-show;
 }
