@@ -1,6 +1,6 @@
-export const converterRate = {
+export const CONVERTER_RATE = {
   bindings: {
-    rateInfo: '<',
+    rateData: '<',
     show: '<'
   },
   template: require('./converter-rate.html')

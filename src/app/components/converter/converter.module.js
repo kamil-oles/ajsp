@@ -1,21 +1,23 @@
-import { ConverterLocalStorageService } from './services/converter-local-storage.service';
-import { converterComponent } from './converter.component';
-import { appConverterForm } from './converter-form/converter-form.module';
-import { appConverterRate } from './converter-rate/converter-rate.module';
+import { APP_CONVERTER_FORM } from './converter-form/converter-form.module';
+import { APP_CONVERTER_RATE } from './converter-rate/converter-rate.module';
+import { CONVERTER_COMPONENT } from './converter.component';
+import { ConverterHttpService } from './services/converter-http.service';
+
 import './converter.scss';
 
-export const appConverter = angular
-  .module('appConverter', [appConverterForm, appConverterRate])
-  .service('ConverterLocalStorageService', ConverterLocalStorageService)
-  .component('appConverter', converterComponent)
-  .config($stateProvider => {
+export const APP_CONVERTER = angular
+  .module('appConverter', [APP_CONVERTER_FORM, APP_CONVERTER_RATE])
+  .component('appConverter', CONVERTER_COMPONENT)
+  .service('ConverterHttp', ConverterHttpService)
+  .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appConverter', {
       url: '/converter',
       component: 'appConverter',
-      // lazyLoad: ($transitions$) => {
-      //   const $ocLazyLoad = $transitions$.injector().get('$ocLazyLoad');
-      //   return require
-      // }
+      resolve: {
+        currencies: function (ComponentsDb) {
+          return ComponentsDb.getData('basic', 'currencies');
+        },
+      }
     });
   })
   .name;

@@ -1,12 +1,16 @@
-<md-card class="rate-card" ng-show="$ctrl.show" ng-cloak>
-  <md-card-content class="rate body">
-    <div>
-      {{$ctrl.rateInfo.denomination}} {{$ctrl.rateInfo.code}} = {{$ctrl.rateInfo.rate}} PLN
-    </div>
-    <div class="link-container">
-      <a class="link show-link" ng-show="$ctrl.show" ui-sref="appRates.historical({code: $ctrl.rateInfo.code})">
-        Sprawdź notowania z ostatniego tygodnia
-      </a>
-    </div>
-  </md-card-content>
-</md-card>
+<div class="converter-rate" ng-cloak>
+  <span class="app-typography-body converter-rate-data" ng-show="$ctrl.show">
+    {{$ctrl.rateData.denomination}} {{$ctrl.rateData.code}} = {{$ctrl.rateData.rate}} PLN
+  </span>
+  <a class="app-typography-body-2 converter-rate-link md-whiteframe-2dp" ng-show="$ctrl.show"
+    ui-sref="appRates.historical({code: $ctrl.rateData.code})" layout layout-align="space-around center">
+    <span>
+      Notowania z ostatniego tygodnia
+    </span>
+    <span>
+      <md-icon class="converter-rate-icon md-primary md-hue-2">
+        arrow_upward
+      </md-icon>
+    </span>
+  </a>
+</div>

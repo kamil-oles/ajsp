@@ -38,6 +38,12 @@ $common-height-sm: .875 * $common-height;
 $common-padding: .875rem;
 $common-side-menu-width: 15rem;
 
+// Converter rate
+$converter-rate-height: 2rem;
+$converter-rate-margin-bt: .5rem;
+
+$converter-rate-container-height: $converter-rate-height * 2 + $converter-rate-margin-bt + 1.5rem;
+
 // Footer
 $footer-caption-height: 1.25rem;
 $footer-menu-height: $common-height - 2 * $common-padding;

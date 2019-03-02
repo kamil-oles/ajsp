@@ -1,21 +1,18 @@
-<md-content class="md-padding flex-box pseudo" ng-cloak>
-  <div class="relative">
-    <md-card class="top" ng-cloak>
-      <!-- <img ng-src="../../../assets/images/banknotes.jpg" class="md-card-image"> -->
-      <md-card-title>
-        <md-card-title-text class="md-headline">
-          Kalkulator walutowy
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-title class="reset-padding-top">
-        <md-card-title-text class="md-subhead subtitle">
-          Sprawdź wartość swoich pieniędzy w jednej z dwunastu obcych walut lub w złotówkach.
-        </md-card-title-text>
-      </md-card-title>
-      <app-converter-form currency-first-parent="$ctrl.currencyFirst" currency-second-parent="$ctrl.currencySecond"
-        update-rate="$ctrl.updateRate($event)"></app-converter-form>
-    </md-card>
-    <app-converter-rate class="reset-padding absolute" ng-class="{rateCardAnimation: $ctrl.show}"
-      rate-info="$ctrl.rateInfo" show="$ctrl.show"></app-converter-rate>
-  </div>
+<md-content class="md-padding" ng-cloak>
+  <md-card>
+    <md-card-title class="app-padding">
+      <md-card-title-text class="md-headline">
+        Kalkulator walutowy
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-title class="app-padding">
+      <md-card-title-text class="md-subhead app-typography-subtitle">
+        Sprawdź wartość swoich pieniędzy w jednej z dwunastu obcych walut lub w złotówkach.
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content class="app-padding converter-card">
+      <app-converter-form currencies="$ctrl.currencies" update-rate="$ctrl.updateRate($event)"></app-converter-form>
+      <app-converter-rate rate-data="$ctrl.rateData" show="$ctrl.showRate"></app-converter-rate>
+    </md-card-content>
+  </md-card>
 </md-content>

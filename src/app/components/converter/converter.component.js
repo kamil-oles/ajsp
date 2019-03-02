@@ -1,22 +1,16 @@
-import { Rate } from '../shared/classes/components-classes';
-
-export const converterComponent = {
+export const CONVERTER_COMPONENT = {
+  bindings: {
+    currencies: '<'
+  },
   template: require('./converter.html'),
-  controller: class ConverterComponentController {
-    constructor(ConverterLocalStorageService) {
-      this.clss = ConverterLocalStorageService;
-      this.rateInfo = new Rate();
-      this.show = false;
-    }
-
+  controller: class ConverterComponentCtrl {
     $onInit() {
-      this.currencyFirst = this.clss.getData('first');
-      this.currencySecond = this.clss.getData('second');
+      this.showRate = false;
     }
 
     updateRate(data) {
-      this.rateInfo = data.rateInfo;
-      this.show = true;
+      this.rateData = data;
+      this.showRate = true;
     }
   }
 };
