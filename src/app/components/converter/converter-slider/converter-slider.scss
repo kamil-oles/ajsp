@@ -20,3 +20,11 @@
   transform: translateY(0);
   transition: transform $animation-show;
 }
+.material-icons.converter-slider-icon-down {
+  color: $color-indicator-down;
+  margin-left: .25rem;
+}
+.material-icons.converter-slider-icon-up {
+  color: $color-indicator-up;
+  margin-left: .25rem;
+}

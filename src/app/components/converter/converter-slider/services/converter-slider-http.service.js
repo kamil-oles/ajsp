@@ -1,13 +1,13 @@
-export class ConverterHttpService {
+export class ConverterSliderHttpService {
   constructor($http, base) {
     this.http = $http;
     this.url = base.url;
   }
 
-  rate(code) {
+  rates(code) {
     return this.http({
       method: 'GET',
-      url: `${this.url}rates/c/${code}`,
+      url: `${this.url}rates/c/${code}/last/2`,
     });
   }
 }

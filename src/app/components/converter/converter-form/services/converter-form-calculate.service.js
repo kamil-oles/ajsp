@@ -1,37 +1,33 @@
-import { Currency, Results } from '../../../shared/classes/components-classes';
+import { Currency, Results } from '../classes/converter-form.class';
 
 export class ConverterFormCalculateService {
-  constructor(ComponentsHttpService, ConverterFormValidationService) {
-    this.cfvs = ConverterFormValidationService;
-    this.http = ComponentsHttpService;
+  constructor(ConverterFormValidation, ConverterFormHttp) {
+    this.http = ConverterFormHttp;
+    this.validation = ConverterFormValidation;
+  }
+
+  calculate(priceType, value, rate) {
+    if (priceType === 'ask') {
+      return (value / rate).toFixed(2);
+    } else {
+      return (value * rate).toFixed(2);
+    }
   }
 
   check(code, value, buy = false) {
     return this.http.rate(code).then(response => {
-      const priceType = buy ? 'ask' : 'bid',
-        rate = +response.data.rates[0][priceType],
-        newValue = this.calculate(priceType, value, rate),
-        secondCurrencyCode = buy ? code : 'PLN',
-        newValueFormatted = this.cfvs.formatting(newValue),
-        currency = new Currency(secondCurrencyCode, newValueFormatted),
-        denomination = this.setDenomination(code);
-      return new Results(currency, denomination, (rate * denomination).toFixed(4));
+      const PRICE_TYPE = (buy ? 'ask' : 'bid'),
+        RATE = +response.data.rates[0][PRICE_TYPE],
+        NEW_VALUE = this.calculate(PRICE_TYPE, value, RATE),
+        SECOND_CURRENCY_CODE = (buy ? code : 'PLN'),
+        NEW_VALUE_FORMATTED = this.validation.formatting(NEW_VALUE),
+        CURRENCY = new Currency(SECOND_CURRENCY_CODE, NEW_VALUE_FORMATTED),
+        DENOMINATION = this.setDenomination(code);
+      return new Results(CURRENCY, DENOMINATION, (RATE * DENOMINATION).toFixed(4));
     });
   }
 
-  calculate(priceType, value, rate) {
-    const methods = {
-      ask: () => (value / rate).toFixed(2),
-      bid: () => (value * rate).toFixed(2)
-    };
-    return methods[priceType]();
-  }
-
   setDenomination(code) {
-    if (code === 'HUF' || code === 'JPY') {
-      return 100;
-    } else {
-      return 1;
-    }
+    return ((code === 'HUF' || code === 'JPY') ? 100 : 1);
   }
 }

@@ -1,11 +1,12 @@
 export const CONVERTER_SLIDER = {
   template: require('./converter-slider.html'),
   controller: class ConverterSliderCtrl {
-    constructor($animate, $element, $interval, ConverterHttp) {
+    constructor($animate, $element, $interval, ConverterSliderData, ConverterSliderHttp) {
       this._animate = $animate;
       this._element = $element;
-      this._http = ConverterHttp;
+      this._http = ConverterSliderHttp;
       this._interval = $interval;
+      this._data = ConverterSliderData;
     }
 
     $onInit() {
@@ -15,19 +16,19 @@ export const CONVERTER_SLIDER = {
 
     $postLink() {
       this._slide = this._element.children().children();
-      this._http.rate('USD').then(response => {
-        this._fillArray('USD', response);
+      this._http.rates('USD').then(response => {
+        this._mainCurrencies.push(this._data.prepareData(response.data));
         this._fireAnimations();
         this._intervalPromise = this._interval(this._fireAnimations.bind(this), 5000);
-        return this._http.rate('EUR');
+        return this._http.rates('EUR');
       }).then((response) => {
-        this._fillArray('EUR', response);
-        return this._http.rate('CHF');
+        this._mainCurrencies.push(this._data.prepareData(response.data));
+        return this._http.rates('CHF');
       }).then((response) => {
-        this._fillArray('CHF', response);
-        return this._http.rate('GBP');
+        this._mainCurrencies.push(this._data.prepareData(response.data));
+        return this._http.rates('GBP');
       }).then((response) => {
-        this._fillArray('GBP', response);
+        this._mainCurrencies.push(this._data.prepareData(response.data));
       }, (error) => {
         console.log(error);
       });
@@ -46,14 +47,6 @@ export const CONVERTER_SLIDER = {
       }
     }
 
-    _fillArray(input, response) {
-      const CURRENCY = {
-        code: input,
-        rate: this._prepareString(response.data.rates[0].ask)
-      };
-      this._mainCurrencies.push(CURRENCY);
-    }
-
     _fireAnimations() {
       this._animate.setClass(this._slide, 'converter-slider-hide', 'converter-slider-show')
         .then(() => {
@@ -67,10 +60,6 @@ export const CONVERTER_SLIDER = {
           this._changeView();
           this._animate.setClass(this._slide, 'converter-slider-show', 'converter-slider-default');
         });
-    }
-
-    _prepareString(number) {
-      return String(number.toFixed(4)).replace(/\./, ',');
     }
   }
 };

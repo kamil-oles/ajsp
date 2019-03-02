@@ -45,8 +45,9 @@ export class ConverterFormValidationService {
   }
 
   validation(value, form) {
+    console.log(value);
     const error = !/[0-9]/.test(value);
-    form.value.$setValidity('validationError', !error);
+    form.value.$setValidity('required', !error);
     return error ? '' : value.replace(/[^0-9,.\s]/g, '');
   }
 }
