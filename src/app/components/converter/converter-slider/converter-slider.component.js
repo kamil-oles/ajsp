@@ -19,7 +19,7 @@ export const CONVERTER_SLIDER = {
       this._http.rates('USD').then(response => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
         this._fireAnimations();
-        this._intervalPromise = this._interval(this._fireAnimations.bind(this), 5000);
+        this._intervalPromise = this._interval(this._fireAnimations.bind(this), 5450);
         return this._http.rates('EUR');
       }).then((response) => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
