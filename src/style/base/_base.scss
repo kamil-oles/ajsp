@@ -21,14 +21,14 @@
 }
 .app-content-padding {
   padding: 0;
-  @media (min-width: #{$breakpoint-gt-xs}) {
+  @media (min-width: #{$breakpoint-gt-sm}) {
     padding: .5rem;
   }
 }
 .app-padding {
   padding-left: $base-padding;
   padding-right: $base-padding;
-  @media(min-width: #{$breakpoint-gt-xs}) {
+  @media(min-width: #{$breakpoint-gt-sm}) {
     padding-left: $base-padding * 2;
     padding-right: $base-padding * 2;
   }

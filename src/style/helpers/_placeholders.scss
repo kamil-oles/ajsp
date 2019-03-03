@@ -5,6 +5,12 @@
   width: 100%;
   z-index: 2;
 }
+%content-width {
+  @media (min-width: #{$breakpoint-gt-md}) {
+    margin: 0 auto;
+    width: calc(#{$breakpoint-gt-md} - #{$common-side-menu-width} - 3rem);
+  }
+}
 %side-menu-icon {
   color: $color-text-dark;
   margin: 0 ($common-padding / 2) 0 0;

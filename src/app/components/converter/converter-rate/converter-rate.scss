@@ -4,6 +4,9 @@
   height: $converter-rate-container-height;
   margin-top: 1rem;
   overflow: hidden;
+  @media(min-width: #{$breakpoint-gt-sm}){
+    height: $converter-rate-container-height-gt-sm;
+  }
 }
 .converter-rate-data {
   display: inline-block;
@@ -12,6 +15,9 @@
   margin-bottom: $converter-rate-margin-bt;
   text-align: center;
   width: 100%;
+  @media(min-width: #{$breakpoint-gt-sm}){
+    margin-bottom: $converter-rate-margin-bt-gt-sm;
+  }
 }
 .converter-rate-data.ng-hide {
   opacity: 0;
@@ -30,6 +36,7 @@
   border-radius: 2px;
   color: $color-text-dark;
   height: $converter-rate-height;
+  margin: 0 auto;
   text-decoration: none;
   transition: background-color $animation-opacity-on;
   &:focus {
@@ -38,6 +45,9 @@
   }
   &:hover {
     background-color: $color-primary;
+  }
+  @media (min-width: #{$breakpoint-gt-xs}) {
+    width: 22rem;
   }
 }
 .converter-rate-link.ng-hide {
