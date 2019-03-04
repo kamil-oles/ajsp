@@ -38,15 +38,13 @@
   margin: 0 auto;
   text-decoration: none;
   transition: background-color $animation-opacity-on;
+  width: 16rem;
   &:focus {
     background-color: $color-primary-light;
     outline: none;
   }
   &:hover {
     background-color: $color-primary-light;
-  }
-  @media (min-width: #{$breakpoint-gt-xs}) {
-    width: 22rem;
   }
 }
 .converter-rate-link.ng-hide {
