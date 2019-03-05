@@ -13,7 +13,9 @@ class ConverterFormFormatterDirectiveCtrl {
   }
 
   $postLink() {
-    this.element.$parsers.push();
+    this.element.$parsers.push((value) => {
+      return this._toNumber(value);
+    });
     this.element.$formatters.push((value) => {
       return this._formatter(value);
     });
@@ -41,5 +43,21 @@ class ConverterFormFormatterDirectiveCtrl {
       array.splice(i, 0, ' ');
     }
     return array.reverse().join('');
+  }
+
+  _toNumber(value) {
+    let number = value.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
+    const INDEX = number.search(/\./);
+    number = number.replace(/\./g, '');
+    if (INDEX > 0) {
+      const INTEGER = number.slice(0, INDEX),
+        fraction = number.slice(INDEX);
+      number = `${INTEGER}.${fraction}`;
+      return Number(number).toFixed(2);
+    } else if (INDEX === 0) {
+      number = `0.${number}`;
+      return Number(number).toFixed(2);
+    }
+    return Number(number);
   }
 }

@@ -10,7 +10,7 @@ import './converter-form.scss';
 export const APP_CONVERTER_FORM = angular
   .module('appConverterForm', [])
   .component('appConverterForm', CONVERTER_FORM_COMPONENT)
-  .directive('ConverterFormFormatter', ConverterFormFormatterDirective)
+  .directive('converterFormFormatter', ConverterFormFormatterDirective)
   .service('ConverterFormCalculate', ConverterFormCalculateService)
   .service('ConverterFormHttp', ConverterFormHttpService)
   .service('ConverterFormStorage', ConverterFormStorageService)
