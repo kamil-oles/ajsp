@@ -7,8 +7,9 @@ export class ConverterFormFormatterDirective {
 }
 
 class ConverterFormFormatterDirectiveCtrl {
-  constructor($element) {
+  constructor($element, ConverterFormFormatter) {
     this.element = $element;
+    this.service = ConverterFormFormatter;
   }
 
   $postLink() {
@@ -20,47 +21,26 @@ class ConverterFormFormatterDirectiveCtrl {
       return this._toNumber(value);
     });
     this.model.$formatters.push((value) => {
-      return this._formatter(value);
+      return this.service.format(value);
     });
   }
 
-  _formatter(value) {
-    const STRING = value.toString(),
-      INDEX = STRING.search(/\./);
-    let integer = INDEX > 0 ? STRING.slice(0, INDEX) : STRING;
-    if (Math.floor((integer.length - 1) / 3)) {
-      integer = this._insertSpaces(integer);
-    }
-    if (INDEX > 0) {
-      const FRACTION = STRING.slice(INDEX + 1);
-      return `${integer},${FRACTION}`;
-    } else {
-      return integer;
-    }
-  }
-
-  _insertSpaces(string) {
-    let array = string.split('').reverse(),
-      len = array.length;
-    for (let i = 3; i < len; i = i + 4) {
-      array.splice(i, 0, ' ');
-    }
-    return array.reverse().join('');
-  }
-
   _toNumber(value) {
-    let number = value.replace(/[^0-9,.\s]|^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
-    const INDEX = number.search(/\./);
-    number = number.replace(/\./g, '');
-    if (INDEX > 0) {
-      const INTEGER = number.slice(0, INDEX),
-        fraction = number.slice(INDEX);
-      number = `${INTEGER}.${fraction}`;
-      return Number(number).toFixed(2);
-    } else if (INDEX === 0) {
-      number = `0.${number}`;
-      return Number(number).toFixed(2);
+    let string = value.replace(/[^0-9,.\s]|^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
+    const INDEX = string.search(/\./);
+    string = string.replace(/\./g, '');
+    if (string.length === 0) {
+      return string;
     }
-    return Number(number);
+    if (INDEX > 0) {
+      const INTEGER = string.slice(0, INDEX),
+        FRACTION = string.slice(INDEX);
+      string = `${INTEGER}.${FRACTION}`;
+      return Number(string).toFixed(2);
+    } else if (INDEX === 0) {
+      string = `0.${string}`;
+      return Number(string).toFixed(2);
+    }
+    return Number(string);
   }
 }
