@@ -1,7 +1,6 @@
 export class ConverterFormFormatterDirective {
   constructor() {
     this.controller = ConverterFormFormatterDirectiveCtrl;
-    this.require = '^ngModel';
     this.restrict = 'A';
     this.scope = {};
   }
@@ -13,10 +12,14 @@ class ConverterFormFormatterDirectiveCtrl {
   }
 
   $postLink() {
-    this.element.$parsers.push((value) => {
+    this.model = this.element.controller('ngModel');
+    this.element.on('blur', () => {
+      this.model.$processModelValue();
+    });
+    this.model.$parsers.push((value) => {
       return this._toNumber(value);
     });
-    this.element.$formatters.push((value) => {
+    this.model.$formatters.push((value) => {
       return this._formatter(value);
     });
   }
@@ -46,7 +49,7 @@ class ConverterFormFormatterDirectiveCtrl {
   }
 
   _toNumber(value) {
-    let number = value.replace(/^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
+    let number = value.replace(/[^0-9,.\s]|^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
     const INDEX = number.search(/\./);
     number = number.replace(/\./g, '');
     if (INDEX > 0) {
