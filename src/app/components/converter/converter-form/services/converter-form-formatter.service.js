@@ -15,6 +15,9 @@ export class ConverterFormFormatterService {
   }
 
   toNumber(value) {
+    if (!value) {
+      return '';
+    }
     let string = value.replace(/[^0-9,.\s]|^0{2,}|^0(?!\.)|\s/g, '').replace(/,/g, '.');
     const INDEX = string.search(/\./);
     string = string.replace(/\./g, '');
