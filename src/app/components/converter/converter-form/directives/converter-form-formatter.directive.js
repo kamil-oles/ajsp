@@ -8,20 +8,20 @@ export class ConverterFormFormatterDirective {
 
 class ConverterFormFormatterDirectiveCtrl {
   constructor($element, ConverterFormFormatter) {
-    this.element = $element;
-    this.service = ConverterFormFormatter;
+    this._element = $element;
+    this._service = ConverterFormFormatter;
   }
 
   $postLink() {
-    this.model = this.element.controller('ngModel');
-    this.element.on('blur', () => {
-      this.model.$processModelValue();
+    this._model = this._element.controller('ngModel');
+    this._element.on('blur', () => {
+      this._model.$processModelValue();
     });
-    this.model.$parsers.push((value) => {
-      return this.service.toNumber(value);
+    this._model.$parsers.push((value) => {
+      return this._service.toNumber(value);
     });
-    this.model.$formatters.push((value) => {
-      return this.service.format(value);
+    this._model.$formatters.push((value) => {
+      return this._service.format(value);
     });
   }
 }
