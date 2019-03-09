@@ -1,61 +1,80 @@
-import { Currency, Rate } from '../../shared/classes/components-classes';
+import { Currency } from './classes/converter-form.class';
+import { Rate } from './classes/converter-form.class';
 
-export const converterFormComponent = {
+export const CONVERTER_FORM_COMPONENT = {
   template: require('./converter-form.html'),
   bindings: {
-    currencyFirstParent: '<',
-    currencySecondParent: '<',
+    currencies: '<',
     updateRate: '&'
   },
-  controller: class ConverterFormComponentController {
-    constructor(ConverterFormCalculateService, ConverterFormValidationService, EventEmitter) {
-      this.cfcs = ConverterFormCalculateService;
-      this.cfvs = ConverterFormValidationService;
-      this.currencyFirst;
-      this.currencySecond;
-      this.EventEmitter = EventEmitter;
+  controller: class ConverterFormComponentCtrl {
+    constructor(
+      $element,
+      $scope,
+      ConverterFormCalculate,
+      ConverterFormFormatter,
+      ConverterFormStorage,
+      eventEmitter
+    ) {
+      this._calculate = ConverterFormCalculate;
+      this._element = $element;
+      this._eventEmitter = eventEmitter;
+      this._formatter = ConverterFormFormatter;
+      this._local = ConverterFormStorage;
+      this._scope = $scope;
     }
 
     $onInit() {
-      this.currencyFirst = Object.assign({}, this.currencyFirstParent);
-      this.currencySecond = Object.assign({}, this.currencySecondParent);
+      this.currencyFirst = this._local.getData('first_currency');
+      this.currencySecond = this._local.getData('second_currency');
+      this._regex = /^\d{1,3}$|^\d{1,3},\d{2}$|^(\d{1,3}\s)*\d{3}$|^(\d{1,3}\s)*\d{3},\d{2}$/;
+
     }
 
-    calculate(form) {
-      const value = this.cfvs.validation(this.currencyFirst.value, form);
-      if (!value) {
-        this.currencyFirst.value = value;
-        return;
+    $postLink() {
+      this._model = this._element.find('input').controller('ngModel');
+      this._scope.calculateForm.value.$touched = true;
+    }
+
+    setValue() {
+      if (!this._regex.test(this._model.$viewValue)) {
+        this._model.$processModelValue();
       }
-      const number = this.cfvs.toNumber(value);
-      this.currencyFirst = new Currency(this.currencyFirst.code, this.cfvs.formatting(number));
       if (this.currencyFirst.code === 'PLN') {
-        this.cfcs.check(this.currencySecond.code, number, true)
-          .then(results => this.setData(results, this.currencySecond.code));
+        this._calculate.check(this.currencySecond.code, this.currencyFirst.value, true)
+          .then(results => {
+            this._setData(results, this.currencySecond.code);
+          });
       } else {
-        this.cfcs.check(this.currencyFirst.code, number)
-          .then(results => this.setData(results, this.currencyFirst.code));
+        this._calculate.check(this.currencyFirst.code, this.currencyFirst.value)
+          .then(results => {
+            this._setData(results, this.currencyFirst.code);
+          });
       }
-      localStorage.setItem('first', JSON.stringify(this.currencyFirst));
-      localStorage.setItem('second', JSON.stringify(this.currencySecond));
+      localStorage.setItem('first_currency', JSON.stringify(this.currencyFirst));
+      localStorage.setItem('second_currency', JSON.stringify(this.currencySecond));
     }
 
-    exchange() {
-      const stash = Object.assign({}, this.currencyFirst);
-      this.currencyFirst = new Currency(this.currencySecond.code, this.currencySecond.value);
-      this.currencySecond = new Currency(stash.code, stash.value);
+    swap() {
+      const STASH = Object.assign({}, this.currencyFirst);
+      this.currencyFirst = new Currency(
+        this.currencySecond.code,
+        this._formatter.toNumber(this.currencySecond.value)
+      );
+      this.currencySecond = new Currency(
+        STASH.code,
+        this._formatter.format(STASH.value)
+      );
     }
 
-    updateCode(data) {
-      this[this.currencyFirst.code === 'PLN' ? 'currencySecond' : 'currencyFirst'].code = data.code;
+    updateCode(code) {
+      this[this.currencyFirst.code === 'PLN' ? 'currencySecond' : 'currencyFirst'].code = code;
     }
 
-    setData(data, code) {
+    _setData(data, code) {
       this.currencySecond = data.currency;
       data.rate = data.rate.replace('.', ',');
-      this.updateRate(
-        this.EventEmitter({ rateInfo: new Rate(code, data.denomination, data.rate) })
-      );
+      this.updateRate(this._eventEmitter(new Rate(code, data.denomination, data.rate)));
     }
   }
 };

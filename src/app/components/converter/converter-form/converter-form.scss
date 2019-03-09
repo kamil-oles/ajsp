@@ -1,16 +1,13 @@
-.change-button {
-  @media(min-width: 960px) {
-    transform: rotate(90deg);
-  }
+@import '../../../../style/helpers/variables';
+
+.converter-form-header {
+  margin-bottom: 0.75rem;
 }
-.currency-input-container {
-  padding-right: 0;
-  width: calc(100% - 20px);
-  @media(min-width: 960px) {
-    width: 100%;
-  }
-  .currency-input {
-    padding-right: inherit;
-    text-align: right;
+.converter-form-input {
+  text-align: right;
+}
+.converter-form-swap {
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    transform: rotate(90deg);
   }
 }

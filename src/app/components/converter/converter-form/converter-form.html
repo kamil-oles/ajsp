@@ -1,57 +1,52 @@
-<form name="calculateForm" ng-submit="$ctrl.calculate(calculateForm)">
-  <md-card-content ng-cloak>
-    <div layout layout-wrap>
-      <div flex-offset-md="5" flex-offset-gt-md="10" flex="100" flex-md="35" flex-gt-md="30">
-        <div layout>
-          <h6 flex-offset-sm="20">
-            Mam
-          </h6>
-        </div>
-        <div layout layout-align-xs="space-between" layout-align-gt-sm="space-between">
-          <app-select currency="$ctrl.currencyFirst" on-update-code="$ctrl.updateCode($event)"
-            flex-offset-sm="20" flex="35" flex-sm="15"></app-select>
-          <div layout layout-align="end" flex-offset-sm="15" flex="50" flex-sm="30">
-            <md-input-container class="currency-input-container">
-              <input name="value" class="currency-input body" ng-model="$ctrl.currencyFirst.value">
-              <div ng-messages="calculateForm.value.$error">
-                <div class="caption" ng-message="validationError">
-                  Pole wymagane
-                </div>
-              </div>
-            </md-input-container>
+<form name="calculateForm" ng-submit="$ctrl.setValue()" ng-cloak>
+  <div layout layout-wrap>
+    <div flex="100" flex-gt-xs="45">
+      <h6 class="app-typography-h6 converter-form-header">
+        Mam
+      </h6>
+      <div layout layout-align="space-between">
+        <app-select currencies="$ctrl.currencies" currency="{code: $ctrl.currencyFirst.code}"
+          on-update-code="$ctrl.updateCode($event)" flex="30" flex-gt-md="25">
+        </app-select>
+        <md-input-container flex="45" flex-gt-xs="50">
+          <div>
+            <label>
+              Kwota
+            </label>
           </div>
-        </div>
+          <input name="value" class="app-typography-body converter-form-input" ng-model="$ctrl.currencyFirst.value"
+            ng-required="true" converter-form-formatter>
+          <app-messages errors="calculateForm.value.$error"></app-messages>
+        </md-input-container>
       </div>
-      <div flex="100" flex-gt-sm="20" layout layout-align="space-around center">
-        <md-button class="md-fab md-mini change-button" ng-click="$ctrl.exchange()">
-          <md-icon>
-            swap_vert
-          </md-icon>
-        </md-button>
-      </div>
-      <div flex="100" flex-md="35" flex-gt-md="30">
-        <div layout>
-          <h6 flex-offset-sm="20">
-            Chcę
-          </h6>
-        </div>
-        <div layout layout-align-xs="space-between" layout-align-gt-sm="space-between">
-          <app-select currency="$ctrl.currencySecond" on-update-code="$ctrl.updateCode($event)"
-            flex-offset-sm="20" flex="35" flex-sm="15"></app-select>
-          <div layout layout-align="end" flex-offset-sm="15" flex="50" flex-sm="30">
-            <div class="uneditable-content-container-right currency-input-container">
-              <div class="uneditable-content-right currency-input body">
-                {{$ctrl.currencySecond.value}}
-              </div>
-            </div>
+    </div>
+    <div flex="100" flex-gt-xs="10" layout layout-align="space-around center">
+      <md-button class="md-icon-button md-primary converter-form-swap" ng-click="$ctrl.swap()">
+        <md-icon>
+          swap_vert
+        </md-icon>
+      </md-button>
+    </div>
+    <div flex="100" flex-gt-xs="45">
+      <h6 class="app-typography-h6 converter-form-header">
+        Chcę
+      </h6>
+      <div layout layout-align="space-between">
+        <app-select currencies="$ctrl.currencies" currency="{code: $ctrl.currencySecond.code}"
+          on-update-code="$ctrl.updateCode($event)" flex="30" flex-gt-md="25">
+        </app-select>
+        <div class="app-uneditable-content-container" flex="45" flex-gt-xs="50">
+          <span class="app-uneditable-content-label">
+            Kwota
+          </span>
+          <div class="app-typography-body app-uneditable-content converter-form-input">
+            {{$ctrl.currencySecond.value}}
           </div>
         </div>
       </div>
     </div>
-  </md-card-content>
-  <md-card-actions layout layout-align="space-around">
-    <md-button type="submit" class="md-primary md-raised button-typography">
-      Przelicz
-    </md-button>
-  </md-card-actions>
+  </div>
+  <div layout layout-align="space-around">
+    <app-submit-button active="calculateForm.$invalid" label="'Przelicz'"></app-submit-button>
+  </div>
 </form>

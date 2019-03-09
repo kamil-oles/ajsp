@@ -1,5 +1,8 @@
 export class ConverterFormFormatterService {
   format(value) {
+    if (!value) {
+      return '';
+    }
     const STRING = value.toString(),
       INDEX = STRING.search(/\./);
     let integer = INDEX > 0 ? STRING.slice(0, INDEX) : STRING;
