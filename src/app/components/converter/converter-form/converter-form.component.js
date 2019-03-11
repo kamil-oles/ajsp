@@ -28,7 +28,6 @@ export const CONVERTER_FORM_COMPONENT = {
       this.currencyFirst = this._local.getData('first_currency');
       this.currencySecond = this._local.getData('second_currency');
       this._regex = /^\d{1,3}$|^\d{1,3},\d{2}$|^(\d{1,3}\s)*\d{3}$|^(\d{1,3}\s)*\d{3},\d{2}$/;
-
     }
 
     $postLink() {
