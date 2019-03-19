@@ -24,6 +24,8 @@ export const CONVERTER_FORM_COMPONENT = {
       this._scope = $scope;
     }
 
+    loader = false;
+
     $onInit() {
       this.currencyFirst = this._local.getData('first_currency');
       this.currencySecond = this._local.getData('second_currency');
@@ -36,6 +38,7 @@ export const CONVERTER_FORM_COMPONENT = {
     }
 
     setValue() {
+      this.loader = true;
       if (!this._regex.test(this._model.$viewValue)) {
         this._model.$processModelValue();
       }

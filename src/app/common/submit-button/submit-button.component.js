@@ -1,7 +1,8 @@
 export const SUBMIT_BUTTON_COMPONENT = {
   bindings: {
     active: '<',
-    label: '<'
+    label: '<',
+    showLoader: '<'
   },
   template: require('./submit-button.html'),
   controller: class SubmitButtonComponentCtrl {
@@ -12,17 +13,9 @@ export const SUBMIT_BUTTON_COMPONENT = {
       this.transitions = $transitions;
     }
 
-    blockLoader = false;
-
     $onInit() {
-      this.transitions.onBefore({
-        from: 'appRates.historical',
-        to: 'appRates.current'
-      }, () => {
-        this.blockLoader = true;
-      });
       this.scope.$on('loader', (event, loader) => {
-        if (!this.blockLoader) {
+        if (this.showLoader) {
           this.display(loader);
         }
       });
