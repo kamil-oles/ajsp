@@ -2,8 +2,8 @@
 
 .converter-rate {
   height: $converter-rate-container-height;
-  margin-top: 1rem;
   overflow: hidden;
+  padding-top: 1rem;
   @media(min-width: #{$breakpoint-gt-sm}){
     height: $converter-rate-container-height-gt-sm;
   }

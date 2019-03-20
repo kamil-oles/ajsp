@@ -1,3 +1,4 @@
+import { APP_BACKDROP } from './backdrop/backdrop.module';
 import { APP_FOOTER } from './footer/footer.module';
 import { APP_HEADER } from './header/header.module';
 import { APP_MESSAGES } from './messages/messages.module';
@@ -12,6 +13,7 @@ import './common.scss';
 
 export const APP_COMMON = angular
   .module('appCommon', [
+    APP_BACKDROP,
     APP_FOOTER,
     APP_HEADER,
     APP_MESSAGES,

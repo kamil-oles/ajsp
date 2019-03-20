@@ -27,13 +27,13 @@ export const SUBMIT_BUTTON_COMPONENT = {
     }
 
     _display(loader) {
-      const HIDE = loader ? this.labelWrapper : this.loaderWrapper,
-        SHOW = loader ? this.loaderWrapper : this.labelWrapper;
+      // const HIDE = loader ? this.labelWrapper : this.loaderWrapper,
+      // SHOW = loader ? this.loaderWrapper : this.labelWrapper;
       this.loading = loader;
-      this._animate.setClass(HIDE, 'submit-button-hide', 'submit-button-show').then(() => {
-        HIDE.className += ', submit-button-hidden';
-        this._animate.setClass(SHOW, 'submit-button-show', 'submit-button-hidden');
-      });
+      // this._animate.setClass(HIDE, 'submit-button-hide', 'submit-button-show').then(() => {
+      //   HIDE.className += ', submit-button-hidden';
+      //   this._animate.setClass(SHOW, 'submit-button-show', 'submit-button-hidden');
+      // });
     }
   }
 };

@@ -1,0 +1,23 @@
+@import '../../../style/helpers/variables';
+@import '../../../style/helpers/placeholders';
+
+.backdrop-loader {
+  background-color: white;
+  height: 100%;
+  opacity: .75;
+  width: 100%;
+}
+.backdrop-loader-container {
+  @extend %backdrop;
+  opacity: 1;
+  position: absolute;
+}
+.backdrop-loader-container.ng-hide {
+  opacity: 0;
+}
+.backdrop-loader-container.ng-hide-add {
+  transition: opacity $animation-opacity-off;
+}
+.backdrop-loader-container.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
+}
