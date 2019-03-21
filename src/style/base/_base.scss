@@ -1,3 +1,6 @@
+.md-button.app-submit-button {
+  padding: 0;
+}
 .app-backdrop-loader {
   @extend %backdrop;
   background-color: white;
@@ -40,6 +43,11 @@
   @media(min-width: #{$breakpoint-gt-sm}) {
     margin-left: $common-side-menu-width;
   }
+}
+.app-submit-button-label {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
 }
 .app-uneditable-content {
   background: linear-gradient(90deg, $color-uneditable 0, $color-uneditable 33%, transparent 0) 0 bottom / 4px 1px repeat-x;

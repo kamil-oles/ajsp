@@ -47,6 +47,11 @@
     </div>
   </div>
   <div layout layout-align="space-around">
-    <app-submit-button disabled="calculateForm.$invalid" label="'PRZELICZ'" loading="$ctrl.loader"></app-submit-button>
+    <md-button type="submit" class="app-typography-button app-submit-button md-accent md-hue-1 md-raised"
+      ng-disabled="calculateForm.$invalid || $ctrl.loader" ng-cloak>
+      <span class="app-submit-button-label">
+        PRZELICZ
+      </span>
+    </md-button>
   </div>
 </form>

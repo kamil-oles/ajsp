@@ -3,16 +3,5 @@ export const CONVERTER_RATE_COMPONENT = {
     rateData: '<',
     show: '<'
   },
-  template: require('./converter-rate.html'),
-  controller: class ConverterRateComponentCtrl {
-    constructor($scope) {
-      this._scope = $scope;
-    }
-
-    $onInit() {
-      this._scope.$on('loader', (event, loader) => {
-        this.loader = loader;
-      });
-    }
-  }
+  template: require('./converter-rate.html')
 };

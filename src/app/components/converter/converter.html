@@ -15,8 +15,12 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-content class="app-padding converter-card">
-        <app-converter-form currencies="$ctrl.currencies" update-rate="$ctrl.updateRate($event)"></app-converter-form>
-        <app-converter-rate rate-data="$ctrl.rateData" show="$ctrl.showRate"></app-converter-rate>
+        <app-converter-form currencies="$ctrl.currencies" loading="$ctrl.loader" set-backdrop="$ctrl.setBackdrop($event)"
+          update-rate="$ctrl.updateRate($event)"></app-converter-form>
+        <div class="app-position-relative">
+          <app-converter-rate rate-data="$ctrl.rateData" show="$ctrl.showRate"></app-converter-rate>
+          <app-backdrop show="$ctrl.loader"></app-backdrop>
+        </div>
       </md-card-content>
     </md-card>
   </div>

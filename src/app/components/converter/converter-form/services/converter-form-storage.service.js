@@ -2,7 +2,7 @@ import { Currency } from '../classes/converter-form.class';
 
 export class ConverterFormStorageService {
   constructor(base) {
-    this.currency = base.currency;
+    this._currency = base.currency;
   }
 
   getData(key) {
@@ -14,7 +14,12 @@ export class ConverterFormStorageService {
     } else if (!DATA && key === 'first_currency') {
       return new Currency('PLN', '1 000');
     } else {
-      return new Currency(this.currency);
+      return new Currency(this._currency);
     }
+  }
+
+  setData() {
+    localStorage.setItem('first_currency', JSON.stringify(this.currencyFirst));
+    localStorage.setItem('second_currency', JSON.stringify(this.currencySecond));
   }
 }
