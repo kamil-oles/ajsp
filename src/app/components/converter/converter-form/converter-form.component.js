@@ -24,12 +24,15 @@ export const CONVERTER_FORM_COMPONENT = {
       this._scope = $scope;
     }
 
-    loader = false;
+    _blockLoader = true;
 
     $onInit() {
       this.currencyFirst = this._local.getData('first_currency');
       this.currencySecond = this._local.getData('second_currency');
       this._regex = /^\d{1,3}$|^\d{1,3},\d{2}$|^(\d{1,3}\s)*\d{3}$|^(\d{1,3}\s)*\d{3},\d{2}$/;
+      this._scope.$on('loader', (event, loader) => {
+        this.loader = !this._blockLoader ? loader : false;
+      });
     }
 
     $postLink() {
@@ -38,7 +41,7 @@ export const CONVERTER_FORM_COMPONENT = {
     }
 
     setValue() {
-      this.loader = true;
+      this._blockLoader = false;
       if (!this._regex.test(this._model.$viewValue)) {
         this._model.$processModelValue();
       }
@@ -46,11 +49,13 @@ export const CONVERTER_FORM_COMPONENT = {
         this._calculate.check(this.currencySecond.code, this.currencyFirst.value, true)
           .then(results => {
             this._setData(results, this.currencySecond.code);
+            this._blockLoader = true;
           });
       } else {
         this._calculate.check(this.currencyFirst.code, this.currencyFirst.value)
           .then(results => {
             this._setData(results, this.currencyFirst.code);
+            this._blockLoader = true;
           });
       }
       localStorage.setItem('first_currency', JSON.stringify(this.currencyFirst));
