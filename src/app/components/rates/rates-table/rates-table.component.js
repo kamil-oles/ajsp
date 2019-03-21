@@ -5,27 +5,12 @@ export const RATES_TABLE_COMPONENT = {
   },
   template: require('./rates-table.html'),
   controller: class RatesTableComponentCtrl {
-    constructor($scope, $transitions, RatesTableDataService, RatesTableSortService) {
+    constructor(RatesTableDataService, RatesTableSortService) {
       this.rtds = RatesTableDataService;
       this.rtss = RatesTableSortService;
-      this.scope = $scope;
-      this.transitions = $transitions;
     }
 
-    loader = false;
     subrow = null;
-
-    $onInit() {
-      this.transitions.onBefore({
-        from: 'appRates.historical',
-        to: 'appRates.current'
-      }, () => {
-        this.blockLoader = true;
-      });
-      this.scope.$on('loader', (event, loader) => {
-        this.loader = !this.blockLoader ? loader : false;
-      });
-    }
 
     $onChanges(changes) {
       const STATE = this.tableData.state;
