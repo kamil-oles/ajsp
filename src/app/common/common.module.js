@@ -4,7 +4,6 @@ import { APP_HEADER } from './header/header.module';
 import { APP_MESSAGES } from './messages/messages.module';
 import { APP_SELECT } from './select/select.module';
 import { APP_SIDE_MENU } from './side-menu/side-menu.module';
-import { APP_SUBMIT_BUTTON } from './submit-button/submit-button.module';
 import { COMMON_COMPONENT } from './common.component';
 import { BackToTopDirective } from './directives/back-to-top.directive';
 import { ToastDirective } from './directives/toast.directive';
@@ -18,8 +17,7 @@ export const APP_COMMON = angular
     APP_HEADER,
     APP_MESSAGES,
     APP_SELECT,
-    APP_SIDE_MENU,
-    APP_SUBMIT_BUTTON
+    APP_SIDE_MENU
   ])
   .component('appCommon', COMMON_COMPONENT)
   .directive('backToTop', BackToTopDirective)
