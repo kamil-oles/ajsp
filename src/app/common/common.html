@@ -8,6 +8,7 @@
         arrow_upward
       </md-icon>
     </md-button>
+    <app-backdrop add-margin="true" show="$ctrl.loader"></app-backdrop>
   </main>
   <app-footer menu="$ctrl.menu" view-state="$ctrl.viewState"></app-footer>
   <div class="common-backdrop" ng-click="$ctrl.onViewStateChange()" ng-show="$ctrl.viewState === 'expanded-m'"></div>

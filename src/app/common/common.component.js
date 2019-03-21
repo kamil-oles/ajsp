@@ -10,6 +10,7 @@ export const COMMON_COMPONENT = {
       this.window = $window;
     }
 
+    blockLoader = true;
     breakpoint = 960;
     resizeTimeout = false;
 
@@ -25,6 +26,18 @@ export const COMMON_COMPONENT = {
       this.viewState = this.viewStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
       this.hideMenu();
+      this.transitions.onBefore({}, () => {
+        this.blockLoader = false;
+      });
+      this.transitions.onSuccess({}, () => {
+        this.blockLoader = true;
+      });
+      this.transitions.onError({}, () => {
+        this.blockLoader = true;
+      });
+      this.scope.$on('loader', (event, loader) => {
+        this.loader = !this.blockLoader ? loader : false;
+      });
     }
 
     actualResizeHandler() {

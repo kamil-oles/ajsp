@@ -12,6 +12,14 @@
   opacity: 1;
   position: absolute;
 }
+.backdrop-loader-container-margin {
+  position: fixed;
+  top: $common-height-sm;
+  z-index: 2;
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    top: $common-height;
+  }
+}
 .backdrop-loader-container.ng-hide {
   opacity: 0;
 }
