@@ -8,10 +8,10 @@ export const CONVERTER_COMPONENT = {
       this._scope = $scope;
     }
 
+    showRate = false;
     _blockLoader = true;
 
     $onInit() {
-      this.showRate = false;
       this._scope.$on('loader', (event, loader) => {
         this.loader = !this._blockLoader ? loader : false;
       });
