@@ -15,7 +15,8 @@
             </label>
           </div>
           <input name="value" class="app-typography-body converter-form-input" ng-model="$ctrl.currencyFirst.value"
-            ng-model-options="{'updateOn': 'blur'}" ng-required="true" md-no-asterisk converter-form-formatter>
+            ng-model-options="{'updateOn': 'default blur', 'debounce': {'default': 300, 'blur': 0}}" ng-required="true"
+            md-no-asterisk converter-form-formatter>
           <app-messages errors="calculateForm.value.$error"></app-messages>
         </md-input-container>
       </div>
