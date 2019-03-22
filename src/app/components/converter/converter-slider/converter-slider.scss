@@ -16,6 +16,15 @@
   transform: translateY(-2rem);
   transition: transform $animation-hide;
 }
+.converter-slider-message.ng-hide {
+  opacity: 0;
+}
+.converter-slider-message.ng-hide-add {
+  transition: opacity $animation-opacity-off;
+}
+.converter-slider-message.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
+}
 .converter-slider-show {
   transform: translateY(0);
   transition: transform $animation-show;

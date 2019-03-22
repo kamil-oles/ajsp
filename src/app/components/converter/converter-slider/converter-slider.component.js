@@ -1,9 +1,9 @@
-export const CONVERTER_SLIDER = {
+export const CONVERTER_SLIDER_COMPONENT = {
   bindings: {
     loading: '<'
   },
   template: require('./converter-slider.html'),
-  controller: class ConverterSliderCtrl {
+  controller: class ConverterSliderComponentCtrl {
     constructor($animate, $element, $interval, ConverterSliderData, ConverterSliderHttp) {
       this._animate = $animate;
       this._element = $element;
@@ -13,34 +13,31 @@ export const CONVERTER_SLIDER = {
     }
 
     _blockLoader = false;
-
-    $onInit() {
-      this._index = 0;
-      this._mainCurrencies = [];
-    }
+    _mainCurrencies = [];
 
     $onChanges(changes) {
       this.loader = !this._blockLoader ? changes.loading.currentValue : false;
     }
 
     $postLink() {
-      const SLIDE = this._element.children().children();
+      const SLIDE = this._element.children().children()[0];
       this._http.rates('USD').then(response => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
-        this._blockLoader = true;
         this._fireAnimations(SLIDE);
-        this._intervalPromise = this._interval(this._fireAnimations.bind(this, SLIDE), 5450);
+        this._blockLoader = true;
         return this._http.rates('EUR');
       }).then((response) => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
+        this._intervalPromise = this._interval(this._fireAnimations.bind(this, SLIDE), 5450);
         return this._http.rates('CHF');
       }).then((response) => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
         return this._http.rates('GBP');
       }).then((response) => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
-      }, (error) => {
-        console.log(error);
+      }, () => {
+        this._blockLoader = true;
+        this.message = (this._mainCurrencies.length === 0);
       });
     }
 
@@ -49,12 +46,9 @@ export const CONVERTER_SLIDER = {
     }
 
     _changeView() {
-      this.view = this._mainCurrencies[this._index];
-      if (this._index < 3) {
-        this._index++;
-      } else {
-        this._index = 0;
-      }
+      const INDEX = this._mainCurrencies.indexOf(this.view),
+        LENGTH = this._mainCurrencies.length;
+      this.view = this._mainCurrencies[INDEX === LENGTH - 1 ? 0 : INDEX + 1];
     }
 
     _fireAnimations(slide) {

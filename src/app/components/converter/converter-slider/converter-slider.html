@@ -1,6 +1,5 @@
-<div class="converter-slider" ng-cloak>
-  <div class="app-typography-body converter-slider-container" ng-show="$ctrl.view" layout
-    layout-align="space-around center">
+<div class="app-typography-body converter-slider" ng-cloak>
+  <div class="converter-slider-container" ng-show="$ctrl.view" layout layout-align="space-around center">
     <span>
       {{$ctrl.view.code}}/PLN
     </span>
@@ -18,5 +17,9 @@
   </div>
   <div class="converter-slider-container" ng-show="$ctrl.loader" layout layout-align="space-around center">
     <md-progress-circular class="md-primary md-hue-2" md-diameter="20px"></md-progress-circular>
+  </div>
+  <div class="converter-slider-container converter-slider-message" ng-show="$ctrl.message" layout
+    layout-align="space-around center">
+    Brak danych do wyświetlenia
   </div>
 </div>
