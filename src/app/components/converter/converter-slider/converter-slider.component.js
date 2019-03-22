@@ -1,4 +1,7 @@
 export const CONVERTER_SLIDER = {
+  bindings: {
+    loading: '<'
+  },
   template: require('./converter-slider.html'),
   controller: class ConverterSliderCtrl {
     constructor($animate, $element, $interval, ConverterSliderData, ConverterSliderHttp) {
@@ -9,17 +12,24 @@ export const CONVERTER_SLIDER = {
       this._data = ConverterSliderData;
     }
 
+    _blockLoader = false;
+
     $onInit() {
       this._index = 0;
       this._mainCurrencies = [];
     }
 
+    $onChanges(changes) {
+      this.loader = !this._blockLoader ? changes.loading.currentValue : false;
+    }
+
     $postLink() {
-      this._slide = this._element.children().children();
+      const SLIDE = this._element.children().children();
       this._http.rates('USD').then(response => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
-        this._fireAnimations();
-        this._intervalPromise = this._interval(this._fireAnimations.bind(this), 5450);
+        this._blockLoader = true;
+        this._fireAnimations(SLIDE);
+        this._intervalPromise = this._interval(this._fireAnimations.bind(this, SLIDE), 5450);
         return this._http.rates('EUR');
       }).then((response) => {
         this._mainCurrencies.push(this._data.prepareData(response.data));
@@ -47,18 +57,14 @@ export const CONVERTER_SLIDER = {
       }
     }
 
-    _fireAnimations() {
-      this._animate.setClass(this._slide, 'converter-slider-hide', 'converter-slider-show')
+    _fireAnimations(slide) {
+      this._animate.setClass(slide, 'converter-slider-hide', 'converter-slider-show')
         .then(() => {
-          return this._animate.setClass(
-            this._slide,
-            'converter-slider-default',
-            'converter-slider-hide'
-          );
+          return this._animate.setClass(slide, 'converter-slider-default', 'converter-slider-hide');
         })
         .then(() => {
           this._changeView();
-          this._animate.setClass(this._slide, 'converter-slider-show', 'converter-slider-default');
+          this._animate.setClass(slide, 'converter-slider-show', 'converter-slider-default');
         });
     }
   }

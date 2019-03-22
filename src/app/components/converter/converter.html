@@ -1,7 +1,7 @@
 <md-content class="app-content-padding" ng-cloak>
   <div class="converter-container" layout="column">
     <md-card>
-      <app-converter-slider></app-converter-slider>
+      <app-converter-slider loading="$ctrl.sliderLoader"></app-converter-slider>
     </md-card>
     <md-card>
       <md-card-title class="app-padding">
@@ -15,8 +15,8 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-content class="app-padding converter-card">
-        <app-converter-form currencies="$ctrl.currencies" loading="$ctrl.loader" set-backdrop="$ctrl.setBackdrop($event)"
-          update-rate="$ctrl.updateRate($event)"></app-converter-form>
+        <app-converter-form currencies="$ctrl.currencies" loading="$ctrl.loader"
+          set-backdrop="$ctrl.setBackdrop($event)" update-rate="$ctrl.updateRate($event)"></app-converter-form>
         <div class="app-position-relative">
           <app-converter-rate rate-data="$ctrl.rateData" show="$ctrl.showRate"></app-converter-rate>
           <app-backdrop show="$ctrl.loader"></app-backdrop>
