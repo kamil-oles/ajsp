@@ -1,25 +1,27 @@
 <md-content class="app-content-padding" ng-cloak>
-  <md-card class="rates-card">
-    <md-card-title class="app-padding">
-      <md-card-title-text class="md-headline">
-        Kursy walut
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-title class="app-padding">
-      <md-card-title-text class="md-subhead app-typography-subtitle">
-        Aktualne i historyczne kursy dwunastu walut obcych. Kursy aktualne publikowane są każdego dnia roboczego.
-      </md-card-title-text>
-    </md-card-title>
-    <md-nav-bar md-selected-nav-item="$ctrl.currentState" md-no-ink-bar="false">
-      <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'current'}" name="current"
-        md-nav-sref="appRates.current({from: 'tab'})">
-        Aktualne
-      </md-nav-item>
-      <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'historical'}"
-        name="historical" md-nav-sref="appRates.historical({from: 'tab'})">
-        Historyczne
-      </md-nav-item>
-    </md-nav-bar>
-    <div class="rates-view" ui-view></div>
-  </md-card>
+  <div class="rates-container">
+    <md-card>
+      <md-card-title class="app-padding">
+        <md-card-title-text class="md-headline">
+          Kursy walut
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-title class="app-padding">
+        <md-card-title-text class="md-subhead app-typography-subtitle">
+          Aktualne i historyczne kursy dwunastu walut obcych. Kursy aktualne publikowane są każdego dnia roboczego.
+        </md-card-title-text>
+      </md-card-title>
+      <md-nav-bar md-selected-nav-item="$ctrl.currentState" md-no-ink-bar="false">
+        <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'current'}"
+          name="current" md-nav-sref="appRates.current({from: 'tab'})">
+          Aktualne
+        </md-nav-item>
+        <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'historical'}"
+          name="historical" md-nav-sref="appRates.historical({from: 'tab'})">
+          Historyczne
+        </md-nav-item>
+      </md-nav-bar>
+      <div class="rates-view" ui-view></div>
+    </md-card>
+  </div>
 </md-content>

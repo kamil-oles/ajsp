@@ -1,7 +1,7 @@
 @import '../../../style/helpers/variables';
 @import '../../../style/helpers/placeholders';
 
-.rates-card {
+.rates-container {
   @extend %content-width;
   .select-currency-code {
     width: 7.5rem;
