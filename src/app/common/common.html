@@ -2,7 +2,7 @@
 <div class="app-relative common-container" ng-cloak>
   <app-side-menu menu="$ctrl.menu" view-state="$ctrl.viewState"></app-side-menu>
   <main class="common-main" ng-class="{'app-side-menu-expanded': $ctrl.viewState === 'default'}">
-    <ui-view></ui-view>
+    <div class="common-view" ui-view></div>
     <md-button class="common-back-to-top common-back-to-top-hidden md-fab md-mini md-accent" back-to-top>
       <md-icon>
         arrow_upward

@@ -44,11 +44,8 @@
   }
 }
 .common-main {
+  @extend %content-height;
   position: relative;
-  min-height: calc(100vh - #{$common-height-sm} - #{$footer-height});
-  @media (min-width: #{$breakpoint-gt-xs}) {
-    min-height: calc(100vh - #{$common-height} - #{$footer-height});
-  }
 }
 .common-toast-container {
   @include toast-container(0, 3rem, 0);
@@ -66,4 +63,14 @@
 }
 .common-toast-show {
   visibility: visible;
+}
+.common-view {
+  @extend %content-height;
+}
+.common-view.ng-enter {
+  opacity: 0;
+  transition: opacity $animation-show;
+}
+.common-view.ng-enter.ng-enter-active {
+  opacity: 1;
 }
