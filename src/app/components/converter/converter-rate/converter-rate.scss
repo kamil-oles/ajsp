@@ -3,7 +3,6 @@
 .converter-rate {
   height: $converter-rate-container-height;
   overflow: hidden;
-  padding-top: 1rem;
   @media(min-width: #{$breakpoint-gt-sm}){
     height: $converter-rate-container-height-gt-sm;
   }
@@ -48,7 +47,7 @@
   }
 }
 .converter-rate-link.ng-hide {
-  transform: translateY(4rem);
+  transform: translateY(3rem);
 }
 .converter-rate-link.ng-hide-add {
   transition: transform $animation-hide;

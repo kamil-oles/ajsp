@@ -1,9 +1,6 @@
 @import '../../../style/helpers/variables';
 @import '../../../style/helpers/placeholders';
 
-.converter-card {
-  padding-bottom: 0;
-}
 .converter-container {
   @extend %content-width;
 }
