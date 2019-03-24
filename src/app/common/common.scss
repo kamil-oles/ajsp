@@ -37,11 +37,8 @@
   transition: opacity $animation-show;
 }
 .common-container {
-  padding-top: $common-height-sm;
+  padding-top: $common-height;
   position: relative;
-  @media(min-width: #{$breakpoint-gt-xs}) {
-    padding-top: $common-height;
-  }
 }
 .common-main {
   @extend %content-height;
