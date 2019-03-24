@@ -11,7 +11,7 @@
           Aktualne i historyczne kursy dwunastu walut obcych. Kursy aktualne publikowane są każdego dnia roboczego.
         </md-card-title-text>
       </md-card-title>
-      <md-nav-bar md-selected-nav-item="$ctrl.currentState" md-no-ink-bar="false">
+      <md-nav-bar md-selected-nav-item="$ctrl.currentState" md-no-ink-bar="false" aria-label="Rates menu">
         <md-nav-item class="rates-nav-bar" ng-class="{'rates-selected': $ctrl.currentState === 'current'}"
           name="current" md-nav-sref="appRates.current({from: 'tab'})">
           Aktualne
