@@ -3,11 +3,7 @@
   <app-side-menu menu="$ctrl.menu" view-state="$ctrl.viewState"></app-side-menu>
   <main class="common-main" ng-class="{'app-side-menu-expanded': $ctrl.viewState === 'default'}">
     <div class="common-view" ui-view></div>
-    <md-button class="common-back-to-top common-back-to-top-hidden md-fab md-mini md-accent" back-to-top>
-      <md-icon>
-        arrow_upward
-      </md-icon>
-    </md-button>
+    <app-back-to-top height="$ctrl.height"></app-back-to-top>
     <app-backdrop add-margin="true" show="$ctrl.loader"></app-backdrop>
   </main>
   <app-footer menu="$ctrl.menu" view-state="$ctrl.viewState"></app-footer>

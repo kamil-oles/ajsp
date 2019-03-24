@@ -26,6 +26,7 @@ export const COMMON_COMPONENT = {
       this.viewState = this.viewStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
       this.hideMenu();
+      this.height = this.window.innerHeight;
       this.transitions.onBefore({}, () => {
         this.blockLoader = false;
       });
@@ -47,6 +48,7 @@ export const COMMON_COMPONENT = {
       } else if (this.viewState === this.viewStates.dDefault && MOBILE) {
         this.viewStateDefault(false);
       }
+      this.height = this.window.innerHeight;
     }
 
     fetchMenuData() {
