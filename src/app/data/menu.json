@@ -11,11 +11,11 @@
       "state": "appRates.current",
       "subitems": [
         {
-          "state": "appConverter.current",
+          "state": "appRates.current",
           "title": "Kursy aktualne"
         },
         {
-          "state": "appConverter.historical",
+          "state": "appRates.historical",
           "title": "Kursy historyczne"
         }
       ],
