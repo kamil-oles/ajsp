@@ -1,15 +1,12 @@
 import { RatesHistorical } from './classes/rates-historical.class';
 
 export const RATES_HISTORICAL_COMPONENT = {
-  bindings: {
-    currencies: '<',
-    initialData: '<',
-    table: '<'
-  },
+  bindings: { initialData: '<' },
   template: require('./rates-historical.html'),
   controller: class RatesHistoricalComponentCtrl {
-    constructor($filter, $scope, RatesHistoricalHttp) {
+    constructor($filter, $scope, headers, RatesHistoricalHttp) {
       this.filter = $filter;
+      this.headers = headers.historical;
       this.http = RatesHistoricalHttp;
       this.scope = $scope;
     }

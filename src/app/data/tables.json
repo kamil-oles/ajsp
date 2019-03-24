@@ -1,0 +1,49 @@
+{
+  "data": {
+    "current": {
+      "headers": [
+        {
+          "align": "start",
+          "code": "code",
+          "label": "Kod"
+        },
+        {
+          "align": "start",
+          "code": "currency",
+          "label": "Waluta"
+        },
+        {
+          "align": "end",
+          "code": "bid",
+          "label": "Cena zakupu"
+        },
+        {
+          "align": "end",
+          "code": "ask",
+          "label": "Cena sprzedaży"
+        }
+      ],
+      "state": "current"
+    },
+    "historical": {
+      "headers": [
+        {
+          "align": "start",
+          "code": "date",
+          "label": "Data"
+        },
+        {
+          "align": "end",
+          "code": "bid",
+          "label": "Cena zakupu"
+        },
+        {
+          "align": "end",
+          "code": "ask",
+          "label": "Cena sprzedaży"
+        }
+      ],
+      "state": "historical"
+    }
+  }
+}

@@ -17,9 +17,6 @@ export const APP_RATES_CURRENT = angular
       resolve: {
         initialData: function (RatesCurrentData) {
           return RatesCurrentData.rates();
-        },
-        table: function (ComponentsDb) {
-          return ComponentsDb.getData('tables', 'current');
         }
       }
     });
