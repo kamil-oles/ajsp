@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "icon": "euro_symbol",
+      "state": "appConverter",
+      "subitems": null,
+      "title": "Kalkulator walutowy"
+    },
+    {
+      "icon": "show_chart",
+      "state": "appRates.current",
+      "subitems": [
+        {
+          "state": "appConverter.current",
+          "title": "Kursy aktualne"
+        },
+        {
+          "state": "appConverter.historical",
+          "title": "Kursy historyczne"
+        }
+      ],
+      "title": "Kursy walut"
+    },
+    {
+      "icon": "short_text",
+      "state": "",
+      "subitems": null,
+      "title": "O projekcie"
+    }
+  ]
+}

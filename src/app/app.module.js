@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import uiRouter from '@uirouter/angularjs';
 
+import * as menu from './data/menu.json';
 import { APP_COMMON } from './common/common.module';
 import { APP_COMPONENT } from './app.component';
 import { appComponents } from './components/components.module';
@@ -31,6 +32,7 @@ angular
   .value('firestore', function firestore() {
     return firebase.firestore();
   })
+  .value('menu', menu.data)
   .config(($httpProvider, $locationProvider, $mdThemingProvider, $urlRouterProvider) => {
     $httpProvider.interceptors.push('appInterceptor');
     $locationProvider.html5Mode(true);

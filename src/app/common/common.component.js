@@ -1,9 +1,8 @@
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($element, $scope, $timeout, $transitions, $window, firestore) {
+    constructor($element, $scope, $timeout, $transitions, $window) {
       this.body = $element.parent().parent();
-      this.firestore = firestore;
       this.scope = $scope;
       this.timeout = $timeout;
       this.transitions = $transitions;
@@ -22,7 +21,6 @@ export const COMMON_COMPONENT = {
     };
 
     $onInit() {
-      this.fetchMenuData();
       this.viewState = this.viewStates.dCollapsed;
       this.window.addEventListener('resize', this.resizeThrottler.bind(this));
       this.hideMenu();
@@ -49,18 +47,6 @@ export const COMMON_COMPONENT = {
         this.viewStateDefault(false);
       }
       this.height = this.window.innerHeight;
-    }
-
-    fetchMenuData() {
-      this.menu = JSON.parse(localStorage.getItem('basic_menu'));
-      if (!this.menu) {
-        this.firestore().collection('basic').doc('menu').get().then((querySnapshot) => {
-          const DATA = querySnapshot.data();
-          this.menu = DATA.menuItems;
-          this.scope.$apply();
-          localStorage.setItem('basic_menu', JSON.stringify(this.menu));
-        });
-      }
     }
 
     hideMenu() {

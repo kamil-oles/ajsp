@@ -1,10 +1,11 @@
 export const FOOTER_COMPONENT = {
-  bindings: {
-    menu: '<',
-    viewState: '<'
-  },
+  bindings: { viewState: '<' },
   template: require('./footer.html'),
   controller: class FooterComponentCtrl {
+    constructor(menu) {
+      this.menu = menu;
+    }
+
     nbp = 'https://www.nbp.pl/';
   }
 };
