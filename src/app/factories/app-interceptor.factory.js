@@ -14,12 +14,10 @@ export const APP_INTERCEPTOR_FACTORY = function ($interval, $q, $rootScope, $tim
   function showLoader(url) {
     if (requestArray.indexOf(url) !== -1) {
       $rootScope.$broadcast('loader', true);
-      console.log('---------LOADER!!!');
     }
     const INTERVAL = $interval(function checkRequestArray() {
       if (requestArray.length === 0) {
         $rootScope.$broadcast('loader', false);
-        console.log('---------HIDE LOADER!!!');
         $interval.cancel(INTERVAL);
       }
     }, 500);
