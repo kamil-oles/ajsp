@@ -11,12 +11,7 @@ export const APP_CONVERTER = angular
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appConverter', {
       url: '/converter',
-      component: 'appConverter',
-      resolve: {
-        currencies: function (ComponentsDb) {
-          return ComponentsDb.getData('basic', 'currencies');
-        },
-      }
+      component: 'appConverter'
     });
   })
   .name;

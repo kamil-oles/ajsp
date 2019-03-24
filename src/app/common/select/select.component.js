@@ -1,7 +1,8 @@
+import * as currencies from '../../data/currencies.json';
+
 export const SELECT_COMPONENT = {
   bindings: {
     currency: '<',
-    currencies: '<',
     onUpdateCode: '&'
   },
   template: require('./select.html'),
@@ -11,6 +12,10 @@ export const SELECT_COMPONENT = {
     }
 
     model = null;
+
+    $onInit() {
+      this.currencies = currencies.data;
+    }
 
     $onChanges(changes) {
       if (changes.currency) {

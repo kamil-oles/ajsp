@@ -1,7 +1,4 @@
 export const CONVERTER_COMPONENT = {
-  bindings: {
-    currencies: '<'
-  },
   template: require('./converter.html'),
   controller: class ConverterComponentCtrl {
     constructor($scope) {

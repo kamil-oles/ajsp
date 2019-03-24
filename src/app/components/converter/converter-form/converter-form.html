@@ -5,8 +5,8 @@
         Mam
       </h6>
       <div layout layout-align="space-between">
-        <app-select currencies="$ctrl.currencies" currency="{code: $ctrl.currencyFirst.code}"
-          on-update-code="$ctrl.updateCode($event)" flex="30" flex-gt-md="25">
+        <app-select currency="{code: $ctrl.currencyFirst.code}" on-update-code="$ctrl.updateCode($event)" flex="30"
+          flex-gt-md="25">
         </app-select>
         <md-input-container flex="45" flex-gt-xs="50">
           <div>
@@ -33,8 +33,8 @@
         Chcę
       </h6>
       <div layout layout-align="space-between">
-        <app-select currencies="$ctrl.currencies" currency="{code: $ctrl.currencySecond.code}"
-          on-update-code="$ctrl.updateCode($event)" flex="30" flex-gt-md="25">
+        <app-select currency="{code: $ctrl.currencySecond.code}" on-update-code="$ctrl.updateCode($event)" flex="30"
+          flex-gt-md="25">
         </app-select>
         <div class="app-uneditable-content-container" flex="45" flex-gt-xs="50">
           <span class="app-uneditable-content-label">

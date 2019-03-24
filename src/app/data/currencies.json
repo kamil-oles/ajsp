@@ -1,0 +1,62 @@
+{
+  "data": {
+    "main": {
+      "items": [
+        {
+          "code": "USD",
+          "currency": "dolar amerykański"
+        },
+        {
+          "code": "EUR",
+          "currency": "euro"
+        },
+        {
+          "code": "CHF",
+          "currency": "frank szwajcarski"
+        },
+        {
+          "code": "GBP",
+          "currency": "funt szterling"
+        }
+      ],
+      "name": "Główne"
+    },
+    "others": {
+      "items": [
+        {
+          "code": "AUD",
+          "currency": "dolar australijski"
+        },
+        {
+          "code": "CAD",
+          "currency": "dolar kanadyjski"
+        },
+        {
+          "code": "HUF",
+          "currency": "forint węgierski"
+        },
+        {
+          "code": "JPY",
+          "currency": "jen japoński"
+        },
+        {
+          "code": "CZK",
+          "currency": "korona czeska"
+        },
+        {
+          "code": "DKK",
+          "currency": "korona duńska"
+        },
+        {
+          "code": "NOK",
+          "currency": "korona norweska"
+        },
+        {
+          "code": "SEK",
+          "currency": "korona szwedzka"
+        }
+      ],
+      "name": "Pozostałe"
+    }
+  }
+}
