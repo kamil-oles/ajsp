@@ -8,38 +8,38 @@ export class ToastDirective {
 
 class ToastDirectiveCtrl {
   constructor($element, $mdToast, $scope, $transitions) {
-    this.element = $element;
-    this.scope = $scope;
-    this.toast = $mdToast;
-    this.transitions = $transitions;
+    this._element = $element;
+    this._scope = $scope;
+    this._toast = $mdToast;
+    this._transitions = $transitions;
   }
 
-  regex1 = /-\s(.*)\s\//;
-  regex2 = /\w*\s\w*$/;
+  _regex1 = /-\s(.*)\s\//;
+  _regex2 = /\w*\s\w*$/;
 
   $onInit() {
-    this.transitions.onStart({}, () => {
-      this.toast.hide();
+    this._transitions.onStart({}, () => {
+      this._toast.hide();
     });
-    this.scope.$on('hideToast', () => {
-      this.toast.hide();
+    this._scope.$on('hideToast', () => {
+      this._toast.hide();
     });
   }
 
   $postLink() {
-    this.scope.$parent.$on('toast', (event, message) => {
-      const MESSAGE_PROCESSED = this.processMessage(message);
-      if (this.element.hasClass('common-toast-hide')) {
-        this.toggle();
+    this._scope.$parent.$on('toast', (event, message) => {
+      const MESSAGE_PROCESSED = this._processMessage(message);
+      if (this._element.hasClass('common-toast-hide')) {
+        this._toggle();
       }
-      this.toast.show(this.toast.simple()
+      this._toast.show(this._toast.simple()
         .action('ZAMKNIJ')
         .hideDelay(false)
-        .parent(this.element)
+        .parent(this._element)
         .position('top right')
         .textContent(MESSAGE_PROCESSED)
       ).then(() => {
-        this.toggle();
+        this._toggle();
       }, function fallback() {
         return;
       });
@@ -47,18 +47,18 @@ class ToastDirectiveCtrl {
     });
   }
 
-  processMessage(message) {
-    let result = this.regex1.exec(message);
+  _processMessage(message) {
+    let result = this._regex1.exec(message);
     if (Array.isArray(result)) {
       return result[1];
     }
-    result = this.regex2.exec(message);
+    result = this._regex2.exec(message);
     if (Array.isArray(result)) {
       return result[0];
     }
   }
 
-  toggle() {
-    this.element.toggleClass('common-toast-show common-toast-hide');
+  _toggle() {
+    this._element.toggleClass('common-toast-show common-toast-hide');
   }
 }

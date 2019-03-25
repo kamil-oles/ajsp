@@ -1,6 +1,4 @@
 export const MESSAGES_COMPONENT = {
-  bindings: {
-    errors: '<'
-  },
+  bindings: { errors: '<' },
   template: require('./messages.html')
 };

@@ -8,7 +8,7 @@ export const SELECT_COMPONENT = {
   template: require('./select.html'),
   controller: class SelectComponentCtrl {
     constructor(eventEmitter) {
-      this.eventEmitter = eventEmitter;
+      this._eventEmitter = eventEmitter;
     }
 
     model = null;
@@ -19,12 +19,12 @@ export const SELECT_COMPONENT = {
 
     $onChanges(changes) {
       if (changes.currency) {
-        this.model = Object.assign({}, changes.currency.currentValue);
+        this.model = angular.copy(changes.currency.currentValue);
       }
     }
 
     updateCode() {
-      this.onUpdateCode(this.eventEmitter(this.model.code));
+      this.onUpdateCode(this._eventEmitter(this.model.code));
     }
   }
 };
