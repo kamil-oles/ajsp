@@ -5,6 +5,8 @@ import { APP_HEADER } from './header/header.module';
 import { APP_MESSAGES } from './messages/messages.module';
 import { APP_SELECT } from './select/select.module';
 import { APP_SIDE_MENU } from './side-menu/side-menu.module';
+import { CommonTransitionsService } from './services/common-transitions.service';
+import { CommonViewService } from './services/common-view.service';
 import { COMMON_COMPONENT } from './common.component';
 import { ToastDirective } from './directives/toast.directive';
 
@@ -22,6 +24,8 @@ export const APP_COMMON = angular
   ])
   .component('appCommon', COMMON_COMPONENT)
   .directive('toast', ToastDirective)
+  .service('CommonTransitions', CommonTransitionsService)
+  .service('CommonView', CommonViewService)
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appCommon', {
       url: '/',
