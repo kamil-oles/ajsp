@@ -19,15 +19,15 @@ export const CONVERTER_FORM_COMPONENT = {
       this._element = $element;
       this._eventEmitter = eventEmitter;
       this._general = ConverterFormGeneral;
-      this._local = ConverterFormStorage;
       this._scope = $scope;
+      this._storage = ConverterFormStorage;
     }
 
     _regex = /^\d{1,3}$|^\d{1,3},\d{2}$|^(\d{1,3}\s)*\d{3}$|^(\d{1,3}\s)*\d{3},\d{2}$/;
 
     $onInit() {
-      this.currencyFirst = this._local.getData('first_currency');
-      this.currencySecond = this._local.getData('second_currency');
+      this.currencyFirst = this._storage.getData('first_currency');
+      this.currencySecond = this._storage.getData('second_currency');
     }
 
     $onChanges(changes) {
@@ -59,7 +59,7 @@ export const CONVERTER_FORM_COMPONENT = {
             this.setBackdrop(this._eventEmitter(true));
           });
       }
-      this._local.setData.call(this);
+      this._storage.setData(this.currencyFirst, this.currencySecond);
     }
 
     swap() {

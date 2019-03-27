@@ -18,8 +18,8 @@ export class ConverterFormStorageService {
     }
   }
 
-  setData() {
-    localStorage.setItem('first_currency', JSON.stringify(this.currencyFirst));
-    localStorage.setItem('second_currency', JSON.stringify(this.currencySecond));
+  setData(first, second) {
+    localStorage.setItem('first_currency', JSON.stringify(first));
+    localStorage.setItem('second_currency', JSON.stringify(second));
   }
 }

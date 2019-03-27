@@ -1,4 +1,4 @@
-import { Currency, Rate } from '../classes/converter-form.class';
+import { Currency } from '../classes/converter-form.class';
 
 export class ConverterFormGeneralService {
   constructor(ConverterFormFormatter) {
@@ -6,8 +6,11 @@ export class ConverterFormGeneralService {
   }
 
   setData(data, code) {
-    data.rate = data.rate.replace('.', ',');
-    this.updateRate(this._eventEmitter(new Rate(code, data.denomination, data.rate)));
+    this.updateRate(this._eventEmitter({
+      code: code,
+      denomination: data.denomination,
+      rate: data.rate
+    }));
     return data.currency;
   }
 

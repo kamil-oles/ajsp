@@ -8,8 +8,8 @@ export class ConverterSliderDataService {
   }
 
   _change(rates) {
-    const RESULT = rates.reduce(function reducer(acc, curr) {
-      return curr.ask - acc;
+    const RESULT = rates.reduce(function reducer(accumulator, currentValue) {
+      return currentValue.ask - accumulator;
     }, 0).toFixed(4);
     if (RESULT > 0) {
       return 'up';

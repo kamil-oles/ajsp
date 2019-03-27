@@ -10,7 +10,7 @@ export const CONVERTER_COMPONENT = {
 
     $onInit() {
       this._scope.$on('loader', (event, loader) => {
-        this.loader = !this._blockLoader ? loader : false;
+        this.loader = (!this._blockLoader ? loader : false);
         this.sliderLoader = loader;
       });
     }

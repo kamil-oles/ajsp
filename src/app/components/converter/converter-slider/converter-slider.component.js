@@ -1,7 +1,5 @@
 export const CONVERTER_SLIDER_COMPONENT = {
-  bindings: {
-    loading: '<'
-  },
+  bindings: { loading: '<' },
   template: require('./converter-slider.html'),
   controller: class ConverterSliderComponentCtrl {
     constructor($animate, $element, $interval, ConverterSliderData, ConverterSliderHttp) {
@@ -16,7 +14,7 @@ export const CONVERTER_SLIDER_COMPONENT = {
     _mainCurrencies = [];
 
     $onChanges(changes) {
-      this.loader = !this._blockLoader ? changes.loading.currentValue : false;
+      this.loader = (!this._blockLoader ? changes.loading.currentValue : false);
     }
 
     $postLink() {

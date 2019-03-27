@@ -1,4 +1,4 @@
-import { Currency, Results } from '../classes/converter-form.class';
+import { Currency } from '../classes/converter-form.class';
 
 export class ConverterFormCalculateService {
   constructor(ConverterFormFormatter, ConverterFormHttp) {
@@ -10,10 +10,14 @@ export class ConverterFormCalculateService {
     return this._http.rate(code).then(response => {
       const PRICE_TYPE = (buy ? 'ask' : 'bid'),
         RATE = +response.data.rates[0][PRICE_TYPE],
-        NEW_VALUE = this._calculate(PRICE_TYPE, value, RATE),
-        CURRENCY = new Currency((buy ? code : 'PLN'), this._formatter.format(NEW_VALUE)),
-        DENOMINATION = this._setDenomination(code);
-      return new Results(CURRENCY, DENOMINATION, (RATE * DENOMINATION).toFixed(4));
+        NEW_VALUE = this._calculate(PRICE_TYPE, value, RATE);
+      return {
+        currency: new Currency((buy ? code : 'PLN'), this._formatter.format(NEW_VALUE)),
+        denomination: this._setDenomination(code),
+        get rate() {
+          return String((RATE * this.denomination).toFixed(4)).replace('.', ',');
+        }
+      };
     });
   }
 
