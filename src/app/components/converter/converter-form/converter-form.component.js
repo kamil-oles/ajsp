@@ -25,8 +25,6 @@ export const CONVERTER_FORM_COMPONENT = {
       this._storage = ConverterFormStorage;
     }
 
-    _regex = /^\d{1,3}$|^\d{1,3},\d{2}$|^(\d{1,3}\s)*\d{3}$|^(\d{1,3}\s)*\d{3},\d{2}$/;
-
     $onInit() {
       this.currencyFirst = this._storage.getData('first_currency');
       this.currencySecond = this._storage.getData('second_currency');
@@ -43,10 +41,8 @@ export const CONVERTER_FORM_COMPONENT = {
 
     setValue(code) {
       this.setBackdrop(this._eventEmitter(false));
-      if (!this._regex.test(this._model.$viewValue)) {
-        this._model.$processModelValue();
-      }
-      const CURRENCY = code === 'PLN' ? 'Second' : 'First';
+      this._general.processValue(this._model);
+      const CURRENCY = (code === 'PLN' ? 'Second' : 'First');
       this._http.rate(this[`currency${CURRENCY}`].code).then(response => {
         this._updateData(this._calculate.setData(
           this[`currency${CURRENCY}`].code,
