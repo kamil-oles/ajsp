@@ -1,13 +1,13 @@
 export class RatesHistoricalHttpService {
   constructor($http, base) {
-    this.http = $http;
-    this.url = base.url;
+    this._http = $http;
+    this._url = base.url;
   }
 
   getRates(code, start, end) {
-    return this.http({
+    return this._http({
       method: 'GET',
-      url: `${this.url}rates/c/${code}/${start}/${end}/`
+      url: `${this._url}rates/c/${code}/${start}/${end}/`
     });
   }
 }

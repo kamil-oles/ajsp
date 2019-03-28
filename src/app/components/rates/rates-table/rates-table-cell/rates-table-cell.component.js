@@ -9,11 +9,11 @@ export const RATES_TABLE_CELL_COMPONENT = {
   template: require('./rates-table-cell.html'),
   controller: class RatesTableCellComponentCtrl {
     constructor(eventEmitter) {
-      this.eventEmitter = eventEmitter;
+      this._eventEmitter = eventEmitter;
     }
 
     sendIndex() {
-      this.expandSubrow(this.eventEmitter(this.index));
+      this.expandSubrow(this._eventEmitter(this.index));
     }
   }
 };

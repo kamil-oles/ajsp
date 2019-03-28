@@ -2,26 +2,26 @@ export const RATES_COMPONENT = {
   template: require('./rates.html'),
   controller: class RatesComponentCtrl {
     constructor($state, $transitions, $window) {
-      this.state = $state;
-      this.transitions = $transitions;
-      this.window = $window;
+      this._state = $state;
+      this._transitions = $transitions;
+      this._window = $window;
     }
 
     $onInit() {
-      this.currentState = this.state.current.name.slice(9);
-      this.transitions.onSuccess({ to: 'appRates.**' }, (transition) => {
+      this.currentState = this._state.current.name.slice(9);
+      this._transitions.onSuccess({ to: 'appRates.**' }, (transition) => {
         this.currentState = transition.to().name.slice(9);
       });
-      this.boundEventHandler = this.clearStore;
-      this.window.addEventListener('beforeunload', this.boundEventHandler);
+      this._boundEventHandler = this._clearStorage;
+      this._window.addEventListener('beforeunload', this._boundEventHandler);
     }
 
     $onDestroy() {
-      this.window.removeEventListener('beforeunload', this.boundEventHandler);
-      this.clearStore();
+      this._window.removeEventListener('beforeunload', this.boundEventHandler);
+      this._clearStorage();
     }
 
-    clearStore() {
+    _clearStorage() {
       sessionStorage.clear();
     }
   }

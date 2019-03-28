@@ -1,8 +1,8 @@
 import moment from 'moment';
 
-import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 import { RatesHistoricalDataService } from './services/rates-historical-data.service';
 import { RatesHistoricalHttpService } from './services/rates-historical-http.service';
+import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 
 export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [])
@@ -18,7 +18,7 @@ export const APP_RATES_HISTORICAL = angular
         from: null
       },
       resolve: {
-        initialData: function ($stateParams, RatesHistoricalData) {
+        initialData: function prepareInitialData($stateParams, RatesHistoricalData) {
           return RatesHistoricalData.initialData($stateParams.code);
         }
       }
@@ -27,12 +27,12 @@ export const APP_RATES_HISTORICAL = angular
       'Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'
     ];
     $mdDateLocaleProvider.shortDays = ['Niedz', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob'];
-    $mdDateLocaleProvider.parseDate = function (dateString) {
+    $mdDateLocaleProvider.parseDate = function parseDate(dateString) {
       moment.locale('pl');
       const M = moment(dateString, 'L', true);
       return (M.isValid() ? M.toDate() : new Date(NaN));
     };
-    $mdDateLocaleProvider.formatDate = function (date) {
+    $mdDateLocaleProvider.formatDate = function formatDate(date) {
       moment.locale('pl');
       const M = moment(date);
       return (M.isValid() ? M.format('L') : '');

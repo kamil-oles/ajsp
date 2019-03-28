@@ -4,12 +4,12 @@ export class RatesTableSortService {
       const FIRST_COMPARISON = (direction === 'ASC' ? -1 : 1),
         SECOND_COMPARISON = (direction === 'ASC' ? 1 : -1);
       return data.sort((a, b) => {
-        return this.actualSort(a, b, type, FIRST_COMPARISON, SECOND_COMPARISON);
+        return this._actualSort(a, b, type, FIRST_COMPARISON, SECOND_COMPARISON);
       });
     }
   }
 
-  actualSort(a, b, type, firstResult, secondResult) {
+  _actualSort(a, b, type, firstResult, secondResult) {
     if (a[type] < b[type]) {
       return firstResult;
     }

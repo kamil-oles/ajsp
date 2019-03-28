@@ -7,15 +7,14 @@ export const RATES_TABLE_HEADER_COMPONENT = {
   template: require('./rates-table-header.html'),
   controller: class RatesTableHeaderCtrl {
     icon = 'keyboard_arrow_up';
-
-    icons = {
+    _icons = {
       ASC: 'keyboard_arrow_up',
       DESC: 'keyboard_arrow_down'
     };
 
     $onChanges(changes) {
       if (changes.sortDirection) {
-        this.icon = this.icons[changes.sortDirection.currentValue];
+        this.icon = this._icons[changes.sortDirection.currentValue];
       }
     }
   }
