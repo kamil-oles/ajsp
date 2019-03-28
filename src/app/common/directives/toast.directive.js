@@ -43,7 +43,6 @@ class ToastDirectiveCtrl {
       }, function fallback() {
         return;
       });
-      event.stopPropagation();
     });
   }
 

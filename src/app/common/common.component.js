@@ -1,11 +1,10 @@
 export const COMMON_COMPONENT = {
   template: require('./common.html'),
   controller: class CommonComponentCtrl {
-    constructor($element, $scope, $timeout, $transitions, $window, CommonTransitions, CommonView) {
+    constructor($element, $scope, $timeout, $window, CommonTransitions, CommonView) {
       this._body = $element.parent().parent();
       this._scope = $scope;
       this._timeout = $timeout;
-      this._transitions = $transitions;
       this._transitionsHooks = CommonTransitions;
       this._window = $window;
       this._view = CommonView;
@@ -17,8 +16,7 @@ export const COMMON_COMPONENT = {
       this.view = this._view.returnViews().dCollapsed;
       this.height = this._window.innerHeight;
       this._window.addEventListener('resize', this._resizeThrottler.bind(this));
-      this._hideMenu();
-      this._transitionsHooks.setTransitionsHooks();
+      this._transitionsHooks.setTransitionsHooks(this);
       this._scope.$on('loader', (event, loader) => {
         this.loader = (!this._transitionsHooks.returnLoaderState() ? loader : false);
       });
@@ -47,18 +45,6 @@ export const COMMON_COMPONENT = {
         this._body.removeClass('common-block-scroll');
       }
       this.height = this._window.innerHeight;
-    }
-
-    _hideMenu() {
-      this._transitions.onSuccess({}, () => {
-        if (this.view === this._view.returnViews().mDefault) {
-          this.view = this._view.returnViews().mExpanded;
-          this._timeout(() => {
-            this.view = this._view.returnViews().dCollapsed;
-          }, 200);
-          this._body.removeClass('common-block-scroll');
-        }
-      });
     }
 
     _resizeThrottler() {
