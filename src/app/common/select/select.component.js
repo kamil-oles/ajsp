@@ -11,11 +11,8 @@ export const SELECT_COMPONENT = {
       this._eventEmitter = eventEmitter;
     }
 
+    currencies = currencies.data;
     model = null;
-
-    $onInit() {
-      this.currencies = currencies.data;
-    }
 
     $onChanges(changes) {
       if (changes.currency) {

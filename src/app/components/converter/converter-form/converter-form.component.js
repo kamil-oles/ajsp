@@ -50,6 +50,9 @@ export const CONVERTER_FORM_COMPONENT = {
           response,
           (code === 'PLN')
         ));
+      }, error => {
+        this._scope.$emit('toast', error.data);
+        this.loader = false;
       });
     }
 

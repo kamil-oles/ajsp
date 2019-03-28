@@ -17,7 +17,7 @@ angular
   .module('app', ['ngMessages', 'ngMaterial', uiRouter, APP_COMMON, APP_COMPONENTS])
   .component('app', APP_COMPONENT)
   .factory('appInterceptor', APP_INTERCEPTOR_FACTORY)
-  .value('eventEmitter', function (payload) {
+  .value('eventEmitter', function valueSetter(payload) {
     return { $event: payload };
   })
   .value('menu', menu.data)
