@@ -34,6 +34,7 @@ class ToastDirectiveCtrl {
       }
       this._toast.show(this._toast.simple()
         .action('ZAMKNIJ')
+        .actionKey('z')
         .hideDelay(false)
         .parent(this._element)
         .position('top right')
