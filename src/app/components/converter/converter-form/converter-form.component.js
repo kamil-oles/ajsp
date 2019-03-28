@@ -13,12 +13,14 @@ export const CONVERTER_FORM_COMPONENT = {
       ConverterFormCalculate,
       ConverterFormStorage,
       ConverterFormGeneral,
+      ConverterFormHttp,
       eventEmitter
     ) {
       this._calculate = ConverterFormCalculate;
       this._element = $element;
       this._eventEmitter = eventEmitter;
       this._general = ConverterFormGeneral;
+      this._http = ConverterFormHttp;
       this._scope = $scope;
       this._storage = ConverterFormStorage;
     }
@@ -39,27 +41,20 @@ export const CONVERTER_FORM_COMPONENT = {
       this._scope.calculateForm.value.$touched = true;
     }
 
-    setValue() {
+    setValue(code) {
       this.setBackdrop(this._eventEmitter(false));
       if (!this._regex.test(this._model.$viewValue)) {
         this._model.$processModelValue();
       }
-      if (this.currencyFirst.code === 'PLN') {
-        this._calculate.check(this.currencySecond.code, this.currencyFirst.value, true)
-          .then(results => {
-            this.currencySecond = this._general.setData
-              .call(this, results, this.currencySecond.code);
-            this.setBackdrop(this._eventEmitter(true));
-          });
-      } else {
-        this._calculate.check(this.currencyFirst.code, this.currencyFirst.value)
-          .then(results => {
-            this.currencySecond = this._general.setData
-              .call(this, results, this.currencyFirst.code);
-            this.setBackdrop(this._eventEmitter(true));
-          });
-      }
-      this._storage.setData(this.currencyFirst, this.currencySecond);
+      const CURRENCY = code === 'PLN' ? 'Second' : 'First';
+      this._http.rate(this[`currency${CURRENCY}`].code).then(response => {
+        this._updateData(this._calculate.setData(
+          this[`currency${CURRENCY}`].code,
+          this.currencyFirst.value,
+          response,
+          (code === 'PLN')
+        ));
+      });
     }
 
     swap() {
@@ -70,6 +65,13 @@ export const CONVERTER_FORM_COMPONENT = {
 
     updateCode(code) {
       this[this.currencyFirst.code === 'PLN' ? 'currencySecond' : 'currencyFirst'].code = code;
+    }
+
+    _updateData(results) {
+      this.currencySecond = results.currency;
+      this.updateRate(this._eventEmitter(results));
+      this.setBackdrop(this._eventEmitter(true));
+      this._storage.setData(this.currencyFirst, this.currencySecond);
     }
   }
 };
