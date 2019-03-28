@@ -21,7 +21,12 @@ angular
     return { $event: payload };
   })
   .value('menu', menu.data)
-  .config(($httpProvider, $locationProvider, $mdThemingProvider, $urlRouterProvider) => {
+  .config(function moduleConfig(
+    $httpProvider,
+    $locationProvider,
+    $mdThemingProvider,
+    $urlRouterProvider
+  ) {
     $httpProvider.interceptors.push('appInterceptor');
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/converter');
