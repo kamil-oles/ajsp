@@ -60,12 +60,16 @@ export const CONVERTER_FORM_COMPONENT = {
     }
 
     updateCode(code) {
-      this[this.currencyFirst.code === 'PLN' ? 'currencySecond' : 'currencyFirst'].code = code;
+      this[`currency${this.currencyFirst.code === 'PLN' ? 'Second' : 'First'}`].code = code;
     }
 
     _updateData(results) {
       this.currencySecond = results.currency;
-      this.updateRate(this._eventEmitter(results));
+      this.updateRate(this._eventEmitter({
+        code: this[`currency${this.currencyFirst.code === 'PLN' ? 'Second' : 'First'}`].code,
+        denomination: results.denomination,
+        rate: results.rate
+      }));
       this.setBackdrop(this._eventEmitter(true));
       this._storage.setData(this.currencyFirst, this.currencySecond);
     }
