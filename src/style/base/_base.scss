@@ -1,27 +1,6 @@
 .md-button.app-submit-button {
   padding: 0;
 }
-.app-backdrop-loader {
-  @extend %backdrop;
-  background-color: white;
-  opacity: .75;
-  position: absolute;
-}
-.app-backdrop-loader.ng-hide {
-  opacity: 0;
-}
-.app-backdrop-loader.ng-hide-add {
-  transition: opacity $animation-opacity-off;
-}
-.app-backdrop-loader.ng-hide-remove {
-  transition: opacity $animation-opacity-on;
-}
-.app-block-scroll {
-  overflow: hidden;
-}
-.app-center {
-  margin: 0 auto;
-}
 .app-content-padding {
   padding: 0;
   @media (min-width: #{$breakpoint-gt-sm}) {

@@ -1,4 +1,9 @@
-export const APP_INTERCEPTOR_FACTORY = function ($interval, $q, $rootScope, $timeout) {
+export const APP_INTERCEPTOR_FACTORY = function interceptorFactory(
+  $interval,
+  $q,
+  $rootScope,
+  $timeout
+) {
   let requestArray = [];
 
   function clearArray(array, url) {
@@ -24,19 +29,19 @@ export const APP_INTERCEPTOR_FACTORY = function ($interval, $q, $rootScope, $tim
   }
 
   return {
-    'request': function (config) {
+    'request': function requestInterceptors(config) {
       requestArray.push(config.url);
       $timeout(function loader() {
         showLoader(config.url);
       }, 1000);
       return config;
     },
-    'response': function (response) {
+    'response': function responseInterceptors(response) {
       hideToast();
       requestArray = clearArray(requestArray, response.config.url);
       return response;
     },
-    'responseError': function (rejection) {
+    'responseError': function rejectionInterceptors(rejection) {
       requestArray = clearArray(requestArray, rejection.config.url);
       return $q.reject(rejection);
     }

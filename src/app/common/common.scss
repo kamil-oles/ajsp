@@ -20,6 +20,9 @@
 .common-backdrop.ng-hide-remove {
   transition: opacity $animation-show;
 }
+.common-block-scroll {
+  overflow: hidden;
+}
 .common-container {
   padding-top: $common-height;
   position: relative;

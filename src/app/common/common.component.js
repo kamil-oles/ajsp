@@ -27,13 +27,13 @@ export const COMMON_COMPONENT = {
     onViewChange() {
       this.view = this._view.onViewChange(this.view, this._window.innerWidth);
       if (this.view === this._view.returnViews().mDefault) {
-        this._body.addClass('app-block-scroll');
+        this._body.addClass('common-block-scroll');
       }
       if (this.view === this._view.returnViews().mExpanded) {
         this._timeout(() => {
           this.view = this._view.returnViews().dCollapsed;
         }, 200);
-        this._body.removeClass('app-block-scroll');
+        this._body.removeClass('common-block-scroll');
       }
     }
 
@@ -41,10 +41,10 @@ export const COMMON_COMPONENT = {
       const MOBILE = (this._window.innerWidth < this._view.returnBreakpoint());
       if (this.view === this._view.returnViews().mDefault && !MOBILE) {
         this.view = this._view.returnViews().dCollapsed;
-        this._body.removeClass('app-block-scroll');
+        this._body.removeClass('common-block-scroll');
       } else if (this.view === this._view.returnViews().dDefault && MOBILE) {
         this.view = this._view.returnViews().dCollapsed;
-        this._body.removeClass('app-block-scroll');
+        this._body.removeClass('common-block-scroll');
       }
       this.height = this._window.innerHeight;
     }
@@ -56,7 +56,7 @@ export const COMMON_COMPONENT = {
           this._timeout(() => {
             this.view = this._view.returnViews().dCollapsed;
           }, 200);
-          this._body.removeClass('app-block-scroll');
+          this._body.removeClass('common-block-scroll');
         }
       });
     }
