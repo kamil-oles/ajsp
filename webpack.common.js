@@ -44,15 +44,6 @@ const SCRIPTS = {
   ]
 };
 
-const STYLE = {
-  test: /\.scss$/,
-  use: [
-    'style-loader',
-    'css-loader',
-    'sass-loader'
-  ]
-};
-
 const TEMPLATES = {
   test: /\.html$/,
   exclude: /index\.html/,
@@ -71,7 +62,6 @@ const COMMON_CONFIG = {
     rules: [
       FONTS,
       SCRIPTS,
-      STYLE,
       TEMPLATES
     ]
   },

@@ -9,10 +9,24 @@ const BUNDLE_ANALYSIS = {
   })
 };
 
+const STYLE = {
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    'sass-loader'
+  ]
+};
+
 const HMR = new WEBPACK.HotModuleReplacementPlugin();
 
 const DEV_CONFIG = MERGE(COMMON, {
   mode: 'development',
+  module: {
+    rules: [
+      STYLE
+    ]
+  },
   plugins: [
     BUNDLE_ANALYSIS.analyzer,
     HMR
