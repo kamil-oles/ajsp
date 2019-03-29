@@ -1,74 +1,20 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
-  CleanPlugin = require('clean-webpack-plugin'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  MiniCssExtraPlugin = require('mini-css-extract-plugin'),
-  path = require('path'),
-  Webpack = require('webpack');
+const CLEAN_PLUGIN = require('clean-webpack-plugin'),
+  COMMON = require('./webpack.common'),
+  MERGE = require('webpack-merge'),
+  MINI_CSS_EXTRA_PLUGIN = require('mini-css-extract-plugin'),
+  PATH = require('path'),
+  WEBPACK = require('webpack');
 
-const dist = path.join(__dirname, '/dist'),
-  root = path.join(__dirname, '/src');
+const DIST = PATH.join(__dirname, '/dist');
 
-const paths = {
-  app: path.join(root, '/app/app.module.js'),
-  index: path.join(root, '/index.html')
-};
-
-const eslint = {
-  enforce: 'pre',
-  test: /\.js$/,
-  exclude: /node_modules/,
-  use: [{
-    loader: 'eslint-loader',
-    options: {
-      failOnError: true
-    }
-  }]
-};
-
-const fonts = {
-  test: /\.(eot|woff2|woff|ttf)$/,
-  use: [{
-    loader: 'file-loader',
-    options: {
-      name: '[name].[ext]',
-      outputPath: 'assets/fonts',
-      publicPath: '../assets/fonts'
-    }
-  }]
-};
-
-const images = {
-  test: /\.jpg$/,
-  use: [{
-    loader: 'file-loader',
-    options: {
-      name: '[name].[ext]',
-      outputPath: 'assets/images',
-      publicPath: '../assets/images'
-    }
-  }]
-};
-
-const scripts = {
-  test: /\.js$/,
-  exclude: /node_modules/,
-  use: [{
-    loader: 'babel-loader'
-  }]
-};
-
-const style = {
+const STYLE = {
   test: /\.(sa|sc|c)ss$/,
   use: [
     {
-      loader: MiniCssExtraPlugin.loader
+      loader: MINI_CSS_EXTRA_PLUGIN.loader
     },
     {
-      loader: 'css-loader',
-      // options: {
-      //   modules: true,
-      //   localIdentName: '[name]__[local]--[hash:base64:5]'
-      // }
+      loader: 'css-loader'
     },
     {
       loader: 'sass-loader'
@@ -76,73 +22,29 @@ const style = {
   ]
 };
 
-const templates = {
-  test: /\.html$/,
-  exclude: /index\.html/,
-  use: [{
-    loader: 'html-loader',
-    options: {
-      attrs: [':ng-src']
-    }
-  }]
+const OPTIMIZATION = {
+  replace: new WEBPACK.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
 };
 
-const optimization = {
-  analyzer: new BundleAnalyzerPlugin({
-    openAnalyzer: true
-  }),
-  replace: new Webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
-};
-
-const prepare = {
-  clean: new CleanPlugin([dist]),
-  extractCssFile: new MiniCssExtraPlugin({
+const PREPARE = {
+  clean: new CLEAN_PLUGIN([DIST]),
+  extractCssFile: new MINI_CSS_EXTRA_PLUGIN({
     filename: 'style/style.css'
-  }),
-  template: new HtmlWebpackPlugin({
-    inject: false,
-    template: paths.index,
-    filename: 'index.html'
   })
 };
 
-const config = {
+const PROD_CONFIG = MERGE(COMMON, {
   mode: 'production',
-  entry: paths.app,
-  output: {
-    path: dist,
-    filename: 'app/app.js'
-  },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       styles: {
-  //         name: 'styles',
-  //         test: /\.css$/,
-  //         chunks: 'all',
-  //         enforce: true
-  //       }
-  //     }
-  //   }
-  // },
   module: {
     rules: [
-      scripts,
-      style,
-      images,
-      fonts,
-      templates,
-      eslint
+      STYLE
     ]
   },
   plugins: [
-    optimization.analyzer,
-    optimization.replace,
-    prepare.extractCssFile,
-    prepare.template,
-    prepare.clean
-  ],
-  devtool: 'source-map'
-};
+    OPTIMIZATION.replace,
+    PREPARE.extractCssFile,
+    PREPARE.clean
+  ]
+});
 
-module.exports = config;
+module.exports = PROD_CONFIG;
