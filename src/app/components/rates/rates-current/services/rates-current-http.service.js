@@ -1,4 +1,5 @@
 export class RatesCurrentHttpService {
+  /* @ngInject */
   constructor($http, base) {
     this._http = $http;
     this._url = base.url;

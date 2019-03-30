@@ -1,6 +1,7 @@
 import { Currency } from '../classes/converter-form.class';
 
 export class ConverterFormStorageService {
+  /* @ngInject */
   constructor(base) {
     this._currency = base.currency;
   }
@@ -12,7 +13,7 @@ export class ConverterFormStorageService {
     } else if (DATA && key === 'second_currency') {
       return new Currency(DATA.code);
     } else if (!DATA && key === 'first_currency') {
-      return new Currency('PLN', '1 000');
+      return new Currency('PLN', 1000);
     } else {
       return new Currency(this._currency);
     }

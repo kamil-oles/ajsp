@@ -1,12 +1,5 @@
-export class ConverterFormFormatterDirective {
-  constructor() {
-    this.controller = ConverterFormFormatterDirectiveCtrl;
-    this.restrict = 'A';
-    this.scope = {};
-  }
-}
-
 class ConverterFormFormatterDirectiveCtrl {
+  /* @ngInject */
   constructor($element, ConverterFormFormatter) {
     this._element = $element;
     this._service = ConverterFormFormatter;
@@ -23,5 +16,13 @@ class ConverterFormFormatterDirectiveCtrl {
     this._model.$formatters.push((value) => {
       return this._service.format(value);
     });
+  }
+}
+
+export class ConverterFormFormatterDirective {
+  constructor() {
+    this.controller = ConverterFormFormatterDirectiveCtrl;
+    this.restrict = 'A';
+    this.scope = {};
   }
 }

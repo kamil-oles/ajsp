@@ -1,12 +1,5 @@
-export class ToastDirective {
-  constructor() {
-    this.controller = ToastDirectiveCtrl;
-    this.restrict = 'A';
-    this.scope = {};
-  }
-}
-
 class ToastDirectiveCtrl {
+  /* @ngInject */
   constructor($element, $mdToast, $scope, $transitions) {
     this._element = $element;
     this._scope = $scope;
@@ -60,5 +53,13 @@ class ToastDirectiveCtrl {
 
   _toggle() {
     this._element.toggleClass('common-toast-show common-toast-hide');
+  }
+}
+
+export class ToastDirective {
+  constructor() {
+    this.controller = ToastDirectiveCtrl;
+    this.restrict = 'A';
+    this.scope = {};
   }
 }

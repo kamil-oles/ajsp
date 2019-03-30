@@ -1,4 +1,5 @@
 export class RatesCurrentDataService {
+  /* @ngInject */
   constructor($q, $rootScope, RatesCurrentHttp) {
     this._http = RatesCurrentHttp;
     this._q = $q;

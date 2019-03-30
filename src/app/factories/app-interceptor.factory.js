@@ -1,3 +1,4 @@
+/* @ngInject */
 export const APP_INTERCEPTOR_FACTORY = function interceptorFactory(
   $interval,
   $q,

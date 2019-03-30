@@ -1,6 +1,7 @@
 import { Currency } from '../classes/converter-form.class';
 
 export class ConverterFormGeneralService {
+  /* @ngInject */
   constructor(ConverterFormFormatter) {
     this._formatter = ConverterFormFormatter;
   }

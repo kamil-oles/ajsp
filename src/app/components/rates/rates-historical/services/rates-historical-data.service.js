@@ -1,6 +1,7 @@
 import { RatesHistorical } from '../classes/rates-historical.class';
 
 export class RatesHistoricalDataService {
+  /* @ngInject */
   constructor($filter, $q, $rootScope, base, RatesHistoricalHttp) {
     this._baseCurrency = base.currency;
     this._filter = $filter;

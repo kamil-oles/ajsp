@@ -1,4 +1,5 @@
 export class CommonTransitionsService {
+  /* @ngInject */
   constructor($transitions) {
     this._transitions = $transitions;
   }
