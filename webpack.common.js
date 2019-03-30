@@ -55,8 +55,7 @@ const TEMPLATES = {
 const COMMON_CONFIG = {
   entry: PATHS.app,
   output: {
-    path: DIST,
-    filename: '[name].js'
+    path: DIST
   },
   module: {
     rules: [
@@ -67,7 +66,7 @@ const COMMON_CONFIG = {
   },
   plugins: [
     INDEX_HTML
-  ]
+  ],
 };
 
 module.exports = COMMON_CONFIG;

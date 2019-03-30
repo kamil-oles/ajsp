@@ -22,6 +22,9 @@ const HMR = new WEBPACK.HotModuleReplacementPlugin();
 
 const DEV_CONFIG = MERGE(COMMON, {
   mode: 'development',
+  output: {
+    filename: 'app/[name].js'
+  },
   module: {
     rules: [
       STYLE

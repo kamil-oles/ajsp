@@ -7,7 +7,7 @@
   },
   "extends": "eslint:recommended",
   "globals": {
-    "angular": "readable"
+    "angular": "readonly"
   },
   "parser": "babel-eslint",
   "parserOptions": {
