@@ -1,10 +1,10 @@
-const BUNDLE_ANALYZER_PLUGIN = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+const ANALYZER = require('webpack-bundle-analyzer'),
   COMMON = require('./webpack.common'),
   MERGE = require('webpack-merge'),
   WEBPACK = require('webpack');
 
 const BUNDLE_ANALYSIS = {
-  analyzer: new BUNDLE_ANALYZER_PLUGIN({
+  analyzer: new ANALYZER.BundleAnalyzerPlugin({
     openAnalyzer: true
   })
 };
