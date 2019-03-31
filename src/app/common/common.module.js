@@ -22,10 +22,10 @@ export const APP_COMMON = angular
     APP_SELECT,
     APP_SIDE_MENU
   ])
-  .component('appCommon', COMMON_COMPONENT)
-  .directive('toast', ToastDirective)
   .service('CommonTransitions', CommonTransitionsService)
   .service('CommonView', CommonViewService)
+  .directive('toast', ToastDirective)
+  .component('appCommon', COMMON_COMPONENT)
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appCommon', {
       url: '/',

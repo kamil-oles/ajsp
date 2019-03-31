@@ -10,9 +10,9 @@ import './rates-table-cell/rates-table-cell.scss';
 
 export const APP_RATES_TABLE = angular
   .module('appRatesTable', [])
+  .service('RatesTableData', RatesTableDataService)
+  .service('RatesTableSort', RatesTableSortService)
   .component('appRatesTable', RATES_TABLE_COMPONENT)
   .component('appRatesTableCell', RATES_TABLE_CELL_COMPONENT)
   .component('appRatesTableHeader', RATES_TABLE_HEADER_COMPONENT)
-  .service('RatesTableData', RatesTableDataService)
-  .service('RatesTableSort', RatesTableSortService)
   .name;

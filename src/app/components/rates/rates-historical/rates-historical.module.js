@@ -6,9 +6,9 @@ import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 
 export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [])
-  .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
   .service('RatesHistoricalData', RatesHistoricalDataService)
   .service('RatesHistoricalHttp', RatesHistoricalHttpService)
+  .component('appRatesHistorical', RATES_HISTORICAL_COMPONENT)
   .config(function moduleConfig($mdDateLocaleProvider, $stateProvider) {
     $stateProvider.state('appRates.historical', {
       url: '/historical',

@@ -4,9 +4,9 @@ import { RatesCurrentDataService } from './services/rates-current-data.service';
 
 export const APP_RATES_CURRENT = angular
   .module('appRatesCurrent', [])
-  .component('appRatesCurrent', RATES_CURRENT_COMPONENT)
   .service('RatesCurrentData', RatesCurrentDataService)
   .service('RatesCurrentHttp', RatesCurrentHttpService)
+  .component('appRatesCurrent', RATES_CURRENT_COMPONENT)
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appRates.current', {
       url: '/current',

@@ -8,8 +8,8 @@ import './rates.scss';
 
 export const APP_RATES = angular
   .module('appRates', [APP_RATES_CURRENT, APP_RATES_HISTORICAL, APP_RATES_TABLE])
-  .component('appRates', RATES_COMPONENT)
   .value('headers', headers.data)
+  .component('appRates', RATES_COMPONENT)
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appRates', {
       url: '/rates',

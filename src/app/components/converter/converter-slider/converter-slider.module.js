@@ -6,7 +6,7 @@ import './converter-slider.scss';
 
 export const APP_CONVERTER_SLIDER = angular
   .module('appConverterSlider', [])
-  .component('appConverterSlider', CONVERTER_SLIDER_COMPONENT)
   .service('ConverterSliderData', ConverterSliderDataService)
   .service('ConverterSliderHttp', ConverterSliderHttpService)
+  .component('appConverterSlider', CONVERTER_SLIDER_COMPONENT)
   .name;
