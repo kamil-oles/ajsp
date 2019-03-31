@@ -1,8 +1,13 @@
 <nav class="side-menu side-menu-{{$ctrl.viewState}} md-whiteframe-2dp">
-  <ul>
-    <li class="app-typography-subtitle" ng-repeat="item in $ctrl.menu">
-      <app-side-menu-item menu-item="item"></app-side-menu-item>
-      <md-divider></md-divider>
-    </li>
-  </ul>
+  <div class="side-menu-wrapper">
+    <ul>
+      <li class="app-typography-subtitle" ng-repeat="item in $ctrl.menu">
+        <app-side-menu-item menu-item="item"></app-side-menu-item>
+        <md-divider></md-divider>
+      </li>
+    </ul>
+    <span class="app-typography-caption side-menu-version">
+      Wersja {{$ctrl.version}}
+    </span>
+  </div>
 </nav>

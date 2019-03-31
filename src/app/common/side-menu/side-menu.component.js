@@ -1,7 +1,13 @@
+import * as pacakges from '../../../../package.json';
+
 class SideMenuComponentCtrl {
   /* @ngInject */
   constructor(menu) {
     this.menu = menu;
+  }
+
+  $onInit() {
+    this.version = pacakges.version;
   }
 }
 

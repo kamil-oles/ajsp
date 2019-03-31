@@ -33,3 +33,12 @@ a.side-menu-link-active {
   display: block;
   text-align: left;
 }
+.side-menu-version {
+  bottom: $common-padding;
+  margin-left:  $common-padding;
+  position: absolute;
+}
+.side-menu-wrapper {
+  height: 100%;
+  position: relative;
+}
