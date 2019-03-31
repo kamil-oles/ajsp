@@ -18,6 +18,9 @@ export const APP_RATES_CURRENT = angular
         initialData: function prepareInitialData(RatesCurrentData) {
           return RatesCurrentData.rates();
         }
+      },
+      data: {
+        title: 'Kursy aktualne'
       }
     });
   })

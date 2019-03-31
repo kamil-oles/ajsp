@@ -1,6 +1,7 @@
 export class CommonTransitionsService {
   /* @ngInject */
-  constructor($transitions) {
+  constructor($rootScope, $transitions) {
+    this._root = $rootScope;
     this._transitions = $transitions;
   }
 
@@ -14,7 +15,8 @@ export class CommonTransitionsService {
     this._transitions.onBefore({}, () => {
       this._blockLoader = false;
     });
-    this._transitions.onSuccess({}, () => {
+    this._transitions.onSuccess({}, (transition) => {
+      this._root.title = transition.to().data.title;
       this._blockLoader = true;
       this._hideMenu.call(that);
     });

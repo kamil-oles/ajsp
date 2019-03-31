@@ -11,7 +11,10 @@ export const APP_CONVERTER = angular
   .config(function moduleConfig($stateProvider) {
     $stateProvider.state('appConverter', {
       url: '/converter',
-      component: 'appConverter'
+      component: 'appConverter',
+      data: {
+        title: 'Kalkulator walutowy'
+      }
     });
   })
   .name;

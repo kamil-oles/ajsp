@@ -21,6 +21,9 @@ export const APP_RATES_HISTORICAL = angular
         initialData: function prepareInitialData($stateParams, RatesHistoricalData) {
           return RatesHistoricalData.initialData($stateParams.code);
         }
+      },
+      data: {
+        title: 'Kursy historyczne'
       }
     });
     $mdDateLocaleProvider.shortMonths = [
