@@ -9,6 +9,32 @@ const CLEAN_PLUGIN = require('clean-webpack-plugin'),
 
 const DIST = PATH.join(__dirname, '/dist');
 
+const CHUNKS = {
+  contentHash: new WEBPACK.HashedModuleIdsPlugin(),
+  splitChunksConfig: {
+    cacheGroups: {
+      vendor: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all'
+      }
+    }
+  }
+};
+
+const OPTIMIZATION = {
+  scripts: new TERSER_PLUGIN(),
+  styles: new OPTIMIZE_CSS_ASSETS_PLUGIN(),
+  replace: new WEBPACK.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/)
+};
+
+const PREPARE = {
+  clean: new CLEAN_PLUGIN([DIST]),
+  extractCssFile: new MINI_CSS_EXTRA_PLUGIN({
+    filename: 'style/[name].[contenthash].css'
+  })
+};
+
 const STYLE = {
   test: /\.scss$/,
   use: [
@@ -22,32 +48,6 @@ const STYLE = {
       loader: 'sass-loader'
     }
   ]
-};
-
-const OPTIMIZATION = {
-  css: new OPTIMIZE_CSS_ASSETS_PLUGIN(),
-  js: new TERSER_PLUGIN(),
-  replace: new WEBPACK.ContextReplacementPlugin(/moment[/\\]locale$/, /pl/),
-};
-
-const PREPARE = {
-  clean: new CLEAN_PLUGIN([DIST]),
-  extractCssFile: new MINI_CSS_EXTRA_PLUGIN({
-    filename: 'style/[name].[contenthash].css'
-  })
-};
-
-const CHUNKS = {
-  contentHash: new WEBPACK.HashedModuleIdsPlugin(),
-  splitChunksConfig: {
-    cacheGroups: {
-      vendor: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendors',
-        chunks: 'all'
-      }
-    }
-  }
 };
 
 const PROD_CONFIG = MERGE(COMMON, {
@@ -70,8 +70,8 @@ const PROD_CONFIG = MERGE(COMMON, {
     runtimeChunk: 'single',
     splitChunks: CHUNKS.splitChunksConfig,
     minimizer: [
-      OPTIMIZATION.js,
-      OPTIMIZATION.css
+      OPTIMIZATION.scripts,
+      OPTIMIZATION.styles
     ]
   }
 });

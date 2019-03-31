@@ -26,7 +26,7 @@ const FONTS = {
   }]
 };
 
-const INDEX_HTML = new HTML_WEBPACK_PLUGIN({
+const INDEX = new HTML_WEBPACK_PLUGIN({
   meta: {
     viewport: 'width=device-width, initial-scale=1.0'
   },
@@ -71,7 +71,7 @@ const COMMON_CONFIG = {
   },
   plugins: [
     FAVICON_COPY,
-    INDEX_HTML
+    INDEX
   ],
 };
 

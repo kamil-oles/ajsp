@@ -9,6 +9,8 @@ const BUNDLE_ANALYSIS = {
   })
 };
 
+const HMR = new WEBPACK.HotModuleReplacementPlugin();
+
 const STYLE = {
   test: /\.scss$/,
   use: [
@@ -17,8 +19,6 @@ const STYLE = {
     'sass-loader'
   ]
 };
-
-const HMR = new WEBPACK.HotModuleReplacementPlugin();
 
 const DEV_CONFIG = MERGE(COMMON, {
   mode: 'development',
