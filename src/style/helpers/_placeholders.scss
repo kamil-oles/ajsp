@@ -6,7 +6,10 @@
   z-index: 2;
 }
 %content-height {
-  min-height: calc(100vh - #{$common-height} - #{$footer-height});
+  min-height: calc(100vh - #{$common-height});
+  @media(min-width: $breakpoint-gt-xs) {
+    min-height: calc(100vh - #{$common-height} - #{$footer-height});
+  }
 }
 %content-width {
   @media (min-width: #{$breakpoint-gt-md}) {
