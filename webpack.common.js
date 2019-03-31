@@ -1,4 +1,5 @@
-const HTML_WEBPACK_PLUGIN = require('html-webpack-plugin'),
+const COPY_PLUGIN = require('copy-webpack-plugin'),
+  HTML_WEBPACK_PLUGIN = require('html-webpack-plugin'),
   PATH = require('path');
 
 const DIST = PATH.join(__dirname, '/dist'),
@@ -8,6 +9,10 @@ const PATHS = {
   app: PATH.join(ROOT, '/app/app.module.js'),
   index: PATH.join(ROOT, '/index.html')
 };
+
+const FAVICON_COPY = new COPY_PLUGIN([{
+  from: './src/assets/icons/favicon.ico'
+}]);
 
 const FONTS = {
   test: /\.(eot|woff2|woff|ttf)$/,
@@ -65,6 +70,7 @@ const COMMON_CONFIG = {
     ]
   },
   plugins: [
+    FAVICON_COPY,
     INDEX_HTML
   ],
 };
