@@ -4,7 +4,7 @@
   "author": "kamil-oles",
   "description": "SPA built with AngularJS",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js && firebase deploy",
     "start": "webpack-dev-server --config webpack.dev.js"
   },
   "license": "UNLICENSED",
