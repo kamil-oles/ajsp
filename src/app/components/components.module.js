@@ -5,6 +5,6 @@ export const APP_COMPONENTS = angular
   .module('appComponents', [APP_CONVERTER, APP_RATES])
   .value('base', {
     currency: 'EUR',
-    url: 'http://api.nbp.pl/api/exchangerates/'
+    url: 'https://api.nbp.pl/api/exchangerates/'
   })
   .name;
