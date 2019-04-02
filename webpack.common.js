@@ -2,7 +2,7 @@ const COPY_PLUGIN = require('copy-webpack-plugin'),
   HTML_WEBPACK_PLUGIN = require('html-webpack-plugin'),
   PATH = require('path');
 
-const DIST = PATH.join(__dirname, '/dist'),
+const DIST = PATH.join(__dirname, '/public'),
   ROOT = PATH.join(__dirname, '/src');
 
 const PATHS = {

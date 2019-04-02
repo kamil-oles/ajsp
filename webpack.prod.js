@@ -7,7 +7,7 @@ const CLEAN_PLUGIN = require('clean-webpack-plugin'),
   TERSER_PLUGIN = require('terser-webpack-plugin'),
   WEBPACK = require('webpack');
 
-const DIST = PATH.join(__dirname, '/dist');
+const DIST = PATH.join(__dirname, '/public');
 
 const CHUNKS = {
   contentHash: new WEBPACK.HashedModuleIdsPlugin(),
