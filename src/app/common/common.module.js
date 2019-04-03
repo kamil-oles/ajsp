@@ -1,5 +1,6 @@
 import { APP_BACKDROP } from './backdrop/backdrop.module';
 import { APP_BACK_TO_TOP } from './back-to-top/back-to-top.module';
+import { APP_FILTER } from './filter/filter.module';
 import { APP_FOOTER } from './footer/footer.module';
 import { APP_HEADER } from './header/header.module';
 import { APP_MESSAGES } from './messages/messages.module';
@@ -16,6 +17,7 @@ export const APP_COMMON = angular
   .module('appCommon', [
     APP_BACKDROP,
     APP_BACK_TO_TOP,
+    APP_FILTER,
     APP_FOOTER,
     APP_HEADER,
     APP_MESSAGES,
