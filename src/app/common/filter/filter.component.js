@@ -1,7 +1,8 @@
 class FilterComponentCtrl {
   /* @ngInject */
-  constructor(eventEmitter) {
+  constructor($filter, eventEmitter) {
     this._eventEmitter = eventEmitter;
+    this._filter = $filter;
   }
 
   $onInit() {
@@ -15,8 +16,8 @@ class FilterComponentCtrl {
   sendParams() {
     this.getData(this._eventEmitter({
       currency: this.currency,
-      from: this.from,
-      to: this.to
+      from: this._filter('date')(this.from, 'yyyy-MM-dd'),
+      to: this._filter('date')(this.to, 'yyyy-MM-dd')
     }));
   }
 
