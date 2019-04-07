@@ -6,7 +6,7 @@ class FilterComponentCtrl {
   }
 
   $onInit() {
-    this.currency = this.config.currency;
+    this.currency = angular.copy(this.config.currency);
     this.from = this.config.from;
     this.max = new Date();
     this.min = new Date(2002, 0, 2);
