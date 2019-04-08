@@ -13,7 +13,9 @@
   <md-select class="select-currency-code" ng-model="$ctrl.model.code" ng-change="$ctrl.updateCode()"
     md-selected-text="$ctrl.model.code">
     <md-option ng-value="null" ng-if="$ctrl.emptyOption">
-      Usuń wybór
+      <em>
+        Brak
+      </em>
     </md-option>
     <md-optgroup label="{{value.name}}" ng-repeat="(key, value) in $ctrl.currencies">
       <md-option ng-repeat="option in value.items" ng-value="option.code">

@@ -3,7 +3,7 @@
     <app-select currency="$ctrl.currency" empty-option="false" on-update-code="$ctrl.updateCode($event)"></app-select>
   </div>
   <div flex="50" flex-sm="25" flex-gt-sm="20" ng-if="$ctrl.config.comparison">
-    <app-select currency="$ctrl.currency" empty-option="true" on-update-code="$ctrl.updateCode($event)"></app-select>
+    <app-select currency="{code: null}" empty-option="true" on-update-code="$ctrl.updateCode($event)"></app-select>
   </div>
   <div flex="50" flex-sm="25" flex-gt-sm="20">
     <md-input-container>

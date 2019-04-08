@@ -7,7 +7,6 @@ class SelectComponentCtrl {
   }
 
   currencies = currencies.data;
-  model = null;
 
   $onChanges(changes) {
     if (changes.currency) {
