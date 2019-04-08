@@ -23,6 +23,7 @@ class SelectComponentCtrl {
 export const SELECT_COMPONENT = {
   bindings: {
     currency: '<',
+    emptyOption: '<',
     onUpdateCode: '&'
   },
   template: require('./select.html'),
