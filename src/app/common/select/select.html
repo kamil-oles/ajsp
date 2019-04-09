@@ -11,11 +11,9 @@
     Waluta
   </label>
   <md-select class="select-currency-code" ng-model="$ctrl.model.code" ng-change="$ctrl.updateCode()"
-    md-selected-text="$ctrl.model.code">
-    <md-option ng-value="null" ng-if="$ctrl.emptyOption">
-      <em>
-        Brak
-      </em>
+    md-selected-text="$ctrl.model.code || 'wybierz ...'">
+    <md-option class="select-empty-option" ng-value="null" ng-if="$ctrl.emptyOption">
+      usuń wybór
     </md-option>
     <md-optgroup label="{{value.name}}" ng-repeat="(key, value) in $ctrl.currencies">
       <md-option ng-repeat="option in value.items" ng-value="option.code">
