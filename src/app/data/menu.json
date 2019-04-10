@@ -7,7 +7,7 @@
       "title": "Kalkulator walutowy"
     },
     {
-      "icon": "show_chart",
+      "icon": "view_column",
       "state": "appRates.current",
       "subitems": [
         {
@@ -20,6 +20,12 @@
         }
       ],
       "title": "Kursy walut"
+    },
+    {
+      "icon": "show_chart",
+      "state": "appCharts",
+      "subitems": null,
+      "title": "Wykresy"
     },
     {
       "icon": "short_text",

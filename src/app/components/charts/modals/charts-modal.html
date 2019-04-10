@@ -1,0 +1,20 @@
+<md-dialog>
+  <form ng-submit="modal.close()" ng-cloak>
+    <md-dialog-content>
+      <ul class="md-dialog-content">
+        <li class="charts-modal-list-item" ng-repeat="item in modal.currencies">
+          <md-checkbox class="md-accent md-hue-1" ng-model="item.checked"
+            ng-disabled="modal.selected === item.code || item.disabled" ng-change="modal.disableCheckboxes()"
+            aria-label="{{item.currency}}">
+            {{item.code}} {{item.currency}}
+          </md-checkbox>
+        </li>
+      </ul>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button type="submit" class="app-typography-button app-submit-button md-accent md-hue-1 md-raised">
+        WYBIERZ
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
