@@ -9,18 +9,18 @@ class RatesHistoricalComponentCtrl {
     this._scope = $scope;
   }
 
-  blockLoader = true;
+  _blockLoader = true;
 
   $onInit() {
     this.rates = this.initData.data ? this.initData.data.rates : null;
     this.filterConfig = new FilterConfig(this.initData.currency, this.initData.from, 'FILTRUJ');
     this._scope.$on('loader', (event, loader) => {
-      this.loader = (!this.blockLoader ? loader : false);
+      this.loader = (!this._blockLoader ? loader : false);
     });
   }
 
   getData(params) {
-    this.blockLoader = false;
+    this._blockLoader = false;
     const START = params.from,
       END = params.to;
     this._http.getRates(params.currencies[0].code, START, END).then(
@@ -31,11 +31,11 @@ class RatesHistoricalComponentCtrl {
           JSON.stringify(new RatesHistorical(DATA.code, START, END))
         );
         this.rates = DATA.rates;
-        this.blockLoader = true;
+        this._blockLoader = true;
       },
       error => {
         this._scope.$emit('toast', error.data);
-        this.blockLoader = true;
+        this._blockLoader = true;
       }
     );
   }

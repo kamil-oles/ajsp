@@ -5,6 +5,10 @@ class FilterComponentCtrl {
     this._filter = $filter;
   }
 
+  $onChanges(changes) {
+    console.log(changes);
+  }
+
   $onInit() {
     this.currencies = [this.config.currency, { code: null }];
     this.from = this.config.from;
@@ -29,6 +33,7 @@ class FilterComponentCtrl {
 
 export const FILTER_COMPONENT = {
   bindings: {
+    block: '<',
     config: '<',
     getData: '&'
   },

@@ -2,13 +2,16 @@ import { FilterConfig } from '../../common/filter/classes/filter.class';
 
 class ChartsComponentCtrl {
   /* @ngInject */
-  constructor($filter, $q, base, ChartsHttp, ComponentsDate) {
+  constructor($filter, $q, $scope, base, ChartsHttp, ComponentsDate) {
     this._baseCurrency = base.currency;
     this._filter = $filter;
     this._http = ChartsHttp;
+    this._scope = $scope;
     this._q = $q;
     this._setDate = ComponentsDate;
   }
+
+  _blockLoader = true;
 
   datasetOverride = [
     {
@@ -34,9 +37,13 @@ class ChartsComponentCtrl {
       'POKAŻ',
       true
     );
+    this._scope.$on('loader', (event, loader) => {
+      this.loader = (!this._blockLoader ? loader : false);
+    });
   }
 
   getData(params) {
+    this._blockLoader = false;
     const PROMISES = [];
     this._params = angular.copy(params);
     this._params.currencies.forEach(element => {
@@ -53,6 +60,10 @@ class ChartsComponentCtrl {
           }
         });
       });
+      this._blockLoader = true;
+    }, error => {
+      this._scope.$emit('toast', error.data);
+      this._blockLoader = true;
     });
   }
 }

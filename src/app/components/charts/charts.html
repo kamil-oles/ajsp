@@ -12,7 +12,7 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-content class="app-padding">
-        <app-filter config="$ctrl.filterConfig" get-data="$ctrl.getData($event)"></app-filter>
+        <app-filter block="$ctrl.loader" config="$ctrl.filterConfig" get-data="$ctrl.getData($event)"></app-filter>
         <canvas class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels"
           chart-dataset-override="$ctrl.datasetOverride" chart-options="$ctrl.options">
         </canvas>
