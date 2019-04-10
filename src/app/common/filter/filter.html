@@ -1,9 +1,13 @@
 <form name="filterForm" class="filter-form" ng-submit="$ctrl.sendParams()" layout layout-wrap ng-cloak>
   <div flex="{{$ctrl.config.comparison ? 50 : 100}}" flex-sm="25" flex-gt-sm="20">
-    <app-select currency="$ctrl.currency" empty-option="false" on-update-code="$ctrl.updateCode($event)"></app-select>
+    <app-select currency="$ctrl.currencies[0]" empty-option="false" label="$ctrl.label"
+      on-update-code="$ctrl.updateCode($event)" select-id="0">
+    </app-select>
   </div>
   <div flex="50" flex-sm="25" flex-gt-sm="20" ng-if="$ctrl.config.comparison">
-    <app-select currency="{code: null}" empty-option="true" on-update-code="$ctrl.updateCode($event)"></app-select>
+    <app-select currency="$ctrl.currencies[1]" empty-option="true" label="'Waluta II'"
+      on-update-code="$ctrl.updateCode($event)" select-id="1">
+    </app-select>
   </div>
   <div flex="50" flex-sm="25" flex-gt-sm="20">
     <md-input-container>

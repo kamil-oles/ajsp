@@ -15,7 +15,10 @@ class SelectComponentCtrl {
   }
 
   updateCode() {
-    this.onUpdateCode(this._eventEmitter(this.model.code));
+    this.onUpdateCode(this._eventEmitter({
+      id: this.selectId,
+      value: this.model.code
+    }));
   }
 }
 
@@ -23,7 +26,9 @@ export const SELECT_COMPONENT = {
   bindings: {
     currency: '<',
     emptyOption: '<',
-    onUpdateCode: '&'
+    label: '<',
+    onUpdateCode: '&',
+    selectId: '<'
   },
   template: require('./select.html'),
   controller: SelectComponentCtrl

@@ -8,7 +8,7 @@
 </div>
 <md-input-container class="select-container" ng-if="$ctrl.currency.code !== 'PLN'">
   <label>
-    Waluta
+    {{$ctrl.label || 'Waluta'}}
   </label>
   <md-select class="select-currency-code" ng-model="$ctrl.model.code" ng-change="$ctrl.updateCode()"
     md-selected-text="$ctrl.model.code || 'wybierz ...'">

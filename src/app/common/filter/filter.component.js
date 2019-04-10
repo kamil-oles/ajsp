@@ -6,8 +6,9 @@ class FilterComponentCtrl {
   }
 
   $onInit() {
-    this.currency = angular.copy(this.config.currency);
+    this.currencies = [this.config.currency, { code: null }];
     this.from = this.config.from;
+    this.label = this.config.comparison ? 'Waluta I' : 'Waluta';
     this.max = new Date();
     this.min = new Date(2002, 0, 2);
     this.to = this.max;
@@ -15,14 +16,14 @@ class FilterComponentCtrl {
 
   sendParams() {
     this.getData(this._eventEmitter({
-      currency: this.currency,
+      currencies: this.currencies[1].code ? this.currencies : [this.currencies[0]],
       from: this._filter('date')(this.from, 'yyyy-MM-dd'),
       to: this._filter('date')(this.to, 'yyyy-MM-dd')
     }));
   }
 
-  updateCode(code) {
-    this.currency.code = code;
+  updateCode(data) {
+    this.currencies[data.id].code = data.value;
   }
 }
 
