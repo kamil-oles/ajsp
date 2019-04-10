@@ -1,10 +1,10 @@
+import { FilterConfig } from '../../../common/filter/classes/filter.class';
 import { RatesHistorical } from './classes/rates-historical.class';
 
 class RatesHistoricalComponentCtrl {
   /* @ngInject */
-  constructor($filter, $scope, headers, RatesHistoricalHttp) {
+  constructor($scope, headers, RatesHistoricalHttp) {
     this.headers = headers.historical;
-    this._filter = $filter;
     this._http = RatesHistoricalHttp;
     this._scope = $scope;
   }
@@ -12,44 +12,37 @@ class RatesHistoricalComponentCtrl {
   blockLoader = true;
 
   $onInit() {
-    this.currency = {
-      code: this.initialData.currency
-    };
-    this.from = this.initialData.from;
-    this.max = new Date();
-    this.min = new Date(2002, 0, 2);
-    this.rates = this.initialData.data ? this.initialData.data.rates : null;
-    this.to = this.max;
+    this.rates = this.initData.data ? this.initData.data.rates : null;
+    this.filterConfig = new FilterConfig(this.initData.currency, this.initData.from, 'FILTRUJ');
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this.blockLoader ? loader : false);
     });
   }
 
-  getRates() {
+  getData(params) {
     this.blockLoader = false;
-    const START = this._filter('date')(this.from, 'yyyy-MM-dd'),
-      END = this._filter('date')(this.to, 'yyyy-MM-dd');
-    this._http.getRates(this.currency.code, START, END).then(response => {
-      const DATA = response.data;
-      sessionStorage.setItem(
-        'rates_historical',
-        JSON.stringify(new RatesHistorical(DATA.code, START, DATA))
-      );
-      this.rates = DATA.rates;
-      this.blockLoader = true;
-    }, error => {
-      this._scope.$emit('toast', error.data);
-      this.blockLoader = true;
-    });
-  }
-
-  updateCode(code) {
-    this.currency.code = code;
+    const START = params.from,
+      END = params.to;
+    this._http.getRates(params.currencies[0].code, START, END).then(
+      response => {
+        const DATA = response.data;
+        sessionStorage.setItem(
+          'rates_historical',
+          JSON.stringify(new RatesHistorical(DATA.code, START, END))
+        );
+        this.rates = DATA.rates;
+        this.blockLoader = true;
+      },
+      error => {
+        this._scope.$emit('toast', error.data);
+        this.blockLoader = true;
+      }
+    );
   }
 }
 
 export const RATES_HISTORICAL_COMPONENT = {
-  bindings: { initialData: '<' },
+  bindings: { initData: '<' },
   template: require('./rates-historical.html'),
   controller: RatesHistoricalComponentCtrl
 };

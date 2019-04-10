@@ -18,8 +18,8 @@ export const APP_RATES_HISTORICAL = angular
         from: null
       },
       resolve: {
-        initialData: function prepareInitialData($stateParams, RatesHistoricalData) {
-          return RatesHistoricalData.initialData($stateParams.code);
+        initData: function prepareInitialData($stateParams, RatesHistoricalData) {
+          return RatesHistoricalData.initData($stateParams.code);
         }
       },
       data: {

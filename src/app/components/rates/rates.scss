@@ -1,12 +1,5 @@
 @import '../../../style/helpers/variables';
-@import '../../../style/helpers/placeholders';
 
-.rates-container {
-  @extend %content-width;
-  .select-currency-code {
-    width: 7.5rem;
-  }
-}
 .rates-nav-bar .md-button._md-nav-button {
   background-color: transparent;
   transition: none;

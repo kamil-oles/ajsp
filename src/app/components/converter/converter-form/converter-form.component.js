@@ -55,8 +55,8 @@ class ConverterFormComponentCtrl {
     this.currencySecond = CURRENCIES_DATA[1];
   }
 
-  updateCode(code) {
-    this[`currency${this.currencyFirst.code === 'PLN' ? 'Second' : 'First'}`].code = code;
+  updateCode(data) {
+    this[`currency${this.currencyFirst.code === 'PLN' ? 'Second' : 'First'}`].code = data.value;
   }
 
   _updateData(results) {

@@ -1,41 +1,8 @@
 <div class="app-position-relative" ng-cloak>
   <md-card-content class="app-padding">
-    <form name="historicalForm" ng-submit="$ctrl.getRates()" layout layout-wrap>
-      <div flex="100" flex-sm="25" flex-gt-sm="20">
-        <app-select currency="$ctrl.currency" on-update-code="$ctrl.updateCode($event)"></app-select>
-      </div>
-      <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <md-input-container>
-          <label>
-            Od
-          </label>
-          <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
-            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
-          <app-messages errors="historicalForm.from.$error"></app-messages>
-        </md-input-container>
-      </div>
-      <div flex="50" flex-sm="25" flex-gt-sm="20">
-        <md-input-container>
-          <label>
-            Do
-          </label>
-          <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar"
-            md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
-          <app-messages errors="historicalForm.to.$error"></app-messages>
-        </md-input-container>
-      </div>
-      <div flex="100" flex-sm="25" flex-gt-sm="20" layout layout-align="end start" layout-align-gt-xs="start start">
-        <md-button type="submit" class="app-typography-button app-submit-button md-accent md-hue-1 md-raised"
-          ng-disabled="historicalForm.$invalid || $ctrl.loader">
-          <span class="app-submit-button-label">
-            FILTRUJ
-          </span>
-        </md-button>
-      </div>
-    </form>
+    <app-filter config="$ctrl.filterConfig" get-data="$ctrl.getData($event)"></app-filter>
   </md-card-content>
   <div class="app-position-relative">
-    <md-divider ng-show="$ctrl.rates"></md-divider>
     <app-rates-table rates="$ctrl.rates" table-data="$ctrl.headers"></app-rates-table>
     <app-backdrop show="$ctrl.loader"></app-backdrop>
   </div>
