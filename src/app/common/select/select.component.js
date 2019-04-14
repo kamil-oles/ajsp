@@ -25,6 +25,7 @@ class SelectComponentCtrl {
 export const SELECT_COMPONENT = {
   bindings: {
     currency: '<',
+    currencyToHide: '<',
     emptyOption: '<',
     label: '<',
     onUpdateCode: '&',

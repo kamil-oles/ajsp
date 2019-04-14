@@ -16,7 +16,8 @@
       usuń wybór
     </md-option>
     <md-optgroup label="{{value.name}}" ng-repeat="(key, value) in $ctrl.currencies">
-      <md-option ng-repeat="option in value.items" ng-value="option.code">
+      <md-option ng-repeat="option in value.items" ng-value="option.code"
+        ng-show="option.code !== $ctrl.currencyToHide.code">
         {{option.code}} {{option.currency}}
       </md-option>
     </md-optgroup>

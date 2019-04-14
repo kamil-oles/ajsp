@@ -16,22 +16,25 @@ export class ChartsDataService {
       if (FETCH.length === 0) {
         const DATA = (curr.currencies[0].code === inco.currencies[1].code ? data.reverse() : data);
         return this._returnPromise(DEFER, DATA, labels, inco);
-      } else if (FETCH.length === 1) {
+      } else if (FETCH.length === 1 && FETCH[0].code) {
         return this._http.getRates(FETCH[0].code, inco.from, inco.to).then(response => {
           DEFER.resolve(this._prepareOne(inco, data, labels, FETCH, response));
           return DEFER.promise;
         }, error => this._returnPromise(DEFER, data, labels, inco, error));
+      } else if (FETCH.length === 1 && !FETCH[0].code) {
+        data[1] = [];
+        return this._returnPromise(DEFER, data, labels, inco);
       } else {
         const PROMISES = this._promises(inco);
         return this._q.all(PROMISES).then(response => {
-          const PREPARED_DATA = this._prepareAll(response, []);
+          const PREPARED_DATA = this._prepareAll(response, labels);
           return this._returnPromise(DEFER, PREPARED_DATA.rates, PREPARED_DATA.labels, inco);
         }, error => this._returnPromise(DEFER, data, labels, inco, error));
       }
     } else {
       const PROMISES = this._promises(inco);
       return this._q.all(PROMISES).then(response => {
-        const PREPARED_DATA = this._prepareAll(response, labels);
+        const PREPARED_DATA = this._prepareAll(response, []);
         return this._returnPromise(DEFER, PREPARED_DATA.rates, PREPARED_DATA.labels, inco);
       }, error => this._returnPromise(DEFER, data, labels, inco, error));
     }
