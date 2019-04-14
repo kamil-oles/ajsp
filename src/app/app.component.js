@@ -6,7 +6,7 @@ class AppComponentCtrl {
   }
 
   $onInit() {
-    this._transitions.onSuccess({}, (transition) => {
+    this._transitions.onSuccess({}, transition => {
       const PARAMS = transition.params();
       if (PARAMS.from !== 'tab') {
         this._window.scroll(0, 0);

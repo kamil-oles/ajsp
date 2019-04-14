@@ -22,14 +22,14 @@ class ConverterSliderComponentCtrl {
       this._fireAnimations(SLIDE);
       this._blockLoader = true;
       return this._http.rates('EUR');
-    }).then((response) => {
+    }).then(response => {
       this._mainCurrencies.push(this._data.prepareData(response.data));
       this._intervalPromise = this._interval(this._fireAnimations.bind(this, SLIDE), 5450);
       return this._http.rates('CHF');
-    }).then((response) => {
+    }).then(response => {
       this._mainCurrencies.push(this._data.prepareData(response.data));
       return this._http.rates('GBP');
-    }).then((response) => {
+    }).then(response => {
       this._mainCurrencies.push(this._data.prepareData(response.data));
     }, () => {
       this._blockLoader = true;

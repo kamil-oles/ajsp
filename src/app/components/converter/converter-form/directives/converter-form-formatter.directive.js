@@ -10,10 +10,10 @@ class ConverterFormFormatterDirectiveCtrl {
     this._element.on('blur', () => {
       this._model.$processModelValue();
     });
-    this._model.$parsers.push((value) => {
+    this._model.$parsers.push(value => {
       return this._service.toNumber(value);
     });
-    this._model.$formatters.push((value) => {
+    this._model.$formatters.push(value => {
       return this._service.format(value);
     });
   }

@@ -15,7 +15,7 @@ export class CommonTransitionsService {
     this._transitions.onBefore({}, () => {
       this._blockLoader = false;
     });
-    this._transitions.onSuccess({}, (transition) => {
+    this._transitions.onSuccess({}, transition => {
       this._root.title = transition.to().data.title;
       this._blockLoader = true;
       this._hideMenu.call(that);

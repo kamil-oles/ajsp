@@ -8,7 +8,7 @@ class RatesComponentCtrl {
 
   $onInit() {
     this.currentState = this._state.current.name.slice(9);
-    this._transitions.onSuccess({ to: 'appRates.**' }, (transition) => {
+    this._transitions.onSuccess({ to: 'appRates.**' }, transition => {
       this.currentState = transition.to().name.slice(9);
     });
     this._boundEventHandler = this._clearStorage;
