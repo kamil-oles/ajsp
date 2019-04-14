@@ -1,16 +1,16 @@
-import { FilterConfig } from '../../common/filter/classes/filter.class';
+import { FilterConfig, FilterParams } from '../../common/filter/classes/filter.class';
 
 class ChartsComponentCtrl {
   /* @ngInject */
-  constructor($filter, $q, $scope, base, ChartsHttp, ComponentsDate) {
+  constructor($scope, base, ChartsData, ComponentsDate) {
     this._baseCurrency = base.currency;
-    this._filter = $filter;
-    this._http = ChartsHttp;
+    this._data = ChartsData;
     this._scope = $scope;
-    this._q = $q;
     this._setDate = ComponentsDate;
   }
 
+  data = [[], []];
+  labels = [];
   _blockLoader = true;
 
   datasetOverride = [
@@ -22,13 +22,6 @@ class ChartsComponentCtrl {
       pointBorderColor: 'rgb(158, 158, 158)'
     }
   ]
-  options = {
-    legend: {
-      labels: {
-        fontColor: 'yellow'
-      }
-    }
-  }
 
   $onInit() {
     this.filterConfig = new FilterConfig(
@@ -37,6 +30,7 @@ class ChartsComponentCtrl {
       'POKAŻ',
       true
     );
+    this._params = new FilterParams([{ code: this._baseCurrency }, { code: null }], null, null);
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);
     });
@@ -44,27 +38,22 @@ class ChartsComponentCtrl {
 
   getData(params) {
     this._blockLoader = false;
-    const PROMISES = [];
-    this._params = angular.copy(params);
-    this._params.currencies.forEach(element => {
-      PROMISES.push(this._http.getRates(element.code, this._params.from, this._params.to));
-    });
-    this._q.all(PROMISES).then(response => {
-      this.data = [[], []];
-      this.labels = [];
-      response.forEach((element, index) => {
-        element.data.rates.forEach(el => {
-          this.data[index].push(el.ask);
-          if (!index) {
-            this.labels.push(this._filter('date')(el.effectiveDate, 'dd.MM.yyyy'));
-          }
-        });
-      });
-      this._blockLoader = true;
+    this._data.prepareData(this._params, params, this.data, this.labels).then(response => {
+      this._setState(response);
     }, error => {
-      this._scope.$emit('toast', error.data);
-      this._blockLoader = true;
+      this._setState(error);
     });
+  }
+
+  _setState(response) {
+    this.data = response.data;
+    this.labels = response.labels;
+    this._params = angular.copy(response.params);
+    this._blockLoader = true;
+    if (response.error) {
+      const ERROR = response.error;
+      this._scope.$emit('toast', ERROR.data);
+    }
   }
 }
 

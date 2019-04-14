@@ -1,12 +1,10 @@
+import { FilterParams } from './classes/filter.class';
+
 class FilterComponentCtrl {
   /* @ngInject */
   constructor($filter, eventEmitter) {
     this._eventEmitter = eventEmitter;
     this._filter = $filter;
-  }
-
-  $onChanges(changes) {
-    console.log(changes);
   }
 
   $onInit() {
@@ -19,11 +17,11 @@ class FilterComponentCtrl {
   }
 
   sendParams() {
-    this.getData(this._eventEmitter({
-      currencies: this.currencies[1].code ? this.currencies : [this.currencies[0]],
-      from: this._filter('date')(this.from, 'yyyy-MM-dd'),
-      to: this._filter('date')(this.to, 'yyyy-MM-dd')
-    }));
+    this.getData(this._eventEmitter(new FilterParams(
+      this.currencies,
+      this._filter('date')(this.from, 'yyyy-MM-dd'),
+      this._filter('date')(this.to, 'yyyy-MM-dd')
+    )));
   }
 
   updateCode(data) {
