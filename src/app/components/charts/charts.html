@@ -13,10 +13,15 @@
       </md-card-title>
       <md-card-content class="app-padding">
         <app-filter block="$ctrl.loader" config="$ctrl.filterConfig" get-data="$ctrl.getData($event)"></app-filter>
-        <canvas class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels"
-          chart-dataset-override="$ctrl.datasetOverride">
-        </canvas>
       </md-card-content>
+      <div class="app-position-relative">
+        <div class="app-padding charts-wrapper">
+          <canvas class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels"
+            chart-dataset-override="$ctrl.datasetOverride">
+          </canvas>
+        </div>
+        <app-backdrop show="$ctrl.loader"></app-backdrop>
+      </div>
     </md-card>
   </div>
 </md-content>
