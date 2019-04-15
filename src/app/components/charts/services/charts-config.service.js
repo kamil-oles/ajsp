@@ -33,8 +33,7 @@ export class ChartsConfigService {
         yAxes: [{
           ticks: {
             fontColor: 'rgba(0, 0, 0, .87)',
-            fontFamily: '"Roboto", "Helvetica Neue", "sans-serif"',
-            precision: 4
+            fontFamily: '"Roboto", "Helvetica Neue", "sans-serif"'
           },
           type: 'linear'
         }]
