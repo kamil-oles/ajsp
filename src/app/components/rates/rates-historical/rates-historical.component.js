@@ -12,8 +12,13 @@ class RatesHistoricalComponentCtrl {
   _blockLoader = true;
 
   $onInit() {
-    this.rates = this.initData.data ? this.initData.data.rates : null;
-    this.filterConfig = new FilterConfig(this.initData.currency, this.initData.from, 'FILTRUJ');
+    this.rates = this.initData.rates || null;
+    this.filterConfig = new FilterConfig(
+      this.initData.currency,
+      this.initData.from,
+      this.initData.to,
+      'FILTRUJ'
+    );
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);
     });
@@ -25,12 +30,11 @@ class RatesHistoricalComponentCtrl {
       END = params.to;
     this._http.getRates(params.currencies[0].code, START, END).then(
       response => {
-        const DATA = response.data;
+        this.rates = response.data.rates;
         sessionStorage.setItem(
           'rates_historical',
-          JSON.stringify(new RatesHistorical(DATA.code, START, END))
+          JSON.stringify(new RatesHistorical(response.data.code, START, END, this.rates))
         );
-        this.rates = DATA.rates;
         this._blockLoader = true;
       },
       error => {

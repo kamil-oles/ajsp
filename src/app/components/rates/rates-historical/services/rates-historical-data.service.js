@@ -19,7 +19,7 @@ export class RatesHistoricalDataService {
       const DEFERRED = this._q.defer();
       this._http.getRates(code, FROM, TO).then(function prepareData(response) {
         const RESPONSE = response.data,
-          DATA = new RatesHistorical(RESPONSE.code, FROM, RESPONSE);
+          DATA = new RatesHistorical(RESPONSE.code, FROM, TO, RESPONSE.rates);
         sessionStorage.setItem('rates_historical', JSON.stringify(DATA));
         DEFERRED.resolve(DATA);
       }, error => {
@@ -30,7 +30,7 @@ export class RatesHistoricalDataService {
     } else if (SESSION_DATA) {
       return SESSION_DATA;
     } else {
-      return new RatesHistorical(this._baseCurrency, FROM);
+      return new RatesHistorical(this._baseCurrency, FROM, TO);
     }
   }
 }
