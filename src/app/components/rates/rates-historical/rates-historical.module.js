@@ -4,6 +4,8 @@ import { RatesHistoricalDataService } from './services/rates-historical-data.ser
 import { RatesHistoricalHttpService } from './services/rates-historical-http.service';
 import { RATES_HISTORICAL_COMPONENT } from './rates-historical.component';
 
+import './rates-historical.scss';
+
 export const APP_RATES_HISTORICAL = angular
   .module('appRatesHistorical', [])
   .service('RatesHistoricalData', RatesHistoricalDataService)

@@ -1,0 +1,8 @@
+@import '../../../../style/helpers/variables';
+
+.rates-historical-data.ng-hide {
+  opacity: 0;
+}
+.rates-historical-data.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
+}
