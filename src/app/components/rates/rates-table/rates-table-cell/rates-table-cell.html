@@ -17,9 +17,8 @@
   <span ng-if="$ctrl.key === 'ask' || $ctrl.key === 'bid' || $ctrl.key === 'currency'">
     {{$ctrl.value}}
   </span>
-  <span
-    ng-class="{'rates-table-cell-green': $ctrl.value.charAt(0) !== '-', 'rates-table-cell-red': $ctrl.value.charAt(0) === '-' && $ctrl.value.length > 1}"
+  <span ng-class="{'rates-table-cell-green': $ctrl.value.number > 0, 'rates-table-cell-red': $ctrl.value.number < 0}"
     ng-if="$ctrl.key === 'askDelta' || $ctrl.key === 'bidDelta'">
-    {{$ctrl.value}}
+    {{$ctrl.value.string}}
   </span>
 </div>

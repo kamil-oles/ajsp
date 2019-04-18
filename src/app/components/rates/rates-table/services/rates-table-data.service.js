@@ -1,6 +1,6 @@
 export class RatesTableDataService {
   prepare(array, view) {
-    return array.map((el, i, arr) => this._rows(el, i, arr, view));
+    return array.map((el, i, arr) => this._rows(el, i, arr, view, this._format));
   }
 
   _calculateDelta(el, i, arr, t) {
@@ -11,7 +11,7 @@ export class RatesTableDataService {
     return `${data.toFixed(rounding).replace('.', ',')}${rounding === 2 ? '%' : ''}`;
   }
 
-  _rows(el, i, arr, view) {
+  _rows(el, i, arr, view, formatter) {
     if (view === 'current') {
       return {
         code: el.code,
@@ -23,9 +23,19 @@ export class RatesTableDataService {
       return {
         date: el.effectiveDate,
         bid: this._format(el.bid, 4),
-        bidDelta: (i !== 0 ? this._format(this._calculateDelta(el, i, arr, 'bid'), 2) : '-'),
+        bidDelta: {
+          number: (i !== 0 ? this._calculateDelta(el, i, arr, 'bid') : 0),
+          get string() {
+            return (i !== 0 ? formatter(this.number, 2) : '-');
+          }
+        },
         ask: this._format(el.ask, 4),
-        askDelta: (i !== 0 ? this._format(this._calculateDelta(el, i, arr, 'ask'), 2) : '-')
+        askDelta: {
+          number: (i !== 0 ? this._calculateDelta(el, i, arr, 'ask') : 0),
+          get string() {
+            return (i !== 0 ? formatter(this.number, 2) : '-');
+          }
+        }
       };
     }
   }

@@ -10,12 +10,22 @@ export class RatesTableSortService {
   }
 
   _actualSort(a, b, type, firstResult, secondResult) {
-    if (a[type] < b[type]) {
-      return firstResult;
+    if (a[type].hasOwnProperty('number') && b[type].hasOwnProperty('number')) {
+      if (a[type].number < b[type].number) {
+        return firstResult;
+      }
+      if (a[type].number > b[type].number) {
+        return secondResult;
+      }
+      return 0;
+    } else {
+      if (a[type] < b[type]) {
+        return firstResult;
+      }
+      if (a[type] > b[type]) {
+        return secondResult;
+      }
+      return 0;
     }
-    if (a[type] > b[type]) {
-      return secondResult;
-    }
-    return 0;
   }
 }
