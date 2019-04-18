@@ -2,7 +2,7 @@
 @import '../../../../style/helpers/placeholders';
 
 span.rates-table-header-label {
-  @media(max-width: $breakpoint-sm-xs) {
+  @media(max-width: $breakpoint-3xs) {
     max-width: 60%;
   }
 }
@@ -30,6 +30,12 @@ span.rates-table-header-label {
 .rates-table-hide {
   display: none;
   @media (min-width: #{$breakpoint-gt-xs}) {
+    display: table-cell;
+  }
+}
+.rates-table-hide-v {
+  display: none;
+  @media (min-width: #{$breakpoint-2xs}) {
     display: table-cell;
   }
 }

@@ -1,7 +1,8 @@
 <table class="rates-table" ng-show="$ctrl.data" ng-cloak>
   <thead>
     <tr class="rates-table-row">
-      <th class="app-typography-body-2-th rates-table-header" ng-class="{'rates-table-hide': header.hideOnMobile}"
+      <th class="app-typography-body-2-th rates-table-header"
+        ng-class="{'rates-table-hide': header.code === 'currency', 'rates-table-hide-v': header.code ==='askDelta' || header.code === 'bidDelta'}"
         ng-repeat="header in $ctrl.tableData.headers" ng-click="$ctrl.sort(header.code)">
         <app-rates-table-header header="header" sort-by="$ctrl.sortBy" sort-direction="$ctrl.sortDirection">
         </app-rates-table-header>
@@ -11,7 +12,8 @@
   <tbody>
     <tr class="app-typography-body-2 rates-table-row" ng-init="i = $index"
       ng-repeat-start="row in $ctrl.data track by $index">
-      <td class="rates-table-data" ng-class="{'rates-table-hide': key === 'askDelta' || key === 'bidDelta'}"
+      <td class="rates-table-data"
+        ng-class="{'rates-table-hide': key === 'currency', 'rates-table-hide-v': key ==='askDelta' || key === 'bidDelta'}"
         ng-repeat="(key, value) in row">
         <app-rates-table-cell expand-subrow="$ctrl.expandSubrow($event)" index="i" key="key" subrow="$ctrl.subrow"
           value="value">

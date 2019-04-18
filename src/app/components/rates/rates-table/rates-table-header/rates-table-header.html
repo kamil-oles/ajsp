@@ -4,7 +4,8 @@
       {{$ctrl.icon}}
     </md-icon>
   </div>
-  <div class="rates-table-header-label" layout layout-align="{{$ctrl.header.align}} center">
+  <div class="rates-table-header-label" ng-class="{'rates-table-header-right': $ctrl.header.align === 'end'}" layout
+    layout-align="{{$ctrl.header.align}} center">
     <span ng-if="!$ctrl.header.icon">
       {{$ctrl.header.label}}
     </span>
