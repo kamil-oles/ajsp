@@ -5,21 +5,29 @@
         {
           "align": "start",
           "code": "code",
+          "hideOnMobile": false,
+          "icon": false,
           "label": "Kod"
         },
         {
           "align": "start",
           "code": "currency",
+          "hideOnMobile": true,
+          "icon": false,
           "label": "Waluta"
         },
         {
           "align": "end",
           "code": "bid",
+          "hideOnMobile": false,
+          "icon": false,
           "label": "Cena zakupu"
         },
         {
           "align": "end",
           "code": "ask",
+          "hideOnMobile": false,
+          "icon": false,
           "label": "Cena sprzedaży"
         }
       ],
@@ -30,17 +38,37 @@
         {
           "align": "start",
           "code": "date",
+          "hideOnMobile": false,
+          "icon": false,
           "label": "Data"
         },
         {
           "align": "end",
           "code": "bid",
+          "hideOnMobile": false,
+          "icon": false,
           "label": "Cena zakupu"
         },
         {
           "align": "end",
+          "code": "bidDelta",
+          "hideOnMobile": true,
+          "icon": true,
+          "label": "change_history"
+        },
+        {
+          "align": "end",
           "code": "ask",
+          "hideOnMobile": false,
+          "icon": false,
           "label": "Cena sprzedaży"
+        },
+        {
+          "align": "end",
+          "code": "askDelta",
+          "hideOnMobile": true,
+          "icon": true,
+          "label": "change_history"
         }
       ],
       "state": "historical"

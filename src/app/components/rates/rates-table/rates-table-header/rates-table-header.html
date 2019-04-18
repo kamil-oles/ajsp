@@ -4,11 +4,14 @@
       {{$ctrl.icon}}
     </md-icon>
   </div>
-  <span class="rates-table-header-label"
-    ng-class="{'rates-table-header-left': $ctrl.header.align === 'start', 'rates-table-header-right': $ctrl.header.align === 'end'}"
-    layout layout-align="{{$ctrl.header.align}} center">
-    {{$ctrl.header.label}}
-  </span>
+  <div class="rates-table-header-label" layout layout-align="{{$ctrl.header.align}} center">
+    <span ng-if="!$ctrl.header.icon">
+      {{$ctrl.header.label}}
+    </span>
+    <md-icon class="rates-table-header-icon rates-table-header-icon-delta" ng-if="$ctrl.header.icon">
+      {{$ctrl.header.label}}
+    </md-icon>
+  </div>
   <div class="rates-table-header-icon-wrapper" ng-if="$ctrl.header.align === 'start'">
     <md-icon class="rates-table-header-icon" ng-show="$ctrl.sortBy === $ctrl.header.code">
       {{$ctrl.icon}}

@@ -6,7 +6,7 @@ class RatesCurrentComponentCtrl {
 }
 
 export const RATES_CURRENT_COMPONENT = {
-  bindings: { initialData: '<' },
+  bindings: { initData: '<' },
   template: require('./rates-current.html'),
   controller: RatesCurrentComponentCtrl
 };

@@ -1,7 +1,7 @@
 @import '../../../../../style/helpers/variables';
 @import '../../../../../style/helpers/mixins';
 
-button.rates-table-code-button {
+button.rates-table-cell-code-button {
   background: none;
   border: none;
   &:focus {
@@ -11,21 +11,24 @@ button.rates-table-code-button {
     display: none;
   }
 }
-md-icon.rates-table-icon {
+md-icon.rates-table-cell-icon {
   color: $color-table-data;
   margin: 0;
 }
-.rates-table-code {
+.rates-table-cell-code {
   @media(max-width: calc(#{$breakpoint-gt-xs} - 1px)) {
     display: none;
   }
 }
-.rates-table-left {
-  text-align: left
+.rates-table-cell-green {
+  color: $color-indicator-up;
 }
-.rates-table-right {
+.rates-table-cell-red {
+  color: $color-indicator-down;
+}
+.rates-table-cell-right {
   text-align: right;
 }
-.rates-table-subrow-expanded {
+.rates-table-cell-subrow {
   @include icon-animations(90deg, $animation-duration-opacity-on - 50ms);
 }

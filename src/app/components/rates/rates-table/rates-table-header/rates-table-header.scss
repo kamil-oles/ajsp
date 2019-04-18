@@ -1,15 +1,12 @@
 @import '../../../../../style/helpers/variables';
 
+md-icon.rates-table-header-icon-delta {
+  font-size: 20px;
+}
 .rates-table-header-icon {
   color: $color-primary;
 }
 .rates-table-header-icon-wrapper {
   display: inline-block;
   width: 1.5rem;
-}
-.rates-table-header-left {
-  text-align: left
-}
-.rates-table-header-right {
-  text-align: right;
 }
