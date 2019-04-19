@@ -13,7 +13,7 @@ class FilterComponentCtrl {
     this.label = this.config.comparison ? 'Waluta I' : 'Waluta';
     this.max = new Date();
     this.min = new Date(2002, 0, 2);
-    this.to = this.max;
+    this.to = this.config.to;
   }
 
   sendParams() {

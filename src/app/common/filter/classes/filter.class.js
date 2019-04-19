@@ -1,11 +1,12 @@
 export class FilterConfig {
-  constructor(currency, from, label, comparison) {
+  constructor(currency, from, to, label, comparison) {
     this.comparison = comparison;
     this.currency = {
       code: currency
     };
     this.from = from;
     this.label = label;
+    this.to = to;
   }
 }
 

@@ -18,6 +18,7 @@ class ChartsComponentCtrl {
     this.filterConfig = new FilterConfig(
       this._baseCurrency,
       this._setDate.setDateFrom(14),
+      new Date(),
       'POKAŻ',
       true
     );
@@ -31,11 +32,13 @@ class ChartsComponentCtrl {
 
   getData(params) {
     this._blockLoader = false;
-    this._data.prepareData(this._params, params, this.data, this.labels).then(response => {
-      this._setState(response);
-    }, error => {
-      this._setState(error);
-    });
+    this._data.prepareData(this._params, params, this.data, this.labels).then(
+      response => {
+        this._setState(response);
+      },
+      error => {
+        this._setState(error);
+      });
   }
 
   _setState(response) {
