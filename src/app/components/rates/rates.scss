@@ -7,9 +7,9 @@
 .rates-selected .md-button.md-default-theme.md-accent, .md-button.md-accent {
   color: $color-primary-dark;
 }
-.rates-view {
-  min-height: 43rem;
-}
+// .rates-view {
+//   min-height: 43rem;
+// }
 .rates-view.ng-enter {
   opacity: 0;
   transition: opacity $animation-show;

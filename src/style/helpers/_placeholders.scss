@@ -38,15 +38,3 @@
     }
   }
 }
-%table-data {
-  padding: 0 .5rem;
-  @media  (min-width: #{$breakpoint-gt-xs}) {
-    padding: 0 1rem;
-  }
-}
-%table-header {
-  color:$color-primary-dark;
-  .rates-table-header-icon {
-    color: $color-primary-dark;
-  }
-}

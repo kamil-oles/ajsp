@@ -1,39 +1,42 @@
 class RatesTableComponentCtrl {
   /* @ngInject */
-  constructor(RatesTableData, RatesTableSort) {
-    this._rtds = RatesTableData;
-    this._rtss = RatesTableSort;
+  constructor(RatesTableSort) {
+    this._sortService = RatesTableSort;
   }
 
-  subrow = null;
+  icon = 'keyboard_arrow_up';
+  sortDirection = 'ASC';
 
-  $onChanges(changes) {
-    const STATE = this.tableData.state;
-    if (changes.rates.currentValue) {
-      this.data = this._rtds.prepare(changes.rates.currentValue, STATE);
-      this.sortBy = (STATE === 'current' ? 'currency' : 'date');
-      this.sortDirection = 'ASC';
-    }
+  $onInit() {
+    this.columns.forEach(function setMinWidth(el) {
+      if (el.minWidth) {
+        el.minWidth = { 'min-width': `${el.minWidth}rem` };
+      }
+    });
+    this.sortBy = this._findColumnToSortBy();
   }
 
-  expandSubrow(index) {
-    this.subrow = (index !== this.subrow ? index : null);
-  }
-
-  sort(code) {
-    if (code === this.sortBy) {
+  sort(prop) {
+    if (prop === this.sortBy) {
       this.sortDirection = (this.sortDirection === 'ASC' ? 'DESC' : 'ASC');
     }
-    this.subrow = null;
-    this._rtss.sort(this.data, code, this.sortDirection);
-    this.sortBy = code;
+    this._sortService.sort(this.rows, prop, this.sortDirection);
+    this.icon = `keyboard_arrow_${this.sortDirection === 'ASC' ? 'up' : 'down'}`;
+    this.sortBy = prop;
+  }
+
+  _findColumnToSortBy() {
+    const COLUMN = this.columns.find(function findCallback(element) {
+      return element.sortedBy;
+    });
+    return (COLUMN ? COLUMN.prop : this.columns[0].prop);
   }
 }
 
 export const RATES_TABLE_COMPONENT = {
   bindings: {
-    rates: '<',
-    tableData: '<'
+    columns: '<',
+    rows: '<'
   },
   template: require('./rates-table.html'),
   controller: RatesTableComponentCtrl

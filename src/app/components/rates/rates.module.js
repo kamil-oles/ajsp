@@ -1,6 +1,7 @@
 import * as headers from '../../data/tables.json';
 import { APP_RATES_CURRENT } from './rates-current/rates-current.module';
 import { APP_RATES_HISTORICAL } from './rates-historical/rates-historical.module';
+// import { APP_RATES_TABLE } from './rates-table/rates-table.module';
 import { APP_RATES_TABLE } from './rates-table/rates-table.module';
 import { RATES_COMPONENT } from './rates.component';
 

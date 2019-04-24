@@ -1,31 +1,29 @@
-<table class="rates-table" ng-show="$ctrl.data" ng-cloak>
-  <thead>
-    <tr class="rates-table-row">
-      <th class="app-typography-body-2-th rates-table-header"
-        ng-class="{'rates-table-hide': header.code === 'currency', 'rates-table-hide-v': header.code ==='askDelta' || header.code === 'bidDelta'}"
-        ng-repeat="header in $ctrl.tableData.headers" ng-click="$ctrl.sort(header.code)">
-        <app-rates-table-header header="header" sort-by="$ctrl.sortBy" sort-direction="$ctrl.sortDirection">
-        </app-rates-table-header>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="app-typography-body-2 rates-table-row" ng-init="i = $index"
-      ng-repeat-start="row in $ctrl.data track by $index">
-      <td class="rates-table-data"
-        ng-class="{'rates-table-hide': key === 'currency', 'rates-table-hide-v': key ==='askDelta' || key === 'bidDelta'}"
-        ng-repeat="(key, value) in row">
-        <app-rates-table-cell expand-subrow="$ctrl.expandSubrow($event)" index="i" key="key" subrow="$ctrl.subrow"
-          value="value">
-        </app-rates-table-cell>
-      </td>
-    </tr>
-    <tr class="app-typography-body-2 rates-table-subrow" ng-repeat-end>
-      <td class="rates-table-nested-cell" colspan="3" ng-show="$ctrl.subrow === i">
-        <span class="rates-table-nested-data" ng-show="$ctrl.subrow === i">
-          {{row["currency"]}}
-        </span>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="rates-table-container">
+  <table class="rates-table">
+    <thead>
+      <tr class="app-typography-th rates-table-row">
+        <th class="app-padding rates-table-header" ng-style="c.minWidth" ng-repeat="c in $ctrl.columns"
+          ng-click="$ctrl.sort(c.prop)">
+          <div ng-class="{'rates-table-header-right': c.alignToRight}" layout layout-align="none center">
+            <span>
+              {{c.label}}
+            </span>
+            <span class="rates-table-icon-wrapper">
+              <md-icon class="rates-table-icon" ng-show="$ctrl.sortBy === c.prop">
+                {{$ctrl.icon}}
+              </md-icon>
+            </span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="app-typography-body-2 rates-table-row" ng-repeat="r in $ctrl.rows">
+        <td class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
+          ng-repeat="c in $ctrl.columns">
+          {{r[c.prop]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
