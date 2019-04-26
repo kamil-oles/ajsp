@@ -1,6 +1,7 @@
 class RatesTableComponentCtrl {
   /* @ngInject */
-  constructor(RatesTableSort) {
+  constructor($filter, RatesTableSort) {
+    this.filter = $filter;
     this._sortService = RatesTableSort;
   }
 

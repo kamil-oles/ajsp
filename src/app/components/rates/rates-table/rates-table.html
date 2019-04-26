@@ -21,7 +21,12 @@
       <tr class="app-typography-body-2 rates-table-row" ng-repeat="r in $ctrl.rows">
         <td class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
           ng-repeat="c in $ctrl.columns">
-          {{r[c.prop]}}
+          <span ng-if="!c.filter">
+            {{r[c.prop]}}
+          </span>
+          <span ng-if="c.filter">
+            {{$ctrl.filter(c.filter)(r[c.prop])}}
+          </span>
         </td>
       </tr>
     </tbody>

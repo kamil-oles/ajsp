@@ -11,7 +11,7 @@ export class RatesCurrentDataService {
     if (!SESSION_RATES) {
       const DEFERRED = this._q.defer();
       this._http.getRates().then(response => {
-        const DATA = this._prepareData(this._removeXdr(response.data[0]));
+        const DATA = this._removeXdr(response.data[0]);
         sessionStorage.setItem('rates_current', JSON.stringify(DATA));
         DEFERRED.resolve(DATA);
       }, error => {
@@ -22,24 +22,6 @@ export class RatesCurrentDataService {
     } else {
       return SESSION_RATES;
     }
-  }
-
-  _format(data) {
-    return `${data.toFixed(4).replace('.', ',')}`;
-  }
-
-  _prepareData(response) {
-    return {
-      effectiveDate: response.effectiveDate,
-      rates: response.rates.map(el => {
-        return {
-          code: el.code,
-          currency: el.currency,
-          bid: this._format(el.bid),
-          ask: this._format(el.ask)
-        };
-      })
-    };
   }
 
   _removeXdr(response) {
