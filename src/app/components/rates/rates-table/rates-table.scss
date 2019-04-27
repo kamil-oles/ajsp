@@ -65,5 +65,5 @@ div.rates-table-header-right {
   color: $color-indicator-down
 }
 .rates-table-row {
-  height: 3rem;
+  height: $rates-table-row-height;
 }
