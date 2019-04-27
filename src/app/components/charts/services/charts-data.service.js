@@ -58,12 +58,12 @@ export class ChartsDataService {
   }
 
   _prepareOne(inco, data, labels, fetch, response) {
-    const INDEX = inco.currencies.findIndex(function findIndexCallback(element) {
+    const INDEX = inco.currencies.findIndex(function comparison(element) {
       return element.code === fetch[0].code;
     });
     const DATA = angular.copy(data);
     DATA[INDEX] = [];
-    response.data.rates.forEach(function forEachCallback(element) {
+    response.data.rates.forEach(function fillArray(element) {
       DATA[INDEX].push(element.ask);
     });
     return new ChartsData(DATA, labels, inco);

@@ -1,4 +1,4 @@
-export const DOT_TO_COMMA_FILTER = function dotToCommaFilter(input, params) {
+export const DOT_2_COMMA_FILTER = function dot2CommaFilter(input, params) {
   if (input === null) {
     return '-';
   } else {

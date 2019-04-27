@@ -15,7 +15,7 @@ export const APP_RATES_CURRENT = angular
         from: null
       },
       resolve: {
-        initData: function prepareInitialData(RatesCurrentData) {
+        initData: function prepareInitData(RatesCurrentData) {
           return RatesCurrentData.rates();
         }
       },

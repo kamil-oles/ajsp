@@ -18,7 +18,7 @@ export const APP_RATES_HISTORICAL = angular
         from: null
       },
       resolve: {
-        initData: function prepareInitialData($stateParams, RatesHistoricalData) {
+        initData: function prepareInitData($stateParams, RatesHistoricalData) {
           return RatesHistoricalData.initData($stateParams.code);
         }
       },

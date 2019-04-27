@@ -25,7 +25,7 @@ export class RatesCurrentDataService {
   }
 
   _removeXdr(response) {
-    const INDEX = response.rates.findIndex(function findIndexCallback(el) {
+    const INDEX = response.rates.findIndex(function comparison(el) {
       return el.code === 'XDR';
     });
     response.rates.splice(INDEX, 1);

@@ -31,9 +31,7 @@ class RatesTableComponentCtrl {
   }
 
   _findColumnToSortBy() {
-    const COLUMN = this.columns.find(function findCallback(element) {
-      return element.sortBy;
-    });
+    const COLUMN = this.columns.find(element => element.sortBy);
     return (COLUMN ? COLUMN.prop : this.columns[0].prop);
   }
 }

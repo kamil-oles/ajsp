@@ -8,7 +8,7 @@ import { APP_SIDE_MENU } from './side-menu/side-menu.module';
 import { CommonTransitionsService } from './services/common-transitions.service';
 import { CommonViewService } from './services/common-view.service';
 import { COMMON_COMPONENT } from './common.component';
-import { DOT_TO_COMMA_FILTER } from './filters/dot-to-comma.filter';
+import { DOT_2_COMMA_FILTER } from './filters/dot-to-comma.filter';
 import { ToastDirective } from './directives/toast.directive';
 
 import './common.scss';
@@ -25,8 +25,8 @@ export const APP_COMMON = angular
   ])
   .service('CommonTransitions', CommonTransitionsService)
   .service('CommonView', CommonViewService)
-  .filter('dotToComma', function filterFactory() {
-    return DOT_TO_COMMA_FILTER;
+  .filter('dot2Comma', function filterFactory() {
+    return DOT_2_COMMA_FILTER;
   })
   .directive('toast', ToastDirective)
   .component('appCommon', COMMON_COMPONENT)
