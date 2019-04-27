@@ -36,17 +36,20 @@ class ConverterFormComponentCtrl {
     this.setBackdrop(this._eventEmitter(false));
     this._general.processValue(this._model);
     const CURRENCY = (code === 'PLN' ? 'Second' : 'First');
-    this._http.rate(this[`currency${CURRENCY}`].code).then(response => {
-      this._updateData(this._calculate.setData(
-        this[`currency${CURRENCY}`].code,
-        this.currencyFirst.value,
-        response,
-        (code === 'PLN')
-      ));
-    }, error => {
-      this._scope.$emit('toast', error.data);
-      this.loader = false;
-    });
+    this._http.rate(this[`currency${CURRENCY}`].code).then(
+      response => {
+        this._updateData(this._calculate.setData(
+          this[`currency${CURRENCY}`].code,
+          this.currencyFirst.value,
+          response,
+          (code === 'PLN')
+        ));
+      },
+      error => {
+        this._scope.$emit('toast', error.data);
+        this.loader = false;
+      }
+    );
   }
 
   swap() {
