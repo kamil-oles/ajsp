@@ -7,7 +7,7 @@ class RatesCurrentComponentCtrl {
   }
 
   $onInit() {
-    this.columns = columns.data.current;
+    this.columns = angular.copy(columns.data.current);
   }
 }
 

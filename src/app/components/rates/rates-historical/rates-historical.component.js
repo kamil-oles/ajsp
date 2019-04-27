@@ -21,7 +21,7 @@ class RatesHistoricalComponentCtrl {
       this.initData.to,
       'FILTRUJ'
     );
-    this.columns = columns.data.historical;
+    this.columns = angular.copy(columns.data.historical);
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);
     });
