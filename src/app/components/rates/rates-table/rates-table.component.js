@@ -5,8 +5,13 @@ class RatesTableComponentCtrl {
     this._sortService = RatesTableSort;
   }
 
-  icon = 'keyboard_arrow_up';
-  sortDirection = 'ASC';
+  $onChanges(changes) {
+    if (changes.rows.currentValue) {
+      this.sortBy = this._findColumnToSortBy();
+      this.sortDirection = 'ASC';
+      this.icon = 'keyboard_arrow_up';
+    }
+  }
 
   $onInit() {
     this.columns.forEach(function setMinWidth(el) {
@@ -14,7 +19,6 @@ class RatesTableComponentCtrl {
         el.minWidth = { 'min-width': `${el.minWidth}rem` };
       }
     });
-    this.sortBy = this._findColumnToSortBy();
   }
 
   sort(prop) {

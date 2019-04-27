@@ -18,13 +18,13 @@ class ConverterFormComponentCtrl {
     this._storage = ConverterFormStorage;
   }
 
+  $onChanges(changes) {
+    this.loader = changes.loading.currentValue;
+  }
+
   $onInit() {
     this.currencyFirst = this._storage.getData('first_currency');
     this.currencySecond = this._storage.getData('second_currency');
-  }
-
-  $onChanges(changes) {
-    this.loader = changes.loading.currentValue;
   }
 
   $postLink() {
