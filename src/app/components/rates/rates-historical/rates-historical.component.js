@@ -1,10 +1,12 @@
+import * as columns from '../../../data/tables.json';
 import { FilterConfig } from '../../../common/filter/classes/filter.class';
 import { RatesHistorical } from './classes/rates-historical.class';
 
 class RatesHistoricalComponentCtrl {
   /* @ngInject */
-  constructor($scope, headers, RatesHistoricalHttp) {
+  constructor($scope, RatesHistoricalData, headers, RatesHistoricalHttp) {
     this.headers = headers.historical;
+    this._data = RatesHistoricalData;
     this._http = RatesHistoricalHttp;
     this._scope = $scope;
   }
@@ -19,6 +21,7 @@ class RatesHistoricalComponentCtrl {
       this.initData.to,
       'FILTRUJ'
     );
+    this.columns = angular.copy(columns.data.historical);
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);
     });
@@ -26,15 +29,13 @@ class RatesHistoricalComponentCtrl {
 
   getData(params) {
     this._blockLoader = false;
-    const START = params.from,
+    const CODE = params.currencies[0].code,
+      START = params.from,
       END = params.to;
-    this._http.getRates(params.currencies[0].code, START, END).then(
+    this._http.getRates(CODE, START, END).then(
       response => {
-        this.rates = response.data.rates;
-        sessionStorage.setItem(
-          'rates_historical',
-          JSON.stringify(new RatesHistorical(response.data.code, START, END, this.rates))
-        );
+        this.rates = this._data.prepare(response.data.rates);
+        this._data.save(new RatesHistorical(CODE, START, END, this.rates));
         this._blockLoader = true;
       },
       error => {

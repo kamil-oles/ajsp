@@ -1,7 +1,13 @@
+import * as columns from '../../../data/tables.json';
+
 class RatesCurrentComponentCtrl {
   /* @ngInject */
   constructor(headers) {
     this.headers = headers.current;
+  }
+
+  $onInit() {
+    this.columns = angular.copy(columns.data.current);
   }
 }
 

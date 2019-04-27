@@ -1,11 +1,7 @@
-<div class="app-position-relative" ng-cloak>
-  <md-card-content class="app-padding">
-    <app-filter block="$ctrl.loader" config="$ctrl.filterConfig" get-data="$ctrl.getData($event)"></app-filter>
-  </md-card-content>
-  <div class="app-position-relative">
-    <div class="rates-historical-data" ng-show="$ctrl.rates">
-      <app-rates-table rates="$ctrl.rates" table-data="$ctrl.headers"></app-rates-table>
-    </div>
-    <app-backdrop show="$ctrl.loader"></app-backdrop>
-  </div>
+<md-card-content class="app-padding" ng-cloak>
+  <app-filter block="$ctrl.loader" config="$ctrl.filterConfig" get-data="$ctrl.getData($event)"></app-filter>
+</md-card-content>
+<div class="app-position-relative app-table-height" ng-cloak>
+  <app-rates-table columns="$ctrl.columns" rows="$ctrl.rates"></app-rates-table>
+  <app-backdrop show="$ctrl.loader"></app-backdrop>
 </div>

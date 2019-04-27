@@ -10,9 +10,6 @@ md-card-title-text.app-typography-subtitle, .app-typography-subtitle {
 .app-typography-body {
   @include typography(16px, normal, .5px);
 }
-.app-typography-body-2-th {
-  @include typography(12px, 500, .25px);
-}
 .app-typography-caption {
   @include typography(12px, normal, .4px);
 }
@@ -21,4 +18,7 @@ md-card-title-text.app-typography-subtitle, .app-typography-subtitle {
 }
 .app-typography-subtitle-2 {
   @include typography(14px, 500, .1px);
+}
+.app-typography-th {
+  @include typography(12px, 500, .25px);
 }

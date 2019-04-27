@@ -8,7 +8,10 @@
   color: $color-primary-dark;
 }
 .rates-view {
-  min-height: 43rem;
+  min-height: 33rem;
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    min-height: 42rem;
+  }
 }
 .rates-view.ng-enter {
   opacity: 0;

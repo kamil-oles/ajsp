@@ -1,75 +1,69 @@
 @import '../../../../style/helpers/variables';
 @import '../../../../style/helpers/placeholders';
 
-span.rates-table-header-label {
-  @media(max-width: $breakpoint-3xs) {
-    max-width: 60%;
-  }
+div.rates-table-header-right {
+  flex-direction: row-reverse;
 }
 .rates-table {
   border-collapse: collapse;
   width: 100%;
 }
-.rates-table-data {
-  @extend %table-data;
+.rates-table-cell {
   border-top: 1px solid $color-table;
   color: $color-table-data;
-}
-.rates-table-header {
-  @extend %table-data;
-  color: $color-primary;
-  cursor: pointer;
-  &:focus {
-    @extend %table-header;
-    outline: none;
-  }
-  &:hover {
-    @extend %table-header;
+  &:first-child {
+    @extend %sticky-cell;
+    background-color: $color-backdrop;
+    position: sticky;
   }
 }
-.rates-table-hide {
-  display: none;
-  @media (min-width: #{$breakpoint-gt-xs}) {
-    display: table-cell;
-  }
+.rates-table-cell-right {
+  text-align: right;
 }
-.rates-table-hide-v {
-  display: none;
-  @media (min-width: #{$breakpoint-2xs}) {
-    display: table-cell;
-  }
+.rates-table-container {
+  height: 100%;
+  overflow: scroll;
+  position: relative;
 }
-.rates-table-nested-cell {
-  background-color: $color-table;
-  height: $rates-table-row-height * .75;
-}
-.rates-table-nested-cell.ng-hide {
-  height: 0;
-}
-.rates-table-nested-cell.ng-hide-add {
-  transition: height 0ms;
-}
-.rates-table-nested-cell.ng-hide-remove {
-  transition: height $animation-opacity-on;
-}
-.rates-table-nested-data {
-  @extend %table-data;
-  opacity: 1;
-}
-.rates-table-nested-data.ng-hide {
+.rates-table-container.ng-hide {
   opacity: 0;
 }
-.rates-table-nested-data.ng-hide-add {
-  transition: opacity 0ms;
+.rates-table-container.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
 }
-.rates-table-nested-data.ng-hide-remove {
-  transition: opacity $animation-duration-opacity-on - 50ms ease-out $animation-duration-opacity-on;
+.rates-table-green {
+  color: $color-indicator-up
+}
+.rates-table-header {
+  background-color: $color-backdrop;
+  color: $color-primary;
+  cursor: pointer;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  &:first-child {
+    @extend %sticky-cell;
+    z-index: 2;
+  }
+  &:focus, &:hover {
+    color:$color-primary-dark;
+    outline: none;
+    .rates-table-icon {
+      color: $color-primary-dark;
+    }
+  }
+}
+.rates-table-icon {
+  color: $color-primary;
+  margin: 0;
+}
+.rates-table-icon-wrapper {
+  display: inline-block;
+  width: 1.5rem;
+}
+.rates-table-red {
+  color: $color-indicator-down
 }
 .rates-table-row {
   height: $rates-table-row-height;
-}
-.rates-table-subrow {
-  @media(min-width: #{$breakpoint-gt-xs}) {
-    display: none;
-  }
 }

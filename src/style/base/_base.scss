@@ -34,22 +34,28 @@
   height: 100%;
   width: 100%;
 }
+.app-table-height {
+  height: 10 * $rates-table-row-height;
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    height: 13 * $rates-table-row-height;
+  }
+}
 .app-uneditable-content {
   background: linear-gradient(90deg, $color-uneditable 0, $color-uneditable 33%, transparent 0) 0 bottom / 4px 1px repeat-x;
   color: $color-uneditable;
-  height: 30px;
-  line-height: 26px;
-  margin-bottom: 24px;
-  padding: 2px 2px 1px 2px;
+  height: 1.875rem;
+  line-height: 1.625rem;
+  margin-bottom: 1.5rem;
+  padding: .125rem .125rem .0625rem .125rem;
 }
 .app-uneditable-content-container {
-  margin: 18px 0;
-  padding: 2px;
+  margin: 1.125rem 0;
+  padding: .125rem;
   position: relative;
 }
 .app-uneditable-content-label {
   color: $color-uneditable-label;
   bottom: 100%;
   position: absolute;
-  transform: translateX(-6px) scale(.75);
+  transform: translateX(-.375rem) scale(.75);
 }

@@ -13,7 +13,6 @@ class CommonComponentCtrl {
 
   $onInit() {
     this.view = this._view.returnViews().dCollapsed;
-    this.height = this._window.innerHeight;
     this._window.addEventListener('resize', this._resizeThrottler.bind(this));
     this._transitionsHooks.setTransitionsHooks(this);
     this._scope.$on('loader', (event, loader) => {
@@ -43,7 +42,6 @@ class CommonComponentCtrl {
       this.view = this._view.returnViews().dCollapsed;
       this._body.removeClass('common-block-scroll');
     }
-    this.height = this._window.innerHeight;
   }
 
   _resizeThrottler() {

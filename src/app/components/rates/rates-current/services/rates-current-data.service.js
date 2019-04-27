@@ -25,13 +25,10 @@ export class RatesCurrentDataService {
   }
 
   _removeXdr(response) {
-    response.rates.every(function searchForXdr(element, index) {
-      if (element.code === 'XDR') {
-        response.rates.splice(index, 1);
-        return false;
-      }
-      return true;
+    const INDEX = response.rates.findIndex(function findIndexCallback(el) {
+      return el.code === 'XDR';
     });
+    response.rates.splice(INDEX, 1);
     return response;
   }
 }
