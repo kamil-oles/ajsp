@@ -3,4 +3,6 @@
     Kursy na dzień {{$ctrl.initData.effectiveDate | date: "dd.MM.yyyy"}}
   </p>
 </md-card-content>
-<app-rates-table columns="$ctrl.columns" rows="$ctrl.initData.rates"></app-rates-table>
+<div class="app-table-height" ng-cloak>
+  <app-rates-table columns="$ctrl.columns" rows="$ctrl.initData.rates"></app-rates-table>
+</div>

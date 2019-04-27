@@ -1,13 +1,16 @@
-<div class="rates-table-container">
+<div class="rates-table-container" ng-show="$ctrl.rows" ng-cloak>
   <table class="rates-table">
     <thead>
       <tr class="app-typography-th rates-table-row">
         <th class="app-padding rates-table-header" ng-style="c.minWidth" ng-repeat="c in $ctrl.columns"
           ng-click="$ctrl.sort(c.prop)">
           <div ng-class="{'rates-table-header-right': c.alignToRight}" layout layout-align="none center">
-            <span>
+            <span ng-if="!c.iconAsLabel">
               {{c.label}}
             </span>
+            <md-icon class="rates-table-icon" ng-if="c.iconAsLabel">
+              {{c.label}}
+            </md-icon>
             <span class="rates-table-icon-wrapper">
               <md-icon class="rates-table-icon" ng-show="$ctrl.sortBy === c.prop">
                 {{$ctrl.icon}}
@@ -20,7 +23,7 @@
     <tbody>
       <tr class="app-typography-body-2 rates-table-row" ng-repeat="r in $ctrl.rows">
         <td class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
-          ng-repeat="c in $ctrl.columns">
+          ng-repeat="c in $ctrl.columns" content="r[c.prop]" colors="c.colors" rates-table-color>
           <span ng-if="!c.filter">
             {{r[c.prop]}}
           </span>

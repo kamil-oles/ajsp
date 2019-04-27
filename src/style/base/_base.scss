@@ -34,6 +34,12 @@
   height: 100%;
   width: 100%;
 }
+.app-table-height {
+  height: 10 * 3rem;
+  @media(min-width: #{$breakpoint-gt-xs}) {
+    height: 13 * 3rem;
+  }
+}
 .app-uneditable-content {
   background: linear-gradient(90deg, $color-uneditable 0, $color-uneditable 33%, transparent 0) 0 bottom / 4px 1px repeat-x;
   color: $color-uneditable;

@@ -1,4 +1,5 @@
 @import '../../../../style/helpers/variables';
+@import '../../../../style/helpers/placeholders';
 
 div.rates-table-header-right {
   flex-direction: row-reverse;
@@ -11,9 +12,8 @@ div.rates-table-header-right {
   border-top: 1px solid $color-table;
   color: $color-table-data;
   &:first-child {
-    background-color: white;
-    box-shadow: 6px 0 2px -1px rgba(255, 255, 255, .8);
-    left: 0;
+    @extend %sticky-cell;
+    background-color: $color-backdrop;
     position: sticky;
   }
 }
@@ -21,23 +21,28 @@ div.rates-table-header-right {
   text-align: right;
 }
 .rates-table-container {
+  height: 100%;
   overflow: scroll;
   position: relative;
-  height: 10 * 3rem;
-  @media(min-width: #{$breakpoint-gt-xs}) {
-    height: 13 * 3rem;
-  }
+}
+.rates-table-container.ng-hide {
+  opacity: 0;
+}
+.rates-table-container.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
+}
+.rates-table-green {
+  color: $color-indicator-up
 }
 .rates-table-header {
-  background-color: white;
+  background-color: $color-backdrop;
   color: $color-primary;
   cursor: pointer;
   position: sticky;
   top: 0;
   z-index: 1;
   &:first-child {
-    box-shadow: 6px 0 2px -1px rgba(255, 255, 255, .8);
-    left: 0;
+    @extend %sticky-cell;
     z-index: 2;
   }
   &:focus, &:hover {
@@ -50,11 +55,15 @@ div.rates-table-header-right {
 }
 .rates-table-icon {
   color: $color-primary;
+  margin: 0;
 }
 .rates-table-icon-wrapper {
   display: inline-block;
   width: 1.5rem;
 }
+.rates-table-red {
+  color: $color-indicator-down
+}
 .rates-table-row {
-  height: $rates-table-row-height;
+  height: 3rem;
 }

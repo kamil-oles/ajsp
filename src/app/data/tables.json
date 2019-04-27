@@ -1,68 +1,91 @@
 {
   "data": {
-    "current": {
-      "headers": [
-        {
-          "align": "start",
-          "code": "code",
-          "icon": false,
-          "label": "Kod"
-        },
-        {
-          "align": "start",
-          "code": "currency",
-          "icon": false,
-          "label": "Waluta"
-        },
-        {
-          "align": "end",
-          "code": "bid",
-          "icon": false,
-          "label": "Cena zakupu"
-        },
-        {
-          "align": "end",
-          "code": "ask",
-          "icon": false,
-          "label": "Cena sprzedaży"
-        }
-      ],
-      "state": "current"
-    },
-    "historical": {
-      "headers": [
-        {
-          "align": "start",
-          "code": "date",
-          "icon": false,
-          "label": "Data"
-        },
-        {
-          "align": "end",
-          "code": "bid",
-          "icon": false,
-          "label": "Cena zakupu"
-        },
-        {
-          "align": "end",
-          "code": "bidDelta",
-          "icon": true,
-          "label": "change_history"
-        },
-        {
-          "align": "end",
-          "code": "ask",
-          "icon": false,
-          "label": "Cena sprzedaży"
-        },
-        {
-          "align": "end",
-          "code": "askDelta",
-          "icon": true,
-          "label": "change_history"
-        }
-      ],
-      "state": "historical"
-    }
+    "current": [
+      {
+        "label": "Kod",
+        "minWidth": "3.875",
+        "prop": "code"
+      },
+      {
+        "label": "Waluta",
+        "minWidth": "8.5",
+        "prop": "currency",
+        "sortBy": true
+      },
+      {
+        "alignToRight": true,
+        "filter": "dotToComma",
+        "filterParams": [
+          4
+        ],
+        "label": "Cena zakupu",
+        "minWidth": "7.125",
+        "prop": "bid"
+      },
+      {
+        "alignToRight": true,
+        "filter": "dotToComma",
+        "filterParams": [
+          4
+        ],
+        "label": "Cena sprzedaży",
+        "minWidth": "8.125",
+        "prop": "ask"
+      }
+    ],
+    "historical": [
+      {
+        "label": "Data",
+        "minWidth": "5.625",
+        "prop": "date",
+        "sortBy": true
+      },
+      {
+        "alignToRight": true,
+        "filter": "dotToComma",
+        "filterParams": [
+          4
+        ],
+        "label": "Cena zakupu",
+        "minWidth": "7.125",
+        "prop": "bid"
+      },
+      {
+        "alignToRight": true,
+        "colors": true,
+        "filter": "dotToComma",
+        "filterParams": [
+          2,
+          "%"
+        ],
+        "iconAsLabel": true,
+        "label": "change_history",
+        "minWidth": "4",
+        "prop": "bidDelta"
+      },
+      {
+        "alignToRight": true,
+        "filter": "dotToComma",
+        "filterParams": [
+          4
+        ],
+        "label": "Cena sprzedaży",
+        "minWidth": "8.125",
+        "prop": "ask"
+      },
+      {
+        "alignToRight": true,
+        "colors": true,
+        "filter": "dotToComma",
+        "filterParams": [
+          2,
+          "%"
+        ],
+        "iconAsLabel": true,
+        "label": "change_history",
+        "minWidth": "4",
+        "prop": "askDelta"
+      }
+    ]
   }
 }

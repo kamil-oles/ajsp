@@ -2,7 +2,7 @@
 @import '../../../style/helpers/placeholders';
 
 .backdrop-loader {
-  background-color: white;
+  background-color: $color-backdrop;
   height: 100%;
   opacity: .75;
   width: 100%;
