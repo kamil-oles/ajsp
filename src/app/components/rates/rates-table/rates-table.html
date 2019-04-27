@@ -25,7 +25,7 @@
             {{r[c.prop]}}
           </span>
           <span ng-if="c.filter">
-            {{$ctrl.filter(c.filter)(r[c.prop])}}
+            {{$ctrl.filter(c.filter)(r[c.prop], c.filterParams)}}
           </span>
         </td>
       </tr>

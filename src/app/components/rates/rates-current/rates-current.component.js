@@ -20,6 +20,7 @@ class RatesCurrentComponentCtrl {
       {
         alignToRight: true,
         filter: 'dotToComma',
+        filterParams: [4],
         label: 'Cena zakupu',
         minWidth: '7.125',
         prop: 'bid'
@@ -27,6 +28,7 @@ class RatesCurrentComponentCtrl {
       {
         alignToRight: true,
         filter: 'dotToComma',
+        filterParams: [4],
         label: 'Cena sprzedaży',
         minWidth: '8.125',
         prop: 'ask'
