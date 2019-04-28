@@ -4,6 +4,13 @@
 div.rates-table-header-right {
   flex-direction: row-reverse;
 }
+md-icon.rates-table-icon-label {
+  font-size: $rates-table-icon-font-size;
+  height: $rates-table-icon-font-size;
+  min-height: $rates-table-icon-font-size;
+  min-width: $rates-table-icon-font-size;
+  width: $rates-table-icon-font-size;
+}
 .rates-table {
   border-collapse: collapse;
   width: 100%;
