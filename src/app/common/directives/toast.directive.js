@@ -7,8 +7,8 @@ class ToastDirectiveCtrl {
     this._transitions = $transitions;
   }
 
-  _regex1 = /-\s(.*)\s\//;
-  _regex2 = /\w*\s\w*$/;
+  _regex1 = /-\s(.+)\s\//;
+  _regex2 = /\w+\s\w+$/;
 
   $onInit() {
     this._transitions.onStart({}, () => {
@@ -20,8 +20,8 @@ class ToastDirectiveCtrl {
   }
 
   $postLink() {
-    this._scope.$parent.$on('toast', (event, message) => {
-      const MESSAGE_PROCESSED = this._processMessage(message);
+    this._scope.$parent.$on('toast', (event, error) => {
+      const MESSAGE_PROCESSED = this._processMessage(error);
       if (this._element.hasClass('common-toast-hide')) {
         this._toggle();
       }
@@ -40,14 +40,17 @@ class ToastDirectiveCtrl {
     });
   }
 
-  _processMessage(message) {
-    let result = this._regex1.exec(message);
-    if (Array.isArray(result)) {
-      return result[1];
-    }
-    result = this._regex2.exec(message);
-    if (Array.isArray(result)) {
-      return result[0];
+  _processMessage(error) {
+    if (error.status === 400) {
+      const RESULT = this._regex1.exec(error.data);
+      console.log(RESULT);
+      return RESULT[1];
+    } else if (error.status === 404) {
+      const RESULT = this._regex2.exec(error.data);
+      console.log(RESULT);
+      return RESULT[0];
+    } else {
+      return 'Brak połączenia z serwerem';
     }
   }
 

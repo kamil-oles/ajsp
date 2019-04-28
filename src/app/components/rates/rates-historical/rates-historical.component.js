@@ -39,7 +39,8 @@ class RatesHistoricalComponentCtrl {
         this._blockLoader = true;
       },
       error => {
-        this._scope.$emit('toast', error.data);
+        console.log(error);
+        this._scope.$emit('toast', error);
         this._blockLoader = true;
       }
     );
