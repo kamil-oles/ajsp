@@ -1,5 +1,7 @@
+import differenceby from 'lodash.differenceby';
+
 import * as columns from '../../../data/tables.json';
-import { FilterConfig } from '../../../common/filter/classes/filter.class';
+import { FilterConfig, FilterParams } from '../../../common/filter/classes/filter.class';
 import { RatesHistorical } from './classes/rates-historical.class';
 
 class RatesHistoricalComponentCtrl {
@@ -15,6 +17,13 @@ class RatesHistoricalComponentCtrl {
 
   $onInit() {
     this.rates = this.initData.rates || null;
+    if (this.rates) {
+      this._currentParams = new FilterParams(
+        [{ code: this.initData.currency }, { code: null }],
+        this.initData.from,
+        this.initData.to
+      );
+    }
     this.filterConfig = new FilterConfig(
       this.initData.currency,
       this.initData.from,
@@ -28,22 +37,31 @@ class RatesHistoricalComponentCtrl {
   }
 
   getData(params) {
-    this._blockLoader = false;
-    const CODE = params.currencies[0].code,
-      START = params.from,
-      END = params.to;
-    this._http.getRates(CODE, START, END).then(
-      response => {
-        this.rates = this._data.prepare(response.data.rates);
-        this._data.save(new RatesHistorical(CODE, START, END, this.rates));
-        this._blockLoader = true;
-      },
-      error => {
-        console.log(error);
-        this._scope.$emit('toast', error);
-        this._blockLoader = true;
-      }
-    );
+    let currenciesDiff = [],
+      datesDiff = true;
+    if (this._currentParams) {
+      currenciesDiff = differenceby(this._currentParams.currencies, params.currencies, 'code');
+      datesDiff = this._data.datesDiff(this._currentParams, params);
+    }
+    if (currenciesDiff.length > 0 || datesDiff) {
+      this._blockLoader = false;
+      const CODE = params.currencies[0].code,
+        START = params.from,
+        END = params.to;
+      this._http.getRates(CODE, START, END).then(
+        response => {
+          this.rates = this._data.prepare(response.data.rates);
+          this._data.save(new RatesHistorical(CODE, START, END, this.rates));
+          this._blockLoader = true;
+        },
+        error => {
+          console.log(error);
+          this._scope.$emit('toast', error);
+          this._blockLoader = true;
+        }
+      );
+      this._currentParams = angular.copy(params);
+    }
   }
 }
 

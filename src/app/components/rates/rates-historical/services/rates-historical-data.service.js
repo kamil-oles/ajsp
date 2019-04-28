@@ -11,6 +11,10 @@ export class RatesHistoricalDataService {
     this._setDate = ComponentsDate;
   }
 
+  datesDiff(curr, inco) {
+    return curr.from !== inco.from || curr.to !== inco.to;
+  }
+
   initData(code) {
     const FROM = this._filter('date')(this._setDate.setDateFrom(7), 'yyyy-MM-dd'),
       SESSION_DATA = JSON.parse(sessionStorage.getItem('rates_historical')),
