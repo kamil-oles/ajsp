@@ -32,6 +32,9 @@ export class ChartsConfigService {
         }],
         yAxes: [{
           ticks: {
+            callback: function ticksConfig(value) {
+              return String(value.toFixed(4)).replace(/\./, ',');
+            },
             fontColor: 'rgba(0, 0, 0, .87)',
             fontFamily: '"Roboto", "Helvetica Neue", "sans-serif"'
           },

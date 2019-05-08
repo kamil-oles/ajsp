@@ -41,13 +41,11 @@ class ToastDirectiveCtrl {
   }
 
   _processMessage(error) {
-    if (error.status === 400) {
+    if (error && error.status === 400) {
       const RESULT = this._regex1.exec(error.data);
-      console.log(RESULT);
       return RESULT[1];
-    } else if (error.status === 404) {
+    } else if (error && error.status === 404) {
       const RESULT = this._regex2.exec(error.data);
-      console.log(RESULT);
       return RESULT[0];
     } else {
       return 'Brak połączenia z serwerem';
