@@ -22,7 +22,7 @@ class ChartsComponentCtrl {
       'POKAŻ',
       true
     );
-    this.datasetOverride = this._config.dataset();
+    // this.datasetOverride = this._config.dataset();
     this.options = this._config.options();
     this._params = new FilterParams([{ code: this._baseCurrency }, { code: null }], null, null);
     this._scope.$on('loader', (event, loader) => {

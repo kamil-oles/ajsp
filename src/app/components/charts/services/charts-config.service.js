@@ -1,8 +1,9 @@
 export class ChartsConfigService {
-  dataset() {
+  dataset(data) {
     return [
       {
         borderColor: 'rgb(158, 158, 158)',
+        data: data[0],
         fill: false,
         lineTension: 0,
         pointBackgroundColor: 'rgb(238, 255, 65)',
@@ -10,6 +11,7 @@ export class ChartsConfigService {
       },
       {
         borderColor: 'rgb(66, 66, 66)',
+        data: data[1],
         fill: false,
         lineTension: 0,
         pointBackgroundColor: 'rgb(224, 224, 224)',
