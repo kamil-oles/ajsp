@@ -1,5 +1,3 @@
-import 'angular-chart.js';
-
 import { APP_CHARTS_LINE } from './charts-line/charts-line.module';
 import { ChartsDataService } from './services/charts-data.service';
 import { ChartsHttpService } from './services/charts-http.service';

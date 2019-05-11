@@ -22,13 +22,16 @@ export class ChartsLineConfigService {
 
   options() {
     return {
-      legend: {
-        display: false
-      },
+      legend: { display: false },
       scales: {
         xAxes: [{
           gridLines: {
-            display: false
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Data kursu'
           },
           ticks: {
             fontColor: 'rgba(0, 0, 0, .87)',
@@ -36,6 +39,14 @@ export class ChartsLineConfigService {
           },
         }],
         yAxes: [{
+          gridLines: {
+            color: 'rgb(245, 245, 245)',
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Kurs średni'
+          },
           ticks: {
             callback: function ticksConfig(value) {
               return String(value.toFixed(4)).replace(/\./, ',');

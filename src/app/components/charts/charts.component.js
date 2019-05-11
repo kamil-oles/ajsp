@@ -44,8 +44,7 @@ class ChartsComponentCtrl {
     this._params = angular.copy(response.params);
     this._blockLoader = true;
     if (response.error) {
-      const ERROR = response.error;
-      this._scope.$emit('toast', ERROR.data);
+      this._scope.$emit('toast', response.error);
     }
   }
 }

@@ -8,7 +8,7 @@ export class ChartsHttpService {
   getRates(code, start, end) {
     return this._http({
       method: 'GET',
-      url: `${this._url}rates/c/${code}/${start}/${end}/`
+      url: `${this._url}rates/a/${code}/${start}/${end}/`
     });
   }
 }
