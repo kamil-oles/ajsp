@@ -54,7 +54,7 @@ export class ChartsDataService {
       LABELS = [];
     response.forEach((element, index) => {
       element.data.rates.forEach(el => {
-        RATES[index].push(el.ask);
+        RATES[index].push(el.mid);
         if (!index && !labels.length) {
           LABELS.push(this._filter('date')(el.effectiveDate, 'dd.MM.yyyy'));
         }
@@ -73,7 +73,7 @@ export class ChartsDataService {
     const DATA = angular.copy(data);
     DATA[INDEX] = [];
     response.data.rates.forEach(function fillArray(element) {
-      DATA[INDEX].push(element.ask);
+      DATA[INDEX].push(element.mid);
     });
     return new ChartsData(DATA, labels, inco);
   }

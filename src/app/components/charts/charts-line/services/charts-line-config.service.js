@@ -1,8 +1,9 @@
-export class ChartsConfigService {
-  dataset() {
+export class ChartsLineConfigService {
+  dataset(data) {
     return [
       {
         borderColor: 'rgb(158, 158, 158)',
+        data: data[0],
         fill: false,
         lineTension: 0,
         pointBackgroundColor: 'rgb(238, 255, 65)',
@@ -10,6 +11,7 @@ export class ChartsConfigService {
       },
       {
         borderColor: 'rgb(66, 66, 66)',
+        data: data[1],
         fill: false,
         lineTension: 0,
         pointBackgroundColor: 'rgb(224, 224, 224)',
@@ -20,10 +22,16 @@ export class ChartsConfigService {
 
   options() {
     return {
+      legend: { display: false },
       scales: {
         xAxes: [{
           gridLines: {
-            display: false
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Data kursu'
           },
           ticks: {
             fontColor: 'rgba(0, 0, 0, .87)',
@@ -31,6 +39,14 @@ export class ChartsConfigService {
           },
         }],
         yAxes: [{
+          gridLines: {
+            color: 'rgb(245, 245, 245)',
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Kurs średni'
+          },
           ticks: {
             callback: function ticksConfig(value) {
               return String(value.toFixed(4)).replace(/\./, ',');

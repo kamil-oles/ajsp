@@ -16,9 +16,7 @@
       </md-card-content>
       <div class="app-position-relative">
         <div class="app-padding charts-wrapper">
-          <canvas class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.labels"
-            chart-dataset-override="$ctrl.datasetOverride" chart-options="$ctrl.options">
-          </canvas>
+          <app-charts-line data="$ctrl.data" labels="$ctrl.labels"></app-charts-line>
         </div>
         <app-backdrop show="$ctrl.loader"></app-backdrop>
       </div>
