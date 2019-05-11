@@ -2,9 +2,8 @@ import { FilterConfig, FilterParams } from '../../common/filter/classes/filter.c
 
 class ChartsComponentCtrl {
   /* @ngInject */
-  constructor($scope, base, ChartsConfig, ChartsData, ComponentsDate) {
+  constructor($scope, base, ChartsData, ComponentsDate) {
     this._baseCurrency = base.currency;
-    this._config = ChartsConfig;
     this._data = ChartsData;
     this._scope = $scope;
     this._setDate = ComponentsDate;
@@ -22,8 +21,6 @@ class ChartsComponentCtrl {
       'POKAŻ',
       true
     );
-    // this.datasetOverride = this._config.dataset();
-    this.options = this._config.options();
     this._params = new FilterParams([{ code: this._baseCurrency }, { code: null }], null, null);
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);

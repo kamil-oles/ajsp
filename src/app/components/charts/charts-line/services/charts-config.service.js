@@ -1,4 +1,4 @@
-export class ChartsConfigService {
+export class ChartsLineConfigService {
   dataset(data) {
     return [
       {
@@ -22,6 +22,9 @@ export class ChartsConfigService {
 
   options() {
     return {
+      legend: {
+        display: false
+      },
       scales: {
         xAxes: [{
           gridLines: {

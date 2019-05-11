@@ -2,20 +2,20 @@ import Chart from 'chart.js';
 
 class ChartsLineComponentCtrl {
   /* @ngInject */
-  constructor($element, ChartsConfig) {
-    this._config = ChartsConfig;
+  constructor($element, ChartsLineConfig) {
+    this._config = ChartsLineConfig;
     this._element = $element;
   }
 
   $onChanges(changes) {
     if (changes.data.currentValue[0].length > 0) {
       const CHART = new Chart(this._ctx, {
-        type: 'line',
         data: {
-          labels: this.labels,
           datasets: this._config.dataset(this.data),
+          labels: this.labels
         },
-        options: this._config.options()
+        options: this._config.options(),
+        type: 'line'
       });
       console.log(CHART);
     }
