@@ -1,0 +1,10 @@
+<div layout layout-align="center start">
+  <div class="charts-legend" ng-repeat="currency in $ctrl.codes track by $index" ng-show="currency.code" layout
+    layout-align="space-between center">
+    <div class="charts-legend-bar"
+      ng-class="{'charts-legend-bar-1': $index === 0, 'charts-legend-bar-2': $index === 1}"></div>
+    <span class="app-typography-body-2">
+      {{currency.code}}
+    </span>
+  </div>
+</div>

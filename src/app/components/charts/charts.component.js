@@ -21,7 +21,7 @@ class ChartsComponentCtrl {
       'POKAŻ',
       true
     );
-    this._params = new FilterParams([{ code: this._baseCurrency }, { code: null }], null, null);
+    this.params = new FilterParams([{ code: this._baseCurrency }, { code: null }], null, null);
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);
     });
@@ -29,7 +29,7 @@ class ChartsComponentCtrl {
 
   getData(params) {
     this._blockLoader = false;
-    this._data.prepareData(this._params, params, this.data, this.labels).then(
+    this._data.prepareData(this.params, params, this.data, this.labels).then(
       response => {
         this._setState(response);
       },
@@ -41,7 +41,7 @@ class ChartsComponentCtrl {
   _setState(response) {
     this.data = response.data;
     this.labels = response.labels;
-    this._params = angular.copy(response.params);
+    this.params = angular.copy(response.params);
     this._blockLoader = true;
     if (response.error) {
       this._scope.$emit('toast', response.error);

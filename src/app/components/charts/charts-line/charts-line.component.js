@@ -8,7 +8,7 @@ class ChartsLineComponentCtrl {
   }
 
   $onChanges(changes) {
-    if (changes.data.currentValue[0].length > 0) {
+    if (changes.data.currentValue[0].length) {
       if (this._chart) {
         this._chart.destroy();
       }

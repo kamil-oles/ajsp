@@ -43,7 +43,7 @@ class RatesHistoricalComponentCtrl {
       currenciesDiff = differenceby(this._currentParams.currencies, params.currencies, 'code');
       datesDiff = this._data.datesDiff(this._currentParams, params);
     }
-    if (currenciesDiff.length > 0 || datesDiff) {
+    if (currenciesDiff.length || datesDiff) {
       this._blockLoader = false;
       const CODE = params.currencies[0].code,
         START = params.from,

@@ -1,0 +1,17 @@
+@import '../../../../style/helpers/variables';
+
+.charts-legend {
+  padding: 0 1rem .5rem 1rem;
+  width: 6rem;
+}
+.charts-legend-bar {
+  border-radius: .125rem;
+  height: .25rem;
+  width: 1.75rem;
+}
+.charts-legend-bar-1 {
+  background-color: $color-primary;
+}
+.charts-legend-bar-2 {
+  background-color: $color-primary-dark;
+}
