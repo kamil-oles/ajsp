@@ -1,17 +1,42 @@
 @import '../../../../style/helpers/variables';
+@import '../../../../style/helpers/placeholders';
 
-.charts-legend {
-  padding: 0 1rem .5rem 1rem;
-  width: 6rem;
-}
-.charts-legend-bar {
-  border-radius: .125rem;
-  height: .25rem;
-  width: 1.75rem;
-}
-.charts-legend-bar-1 {
+.charts-legend-bar-first {
+  @extend %charts-legend-bar;
   background-color: $color-primary;
 }
-.charts-legend-bar-2 {
+.charts-legend-bar-second {
+  @extend %charts-legend-bar;
   background-color: $color-primary-dark;
+}
+.charts-legend-container {
+  height: 1.5rem;
+  margin: 0 auto;
+  position: relative;
+  width: $charts-legend-width * 2;
+}
+.charts-legend-first {
+  @extend %charts-legend;
+  left: 0;
+}
+.charts-legend-one {
+  transform: translateX($charts-legend-width / 2);
+  transition: transform $animation-hide;
+}
+.charts-legend-two {
+  transform: translateX(0);
+  transition: transform $animation-show;
+}
+.charts-legend-second {
+  @extend %charts-legend;
+  right: 0;
+}
+.charts-legend-second.ng-hide {
+  opacity: 0;
+}
+.charts-legend-second.ng-hide-add {
+  transition: opacity $animation-opacity-off;
+}
+.charts-legend-second.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
 }

@@ -5,6 +5,16 @@
   width: 100%;
   z-index: 2;
 }
+%charts-legend {
+  padding: 0 1rem .5rem 1rem;
+  position: absolute;
+  width: $charts-legend-width;
+}
+%charts-legend-bar {
+  border-radius: .125rem;
+  height: .25rem;
+  width: 1.75rem;
+}
 %content-height {
   min-height: calc(100vh - #{$common-height});
   @media(min-width: $breakpoint-gt-xs) {
