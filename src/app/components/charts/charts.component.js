@@ -39,7 +39,7 @@ class ChartsComponentCtrl {
   }
 
   _setState(response) {
-    this.data = response.data;
+    this.data = angular.copy(response.data);
     this.labels = response.labels;
     this.params = angular.copy(response.params);
     this._blockLoader = true;
