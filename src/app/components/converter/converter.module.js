@@ -10,9 +10,7 @@ export const APP_CONVERTER = angular
     $stateProvider.state('appConverter', {
       url: '/converter',
       component: 'appConverter',
-      data: {
-        title: 'Kalkulator walutowy'
-      }
+      data: { title: 'Kalkulator walutowy' }
     });
   })
   .name;

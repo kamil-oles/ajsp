@@ -15,9 +15,7 @@ export const APP_CHARTS = angular
     $stateProvider.state('appCharts', {
       url: '/charts',
       component: 'appCharts',
-      data: {
-        title: 'Wykresy'
-      }
+      data: { title: 'Wykresy' }
     });
   })
   .name;

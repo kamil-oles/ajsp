@@ -11,17 +11,13 @@ export const APP_RATES_CURRENT = angular
     $stateProvider.state('appRates.current', {
       url: '/current',
       component: 'appRatesCurrent',
-      params: {
-        from: null
-      },
+      params: { from: null },
       resolve: {
         initData: function prepareInitData(RatesCurrentData) {
           return RatesCurrentData.rates();
         }
       },
-      data: {
-        title: 'Kursy aktualne'
-      }
+      data: { title: 'Kursy aktualne' }
     });
   })
   .name;

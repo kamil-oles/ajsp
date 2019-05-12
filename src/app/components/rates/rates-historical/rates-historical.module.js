@@ -22,9 +22,7 @@ export const APP_RATES_HISTORICAL = angular
           return RatesHistoricalData.initData($stateParams.code);
         }
       },
-      data: {
-        title: 'Kursy historyczne'
-      }
+      data: { title: 'Kursy historyczne' }
     });
     $mdDateLocaleProvider.shortMonths = [
       'Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'
