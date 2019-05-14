@@ -14,7 +14,7 @@ class ChartsLineComponentCtrl {
       }
       this._chart = new Chart(this._ctx, {
         data: {
-          datasets: this._config.dataset(this.data),
+          datasets: this._config.dataset(this.data, this.codes),
           labels: this.labels
         },
         options: this._config.options(),
@@ -30,6 +30,7 @@ class ChartsLineComponentCtrl {
 
 export const CHARTS_LINE_COMPONENT = {
   bindings: {
+    codes: '<',
     data: '<',
     labels: '<'
   },
