@@ -39,6 +39,11 @@ export class ChartsLineConfigService {
           },
         }],
         yAxes: [{
+          beforeBuildTicks(axis) {
+            if (axis.min < 0) {
+              axis.min = 0;
+            }
+          },
           gridLines: {
             color: 'rgb(245, 245, 245)',
             drawBorder: false
