@@ -1,4 +1,9 @@
 export class ChartsLineConfigService {
+  /* @ngInject */
+  constructor($window) {
+    this._window = $window;
+  }
+
   _colorPrimary = 'rgb(158, 158, 158)';
   _colorPrimaryDark = 'rgb(66, 66, 66)';
   _colorTextDark = 'rgba(0, 0, 0, .87)';
@@ -28,6 +33,7 @@ export class ChartsLineConfigService {
   }
 
   options() {
+    const WIDTH = this._window.innerWidth;
     return {
       legend: { display: false },
       scales: {
@@ -37,7 +43,9 @@ export class ChartsLineConfigService {
             drawBorder: false
           },
           scaleLabel: {
-            display: true,
+            display: WIDTH > 600,
+            fontColor: this._colorPrimary,
+            fontFamily: this._fontFamily,
             labelString: 'Data kursu'
           },
           ticks: {
@@ -60,7 +68,7 @@ export class ChartsLineConfigService {
               return ticks.map(function ticksRounding(element) {
                 return element.toFixed(SIX_DIGITS ? 6 : 2);
               });
-            } else if (!DATASETS[1].data.length) {
+            } else {
               const CODE = DATASETS[0].currencyCode,
                 SIX_DIGITS = (CODE === 'HUF' || CODE === 'JPY');
               return ticks.map(function ticksRounding(element) {
@@ -73,7 +81,9 @@ export class ChartsLineConfigService {
             drawBorder: false
           },
           scaleLabel: {
-            display: true,
+            display: WIDTH > 600,
+            fontColor: this._colorPrimary,
+            fontFamily: this._fontFamily,
             labelString: 'Kurs średni'
           },
           ticks: {
