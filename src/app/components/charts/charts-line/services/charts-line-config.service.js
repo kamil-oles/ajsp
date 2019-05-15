@@ -6,8 +6,19 @@ export class ChartsLineConfigService {
 
   _colorPrimary = 'rgb(158, 158, 158)';
   _colorPrimaryDark = 'rgb(66, 66, 66)';
-  _colorTextDark = 'rgba(0, 0, 0, .87)';
+  _dataSetCommon = {
+    fill: false,
+    lineTension: 0
+  };
   _fontFamily = '"Roboto", "Helvetica Neue", "sans-serif"';
+  _scaleLabelCommon = {
+    fontColor: this._colorPrimary,
+    fontFamily: this._fontFamily,
+  };
+  _ticksCommon = {
+    fontColor: 'rgba(0, 0, 0, .87)',
+    fontFamily: this._fontFamily
+  };
 
   dataset(data, codes) {
     return [
@@ -15,25 +26,23 @@ export class ChartsLineConfigService {
         borderColor: this._colorPrimary,
         currencyCode: codes[0].code,
         data: data[0],
-        fill: false,
-        lineTension: 0,
         pointBackgroundColor: 'rgb(238, 255, 65)',
-        pointBorderColor: this._colorPrimary
+        pointBorderColor: this._colorPrimary,
+        ...this._dataSetCommon
       },
       {
         borderColor: this._colorPrimaryDark,
         currencyCode: codes[1].code,
         data: data[1],
-        fill: false,
-        lineTension: 0,
         pointBackgroundColor: 'rgb(224, 224, 224)',
-        pointBorderColor: this._colorPrimaryDark
+        pointBorderColor: this._colorPrimaryDark,
+        ...this._dataSetCommon
       },
     ];
   }
 
   options() {
-    const MOBILE = this._window.innerWidth <= 600;
+    const SCALE_LABEL = this._window.innerWidth > 600;
     return {
       legend: { display: false },
       scales: {
@@ -43,15 +52,11 @@ export class ChartsLineConfigService {
             drawBorder: false
           },
           scaleLabel: {
-            display: !MOBILE,
-            fontColor: this._colorPrimary,
-            fontFamily: this._fontFamily,
-            labelString: 'Data kursu'
+            display: SCALE_LABEL,
+            labelString: 'Data kursu',
+            ...this._scaleLabelCommon
           },
-          ticks: {
-            fontColor: this._colorTextDark,
-            fontFamily: this._fontFamily
-          },
+          ticks: this._ticksCommon
         }],
         yAxes: [{
           afterDataLimits(axis) {
@@ -81,17 +86,15 @@ export class ChartsLineConfigService {
             drawBorder: false
           },
           scaleLabel: {
-            display: !MOBILE,
-            fontColor: this._colorPrimary,
-            fontFamily: this._fontFamily,
-            labelString: 'Kurs średni'
+            display: SCALE_LABEL,
+            labelString: 'Kurs średni',
+            ...this._scaleLabelCommon
           },
           ticks: {
             callback: function ticksConfig(value) {
               return String(value).replace(/\./, ',');
             },
-            fontColor: this._colorTextDark,
-            fontFamily: this._fontFamily
+            ...this._ticksCommon
           }
         }]
       }
