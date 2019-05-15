@@ -6,6 +6,7 @@ export class ChartsLineConfigService {
 
   _colorPrimary = 'rgb(158, 158, 158)';
   _colorPrimaryDark = 'rgb(66, 66, 66)';
+  _colorTextLight = 'rgba(255, 255, 255, .87)';
   _dataSetCommon = {
     fill: false,
     lineTension: 0
@@ -42,7 +43,9 @@ export class ChartsLineConfigService {
   }
 
   options() {
-    const SCALE_LABEL = this._window.innerWidth > 600;
+    const MID_RATE = 'Kurs średni',
+      SCALE_LABEL = this._window.innerWidth > 600;
+
     return {
       legend: { display: false },
       scales: {
@@ -87,7 +90,7 @@ export class ChartsLineConfigService {
           },
           scaleLabel: {
             display: SCALE_LABEL,
-            labelString: 'Kurs średni',
+            labelString: MID_RATE,
             ...this._scaleLabelCommon
           },
           ticks: {
@@ -97,6 +100,23 @@ export class ChartsLineConfigService {
             ...this._ticksCommon
           }
         }]
+      },
+      tooltips: {
+        backgroundColor: 'rgba(0, 0, 0, .87)',
+        bodyFontColor: this._colorTextLight,
+        bodyFontFamily: this._fontFamily,
+        callbacks: {
+          title: function prepareTitle(tooltip, data) {
+            return `${data.datasets[tooltip[0].datasetIndex].currencyCode} ${tooltip[0].xLabel}`;
+          },
+          label: function prepareLabel(tooltip) {
+            return `${MID_RATE}: ${String(tooltip.yLabel.toFixed(4)).replace(/\./, ',')}`;
+          }
+        },
+        displayColors: false,
+        titleFontColor: this._colorTextLight,
+        titleFontFamily: this._fontFamily,
+        titleFontStyle: '500'
       }
     };
   }
