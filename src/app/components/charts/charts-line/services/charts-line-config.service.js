@@ -33,7 +33,7 @@ export class ChartsLineConfigService {
   }
 
   options() {
-    const WIDTH = this._window.innerWidth;
+    const MOBILE = this._window.innerWidth <= 600;
     return {
       legend: { display: false },
       scales: {
@@ -43,7 +43,7 @@ export class ChartsLineConfigService {
             drawBorder: false
           },
           scaleLabel: {
-            display: WIDTH > 600,
+            display: !MOBILE,
             fontColor: this._colorPrimary,
             fontFamily: this._fontFamily,
             labelString: 'Data kursu'
@@ -81,7 +81,7 @@ export class ChartsLineConfigService {
             drawBorder: false
           },
           scaleLabel: {
-            display: WIDTH > 600,
+            display: !MOBILE,
             fontColor: this._colorPrimary,
             fontFamily: this._fontFamily,
             labelString: 'Kurs średni'
