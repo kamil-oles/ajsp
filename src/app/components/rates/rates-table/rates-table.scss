@@ -17,7 +17,6 @@ md-icon.rates-table-icon-label {
 }
 .rates-table-cell {
   border-top: 1px solid $color-table;
-  color: $color-table-data;
   &:first-child {
     @extend %sticky-cell;
     background-color: $color-backdrop;
