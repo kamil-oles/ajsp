@@ -63,9 +63,7 @@ export class ChartsLineConfigService {
         }],
         yAxes: [{
           afterDataLimits(axis) {
-            if (axis.min < 0) {
-              axis.min = 0;
-            }
+            (axis.min < 0) && (axis.min = 0);
           },
           afterBuildTicks(axis, ticks) {
             const DATASETS = axis.chart.config.data.datasets;
