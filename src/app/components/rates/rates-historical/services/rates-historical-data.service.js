@@ -2,13 +2,12 @@ import { RatesHistorical } from '../classes/rates-historical.class';
 
 export class RatesHistoricalDataService {
   /* @ngInject */
-  constructor($filter, $q, $rootScope, base, ComponentsDate, RatesHistoricalHttp) {
+  constructor($q, $rootScope, base, CommonDate, RatesHistoricalHttp) {
     this._baseCurrency = base.currency;
-    this._filter = $filter;
+    this._date = CommonDate;
     this._http = RatesHistoricalHttp;
     this._q = $q;
     this._root = $rootScope;
-    this._setDate = ComponentsDate;
   }
 
   datesDiff(curr, inco) {
@@ -16,9 +15,9 @@ export class RatesHistoricalDataService {
   }
 
   initData(code) {
-    const FROM = this._filter('date')(this._setDate.setDateFrom(7), 'yyyy-MM-dd'),
+    const FROM = this._date.format(this._date.setDateFrom(7), false),
       SESSION_DATA = JSON.parse(sessionStorage.getItem('rates_historical')),
-      TO = this._filter('date')(new Date(), 'yyyy-MM-dd');
+      TO = this._date.format(new Date(), false);
     if (code) {
       const DEFERRED = this._q.defer();
       this._http.getRates(code, FROM, TO).then(

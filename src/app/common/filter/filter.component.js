@@ -2,9 +2,9 @@ import { FilterParams } from './classes/filter.class';
 
 class FilterComponentCtrl {
   /* @ngInject */
-  constructor($filter, eventEmitter) {
+  constructor(CommonDate, eventEmitter) {
     this._eventEmitter = eventEmitter;
-    this._filter = $filter;
+    this._date = CommonDate;
   }
 
   $onInit() {
@@ -19,8 +19,8 @@ class FilterComponentCtrl {
   sendParams() {
     this.getData(this._eventEmitter(new FilterParams(
       this.currencies,
-      this._filter('date')(this.from, 'yyyy-MM-dd'),
-      this._filter('date')(this.to, 'yyyy-MM-dd')
+      this._date.format(this.from, false),
+      this._date.format(this.to, false)
     )));
   }
 

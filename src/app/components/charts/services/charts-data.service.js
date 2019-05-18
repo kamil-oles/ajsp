@@ -3,8 +3,8 @@ import { ChartsData } from '../classes/charts.class';
 
 export class ChartsDataService {
   /* @ngInject */
-  constructor($filter, $q, ChartsHttp) {
-    this._filter = $filter;
+  constructor($q, ChartsHttp, CommonDate) {
+    this._date = CommonDate;
     this._http = ChartsHttp;
     this._q = $q;
   }
@@ -56,7 +56,7 @@ export class ChartsDataService {
       element.data.rates.forEach(el => {
         RATES[index].push(el.mid);
         if (!index && !labels.length) {
-          LABELS.push(this._filter('date')(el.effectiveDate, 'dd.MM.yyyy'));
+          LABELS.push(this._date.format(el.effectiveDate, true));
         }
       });
     });

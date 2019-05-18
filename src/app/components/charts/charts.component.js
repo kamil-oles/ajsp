@@ -2,11 +2,11 @@ import { FilterConfig, FilterParams } from '../../common/filter/classes/filter.c
 
 class ChartsComponentCtrl {
   /* @ngInject */
-  constructor($scope, base, ChartsData, ComponentsDate) {
+  constructor($scope, base, ChartsData, CommonDate) {
     this._baseCurrency = base.currency;
     this._data = ChartsData;
+    this._date = CommonDate;
     this._scope = $scope;
-    this._setDate = ComponentsDate;
   }
 
   data = [[], []];
@@ -16,7 +16,7 @@ class ChartsComponentCtrl {
   $onInit() {
     this.filterConfig = new FilterConfig(
       this._baseCurrency,
-      this._setDate.setDateFrom(14),
+      this._date.setDateFrom(14),
       new Date(),
       'POKAŻ',
       true
