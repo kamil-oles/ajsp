@@ -9,7 +9,7 @@
 }
 .rates-view {
   min-height: 33rem;
-  @media(min-width: #{$breakpoint-gt-xs}) {
+  @media(min-width: #{$breakpoint-xs}) {
     min-height: 42rem;
   }
 }

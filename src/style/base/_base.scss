@@ -3,18 +3,18 @@
 }
 .app-content-padding {
   padding: 0;
-  @media (min-width: #{$breakpoint-gt-sm}) {
+  @media (min-width: #{$breakpoint-sm}) {
     padding: .5rem;
   }
 }
 .app-content-width {
     margin: 0 auto;
-    max-width: calc(#{$breakpoint-gt-md} - #{$common-side-menu-width});
+    max-width: calc(#{$breakpoint-md} - #{$common-side-menu-width});
 }
 .app-padding {
   padding-left: $base-padding;
   padding-right: $base-padding;
-  @media(min-width: #{$breakpoint-gt-sm}) {
+  @media(min-width: #{$breakpoint-sm}) {
     padding-left: $base-padding * 2;
     padding-right: $base-padding * 2;
   }
@@ -23,7 +23,7 @@
   position: relative;
 }
 .app-side-menu-expanded {
-  @media(min-width: #{$breakpoint-gt-sm}) {
+  @media(min-width: #{$breakpoint-sm}) {
     margin-left: $common-side-menu-width;
   }
 }
@@ -34,7 +34,7 @@
 }
 .app-table-height {
   height: 10 * $rates-table-row-height;
-  @media(min-width: #{$breakpoint-gt-xs}) {
+  @media(min-width: #{$breakpoint-xs}) {
     height: 13 * $rates-table-row-height;
   }
 }

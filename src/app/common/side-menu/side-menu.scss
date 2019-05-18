@@ -14,7 +14,7 @@ a.side-menu-link-active {
 }
 .side-menu-default {
   @include side-menu-state(-$common-side-menu-width, hidden);
-  @media(min-width: #{$breakpoint-gt-sm}) {
+  @media(min-width: #{$breakpoint-sm}) {
     @include side-menu-state(0, visible);
   }
 }

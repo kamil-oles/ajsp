@@ -9,16 +9,16 @@
   @media(max-width: $breakpoint-2xs) and (orientation: landscape) {
     min-height: 14rem + $charts-legend-height + $charts-padding-y;
   }
-  @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-gt-xs) {
+  @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-xs) {
     min-height: 35.5rem + $charts-legend-height + $charts-padding-y;
   }
-  @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-gt-xs) and (orientation: landscape) {
+  @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-xs) and (orientation: landscape) {
     min-height: 17.75rem + $charts-legend-height + $charts-padding-y;
   }
-  @media(min-width: $breakpoint-gt-xs + 1px) and (max-width: $breakpoint-gt-sm - 1px) {
+  @media(min-width: $breakpoint-xs + 1px) and (max-width: $breakpoint-sm - 1px) {
     min-height: 28.938rem + $charts-legend-height + $charts-padding-y;
   }
-  @media(min-width: $breakpoint-gt-sm) {
+  @media(min-width: $breakpoint-sm) {
     min-height: 31rem + $charts-legend-height + $charts-padding-y;
   }
 }

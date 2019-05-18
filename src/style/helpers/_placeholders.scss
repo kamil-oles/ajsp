@@ -17,7 +17,7 @@
 }
 %content-height {
   min-height: calc(100vh - #{$common-height});
-  @media(min-width: $breakpoint-gt-xs) {
+  @media(min-width: $breakpoint-xs) {
     min-height: calc(100vh - #{$common-height} - #{$footer-height});
   }
 }

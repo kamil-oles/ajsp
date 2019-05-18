@@ -3,7 +3,7 @@
 .converter-rate {
   height: $converter-rate-container-height;
   overflow: hidden;
-  @media(min-width: #{$breakpoint-gt-sm}){
+  @media(min-width: #{$breakpoint-sm}){
     height: $converter-rate-container-height-gt-sm;
   }
 }
@@ -14,7 +14,7 @@
   margin-bottom: $converter-rate-margin-bt;
   text-align: center;
   width: 100%;
-  @media(min-width: #{$breakpoint-gt-sm}){
+  @media(min-width: #{$breakpoint-sm}){
     margin-bottom: $converter-rate-margin-bt-gt-sm;
   }
 }
