@@ -1,9 +1,9 @@
-<div class="charts-legend-container">
+<div class="app-typography-body-2 charts-legend-container">
   <div class="charts-legend-first"
     ng-class="{'charts-legend-one': !$ctrl.codes[1].code, 'charts-legend-two': $ctrl.codes[1].code}">
     <div layout layout-align="space-between center">
       <div class="charts-legend-bar-first"></div>
-      <span class="app-typography-body-2">
+      <span>
         {{$ctrl.codes[0].code}}
       </span>
     </div>
@@ -11,7 +11,7 @@
   <div class="charts-legend-second" ng-show="$ctrl.codes[1].code">
     <div layout layout-align="space-between center">
       <div class="charts-legend-bar-second"></div>
-      <span class="app-typography-body-2">
+      <span>
         {{$ctrl.secondCode}}
       </span>
     </div>
