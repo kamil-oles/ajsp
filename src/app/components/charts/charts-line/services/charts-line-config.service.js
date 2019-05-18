@@ -9,7 +9,8 @@ export class ChartsLineConfigService {
   _colorTextLight = 'rgba(255, 255, 255, .87)';
   _dataSetCommon = {
     fill: false,
-    lineTension: 0
+    lineTension: 0,
+    pointRadius: 4
   };
   _fontFamily = '"Roboto", "Helvetica Neue", "sans-serif"';
   _scaleLabelCommon = {
@@ -47,7 +48,9 @@ export class ChartsLineConfigService {
       SCALE_LABEL = this._window.innerWidth > 600;
 
     return {
+      animation: { duration: 0 },
       aspectRatio: (!SCALE_LABEL && this._window.innerWidth < this._window.innerHeight) ? 1 : 2,
+      hover: { animationDuration: 300 },
       legend: { display: false },
       scales: {
         xAxes: [{

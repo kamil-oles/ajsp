@@ -1,0 +1,8 @@
+@import '../../../../style/helpers/variables';
+
+.charts-line.ng-hide {
+  opacity: 0;
+}
+.charts-line.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
+}

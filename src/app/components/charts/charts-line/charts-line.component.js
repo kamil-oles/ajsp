@@ -20,6 +20,7 @@ class ChartsLineComponentCtrl {
         options: this._config.options(),
         type: 'line'
       });
+      this.show = true;
     }
   }
 
