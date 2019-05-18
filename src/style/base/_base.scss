@@ -8,10 +8,8 @@
   }
 }
 .app-content-width {
-  @media (min-width: #{$breakpoint-gt-md}) {
     margin: 0 auto;
-    width: calc(#{$breakpoint-gt-md} - #{$common-side-menu-width} - 3rem);
-  }
+    max-width: calc(#{$breakpoint-gt-md} - #{$common-side-menu-width});
 }
 .app-padding {
   padding-left: $base-padding;

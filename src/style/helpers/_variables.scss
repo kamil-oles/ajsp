@@ -33,7 +33,13 @@ $color-text-light: rgba(255, 255, 255, .87);
 $color-uneditable: rgba(0, 0, 0, .38);
 $color-uneditable-label: rgba(0, 0, 0, .54);
 
+// Charts
+$charts-padding-bottom: 1rem;
+$charts-padding-top: .5rem;
+$charts-padding-y: $charts-padding-bottom + $charts-padding-top;
+
 // Charts legend
+$charts-legend-height: 1.5rem;
 $charts-legend-width: 6rem;
 
 // Common

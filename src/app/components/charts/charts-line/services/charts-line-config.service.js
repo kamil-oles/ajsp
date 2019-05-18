@@ -47,6 +47,7 @@ export class ChartsLineConfigService {
       SCALE_LABEL = this._window.innerWidth > 600;
 
     return {
+      aspectRatio: (!SCALE_LABEL && this._window.innerWidth < this._window.innerHeight) ? 1 : 2,
       legend: { display: false },
       scales: {
         xAxes: [{

@@ -1,4 +1,18 @@
+@import '../../../style/helpers/variables';
+
 .charts-wrapper {
-  padding-bottom: 1rem;
-  padding-top: .5rem;
+  padding-bottom: $charts-padding-bottom;
+  padding-top: $charts-padding-top;
+  @media(max-width: $breakpoint-2xs) {
+    min-height: 28rem + $charts-legend-height + $charts-padding-y;
+  }
+  @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-gt-xs) {
+    min-height: 35.5rem + $charts-legend-height + $charts-padding-y;
+  }
+  @media(min-width: $breakpoint-gt-xs + 1px) and (max-width: $breakpoint-gt-sm - 1px) {
+    min-height: 28.938rem + $charts-legend-height + $charts-padding-y;
+  }
+  @media(min-width: $breakpoint-gt-sm) {
+    min-height: 31rem + $charts-legend-height + $charts-padding-y;
+  }
 }
