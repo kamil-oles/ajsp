@@ -15,12 +15,6 @@
   height: .25rem;
   width: 1.75rem;
 }
-%content-height {
-  min-height: calc(100vh - #{$common-height});
-  @media(min-width: $breakpoint-xs) {
-    min-height: calc(100vh - #{$common-height} - #{$footer-height});
-  }
-}
 %side-menu-icon {
   color: $color-text-dark;
   margin: 0 ($common-padding / 2) 0 0;

@@ -28,7 +28,6 @@
   position: relative;
 }
 .common-main {
-  @extend %content-height;
   position: relative;
 }
 .common-toast-container {
@@ -49,7 +48,7 @@
   visibility: visible;
 }
 .common-view {
-  @extend %content-height;
+  min-height: calc(100vh - #{$common-height});
 }
 .common-view.ng-enter {
   opacity: 0;
