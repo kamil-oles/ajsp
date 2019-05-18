@@ -6,8 +6,14 @@
   @media(max-width: $breakpoint-2xs) {
     min-height: 28rem + $charts-legend-height + $charts-padding-y;
   }
+  @media(max-width: $breakpoint-2xs) and (orientation: landscape) {
+    min-height: 14rem + $charts-legend-height + $charts-padding-y;
+  }
   @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-gt-xs) {
     min-height: 35.5rem + $charts-legend-height + $charts-padding-y;
+  }
+  @media(min-width: $breakpoint-2xs + 1px) and (max-width: $breakpoint-gt-xs) and (orientation: landscape) {
+    min-height: 17.75rem + $charts-legend-height + $charts-padding-y;
   }
   @media(min-width: $breakpoint-gt-xs + 1px) and (max-width: $breakpoint-gt-sm - 1px) {
     min-height: 28.938rem + $charts-legend-height + $charts-padding-y;
