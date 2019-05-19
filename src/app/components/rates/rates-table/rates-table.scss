@@ -45,6 +45,7 @@ md-icon.rates-table-icon-label {
   color: $color-primary;
   cursor: pointer;
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   z-index: 1;
   &:first-child {
