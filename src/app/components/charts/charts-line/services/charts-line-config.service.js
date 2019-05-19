@@ -97,7 +97,7 @@ export class ChartsLineConfigService {
           },
           ticks: {
             callback: function ticksConfig(value) {
-              return String(value).replace(/\./, ',');
+              return value.replace(/\./, ',');
             },
             ...this._ticksCommon
           }
@@ -112,7 +112,7 @@ export class ChartsLineConfigService {
             return `${data.datasets[tooltip[0].datasetIndex].currencyCode} ${tooltip[0].xLabel}`;
           },
           label: function prepareLabel(tooltip) {
-            return `${MID_RATE}: ${String(tooltip.yLabel.toFixed(4)).replace(/\./, ',')}`;
+            return `${MID_RATE}: ${tooltip.yLabel.toFixed(4).replace(/\./, ',')}`;
           }
         },
         displayColors: false,

@@ -26,7 +26,7 @@ export class ConverterFormCalculateService {
       currency: new Currency((buy ? code : 'PLN'), this._formatter.format(newValue)),
       denomination: this._setDenomination(code),
       get rate() {
-        return String((rate * this.denomination).toFixed(4)).replace('.', ',');
+        return (rate * this.denomination).toFixed(4).replace('.', ',');
       }
     };
   }
