@@ -3,11 +3,8 @@ const CLEAN_PLUGIN = require('clean-webpack-plugin'),
   MERGE = require('webpack-merge'),
   MINI_CSS_EXTRA_PLUGIN = require('mini-css-extract-plugin'),
   OPTIMIZE_CSS_ASSETS_PLUGIN = require('optimize-css-assets-webpack-plugin'),
-  PATH = require('path'),
   TERSER_PLUGIN = require('terser-webpack-plugin'),
   WEBPACK = require('webpack');
-
-const DIST = PATH.join(__dirname, '/public');
 
 const CHUNKS = {
   contentHash: new WEBPACK.HashedModuleIdsPlugin(),
@@ -29,7 +26,7 @@ const OPTIMIZATION = {
 };
 
 const PREPARE = {
-  clean: new CLEAN_PLUGIN([DIST]),
+  clean: new CLEAN_PLUGIN(),
   extractCssFile: new MINI_CSS_EXTRA_PLUGIN({
     filename: 'style/[name].[contenthash].css'
   })
