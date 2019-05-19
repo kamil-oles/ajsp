@@ -1,7 +1,7 @@
 {
-  "name": "currency_converter",
+  "name": "currencies",
   "version": "1.0.0",
-  "author": "kamil-oles",
+  "author": "Kamil Olesiński",
   "description": "SPA built using AngularJS",
   "scripts": {
     "build": "webpack --config webpack.prod.js && firebase deploy",
@@ -10,7 +10,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kamil-oles/currency_converter"
+    "url": "https://github.com/kamil-oles/currencies"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
