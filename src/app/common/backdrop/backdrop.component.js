@@ -1,12 +1,13 @@
 class BackdropComponentCtrl {
   /* @ngInject */
   constructor($element) {
-    this._bar = angular.element($element.children().children()[0]);
+    this._element = $element;
   }
 
-  $onInit() {
+  $postLink() {
     if (this.addMargin) {
-      this._bar.addClass('backdrop-loader-container-margin');
+      const BAR = angular.element(this._element.children().children()[0]);
+      BAR.addClass('backdrop-loader-container-margin');
     }
   }
 }

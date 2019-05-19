@@ -1,7 +1,7 @@
 class CommonComponentCtrl {
   /* @ngInject */
   constructor($element, $scope, $timeout, $window, CommonTransitions, CommonView) {
-    this._body = $element.parent().parent();
+    this._element = $element;
     this._scope = $scope;
     this._timeout = $timeout;
     this._transitionsHooks = CommonTransitions;
@@ -18,6 +18,10 @@ class CommonComponentCtrl {
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._transitionsHooks.returnLoaderState() ? loader : false);
     });
+  }
+
+  $postLink() {
+    this._body = this._element.parent().parent();
   }
 
   onViewChange() {

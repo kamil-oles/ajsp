@@ -1,5 +1,5 @@
 <a class="side-menu-link side-menu-item-contents" ui-sref="{{$ctrl.menuItem.state}}"
-  ui-sref-active="side-menu-link-active" ng-if="!$ctrl.menuItem.subitems">
+  ui-sref-active="side-menu-link-active" ng-if="!$ctrl.menuItem.subitems" ng-cloak>
   <md-icon class="side-menu-item-icon">
     {{$ctrl.menuItem.icon}}
   </md-icon>
@@ -7,20 +7,20 @@
     {{$ctrl.menuItem.title}}
   </span>
 </a>
-<button type="button" class="side-menu-item-button" layout layout-align="space-between center"
-  ng-click="$ctrl.expandSubmenu()" ng-if="$ctrl.menuItem.subitems">
-  <span>
-    <md-icon class="side-menu-item-icon">
-      {{$ctrl.menuItem.icon}}
+<div ng-if="$ctrl.menuItem.subitems" ng-cloak>
+  <button type="button" class="side-menu-item-button" layout layout-align="space-between center"
+    ng-click="$ctrl.expandSubmenu()">
+    <span>
+      <md-icon class="side-menu-item-icon">
+        {{$ctrl.menuItem.icon}}
+      </md-icon>
+      {{$ctrl.menuItem.title}}
+    </span>
+    <md-icon class="side-menu-item-icon-arrow"
+      ng-class="{'side-menu-item-icon-collapsed': !$ctrl.submenu, 'side-menu-item-icon-expanded': $ctrl.submenu}">
+      keyboard_arrow_right
     </md-icon>
-    {{$ctrl.menuItem.title}}
-  </span>
-  <md-icon class="side-menu-item-icon-arrow"
-    ng-class="{'side-menu-item-icon-collapsed': !$ctrl.submenu, 'side-menu-item-icon-expanded': $ctrl.submenu}">
-    keyboard_arrow_right
-  </md-icon>
-</button>
-<div ng-if="$ctrl.menuItem.subitems">
+  </button>
   <ul ng-class="{'side-menu-item-submenu-expanded': $ctrl.submenu, 'side-menu-item-submenu-collapsed': !$ctrl.submenu}">
     <li class="app-typography-subtitle-2" layout="column" layout-align="space-around"
       ng-repeat="subitem in $ctrl.menuItem.subitems">
