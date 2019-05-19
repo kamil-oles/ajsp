@@ -12,8 +12,15 @@
 .charts-legend-container {
   height: 1.5rem;
   margin: 0 auto;
+  opacity: 1;
   position: relative;
   width: $charts-legend-width * 2;
+}
+.charts-legend-container.ng-hide {
+  opacity: 0;
+}
+.charts-legend-container.ng-hide-remove {
+  transition: opacity $animation-opacity-on;
 }
 .charts-legend-first {
   @extend %charts-legend;

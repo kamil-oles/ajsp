@@ -16,7 +16,7 @@
       </md-card-content>
       <div class="app-position-relative">
         <div class="app-padding charts-wrapper">
-          <app-charts-legend codes="$ctrl.params.currencies" ng-show="$ctrl.data[0].length"></app-charts-legend>
+          <app-charts-legend codes="$ctrl.params.currencies" ng-if="$ctrl.data[0].length"></app-charts-legend>
           <app-charts-line codes="$ctrl.params.currencies" data="$ctrl.data" labels="$ctrl.labels"></app-charts-line>
         </div>
         <app-backdrop show="$ctrl.loader"></app-backdrop>
