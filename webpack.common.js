@@ -1,6 +1,7 @@
 const COPY_PLUGIN = require('copy-webpack-plugin'),
   HTML_WEBPACK_PLUGIN = require('html-webpack-plugin'),
-  PATH = require('path');
+  PATH = require('path'),
+  SCRIPT_EXT_HTML_WEBPACK_PLUGIN = require('script-ext-html-webpack-plugin');
 
 const DIST = PATH.join(__dirname, '/public'),
   ROOT = PATH.join(__dirname, '/src');
@@ -27,6 +28,7 @@ const FONTS = {
 };
 
 const INDEX = new HTML_WEBPACK_PLUGIN({
+  inject: 'head',
   meta: {
     viewport: 'width=device-width, initial-scale=1.0'
   },
@@ -48,6 +50,10 @@ const SCRIPTS = {
     }
   ]
 };
+
+const SCRIPT_TAGS = new SCRIPT_EXT_HTML_WEBPACK_PLUGIN({
+  defaultAttribute: 'defer'
+});
 
 const TEMPLATES = {
   test: /\.html$/,
@@ -71,7 +77,8 @@ const COMMON_CONFIG = {
   },
   plugins: [
     FAVICON_COPY,
-    INDEX
+    INDEX,
+    SCRIPT_TAGS
   ],
 };
 
