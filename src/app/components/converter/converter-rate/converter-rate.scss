@@ -1,28 +1,25 @@
 @import '../../../../style/helpers/variables';
 
 .converter-rate {
-  height: $converter-rate-container-height;
-  overflow: hidden;
-  @media(min-width: #{$breakpoint-sm}){
-    height: $converter-rate-container-height-gt-sm;
+  padding-bottom: 1rem;
+  @media(min-width: $breakpoint-xs){
+    padding: 1rem 0;
   }
 }
-.converter-rate-data {
-  display: inline-block;
+.converter-rate-block {
   height: $converter-rate-height;
-  line-height: $converter-rate-height;
-  margin-bottom: $converter-rate-margin-bt;
-  text-align: center;
-  width: 100%;
-  @media(min-width: #{$breakpoint-sm}){
-    margin-bottom: $converter-rate-margin-bt-gt-sm;
+  padding: 0 2rem;
+  &:first-child {
+    @media(max-width: $breakpoint-xs - 1px) {
+      margin-bottom: .5rem;
+    }
+  }
+  @media(min-width: $breakpoint-xs){
+    width: 50%;
   }
 }
 .converter-rate-data.ng-hide {
   opacity: 0;
-}
-.converter-rate-data.ng-hide-add {
-  transition: opacity $animation-opacity-off;
 }
 .converter-rate-data.ng-hide-remove {
   transition: opacity $animation-opacity-on;
@@ -34,7 +31,6 @@
   border-radius: 2px;
   color: $color-text-dark;
   height: $converter-rate-height;
-  margin: 0 auto;
   text-decoration: none;
   transition: background-color $animation-opacity-on;
   width: 14rem;
@@ -45,13 +41,13 @@
   &:hover {
     background-color: $color-primary-light;
   }
+  @media(max-width: $breakpoint-xs - 1px){
+    margin: 0 auto;
+  }
 }
 .converter-rate-link.ng-hide {
-  transform: translateY(3rem);
-}
-.converter-rate-link.ng-hide-add {
-  transition: transform $animation-hide;
+  opacity: 0;
 }
 .converter-rate-link.ng-hide-remove {
-  transition: transform $animation-show $animation-duration-opacity-on * 2;
+  transition: opacity $animation-opacity-on $animation-duration-opacity-on * 2;
 }
