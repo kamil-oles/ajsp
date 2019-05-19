@@ -1,4 +1,5 @@
 import { SELECT_COMPONENT } from './select.component';
+
 import './select.scss';
 
 export const APP_SELECT = angular
