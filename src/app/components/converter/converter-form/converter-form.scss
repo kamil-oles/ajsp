@@ -7,7 +7,7 @@
   text-align: right;
 }
 .converter-form-swap {
-  @media(min-width: #{$breakpoint-xs}) {
+  @media(min-width: $breakpoint-xs) {
     transform: rotate(90deg);
   }
 }
