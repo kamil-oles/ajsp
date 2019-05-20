@@ -21,6 +21,7 @@ md-icon.rates-table-icon-label {
     @extend %sticky-cell;
     background-color: $color-backdrop;
     position: sticky;
+    position: -webkit-sticky;
   }
 }
 .rates-table-cell-right {
