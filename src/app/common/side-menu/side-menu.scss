@@ -29,6 +29,9 @@ a.side-menu-link-active {
   @include side-menu-state(0, visible);
   transition: transform $animation-show;
 }
+.side-menu-item {
+  display: block;
+}
 .side-menu-link {
   display: block;
   text-align: left;
