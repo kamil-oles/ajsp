@@ -16,7 +16,7 @@ class RatesTableComponentCtrl {
   $onInit() {
     this.columns.forEach(function setMinWidth(el) {
       if (el.minWidth) {
-        el.minWidth = { 'min-width': `${el.minWidth}rem` };
+        el.minWidth = { 'flex-basis': `${el.minWidth}rem` };
       }
     });
   }

@@ -5,6 +5,12 @@
   width: 100%;
   z-index: 2;
 }
+%cell {
+  align-items: center;
+  display: flex;
+  flex: 1 0;
+  height: $rates-table-row-height;
+}
 %charts-legend {
   padding: 0 1rem .5rem 1rem;
   position: absolute;
@@ -42,7 +48,12 @@
     }
   }
 }
+%sticky {
+  position: sticky;
+  position: -webkit-sticky;
+}
 %sticky-cell {
+  @extend %sticky;
   box-shadow: 6px 0 2px -1px rgba(255, 255, 255, .8);
   left: 0;
 }

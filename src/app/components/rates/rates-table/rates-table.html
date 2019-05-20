@@ -1,37 +1,29 @@
 <div class="rates-table-container" ng-show="$ctrl.rows" ng-cloak>
-  <table class="rates-table">
-    <thead>
-      <tr class="app-typography-th rates-table-row">
-        <th class="app-padding rates-table-header" ng-style="c.minWidth" ng-repeat="c in $ctrl.columns"
-          ng-click="$ctrl.sort(c.prop)">
-          <div ng-class="{'rates-table-header-right': c.alignToRight}" layout layout-align="none center">
-            <span ng-if="!c.iconAsLabel">
-              {{c.label}}
-            </span>
-            <md-icon class="rates-table-icon rates-table-icon-label" ng-if="c.iconAsLabel">
-              {{c.label}}
-            </md-icon>
-            <span class="rates-table-icon-wrapper">
-              <md-icon class="rates-table-icon" ng-show="$ctrl.sortBy === c.prop">
-                {{$ctrl.icon}}
-              </md-icon>
-            </span>
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="app-typography-body-2 rates-table-row" ng-repeat="r in $ctrl.rows">
-        <td class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
-          ng-repeat="c in $ctrl.columns" content="r[c.prop]" colors="c.colors" rates-table-color>
-          <span ng-if="!c.filter">
-            {{r[c.prop]}}
-          </span>
-          <span ng-if="c.filter">
-            {{$ctrl.filter(c.filter)(r[c.prop], c.filterParams)}}
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="app-typography-th rates-table-header" layout>
+    <div class="app-padding rates-table-header-cell" ng-class="{'rates-table-header-right': c.alignToRight}"
+      ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" ng-click="$ctrl.sort(c.prop)">
+      <span ng-if="!c.iconAsLabel">
+        {{c.label}}
+      </span>
+      <md-icon class="rates-table-icon rates-table-icon-label" ng-if="c.iconAsLabel">
+        {{c.label}}
+      </md-icon>
+      <span class="rates-table-icon-wrapper">
+        <md-icon class="rates-table-icon" ng-show="$ctrl.sortBy === c.prop">
+          {{$ctrl.icon}}
+        </md-icon>
+      </span>
+    </div>
+  </div>
+  <div class="app-typography-body-2" ng-repeat="r in $ctrl.rows" layout>
+    <div class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
+      ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" content="r[c.prop]" colors="c.colors" rates-table-color>
+      <span ng-if="!c.filter">
+        {{r[c.prop]}}
+      </span>
+      <span ng-if="c.filter">
+        {{$ctrl.filter(c.filter)(r[c.prop], c.filterParams)}}
+      </span>
+    </div>
+  </div>
 </div>
