@@ -18,6 +18,7 @@ class CommonComponentCtrl {
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._transitionsHooks.returnLoaderState() ? loader : false);
     });
+    this._boundEventHandler = this._blockScroll;
   }
 
   $postLink() {
@@ -28,12 +29,14 @@ class CommonComponentCtrl {
     this.view = this._view.onViewChange(this.view, this._window.innerWidth);
     if (this.view === this._view.returnViews().mDefault) {
       this._body.addClass('common-block-scroll');
+      this._body.on('touchend', this._boundEventHandler);
     }
     if (this.view === this._view.returnViews().mExpanded) {
       this._timeout(() => {
         this.view = this._view.returnViews().dCollapsed;
       }, 200);
       this._body.removeClass('common-block-scroll');
+      this._body.off('touchend', this._boundEventHandler);
     }
   }
 
@@ -46,6 +49,10 @@ class CommonComponentCtrl {
       this.view = this._view.returnViews().dCollapsed;
       this._body.removeClass('common-block-scroll');
     }
+  }
+
+  _blockScroll(event) {
+    event.preventDefault();
   }
 
   _resizeThrottler() {
