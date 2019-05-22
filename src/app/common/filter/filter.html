@@ -15,7 +15,7 @@
         Od
       </label>
       <md-datepicker name="from" ng-model="$ctrl.from" ng-required="true" md-hide-icons="calendar"
-        md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
+        md-max-date="$ctrl.max" md-min-date="$ctrl.min" md-placeholder="dd.mm.rrrr" md-no-asterisk></md-datepicker>
       <app-messages errors="filterForm.from.$error"></app-messages>
     </md-input-container>
   </div>
@@ -25,7 +25,7 @@
         Do
       </label>
       <md-datepicker name="to" ng-model="$ctrl.to" ng-required="true" md-hide-icons="calendar" md-max-date="$ctrl.max"
-        md-min-date="$ctrl.min" md-no-asterisk md-open-on-focus></md-datepicker>
+        md-min-date="$ctrl.min" md-placeholder="dd.mm.rrrr" md-no-asterisk></md-datepicker>
       <app-messages errors="filterForm.to.$error"></app-messages>
     </md-input-container>
   </div>
