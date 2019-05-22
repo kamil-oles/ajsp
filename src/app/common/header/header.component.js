@@ -1,10 +1,14 @@
+import * as packages from '../../../../package.json';
+
 class HeaderComponentCtrl {
   /* @ngInject */
   constructor(eventEmitter) {
     this._eventEmitter = eventEmitter;
   }
 
-  repo = 'https://github.com/kamil-oles/Currency_converter-AngularJS';
+  $onInit() {
+    this.repo = packages.repository.url;
+  }
 
   emitChange() {
     this.onViewChange(this._eventEmitter());
