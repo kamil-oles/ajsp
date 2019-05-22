@@ -9,6 +9,7 @@ a.side-menu-link-active {
     bottom: 0;
     height: calc(100vh - #{$common-height});
     position: fixed;
+    top: $common-height;
     width: $common-side-menu-width;
     z-index: 4;
 }
