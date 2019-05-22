@@ -33,6 +33,7 @@ export class CommonTransitionsService {
         this.view = this._view.returnViews().dCollapsed;
       }, 200);
       this._body.removeClass('common-block-scroll');
+      this._element.off('touchmove', this._boundEventHandler);
     }
   }
 }

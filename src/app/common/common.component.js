@@ -29,14 +29,14 @@ class CommonComponentCtrl {
     this.view = this._view.onViewChange(this.view, this._window.innerWidth);
     if (this.view === this._view.returnViews().mDefault) {
       this._body.addClass('common-block-scroll');
-      this._body.on('touchend', this._boundEventHandler);
+      this._element.on('touchmove', this._boundEventHandler);
     }
     if (this.view === this._view.returnViews().mExpanded) {
       this._timeout(() => {
         this.view = this._view.returnViews().dCollapsed;
       }, 200);
       this._body.removeClass('common-block-scroll');
-      this._body.off('touchend', this._boundEventHandler);
+      this._element.off('touchmove', this._boundEventHandler);
     }
   }
 
