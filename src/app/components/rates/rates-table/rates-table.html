@@ -15,15 +15,17 @@
       </span>
     </div>
   </div>
-  <div class="app-typography-body-2" ng-repeat="r in $ctrl.rows" layout>
-    <div class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
-      ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" content="r[c.prop]" colors="c.colors" rates-table-color>
-      <span ng-if="!c.filter">
-        {{r[c.prop]}}
-      </span>
-      <span ng-if="c.filter">
-        {{$ctrl.filter(c.filter)(r[c.prop], c.filterParams)}}
-      </span>
+  <div class="rates-table-rows-container">
+    <div class="app-typography-body-2" ng-repeat="r in $ctrl.rows" layout>
+      <div class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
+        ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" pass-element="$ctrl.fillArray($event)" rates-table-cell>
+        <span ng-if="!c.filter">
+          {{r[c.prop]}}
+        </span>
+        <span ng-if="c.filter" content="r[c.prop]" colors="c.colors" rates-table-color>
+          {{$ctrl.filter(c.filter)(r[c.prop], c.filterParams)}}
+        </span>
+      </div>
     </div>
   </div>
 </div>

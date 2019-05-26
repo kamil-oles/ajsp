@@ -11,18 +11,19 @@ md-icon.rates-table-icon-label {
 .rates-table-cell {
   @extend %cell;
   border-top: 1px solid $color-table;
-  &:first-child {
-    @extend %sticky-cell;
-    background-color: $color-backdrop;
-  }
+  // &:first-child {
+  //   @extend %sticky-cell;
+  //   background-color: $color-backdrop;
+  // }
 }
 .rates-table-cell-right {
   justify-content: flex-end;
 }
 .rates-table-container {
   height: 100%;
-  overflow: scroll;
-  position: relative;
+  overflow: hidden;
+  // overflow: scroll;
+  // position: relative;
 }
 .rates-table-container.ng-hide {
   opacity: 0;
@@ -34,7 +35,7 @@ md-icon.rates-table-icon-label {
   color: $color-indicator-up
 }
 .rates-table-header {
-  @extend %sticky;
+  // @extend %sticky;
   color: $color-primary;
   top: 0;
   z-index: 1;
@@ -43,10 +44,10 @@ md-icon.rates-table-icon-label {
   @extend %cell;
   background-color: $color-backdrop;
   cursor: pointer;
-  &:first-child {
-    @extend %sticky-cell;
-    top: 0;
-  }
+  // &:first-child {
+  //   @extend %sticky-cell;
+  //   top: 0;
+  // }
   &:focus, &:hover {
     color:$color-primary-dark;
     outline: none;
@@ -68,4 +69,9 @@ md-icon.rates-table-icon-label {
 }
 .rates-table-red {
   color: $color-indicator-down
+}
+.rates-table-rows-container {
+  height: calc(100% - #{$rates-table-row-height});
+  overflow: scroll;
+  position: relative;
 }
