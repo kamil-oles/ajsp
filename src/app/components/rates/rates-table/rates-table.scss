@@ -38,12 +38,13 @@ md-icon.rates-table-icon-label {
   @extend %cell;
   color: $color-primary;
   cursor: pointer;
-  will-change: transform;
   &:first-child {
     box-shadow: $rates-table-box-shadow;
     position: relative;
-    will-change: auto;
     z-index: 1;
+  }
+  &:not(:first-child) {
+    will-change: transform;
   }
   &:focus, &:hover {
     color:$color-primary-dark;
