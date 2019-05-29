@@ -1,7 +1,7 @@
 # Currencies
-Simple app created with AngularJS (using component-based architecture), AngularJS Material and <a href='http://api.nbp.pl/' target='_blank'>NBP Web API</a>.
+Simple web app created with AngularJS (using component-based architecture), AngularJS Material and [NBP Web API](http://api.nbp.pl/).
 <br>
-See <a href='https://currencies-9c547.web.app' target='blank'>live version</a>.
+See [live version](https://currencies-9c547.web.app).
 ## Technologies :hammer:
 * HTML
 * CSS (Sass preprocessor)
@@ -14,7 +14,7 @@ To run this project, download the repo:
 ```
 $ git clone https://github.com/kamil-oles/currencies.git
 ```
-Install all dependencies (<a href='https://nodejs.org/en/' target='blank'>Node.js</a> is required):
+Install all dependencies ([Node.js](https://nodejs.org/en/) is required):
 ```
 $ cd currencies/
 $ npm install
@@ -35,4 +35,4 @@ The app was tested on:
 * charts
 * responsiveness
 ## Inspiration :+1:
-In terms of styleguide I tried to follow the rules proposed in Todd Motto's <a href='https://github.com/toddmotto/angularjs-styleguide' target='blank'>AngularJS styleguide (ES2015)</a>. 
+In terms of styleguide I tried to follow the rules proposed in Todd Motto's [AngularJS styleguide (ES2015)](https://github.com/toddmotto/angularjs-styleguide). 
