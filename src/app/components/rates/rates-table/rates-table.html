@@ -1,7 +1,8 @@
 <div class="rates-table-container" ng-show="$ctrl.rows" ng-cloak>
-  <div class="app-typography-th rates-table-header" layout>
+  <div class="app-typography-th" layout>
     <div class="app-padding rates-table-header-cell" ng-class="{'rates-table-header-right': c.alignToRight}"
-      ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" ng-click="$ctrl.sort(c.prop)">
+      ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" ng-click="$ctrl.sort(c.prop)"
+      pass-element="$ctrl.fillArray($event)" rates-table-cell>
       <span ng-if="!c.iconAsLabel">
         {{c.label}}
       </span>
@@ -18,7 +19,7 @@
   <div class="rates-table-rows-container">
     <div class="app-typography-body-2" ng-repeat="r in $ctrl.rows" layout>
       <div class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
-        ng-style="c.minWidth" ng-repeat="c in $ctrl.columns" pass-element="$ctrl.fillArray($event)" rates-table-cell>
+        ng-style="c.minWidth" ng-repeat="c in $ctrl.columns">
         <span ng-if="!c.filter">
           {{r[c.prop]}}
         </span>

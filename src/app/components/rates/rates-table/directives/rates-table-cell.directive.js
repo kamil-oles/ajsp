@@ -7,7 +7,7 @@ class RatesTableCellDirectiveCtrl {
   }
 
   $postLink() {
-    if (!this._element[0].previousElementSibling) {
+    if (this._element[0].previousElementSibling) {
       this._scope.passElement(this._eventEmitter(this._element));
     }
   }

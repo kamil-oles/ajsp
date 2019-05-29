@@ -6,7 +6,7 @@ class RatesTableComponentCtrl {
     this.filter = $filter;
   }
 
-  _firstColumn = [];
+  _header = [];
 
   $onChanges(changes) {
     if (changes.rows.currentValue) {
@@ -32,7 +32,7 @@ class RatesTableComponentCtrl {
   }
 
   fillArray(element) {
-    this._firstColumn.push(element);
+    this._header.push(element);
   }
 
   sort(prop) {
@@ -51,8 +51,8 @@ class RatesTableComponentCtrl {
 
   _setAnimation(event) {
     function addCss(event) {
-      this._firstColumn.forEach(function setAnimation(element) {
-        element.css('transform', `translate3d(${event.target.scrollLeft}px, 0, 0)`);
+      this._header.forEach(function setAnimation(element) {
+        element.css('transform', `translate3d(-${event.target.scrollLeft}px, 0, 0)`);
       });
     }
     requestAnimationFrame(addCss.bind(this, event));
