@@ -1,5 +1,5 @@
 # Currencies
-Simple app created with AngularJS (using component-based architecture), AngularJS Material and <a href='http://api.nbp.pl/' target='blank'>NBP Web API</a>.
+Simple app created with AngularJS (using component-based architecture), AngularJS Material and <a href='http://api.nbp.pl/' target='_blank'>NBP Web API</a>.
 <br>
 See <a href='https://currencies-9c547.web.app' target='blank'>live version</a>.
 ## Technologies :hammer:
