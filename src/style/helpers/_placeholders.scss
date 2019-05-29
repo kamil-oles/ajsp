@@ -7,6 +7,7 @@
 }
 %cell {
   align-items: center;
+  background-color: $color-backdrop;
   display: flex;
   flex: 1 0;
   height: $rates-table-row-height;
@@ -47,13 +48,4 @@
       color: $color-text-light;
     }
   }
-}
-%sticky {
-  position: sticky;
-  position: -webkit-sticky;
-}
-%sticky-cell {
-  @extend %sticky;
-  box-shadow: 6px 0 2px -1px rgba(255, 255, 255, .8);
-  left: 0;
 }
