@@ -70,6 +70,6 @@ md-icon.rates-table-icon-label {
 }
 .rates-table-rows-container {
   height: calc(100% - #{$rates-table-row-height});
-  overflow: scroll;
+  overflow: auto;
   position: relative;
 }
