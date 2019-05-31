@@ -23,7 +23,7 @@ Build the app:
 ```
 $ npm start
 ```
-### Support
+### Browser support
 The app was tested on:
 * Google Chrome 74
 * Firefox Quantum 67
