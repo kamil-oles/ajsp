@@ -12,7 +12,7 @@ See [live version](https://currencies-9c547.web.app).
 ## Setup :rocket:
 To run this project, download the repo:
 ```
-$ git clone https://github.com/kamil-oles/currencies.git
+$ git clone https://github.com/kamilolesinski/currencies.git
 ```
 Install all dependencies ([Node.js](https://nodejs.org/en/) is required):
 ```
