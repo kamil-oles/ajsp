@@ -8,7 +8,7 @@ See [live version](https://currencies-9c547.web.app).
 * JavaScript (AngularJS, UI-Router, ES6)
 * AngularJS Material
 * Chart.js
-* webpack
+* Webpack
 ## Setup :rocket:
 To run this project, download the repo:
 ```
