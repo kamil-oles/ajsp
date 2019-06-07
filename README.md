@@ -30,6 +30,8 @@ The app was tested on:
 * Safari 12
 * Microsoft Edge 17
 * Safari 12 (iOS)
+* Samsung Internet 7
+* Google Chrome 73 (Android)
 ## Features :star:
 * currency converter (PLN to one of 12 foreign currencies and vice versa)
 * tables with actual and historical exchange rates
