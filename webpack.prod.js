@@ -1,15 +1,10 @@
 const CLEAN_PLUGIN = require('clean-webpack-plugin'),
   COMMON = require('./webpack.common'),
-  GLOB = require('glob'),
   MERGE = require('webpack-merge'),
   MINI_CSS_EXTRA_PLUGIN = require('mini-css-extract-plugin'),
   OPTIMIZE_CSS_ASSETS_PLUGIN = require('optimize-css-assets-webpack-plugin'),
-  PATH = require('path'),
-  PURGE_CSS_PLUGIN = require('purgecss-webpack-plugin'),
   TERSER_PLUGIN = require('terser-webpack-plugin'),
   WEBPACK = require('webpack');
-
-const ROOT = PATH.join(__dirname, '/src');
 
 const CHUNKS = {
   contentHash: new WEBPACK.HashedModuleIdsPlugin(),
@@ -34,9 +29,6 @@ const PREPARE = {
   clean: new CLEAN_PLUGIN(),
   extractCssFile: new MINI_CSS_EXTRA_PLUGIN({
     filename: 'style/[name].[contenthash].css'
-  }),
-  removeUnusedCss: new PURGE_CSS_PLUGIN({
-    paths: GLOB.sync(`${ROOT}/**/*`, { nodir: true })
   })
 };
 
@@ -69,7 +61,6 @@ const PROD_CONFIG = MERGE(COMMON, {
     OPTIMIZATION.replace,
     CHUNKS.contentHash,
     PREPARE.extractCssFile,
-    PREPARE.removeUnusedCss,
     PREPARE.clean
   ],
   optimization: {
