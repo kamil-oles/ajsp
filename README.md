@@ -5,7 +5,7 @@ See [live version](https://currencies-9c547.web.app).
 ## Technologies :hammer:
 * HTML
 * CSS (Sass preprocessor)
-* JavaScript (AngularJS, UI-Router, ES6)
+* JavaScript (AngularJS, UI-Router, ES6-7)
 * AngularJS Material
 * Chart.js
 * Webpack

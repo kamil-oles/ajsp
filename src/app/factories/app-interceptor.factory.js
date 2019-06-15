@@ -18,7 +18,7 @@ export const APP_INTERCEPTOR_FACTORY = function interceptorFactory(
   }
 
   function showLoader(url) {
-    if (requestArray.indexOf(url) !== -1) {
+    if (requestArray.includes(url)) {
       $rootScope.$broadcast('loader', true);
     }
     const INTERVAL = $interval(function checkRequestArray() {

@@ -1,6 +1,6 @@
 {
   "name": "currencies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Kamil Olesiński",
   "description": "SPA built using AngularJS",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kamil-oles/currencies"
+    "url": "https://github.com/kamilolesinski/currencies"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
