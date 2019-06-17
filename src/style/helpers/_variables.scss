@@ -22,7 +22,6 @@ $breakpoint-md: 1280px;
 $color-accent: rgb(238, 255, 65);
 $color-accent-light: rgb(244, 255, 129);
 $color-backdrop: rgb(255, 255, 255);
-$color-box-shadow: rgba(255, 255, 255, .8);
 $color-indicator-down: rgb(244, 67, 54);
 $color-indicator-up: rgb(76, 175, 80);
 $color-primary: rgb(158, 158, 158);
@@ -59,7 +58,6 @@ $footer-padding: 1.5rem;
 $footer-height: $footer-caption-height + $footer-menu-height + $footer-padding * 3;
 
 // Rates table
-$rates-table-box-shadow: 6px 0 2px -1px $color-box-shadow;
 $rates-table-icon-font-size: 20px;
 $rates-table-row-height: 3rem;
 

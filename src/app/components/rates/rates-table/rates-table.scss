@@ -12,7 +12,6 @@ md-icon.rates-table-icon-label {
   @extend %cell;
   border-top: 1px solid $color-table;
   &:first-child {
-    box-shadow: $rates-table-box-shadow;
     left: 0;
     position: sticky;
     position: -webkit-sticky;
@@ -39,7 +38,6 @@ md-icon.rates-table-icon-label {
   color: $color-primary;
   cursor: pointer;
   &:first-child {
-    box-shadow: $rates-table-box-shadow;
     position: relative;
     z-index: 1;
   }
@@ -67,6 +65,11 @@ md-icon.rates-table-icon-label {
 }
 .rates-table-red {
   color: $color-indicator-down
+}
+.rates-table-row:hover {
+  .rates-table-cell {
+    background-color: $color-table;
+  }
 }
 .rates-table-rows-container {
   height: calc(100% - #{$rates-table-row-height});

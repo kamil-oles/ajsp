@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="rates-table-rows-container">
-    <div class="app-typography-body-2" ng-repeat="r in $ctrl.rows" layout>
+    <div class="app-typography-body-2 rates-table-row" ng-repeat="r in $ctrl.rows" layout>
       <div class="app-padding rates-table-cell" ng-class="{'rates-table-cell-right': c.alignToRight}"
         ng-style="c.minWidth" ng-repeat="c in $ctrl.columns">
         <span ng-if="!c.filter">
