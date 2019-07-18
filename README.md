@@ -34,7 +34,7 @@ The app was tested on:
 * Google Chrome 73 (Android)
 ## Features :star:
 * currency converter (PLN to one of 12 foreign currencies and vice versa)
-* tables with actual and historical exchange rates
+* tables with current and historical exchange rates
 * charts
 * responsiveness
 ## Inspiration :+1:
