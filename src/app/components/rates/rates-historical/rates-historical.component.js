@@ -1,14 +1,12 @@
 import differenceby from 'lodash.differenceby';
-
 import * as columns from '../../../data/tables.json';
-import { FilterConfig, FilterParams } from '../../../common/filter/classes/filter.class';
-import { RatesHistorical } from './classes/rates-historical.class';
 
 class RatesHistoricalComponentCtrl {
   /* @ngInject */
-  constructor($scope, RatesHistoricalData, headers, RatesHistoricalHttp) {
+  constructor($scope, CommonFilterData, headers, RatesHistoricalData, RatesHistoricalHttp) {
     this.headers = headers.historical;
     this._data = RatesHistoricalData;
+    this._filterData = CommonFilterData;
     this._http = RatesHistoricalHttp;
     this._scope = $scope;
   }
@@ -18,13 +16,13 @@ class RatesHistoricalComponentCtrl {
   $onInit() {
     this.rates = this.initData.rates || null;
     if (this.rates) {
-      this._currentParams = new FilterParams(
+      this._currentParams = this._filterData.filterParams(
         [{ code: this.initData.currency }, { code: null }],
         this.initData.from,
         this.initData.to
       );
     }
-    this.filterConfig = new FilterConfig(
+    this.filterConfig = this._filterData.filterConfig(
       this.initData.currency,
       this.initData.from,
       this.initData.to,
@@ -51,7 +49,7 @@ class RatesHistoricalComponentCtrl {
       this._http.getRates(CODE, START, END).then(
         response => {
           this.rates = this._data.prepare(response.data.rates);
-          this._data.save(new RatesHistorical(CODE, START, END, this.rates));
+          this._data.save(this._data.ratesHistorical(CODE, START, END, this.rates));
           this._blockLoader = true;
         },
         error => {

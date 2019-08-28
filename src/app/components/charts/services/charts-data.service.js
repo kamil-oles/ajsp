@@ -1,5 +1,4 @@
 import differenceby from 'lodash.differenceby';
-import { ChartsData } from '../classes/charts.class';
 
 export class ChartsDataService {
   /* @ngInject */
@@ -49,6 +48,15 @@ export class ChartsDataService {
     }
   }
 
+  _createDataObject(data, labels, params, error) {
+    return {
+      data: data,
+      error: error,
+      labels: labels,
+      params: params
+    };
+  }
+
   _prepareAll(response, labels) {
     const RATES = [[], []],
       LABELS = [];
@@ -75,7 +83,7 @@ export class ChartsDataService {
     response.data.rates.forEach(function fillArray(element) {
       DATA[INDEX].push(element.mid);
     });
-    return new ChartsData(DATA, labels, inco);
+    return this._createDataObject(DATA, labels, inco);
   }
 
   _promises(inco) {
@@ -89,7 +97,7 @@ export class ChartsDataService {
   }
 
   _returnPromise(defer, data, labels, inco, error) {
-    defer[(error ? 'reject' : 'resolve')](new ChartsData(data, labels, inco, error));
+    defer[(error ? 'reject' : 'resolve')](this._createDataObject(data, labels, inco, error));
     return defer.promise;
   }
 }

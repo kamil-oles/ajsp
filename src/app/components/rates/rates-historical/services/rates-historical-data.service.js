@@ -1,5 +1,3 @@
-import { RatesHistorical } from '../classes/rates-historical.class';
-
 export class RatesHistoricalDataService {
   /* @ngInject */
   constructor($q, $rootScope, base, CommonDate, RatesHistoricalHttp) {
@@ -24,7 +22,7 @@ export class RatesHistoricalDataService {
         response => {
           const CODE = response.data.code,
             RATES = this.prepare(response.data.rates),
-            DATA = new RatesHistorical(CODE, FROM, TO, RATES);
+            DATA = this.ratesHistorical(CODE, FROM, TO, RATES);
           this.save(DATA);
           DEFERRED.resolve(DATA);
         },
@@ -36,12 +34,21 @@ export class RatesHistoricalDataService {
     } else if (SESSION_DATA) {
       return SESSION_DATA;
     } else {
-      return new RatesHistorical(this._baseCurrency, FROM, TO);
+      return this.ratesHistorical(this._baseCurrency, FROM, TO);
     }
   }
 
   prepare(array) {
     return array.map((el, i, arr) => this._rows(el, i, arr));
+  }
+
+  ratesHistorical(code, from, to, rates) {
+    return {
+      currency: code,
+      from: from,
+      rates: rates,
+      to: to
+    };
   }
 
   save(data) {

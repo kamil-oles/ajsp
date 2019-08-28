@@ -1,21 +1,20 @@
-import { Currency } from '../classes/converter-form.class';
-
 export class ConverterFormStorageService {
   /* @ngInject */
-  constructor(base) {
+  constructor(base, ConverterFormGeneral) {
     this._currency = base.currency;
+    this._general = ConverterFormGeneral;
   }
 
   getData(key) {
     const DATA = JSON.parse(localStorage.getItem(key));
     if (DATA && key === 'first_currency') {
-      return new Currency(DATA.code, DATA.value);
+      return this._general.currency(DATA.code, DATA.value);
     } else if (DATA && key === 'second_currency') {
-      return new Currency(DATA.code);
+      return this._general.currency(DATA.code);
     } else if (!DATA && key === 'first_currency') {
-      return new Currency('PLN', 1000);
+      return this._general.currency('PLN', 1000);
     } else {
-      return new Currency(this._currency);
+      return this._general.currency(this._currency);
     }
   }
 

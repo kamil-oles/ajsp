@@ -1,9 +1,8 @@
-import { Currency } from '../classes/converter-form.class';
-
 export class ConverterFormCalculateService {
   /* @ngInject */
-  constructor(ConverterFormFormatter) {
+  constructor(ConverterFormFormatter, ConverterFormGeneral) {
     this._formatter = ConverterFormFormatter;
+    this._general = ConverterFormGeneral;
   }
 
   setData(code, value, response, buy) {
@@ -23,7 +22,7 @@ export class ConverterFormCalculateService {
 
   _setResults(code, buy, rate, newValue) {
     return {
-      currency: new Currency((buy ? code : 'PLN'), this._formatter.format(newValue)),
+      currency: this._general.currency((buy ? code : 'PLN'), this._formatter.format(newValue)),
       denomination: this._setDenomination(code),
       get rate() {
         return (rate * this.denomination).toFixed(4).replace('.', ',');

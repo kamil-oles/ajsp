@@ -1,11 +1,10 @@
-import { FilterConfig, FilterParams } from '../../common/filter/classes/filter.class';
-
 class ChartsComponentCtrl {
   /* @ngInject */
-  constructor($scope, base, ChartsData, CommonDate) {
+  constructor($scope, base, ChartsData, CommonDate, CommonFilterData) {
     this._baseCurrency = base.currency;
     this._data = ChartsData;
     this._date = CommonDate;
+    this._filterData = CommonFilterData;
     this._scope = $scope;
   }
 
@@ -14,14 +13,18 @@ class ChartsComponentCtrl {
   _blockLoader = true;
 
   $onInit() {
-    this.filterConfig = new FilterConfig(
+    this.filterConfig = this._filterData.filterConfig(
       this._baseCurrency,
       this._date.setDateFrom(14),
       new Date(),
       'POKAŻ',
       true
     );
-    this.params = new FilterParams([{ code: this._baseCurrency }, { code: null }], null, null);
+    this.params = this._filterData.filterParams(
+      [{ code: this._baseCurrency }, { code: null }],
+      null,
+      null
+    );
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._blockLoader ? loader : false);
     });
