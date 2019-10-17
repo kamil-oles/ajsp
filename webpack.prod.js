@@ -1,4 +1,4 @@
-const CLEAN_PLUGIN = require('clean-webpack-plugin'),
+const CLEAN_WEBPACK_PLUGIN = require('clean-webpack-plugin'),
   COMMON = require('./webpack.common'),
   MERGE = require('webpack-merge'),
   MINI_CSS_EXTRA_PLUGIN = require('mini-css-extract-plugin'),
@@ -26,7 +26,7 @@ const OPTIMIZATION = {
 };
 
 const PREPARE = {
-  clean: new CLEAN_PLUGIN(),
+  clean: new CLEAN_WEBPACK_PLUGIN(),
   extractCssFile: new MINI_CSS_EXTRA_PLUGIN({ filename: 'style/[name].[contenthash].css' })
 };
 
