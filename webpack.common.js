@@ -1,4 +1,4 @@
-const COPY_PLUGIN = require('copy-webpack-plugin'),
+const COPY_WEBPACK_PLUGIN = require('copy-webpack-plugin'),
   HTML_WEBPACK_PLUGIN = require('html-webpack-plugin'),
   PATH = require('path'),
   SCRIPT_EXT_HTML_WEBPACK_PLUGIN = require('script-ext-html-webpack-plugin');
@@ -11,9 +11,7 @@ const PATHS = {
   index: PATH.join(ROOT, '/index.html')
 };
 
-const FAVICON_COPY = new COPY_PLUGIN([{
-  from: './src/assets/icons/favicon.ico'
-}]);
+const FAVICON_COPY = new COPY_WEBPACK_PLUGIN([{ from: './src/assets/icons/favicon.ico' }]);
 
 const FONTS = {
   test: /\.(eot|woff2|woff|ttf)$/,
@@ -29,9 +27,7 @@ const FONTS = {
 
 const INDEX = new HTML_WEBPACK_PLUGIN({
   inject: 'head',
-  meta: {
-    viewport: 'width=device-width, initial-scale=1.0'
-  },
+  meta: { viewport: 'width=device-width, initial-scale=1.0' },
   template: PATHS.index
 });
 
@@ -39,35 +35,25 @@ const SCRIPTS = {
   test: /\.js$/,
   exclude: /node_modules/,
   use: [
-    {
-      loader: 'babel-loader'
-    },
+    { loader: 'babel-loader' },
     {
       loader: 'eslint-loader',
-      options: {
-        failOnError: true
-      }
+      options: { failOnError: true }
     }
   ]
 };
 
-const SCRIPT_TAGS = new SCRIPT_EXT_HTML_WEBPACK_PLUGIN({
-  defaultAttribute: 'defer'
-});
+const SCRIPT_TAGS = new SCRIPT_EXT_HTML_WEBPACK_PLUGIN({ defaultAttribute: 'defer' });
 
 const TEMPLATES = {
   test: /\.html$/,
   exclude: /index\.html/,
-  use: [{
-    loader: 'html-loader',
-  }]
+  use: [{ loader: 'html-loader' }]
 };
 
 const COMMON_CONFIG = {
   entry: PATHS.app,
-  output: {
-    path: DIST
-  },
+  output: { path: DIST },
   module: {
     rules: [
       FONTS,
