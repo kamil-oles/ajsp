@@ -16,8 +16,7 @@ class ChartsLineComponentCtrl {
   }
 
   $onInit() {
-    this._boundEventHandler = this._orientationChangeHandler;
-    this._window.addEventListener('orientationchange', this._boundEventHandler.bind(this));
+    this._window.addEventListener('orientationchange', this._orientationChangeHandler);
   }
 
   $postLink() {
@@ -25,7 +24,7 @@ class ChartsLineComponentCtrl {
   }
 
   $onDestroy() {
-    this._window.removeEventListener('orientationchange', this.boundEventHandler);
+    this._window.removeEventListener('orientationchange', this._orientationChangeHandler);
     if (this._intervalPromise) {
       this._interval.cancel(this._intervalPromise);
     }
@@ -46,7 +45,7 @@ class ChartsLineComponentCtrl {
     this.show = true;
   }
 
-  _orientationChangeHandler() {
+  _orientationChangeHandler = () => {
     if (this.data[0].length) {
       let noChangeCounter = 0;
       const LAST_INNER_WIDTH = this._window.innerWidth;

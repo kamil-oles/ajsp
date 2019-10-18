@@ -50,12 +50,12 @@ class RatesTableComponentCtrl {
   }
 
   _setAnimation(event) {
-    function addCss(event) {
+    const ADD_CSS = (event) => {
       this._header.forEach(function setAnimation(element) {
         element.css('transform', `translate3d(-${event.target.scrollLeft}px, 0, 0)`);
       });
-    }
-    requestAnimationFrame(addCss.bind(this, event));
+    };
+    requestAnimationFrame(ADD_CSS(event));
   }
 }
 

@@ -13,7 +13,7 @@ class CommonComponentCtrl {
 
   $onInit() {
     this.view = this._view.returnViews().dCollapsed;
-    this._window.addEventListener('resize', this._resizeThrottler.bind(this));
+    this._window.addEventListener('resize', this._resizeThrottler);
     this._transitionsHooks.setTransitionsHooks(this);
     this._scope.$on('loader', (event, loader) => {
       this.loader = (!this._transitionsHooks.returnLoaderState() ? loader : false);
@@ -55,7 +55,7 @@ class CommonComponentCtrl {
     event.preventDefault();
   }
 
-  _resizeThrottler() {
+  _resizeThrottler = () => {
     if (!this._resizeTimeout) {
       this._resizeTimeout = true;
       this._timeout(() => {
