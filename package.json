@@ -1,6 +1,6 @@
 {
   "name": "currencies",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "Kamil Olesiński",
   "description": "SPA built using AngularJS",
   "scripts": {
@@ -30,7 +30,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.7.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "sass-loader": "^7.1.0",
     "script-ext-html-webpack-plugin": "^2.1.3",
@@ -38,8 +38,8 @@
     "terser-webpack-plugin": "^1.3.0",
     "webpack": "^4.32.2",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
