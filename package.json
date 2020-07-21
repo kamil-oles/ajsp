@@ -1,6 +1,6 @@
 {
   "name": "currencies",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "Kamil Olesiński",
   "description": "SPA built using AngularJS",
   "scripts": {
